@@ -709,6 +709,41 @@ main section {
   color: var(--color-texto-suave);
 }
 
+/* Paginas internas */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(216, 207, 189, 0.8);
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  right: -12%;
+  bottom: -52%;
+  width: 42%;
+  height: 120%;
+  border-left: 24px solid rgba(245, 197, 66, 0.22);
+  border-radius: 100% 0 0 100%;
+  transform: rotate(16deg);
+}
+
+.page-hero .contenedor {
+  position: relative;
+  z-index: 1;
+}
+
+.contenido-texto {
+  max-width: 860px;
+  display: grid;
+  gap: 18px;
+  color: var(--color-texto-suave);
+}
+
+.contenido-texto strong {
+  color: var(--color-principal);
+}
+
 /* Contacto */
 .contacto {
   position: relative;

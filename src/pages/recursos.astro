@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { resources } from "../data/recursos.js";
+---
+
+<BaseLayout title="Recursos | Chilete DevPath">
+  <section class="seccion page-hero seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Recursos"
+        title="Material para aprender y practicar"
+        description="Recursos pensados para que la comunidad estudie, practique y revise conceptos de forma ordenada."
+      />
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="tarjetas tarjetas-4">
+        {resources.map((resource) => (
+          <article class="tarjeta">
+            <span class="estado">{resource.status}</span>
+            <h3>{resource.title}</h3>
+            <p>{resource.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

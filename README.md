@@ -8,75 +8,79 @@ https://chiletedevpath.github.io/
 
 ## Objetivo
 
-Presentar Chilete DevPath como ecosistema personal de aprendizaje, evidencia académica, proyectos técnicos y construcción profesional.
+Presentar Chilete DevPath como un ecosistema navegable: una marca personal con origen, ruta de aprendizaje, proyectos, recursos, criterios de publicación responsable y canales de comunidad.
 
-La web funciona como base visual y editorial de la marca, con una versión pública enfocada en identidad, ruta de aprendizaje, criterios de publicación y comunidad.
+La web funciona como base pública de la marca y como punto de entrada más claro que un repositorio para personas que quieran conocer el avance, estudiar contenido o seguir el proyecto.
 
 ## Versión actual
 
-`V1.3.1 | Identidad ajustada`
+`V2.0 | Ecosistema navegable`
 
 - Fecha de cierre: 24/06/2026
 - Estado: cerrada y publicada
 - Sitio: https://chiletedevpath.github.io/
 
-Esta versión ajusta la pieza visual de identidad del hero para integrarla mejor con la imagen principal, sin tapar el banner ni perder el enfoque de origen, ruta y proyectos.
+Esta versión convierte la web de una landing estática a una estructura multipágina con Astro, datos reutilizables, componentes y despliegue automatizado mediante GitHub Pages.
 
 ## Tecnologías
 
+- Astro
 - HTML
 - CSS
-- JavaScript básico
+- JavaScript
 - Google Fonts
 - GitHub Pages
+- GitHub Actions
 
 ## Estructura
 
 ```txt
 chiletedevpath-web/
-|-- index.html
-|-- css/
-|   `-- styles.css
-|-- js/
-|   `-- main.js
-|-- assets/
-|   `-- img/
+|-- public/
+|   `-- assets/
+|       `-- img/
+|-- src/
+|   |-- components/
+|   |-- data/
+|   |-- layouts/
+|   |-- pages/
+|   |-- scripts/
+|   `-- styles/
+|-- .github/
+|   `-- workflows/
+|-- astro.config.mjs
+|-- package.json
 |-- README.md
 `-- CHANGELOG.md
 ```
 
-## Alcance de V1.3.1
+## Alcance de V2.0
 
-- Mantiene la base pública de V1.3.
-- Ajusta el panel visual del hero para que funcione como franja integrada.
-- Evita que la pieza de identidad tape información importante del banner.
-- Cambia el concepto visual de "Camino" a "Ruta" para alinearlo mejor con la web.
-- Actualiza la versión visible del footer.
-- Registra la versión en el historial del proyecto.
+- Migración de HTML estático a Astro.
+- Creación de páginas internas para Inicio, Sobre, Ruta, Proyectos, Recursos, Criterios y Comunidad.
+- Separación de contenido en archivos de datos reutilizables.
+- Creación de componentes para cabecera, hero, tarjetas, ruta, secciones y pie de página.
+- Preparación de despliegue mediante GitHub Actions.
+- Conservación de la identidad visual construida en V1.3.1.
+- Actualización de metadatos por página y URL canónica.
 
 ## Decisiones de diseño
 
 - Identidad visual inspirada en Chilete, Cajamarca, sin usar símbolos institucionales como marca propia.
 - Paleta basada en tonos tierra, camino, agua, verde y azul oscuro.
 - Ruta presentada como avance progresivo, con propósito y evidencia esperada.
-- Hero reforzado como primera entrada a la marca Chilete DevPath.
-- Contenido redactado para comunidad, evitando nombres internos del repositorio como título principal de secciones.
-- Tipografía externa gratuita con fuentes de respaldo para no romper la experiencia sin conexión.
+- Navegación pensada para comunidad, no solo para mostrar repositorios.
+- Contenido redactado con nombres más públicos y atractivos que las carpetas internas del ecosistema.
+- Separación entre contenido publicado, contenido en construcción y criterios de publicación segura.
 
 ## Validación realizada
 
-- Revisión estructural de HTML.
-- Revisión de balance de CSS.
-- Ejecución básica del JavaScript fuera del navegador.
-- Revisión de referencias locales.
-- Verificación de estado Git antes de publicar cambios.
-
-## Próximas versiones
-
-La V1.3.1 queda cerrada como ajuste menor de identidad visual. Las mejoras futuras deben registrarse como nuevas versiones, por ejemplo:
-
-- `V1.4`: mejoras específicas de accesibilidad visual, rendimiento o revisión manual en navegador.
-- `V2.0`: cambio mayor de tecnología, estructura multipágina o propuesta visual.
+- Instalación de dependencias con npm.
+- Ejecución de `npm audit`.
+- Ejecución de `npm run build`.
+- Generación de 7 páginas estáticas.
+- Revisión de estructura del proyecto.
+- Verificación de archivos ignorados para no publicar dependencias, caché ni compilados locales.
 
 ## Criterio editorial
 

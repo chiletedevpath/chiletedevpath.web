@@ -2,6 +2,26 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V2.0 | Ecosistema navegable
+
+- Fecha de cierre: 24/06/2026
+- Estado: cerrada y publicada
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Migración de la web desde una landing HTML estática hacia Astro.
+- Creación de una estructura multipágina para Inicio, Sobre, Ruta, Proyectos, Recursos, Criterios y Comunidad.
+- Separación de contenido en archivos de datos para facilitar mantenimiento.
+- Creación de componentes reutilizables para navegación, hero, tarjetas, ruta, secciones y pie de página.
+- Preparación del despliegue mediante GitHub Actions y GitHub Pages.
+- Conservación de la identidad visual ajustada en V1.3.1.
+- Actualización del README como ficha técnica de la versión vigente.
+
+### Criterio de cierre
+
+La V2.0 se considera cerrada porque la web deja de ser solo una portada y pasa a funcionar como ecosistema navegable de la marca. La estructura permite crecer por secciones sin romper el enfoque de Chilete DevPath.
+
 ## V1.3.1 | Identidad ajustada
 
 - Fecha de cierre: 24/06/2026

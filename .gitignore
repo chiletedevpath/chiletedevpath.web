@@ -8,6 +8,8 @@ Desktop.ini
 
 # Dependencias y compilados futuros
 node_modules/
+.npm-cache/
+.astro/
 dist/
 build/
 out/

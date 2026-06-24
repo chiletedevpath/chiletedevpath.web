@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { socials } from "../data/site.js";
+---
+
+<BaseLayout title="Comunidad | Chilete DevPath">
+  <section class="seccion contacto">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Comunidad"
+        title="Sigamos conectados"
+        description="Revisa el avance, sigue el contenido y súmate a los canales donde Chilete DevPath seguirá creciendo."
+      />
+      <div class="redes" aria-label="Canales oficiales de Chilete DevPath">
+        {socials.map((social) => (
+          <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener">
+            <span>{social.label}</span>
+            {social.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

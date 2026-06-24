@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import RouteStage from "../components/RouteStage.astro";
+import { routeStages } from "../data/ruta.js";
+---
+
+<BaseLayout title="Ruta de aprendizaje | Chilete DevPath">
+  <section class="seccion page-hero seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Ruta de aprendizaje"
+        title="Aprender construyendo, paso a paso"
+        description="Esta página organiza el avance técnico de Chilete DevPath por etapas, con intención, temas y evidencia esperada."
+      />
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="ruta-etapas">
+        {routeStages.map((stage) => <RouteStage stage={stage} />)}
+      </div>
+      <div class="ruta-accion">
+        <p>El contenido práctico vive en el repositorio de aprendizaje y seguirá creciendo con ejercicios aprobados y desarrollados.</p>
+        <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener">
+          Abrir aprendizaje
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

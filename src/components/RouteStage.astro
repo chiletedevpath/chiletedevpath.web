@@ -1,0 +1,14 @@
+---
+const { stage } = Astro.props;
+---
+
+<article class="ruta-etapa">
+  <span class="ruta-numero">{stage.number}</span>
+  <span class="ruta-meta">{stage.intent}</span>
+  <h3>{stage.title}</h3>
+  <ol class="ruta-lista">
+    {stage.topics.map((topic) => <li>{topic}</li>)}
+  </ol>
+  <p class="ruta-resultado">Resultado: {stage.result}</p>
+  <span class="estado estado-etapa">{stage.status}</span>
+</article>

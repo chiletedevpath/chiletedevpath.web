@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projectAreas } from "../data/proyectos.js";
+---
+
+<BaseLayout title="Proyectos | Chilete DevPath">
+  <section class="seccion page-hero seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Proyectos"
+        title="Evidencia técnica con contexto"
+        description="Los proyectos se organizan según su función: aprendizaje, evidencia académica y futuro portafolio profesional."
+      />
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="tarjetas tarjetas-3">
+        {projectAreas.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

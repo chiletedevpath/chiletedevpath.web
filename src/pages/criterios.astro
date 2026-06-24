@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { policies } from "../data/recursos.js";
+---
+
+<BaseLayout title="Criterios | Chilete DevPath">
+  <section class="seccion page-hero seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Criterios"
+        title="Publicar también requiere responsabilidad"
+        description="Chilete DevPath mantiene criterios sobre autoría, fuentes, privacidad, uso de IA, bienestar y publicación segura."
+      />
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="tarjetas tarjetas-4">
+        {policies.map((policy) => (
+          <article class="tarjeta">
+            <h3>{policy.title}</h3>
+            <p>{policy.description}</p>
+            <a href={policy.href} target="_blank" rel="noopener">Leer documento</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

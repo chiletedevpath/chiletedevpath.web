@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import RouteStage from "../components/RouteStage.astro";
+import { routeStages } from "../data/ruta.js";
+import { projectAreas } from "../data/proyectos.js";
+---
+
+<BaseLayout>
+  <Hero />
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Sobre la marca"
+        title="Chilete DevPath como ecosistema personal"
+        description="Chilete DevPath reúne aprendizaje, proyectos, criterios de publicación y comunidad para convertir el avance técnico en una ruta clara y útil."
+      />
+
+      <div class="tarjetas tarjetas-3">
+        <article class="tarjeta">
+          <h3>Aprendizaje ordenado</h3>
+          <p>Fundamentos, ejercicios y laboratorios organizados por nivel de avance.</p>
+        </article>
+        <article class="tarjeta">
+          <h3>Proyectos con contexto</h3>
+          <p>Repositorios y entregas explicados con objetivo, alcance, tecnologías y aprendizaje.</p>
+        </article>
+        <article class="tarjeta">
+          <h3>Criterio profesional</h3>
+          <p>Publicación segura, autoría clara, bienestar técnico y uso responsable de IA.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Ruta de aprendizaje"
+        title="De fundamentos a proyectos reales"
+        description="La ruta muestra el avance por etapas y permite entrar al contenido con mayor intención."
+      />
+      <div class="ruta-etapas">
+        {routeStages.slice(0, 4).map((stage) => <RouteStage stage={stage} />)}
+      </div>
+      <div class="ruta-accion">
+        <p>Explora la ruta completa, ejercicios desarrollados y prácticas pensadas para aprender construyendo.</p>
+        <a class="boton boton-principal" href="/ruta/">Ver ruta completa</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Ecosistema DevPath"
+        title="Rutas, evidencias y futuro portafolio"
+        description="Cada espacio cumple una función dentro de la marca: aprender, evidenciar, seleccionar y compartir."
+      />
+      <div class="tarjetas tarjetas-3">
+        {projectAreas.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
