@@ -1,19 +1,34 @@
 # Chilete DevPath Web
 
-Primera versión estática de la web de Chilete DevPath.
+Web oficial de Chilete DevPath, marca personal de Adrián Pisco para documentar aprendizaje, proyectos, criterio técnico y comunidad.
+
+Sitio publicado:
+
+https://chiletedevpath.github.io/
 
 ## Objetivo
 
-Construir una página de marca para presentar la ruta de aprendizaje, los repositorios principales, los criterios de publicación y los canales de comunidad de Chilete DevPath.
+Presentar Chilete DevPath como ecosistema personal de aprendizaje, evidencia académica, proyectos técnicos y construcción profesional.
 
-La web funciona como base visual y editorial para una futura versión más completa de la marca.
+La web funciona como base visual y editorial de la marca, con una primera versión pública enfocada en identidad, ruta de aprendizaje y comunidad.
 
-## Tecnologias
+## Versión actual
+
+`V1.0 | Camino inicial`
+
+- Fecha de cierre: 24/06/2026
+- Estado: cerrada y publicada
+- Sitio: https://chiletedevpath.github.io/
+
+Esta versión representa la primera publicación oficial de Chilete DevPath como marca personal, ruta de aprendizaje y base de comunidad.
+
+## Tecnologías
 
 - HTML
 - CSS
 - JavaScript básico
 - Google Fonts
+- GitHub Pages
 
 ## Estructura
 
@@ -28,34 +43,18 @@ chiletedevpath-web/
     `-- img/
 ```
 
-## Cómo abrir el proyecto
-
-Abrir el archivo `index.html` directamente en el navegador.
-
-No requiere servidor local, dependencias ni instalación adicional en esta etapa.
-
-## Estado
-
-Proyecto en construcción.
-
-La primera versión se trabaja como web estática antes de evaluar una migración futura a React o Vite.
-
-## Versión actual
-
-`V1.0 | Camino inicial`
-
-Esta versión representa la primera publicación de la web oficial de Chilete DevPath como marca personal, ruta de aprendizaje y base de comunidad.
-
-## Alcance actual
+## Alcance de V1.0
 
 - Página de inicio de una sola vista.
 - Presentación de marca.
 - Ruta de aprendizaje organizada por etapas.
-- Repositorios principales.
-- Criterios de publicación.
+- Enlaces a repositorios principales.
+- Criterios de publicación responsable.
 - Redes sociales y comunidad.
 - Animaciones progresivas con JavaScript nativo.
 - Navegación con estado activo durante el desplazamiento.
+- Footer con versión visible de la marca.
+- Publicación inicial mediante GitHub Pages.
 
 ## Decisiones de diseño
 
@@ -72,13 +71,15 @@ Esta versión representa la primera publicación de la web oficial de Chilete De
 - Revisión de balance de CSS.
 - Ejecución básica del JavaScript fuera del navegador.
 - Revisión responsive por reglas CSS para escritorio, tablet y móvil.
+- Publicación inicial verificada por el propietario de la marca.
 
-## Pendiente antes de publicar
+## Próximas versiones
 
-- Revisar accesibilidad y navegacion con teclado.
-- Revisar visualmente la página en escritorio, tablet y móvil desde navegador.
-- Evaluar publicacion con GitHub Pages.
-- Definir si el proyecto será repositorio propio o sitio principal `chiletedevpath.github.io`.
+La V1.0 queda cerrada. Las mejoras futuras deben registrarse como nuevas versiones, por ejemplo:
+
+- `V1.1`: ajustes visuales posteriores a la revisión pública.
+- `V1.2`: mejoras de contenido, accesibilidad o experiencia responsive.
+- `V2.0`: cambio mayor de tecnología, estructura o propuesta visual.
 
 ## Criterio editorial
 
@@ -86,4 +87,4 @@ El contenido debe mantenerse alineado con las políticas de Chilete DevPath: aut
 
 ## Autor
 
-Adrian Pisco - Chilete DevPath.
+Adrián Pisco - Chilete DevPath.
