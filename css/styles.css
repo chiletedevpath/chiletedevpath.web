@@ -47,6 +47,7 @@ ol {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -710,11 +711,11 @@ img {
 /* Adaptacion responsive */
 @media (max-width: 860px) {
   .navegacion {
-    align-items: flex-start;
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .menu {
+    justify-content: flex-end;
     flex-wrap: wrap;
     gap: 12px 18px;
   }
@@ -758,6 +759,7 @@ img {
 @media (max-width: 700px) {
   .navegacion {
     align-items: stretch;
+    flex-direction: column;
   }
 
   .menu-boton {

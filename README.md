@@ -10,17 +10,17 @@ https://chiletedevpath.github.io/
 
 Presentar Chilete DevPath como ecosistema personal de aprendizaje, evidencia académica, proyectos técnicos y construcción profesional.
 
-La web funciona como base visual y editorial de la marca, con una primera versión pública enfocada en identidad, ruta de aprendizaje y comunidad.
+La web funciona como base visual y editorial de la marca, con una versión pública enfocada en identidad, ruta de aprendizaje, criterios de publicación y comunidad.
 
 ## Versión actual
 
-`V1.0 | Camino inicial`
+`V1.1 | Pulido público`
 
 - Fecha de cierre: 24/06/2026
 - Estado: cerrada y publicada
 - Sitio: https://chiletedevpath.github.io/
 
-Esta versión representa la primera publicación oficial de Chilete DevPath como marca personal, ruta de aprendizaje y base de comunidad.
+Esta versión mejora la primera publicación pública con ajustes de producción, SEO social, accesibilidad, rendimiento visual y experiencia responsive.
 
 ## Tecnologías
 
@@ -39,22 +39,23 @@ chiletedevpath-web/
 |   `-- styles.css
 |-- js/
 |   `-- main.js
-`-- assets/
-    `-- img/
+|-- assets/
+|   `-- img/
+|-- README.md
+`-- CHANGELOG.md
 ```
 
-## Alcance de V1.0
+## Alcance de V1.1
 
-- Página de inicio de una sola vista.
-- Presentación de marca.
-- Ruta de aprendizaje organizada por etapas.
-- Enlaces a repositorios principales.
-- Criterios de publicación responsable.
-- Redes sociales y comunidad.
-- Animaciones progresivas con JavaScript nativo.
-- Navegación con estado activo durante el desplazamiento.
-- Footer con versión visible de la marca.
-- Publicación inicial mediante GitHub Pages.
+- Mantiene la base pública de V1.0.
+- Mejora los metadatos sociales para compartir la web en plataformas externas.
+- Agrega URL canónica del sitio.
+- Usa imagen social absoluta para mejorar compatibilidad con redes.
+- Declara dimensiones de imágenes para reducir saltos visuales durante la carga.
+- Ajusta la navegación responsive en tablet y móvil.
+- Mejora accesibilidad del enlace activo del menú con `aria-current`.
+- Actualiza la versión visible del footer.
+- Registra la versión en el historial del proyecto.
 
 ## Decisiones de diseño
 
@@ -70,16 +71,15 @@ chiletedevpath-web/
 - Revisión estructural de HTML.
 - Revisión de balance de CSS.
 - Ejecución básica del JavaScript fuera del navegador.
-- Revisión responsive por reglas CSS para escritorio, tablet y móvil.
-- Publicación inicial verificada por el propietario de la marca.
+- Revisión de referencias locales.
+- Verificación de estado Git antes de publicar cambios.
 
 ## Próximas versiones
 
-La V1.0 queda cerrada. Las mejoras futuras deben registrarse como nuevas versiones, por ejemplo:
+La V1.1 queda cerrada como pulido público. Las mejoras futuras deben registrarse como nuevas versiones, por ejemplo:
 
-- `V1.1`: ajustes visuales posteriores a la revisión pública.
-- `V1.2`: mejoras de contenido, accesibilidad o experiencia responsive.
-- `V2.0`: cambio mayor de tecnología, estructura o propuesta visual.
+- `V1.2`: mejoras de contenido, accesibilidad visual o experiencia responsive luego de revisión manual en navegador.
+- `V2.0`: cambio mayor de tecnología, estructura multipágina o propuesta visual.
 
 ## Criterio editorial
 

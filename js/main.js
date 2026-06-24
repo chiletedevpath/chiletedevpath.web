@@ -86,7 +86,10 @@ if (typeof document !== "undefined") {
             return;
           }
 
-          enlacesMenu.forEach((enlace) => enlace.classList.remove("enlace-activo"));
+          enlacesMenu.forEach((enlace) => {
+            enlace.classList.remove("enlace-activo");
+            enlace.removeAttribute("aria-current");
+          });
 
           const enlaceActivo = document.querySelector(
             `.menu a[href="#${entrada.target.id}"]`
@@ -94,6 +97,7 @@ if (typeof document !== "undefined") {
 
           if (enlaceActivo) {
             enlaceActivo.classList.add("enlace-activo");
+            enlaceActivo.setAttribute("aria-current", "page");
           }
         });
       },
