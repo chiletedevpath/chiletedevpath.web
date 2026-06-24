@@ -393,49 +393,95 @@ img {
   z-index: 1;
 }
 
-.ruta-lista {
+.ruta-etapas {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  list-style: none;
-  counter-reset: ruta;
+  gap: 22px;
 }
 
-.ruta-lista li {
+.ruta-etapas::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-raiz),
+    var(--color-camino),
+    var(--color-agua),
+    var(--color-acento)
+  );
+  opacity: 0.7;
+}
+
+.ruta-etapa {
   position: relative;
-  padding: 16px 18px 16px 54px;
+  padding: 28px;
   border: 1px solid var(--color-borde);
   border-radius: 8px;
   background-color: var(--color-fondo);
-  color: var(--color-texto);
-  font-weight: 700;
-  counter-increment: ruta;
+  box-shadow: var(--sombra-suave);
   transition:
     border-color 0.2s ease,
     transform 0.2s ease;
 }
 
-.ruta-lista li:hover {
+.ruta-etapa:hover {
   border-color: var(--color-acento);
-  transform: translateX(6px);
+  transform: translateY(-4px);
 }
 
-.ruta-lista li::before {
-  content: counter(ruta);
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  width: 26px;
-  height: 26px;
+.ruta-numero {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
   border-radius: 50%;
   background-color: var(--color-camino);
   color: var(--color-principal);
-  font-size: 0.85rem;
   font-weight: 700;
   display: grid;
   place-items: center;
-  transform: translateY(-50%);
-  box-shadow: 0 0 0 4px rgba(242, 212, 107, 0.22);
+  box-shadow: 0 0 0 6px rgba(242, 212, 107, 0.24);
+}
+
+.ruta-etapa h3 {
+  color: var(--color-principal);
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+}
+
+.ruta-lista {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  counter-reset: ruta-tema;
+}
+
+.ruta-lista li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--color-texto-suave);
+  counter-increment: ruta-tema;
+}
+
+.ruta-lista li:hover {
+  color: var(--color-texto);
+}
+
+.ruta-lista li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.68em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-acento);
+  box-shadow: 0 0 0 4px rgba(47, 143, 91, 0.12);
 }
 
 /* Contacto */
@@ -524,8 +570,24 @@ img {
 
   .tarjetas-3,
   .tarjetas-4,
-  .ruta-lista {
+  .ruta-etapas {
     grid-template-columns: 1fr;
+  }
+
+  .ruta-etapas::before {
+    left: 20px;
+    right: auto;
+    top: 24px;
+    bottom: 24px;
+    width: 5px;
+    height: auto;
+    background: linear-gradient(
+      180deg,
+      var(--color-raiz),
+      var(--color-camino),
+      var(--color-agua),
+      var(--color-acento)
+    );
   }
 }
 
