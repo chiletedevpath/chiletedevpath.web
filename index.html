@@ -27,7 +27,16 @@
       <nav class="navegacion contenedor" aria-label="Navegacion principal">
         <a class="marca" href="#inicio">Chilete DevPath</a>
 
-        <ul class="menu">
+        <button
+          class="menu-boton"
+          type="button"
+          aria-expanded="false"
+          aria-controls="menu-principal"
+        >
+          Menu
+        </button>
+
+        <ul id="menu-principal" class="menu">
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#ruta">Ruta</a></li>
