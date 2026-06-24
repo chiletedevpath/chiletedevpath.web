@@ -2,6 +2,24 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V1.3.1 | Identidad ajustada
+
+- Fecha de cierre: 24/06/2026
+- Estado: cerrada y publicada
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Ajuste del panel visual del hero para integrarlo como franja inferior de identidad.
+- Eliminación del efecto de bloque superpuesto que tapaba parte del banner.
+- Cambio del concepto "Camino" por "Ruta" para alinearlo con la ruta de aprendizaje.
+- Mejora de la distribución visual de origen, ruta y construcción.
+- Actualización de la versión visible en el footer.
+
+### Criterio de cierre
+
+La V1.3.1 se considera cerrada porque corrige el bloque visual de identidad del hero sin abrir una nueva etapa mayor. La mejora conserva el enfoque de Chilete DevPath y prepara la web para una futura planificación V2.0.
+
 ## V1.3 | Identidad viva
 
 - Fecha de cierre: 24/06/2026

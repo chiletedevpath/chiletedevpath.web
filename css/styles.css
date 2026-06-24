@@ -120,10 +120,22 @@ main section {
   font-size: 1.22rem;
 }
 
-.marca img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
+.marca-logo {
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 43, 60, 0.16);
+  border-radius: 8px;
+  background-color: var(--color-principal);
+  box-shadow: 0 8px 18px rgba(16, 43, 60, 0.12);
+  display: grid;
+  place-items: center;
+}
+
+.marca-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .menu-boton {
@@ -210,17 +222,6 @@ main section {
   padding: 112px 0 96px;
 }
 
-.hero::before {
-  content: "{ chilete.devpath }";
-  position: absolute;
-  right: 8%;
-  top: 10%;
-  color: rgba(255, 255, 255, 0.08);
-  font-size: 4.4rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
 .hero::after {
   content: "";
   position: absolute;
@@ -259,7 +260,7 @@ main section {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 620px);
   align-items: center;
   gap: 48px;
   animation: aparecer-suave 0.8s ease both;
@@ -298,19 +299,52 @@ main section {
   font-weight: 600;
 }
 
+.hero-visual {
+  width: min(100%, 620px);
+  justify-self: center;
+  transform: translateY(-14px);
+}
+
+.hero-codigo {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.075);
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.35rem, 4.1vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .hero-imagen {
   position: relative;
+  width: 100%;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(16, 43, 60, 0.24)),
+    var(--color-principal);
   box-shadow: var(--sombra-media);
-  transform: rotate(1deg);
+}
+
+.hero-imagen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(16, 43, 60, 0.28), transparent 42%),
+    linear-gradient(180deg, transparent 64%, rgba(16, 43, 60, 0.3));
 }
 
 .hero-imagen img {
+  position: relative;
+  z-index: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 1536 / 815;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
@@ -320,36 +354,45 @@ main section {
 }
 
 .hero-marca-panel {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 8px;
-  background-color: rgba(16, 43, 60, 0.84);
-  backdrop-filter: blur(12px);
+  gap: 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  background:
+    linear-gradient(90deg, rgba(124, 90, 51, 0.18), transparent 38%),
+    linear-gradient(135deg, rgba(16, 43, 60, 0.98), rgba(36, 57, 76, 0.98));
 }
 
-.hero-marca-panel span,
-.hero-marca-panel strong {
-  display: block;
+.hero-marca-panel div {
+  min-width: 0;
+  padding: 14px 18px 15px;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-marca-panel div:last-child {
+  border-right: 0;
 }
 
 .hero-marca-panel span {
-  color: #cbd5e1;
-  font-size: 0.72rem;
+  display: block;
+  margin-bottom: 5px;
+  color: #dbeafe;
+  font-size: 0.7rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .hero-marca-panel strong {
+  display: block;
   color: var(--color-progreso);
   font-family: var(--fuente-titulos);
-  font-size: 0.95rem;
+  font-size: clamp(0.94rem, 1.5vw, 1.1rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .hero .etiqueta {
@@ -832,14 +875,23 @@ main section {
     grid-template-columns: 1fr;
   }
 
+  .hero-visual {
+    width: min(100%, 620px);
+    transform: none;
+  }
+
   .hero-marca-panel {
-    position: static;
     grid-template-columns: 1fr;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .hero-marca-panel div {
+    padding: 14px 18px;
     border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .hero-marca-panel div:last-child {
     border-bottom: 0;
-    border-left: 0;
-    border-radius: 0;
   }
 
   .tarjetas-3,
@@ -915,9 +967,9 @@ main section {
     font-size: 2.1rem;
   }
 
-  .hero::before {
-    font-size: 2.6rem;
-    right: 4%;
+  .hero-codigo {
+    font-size: 2.25rem;
+    white-space: normal;
   }
 
   .hero-indicadores {

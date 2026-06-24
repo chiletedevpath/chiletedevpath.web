@@ -14,13 +14,13 @@ La web funciona como base visual y editorial de la marca, con una versión públ
 
 ## Versión actual
 
-`V1.3 | Identidad viva`
+`V1.3.1 | Identidad ajustada`
 
 - Fecha de cierre: 24/06/2026
 - Estado: cerrada y publicada
 - Sitio: https://chiletedevpath.github.io/
 
-Esta versión refuerza la primera impresión de marca, mejora la presencia visual del hero y ordena mejor el valor de los proyectos y canales de comunidad.
+Esta versión ajusta la pieza visual de identidad del hero para integrarla mejor con la imagen principal, sin tapar el banner ni perder el enfoque de origen, ruta y proyectos.
 
 ## Tecnologías
 
@@ -45,13 +45,12 @@ chiletedevpath-web/
 `-- CHANGELOG.md
 ```
 
-## Alcance de V1.3
+## Alcance de V1.3.1
 
-- Mantiene la base pública de V1.2.
-- Refuerza el mensaje principal del hero.
-- Agrega una capa visual de identidad sobre origen, camino y construcción.
-- Mejora la sección de proyectos con detalles de valor.
-- Ordena los canales de comunidad por prioridad estratégica.
+- Mantiene la base pública de V1.3.
+- Ajusta el panel visual del hero para que funcione como franja integrada.
+- Evita que la pieza de identidad tape información importante del banner.
+- Cambia el concepto visual de "Camino" a "Ruta" para alinearlo mejor con la web.
 - Actualiza la versión visible del footer.
 - Registra la versión en el historial del proyecto.
 
@@ -74,7 +73,7 @@ chiletedevpath-web/
 
 ## Próximas versiones
 
-La V1.3 queda cerrada como una etapa de identidad visual y comunicacional. Las mejoras futuras deben registrarse como nuevas versiones, por ejemplo:
+La V1.3.1 queda cerrada como ajuste menor de identidad visual. Las mejoras futuras deben registrarse como nuevas versiones, por ejemplo:
 
 - `V1.4`: mejoras específicas de accesibilidad visual, rendimiento o revisión manual en navegador.
 - `V2.0`: cambio mayor de tecnología, estructura multipágina o propuesta visual.
