@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import RouteStage from "../components/RouteStage.astro";
-import { learningSections, routeStages } from "../data/ruta.js";
+import { learningSections, routeStages, techStack } from "../data/ruta.js";
 ---
 
 <BaseLayout title="Ruta de aprendizaje | Chilete DevPath">
@@ -26,6 +26,30 @@ import { learningSections, routeStages } from "../data/ruta.js";
         <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener">
           Abrir aprendizaje
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Tecnologias en practica"
+        title="Herramientas que aparecen en la ruta"
+        description="La ruta combina bases web, programacion, datos y backend. Cada tecnologia entra cuando aporta al aprendizaje, no por adorno."
+      />
+      <div class="tech-grid" aria-label="Tecnologias usadas en Chilete DevPath">
+        {techStack.map((tech) => (
+          <a
+            class={`tech-badge tech-${tech.tone}`}
+            href="https://github.com/chiletedevpath/aprendizaje"
+            target="_blank"
+            rel="noopener"
+            aria-label={`Ver aprendizaje relacionado con ${tech.name}`}
+          >
+            <span>{tech.label}</span>
+            <strong>{tech.name}</strong>
+          </a>
+        ))}
       </div>
     </div>
   </section>

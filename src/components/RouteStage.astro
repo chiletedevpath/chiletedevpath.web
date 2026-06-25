@@ -7,7 +7,11 @@ const { stage } = Astro.props;
   <span class="ruta-meta">{stage.intent}</span>
   <h3>{stage.title}</h3>
   <ol class="ruta-lista">
-    {stage.topics.map((topic) => <li>{topic}</li>)}
+    {stage.topics.map((topic) => (
+      <li>
+        <a href={topic.href} target="_blank" rel="noopener">{topic.label}</a>
+      </li>
+    ))}
   </ol>
   <p class="ruta-resultado">Resultado: {stage.result}</p>
   <div class="ruta-pie">

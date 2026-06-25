@@ -4,9 +4,18 @@ export const routeStages = [
     title: "Base tecnica",
     intent: "Comprender la logica antes del codigo",
     topics: [
-      "Fundamentos de programacion",
-      "Pseudocodigo y pensamiento algoritmico",
-      "Programacion basica",
+      {
+        label: "Fundamentos de programacion",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/00-fundamentos",
+      },
+      {
+        label: "Pseudocodigo y pensamiento algoritmico",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/01-pseudocodigo",
+      },
+      {
+        label: "Programacion basica",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/02-programacion-basica",
+      },
     ],
     result:
       "Ejercicios simples, razonamiento paso a paso y primeras soluciones explicadas.",
@@ -18,18 +27,44 @@ export const routeStages = [
     number: "02",
     title: "Construccion de software",
     intent: "Organizar soluciones con criterio",
-    topics: ["POO", "Estructuras de datos", "Algoritmos"],
+    topics: [
+      {
+        label: "POO",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
+      },
+      {
+        label: "Estructuras de datos",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/04-estructuras-datos",
+      },
+      {
+        label: "Algoritmos",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/05-algoritmos",
+      },
+    ],
     result:
       "Codigo mas ordenado, estructuras reutilizables y solucion de problemas con mejor diseno.",
     status: "En crecimiento",
-    href: "https://github.com/chiletedevpath/aprendizaje",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
     action: "Ver avance",
   },
   {
     number: "03",
     title: "Web y datos",
     intent: "Conectar datos, web y documentacion",
-    topics: ["Bases de datos", "Desarrollo web", "Git, GitHub y documentacion tecnica"],
+    topics: [
+      {
+        label: "Bases de datos",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/06-bases-de-datos",
+      },
+      {
+        label: "Desarrollo web",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
+      },
+      {
+        label: "Git, GitHub y documentacion tecnica",
+        href: "https://github.com/chiletedevpath/aprendizaje",
+      },
+    ],
     result:
       "Practicas web, consultas de datos y repositorios documentados con contexto.",
     status: "Disponible",
@@ -40,7 +75,24 @@ export const routeStages = [
     number: "04",
     title: "Especializacion",
     intent: "Construir proyectos con alcance real",
-    topics: ["Patrones de diseno", "Backend", "Frontend moderno", "Proyectos integradores"],
+    topics: [
+      {
+        label: "Patrones de diseno",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/08-patrones",
+      },
+      {
+        label: "Backend",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/09-backend",
+      },
+      {
+        label: "Frontend moderno",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/10-frontend",
+      },
+      {
+        label: "Proyectos integradores",
+        href: "https://github.com/chiletedevpath/academia",
+      },
+    ],
     result:
       "Proyectos con arquitectura inicial, criterios de publicacion y evidencia profesional.",
     status: "En revision",
@@ -64,26 +116,67 @@ export const learningSections = [
   },
   {
     title: "Programacion basica",
-    status: "En crecimiento",
+    status: "Disponible",
     description: "Practicas iniciales para traducir razonamiento a codigo ejecutable.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/02-programacion-basica",
   },
   {
-    title: "Desarrollo web",
+    title: "POO",
     status: "Disponible",
-    description: "Contenido web y ejercicios PHP desarrollados como parte del avance academico.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
+    description: "Clases, objetos, encapsulamiento, herencia, abstraccion y polimorfismo.",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
+  },
+  {
+    title: "Estructuras de datos",
+    status: "Disponible",
+    description: "Listas, tablas hash y grafos para organizar informacion con criterio.",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/04-estructuras-datos",
+  },
+  {
+    title: "Algoritmos",
+    status: "Disponible",
+    description: "Busqueda, ordenamiento, recursion, backtracking y resolucion de problemas.",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/05-algoritmos",
   },
   {
     title: "Bases de datos",
-    status: "En revision",
-    description: "Material de consultas, modelado y practicas que requieren revision antes de publicarse.",
+    status: "Disponible",
+    description: "Modelado, SQL y criterios de publicacion segura de datos.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/06-bases-de-datos",
   },
   {
-    title: "Patrones y backend",
-    status: "En construccion",
-    description: "Contenido avanzado para conectar buenas practicas, arquitectura y proyectos.",
+    title: "Desarrollo web",
+    status: "Disponible",
+    description: "HTML, CSS, JavaScript inicial y PHP desarrollado como avance academico.",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
+  },
+  {
+    title: "Patrones de diseno",
+    status: "Disponible",
+    description: "SOLID, patrones creacionales, estructurales y casos integradores.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/08-patrones",
   },
+  {
+    title: "Backend",
+    status: "En revision segura",
+    description: "APIs, persistencia, seguridad, testing e integraciones con variables de entorno.",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/09-backend",
+  },
+  {
+    title: "Frontend moderno",
+    status: "Reservado",
+    description: "Se activara cuando existan practicas reales revisadas y aprobadas.",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/10-frontend",
+  },
+];
+
+export const techStack = [
+  { name: "HTML", label: "HTML", tone: "markup" },
+  { name: "CSS", label: "CSS", tone: "style" },
+  { name: "JavaScript", label: "JS", tone: "script" },
+  { name: "PHP", label: "PHP", tone: "server" },
+  { name: "Java", label: "Java", tone: "java" },
+  { name: "SQL", label: "SQL", tone: "data" },
+  { name: "Spring Boot", label: "Spring", tone: "backend" },
+  { name: "Astro", label: "Astro", tone: "web" },
 ];

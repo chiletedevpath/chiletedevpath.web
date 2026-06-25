@@ -946,6 +946,21 @@ main section {
   color: var(--color-texto);
 }
 
+.ruta-lista a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.ruta-lista a:hover,
+.ruta-lista a:focus-visible {
+  color: var(--color-acento);
+  border-color: currentColor;
+}
+
 .ruta-lista li::before {
   content: "";
   position: absolute;
@@ -1031,6 +1046,86 @@ main section {
 
 .contenido-item p {
   color: var(--color-texto-suave);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tech-badge {
+  min-height: 112px;
+  padding: 18px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--color-superficie) 88%, transparent), transparent),
+    var(--color-superficie);
+  box-shadow: var(--sombra-suave);
+  display: grid;
+  align-content: space-between;
+  gap: 14px;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tech-badge:hover {
+  border-color: var(--color-acento);
+  transform: translateY(-3px);
+}
+
+.tech-badge span {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background-color: var(--color-principal);
+  color: var(--color-superficie);
+  font-family: var(--fuente-titulos);
+  font-size: 0.82rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.tech-badge strong {
+  color: var(--color-principal);
+  font-family: var(--fuente-titulos);
+  font-size: 1rem;
+}
+
+.tech-markup span {
+  background-color: #d96b2b;
+}
+
+.tech-style span {
+  background-color: #2878b8;
+}
+
+.tech-script span {
+  background-color: #c9a72d;
+  color: #17252b;
+}
+
+.tech-server span {
+  background-color: #5b6595;
+}
+
+.tech-java span {
+  background-color: #b94732;
+}
+
+.tech-data span {
+  background-color: #2c6f86;
+}
+
+.tech-backend span {
+  background-color: #2b7a5b;
+}
+
+.tech-web span {
+  background-color: #5b4a86;
 }
 
 .recurso-card small {
@@ -1257,6 +1352,66 @@ main section {
 
 .contenido-texto strong {
   color: var(--color-principal);
+}
+
+.sobre-identidad {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px) minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+}
+
+.sobre-columna {
+  display: grid;
+  gap: 18px;
+  color: var(--color-texto-suave);
+}
+
+.sobre-columna p {
+  padding: 18px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-suave);
+}
+
+.sobre-columna-izquierda p:first-child {
+  margin-right: -18px;
+}
+
+.sobre-columna-izquierda p:last-child {
+  margin-right: 24px;
+}
+
+.sobre-columna-derecha p:first-child {
+  margin-left: -18px;
+}
+
+.sobre-columna-derecha p:last-child {
+  margin-left: 24px;
+}
+
+.sobre-silueta {
+  min-height: 420px;
+  border: 1px dashed color-mix(in srgb, var(--color-borde) 70%, var(--color-acento));
+  border-radius: 140px 140px 10px 10px;
+  background:
+    radial-gradient(circle at 50% 16%, color-mix(in srgb, var(--color-progreso) 20%, transparent) 0 16%, transparent 17%),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-principal) 12%, transparent), transparent 62%),
+    var(--color-superficie);
+  box-shadow: var(--sombra-media);
+  display: grid;
+  place-items: end center;
+  padding: 22px;
+  text-align: center;
+}
+
+.sobre-silueta span {
+  max-width: 180px;
+  color: var(--color-texto-suave);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .bloque-trabajo {
@@ -1662,9 +1817,26 @@ main section {
   .ruta-etapas,
   .redes,
   .contenido-ruta,
+  .tech-grid,
   .politicas-grid,
   .acciones-aprendizaje {
     grid-template-columns: 1fr;
+  }
+
+  .sobre-identidad {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-columna-izquierda p:first-child,
+  .sobre-columna-izquierda p:last-child,
+  .sobre-columna-derecha p:first-child,
+  .sobre-columna-derecha p:last-child {
+    margin: 0;
+  }
+
+  .sobre-silueta {
+    min-height: 320px;
+    order: -1;
   }
 
   .page-hero-grid {
@@ -1710,6 +1882,12 @@ main section {
       var(--color-agua),
       var(--color-acento)
     );
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1080px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
