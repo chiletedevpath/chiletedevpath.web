@@ -2,6 +2,24 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V3.4
+
+- Fecha de cierre: 25/06/2026
+- Estado: en revisión
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Generación de dos imágenes editoriales basadas en fotografías propias de Adrian Pisco.
+- Sustitución de la imagen temporal de Proyectos por un visual tipo dashboard profesional sin pantallas sensibles ni marcas laborales.
+- Incorporación de retrato editorial en la página Sobre para reemplazar el placeholder de fotografía pendiente.
+- Corrección de textos visibles en Proyectos y Sobre con tildes y redacción de marca.
+- Eliminación de la foto temporal sanitizada que ya no aportaba al sistema visual.
+
+### Criterio de cierre
+
+La V3.4 se considera en revisión hasta validar visualmente que las imágenes editoriales mantengan identidad, realismo y coherencia con la marca en escritorio y móvil.
+
 ## V3.3
 
 - Fecha de cierre: 25/06/2026
