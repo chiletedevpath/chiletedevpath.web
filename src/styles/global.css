@@ -1331,6 +1331,22 @@ main section {
   line-height: 1.25;
 }
 
+.page-hero-foto {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(1.04);
+}
+
+.page-hero-foto + .page-hero-leyenda {
+  background:
+    linear-gradient(180deg, rgba(4, 17, 26, 0.08), rgba(4, 17, 26, 0.72)),
+    linear-gradient(90deg, rgba(4, 17, 26, 0.68), rgba(4, 17, 26, 0.18) 58%, rgba(4, 17, 26, 0.36));
+}
+
 .page-hero-ruta .page-hero-visual {
   background:
     linear-gradient(90deg, transparent 12%, rgba(216, 182, 74, 0.35) 12% 14%, transparent 14%),
@@ -1517,81 +1533,309 @@ main section {
   object-fit: cover;
 }
 
+.criterios-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 20%, color-mix(in srgb, var(--color-progreso) 18%, transparent), transparent 28%),
+    linear-gradient(135deg, var(--color-seccion-oscura), var(--color-seccion-oscura-dos));
+  color: #ffffff;
+}
+
+.criterios-hero::after {
+  content: "";
+  position: absolute;
+  right: -16%;
+  bottom: -54%;
+  width: 46%;
+  height: 124%;
+  border-left: 28px solid color-mix(in srgb, var(--color-progreso) 22%, transparent);
+  border-radius: 100% 0 0 100%;
+  transform: rotate(16deg);
+}
+
+.criterios-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(300px, 0.62fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.miga {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: color-mix(in srgb, #ffffff 72%, transparent);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.miga a {
+  color: #ffffff;
+}
+
+.criterios-hero .etiqueta {
+  color: var(--color-progreso);
+}
+
+.criterios-hero h1 {
+  max-width: 820px;
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.6rem, 5vw, 5.3rem);
+  line-height: 0.98;
+}
+
+.criterios-frase {
+  max-width: 760px;
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-weight: 700;
+}
+
+.criterios-hero .seccion-descripcion {
+  color: color-mix(in srgb, #ffffff 78%, transparent);
+}
+
+.criterios-visual {
+  position: relative;
+  min-height: 360px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.04);
+  box-shadow: var(--sombra-media);
+}
+
+.criterios-visual::before {
+  content: "";
+  position: absolute;
+  inset: 34px;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+}
+
+.criterios-visual-nucleo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  min-height: 150px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background-color: rgba(4, 17, 26, 0.72);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.criterios-visual-nucleo img {
+  width: 70px;
+  height: 70px;
+}
+
+.criterios-visual-nucleo span {
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+}
+
+.criterio-orbita {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 80%, #ffffff);
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--policy-accent) 26%, rgba(4, 17, 26, 0.78));
+  display: grid;
+  place-items: center;
+  animation: aparecer-suave 0.8s ease both;
+}
+
+.criterio-orbita-1 {
+  left: 12%;
+  top: 16%;
+}
+
+.criterio-orbita-2 {
+  right: 14%;
+  top: 20%;
+  animation-delay: 0.08s;
+}
+
+.criterio-orbita-3 {
+  left: 16%;
+  bottom: 15%;
+  animation-delay: 0.16s;
+}
+
+.criterio-orbita-4 {
+  right: 12%;
+  bottom: 12%;
+  animation-delay: 0.24s;
+}
+
 .politicas-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
 }
 
+.politica-editorial {
+  --policy-accent: #3f8fb5;
+}
+
+.politica-ia {
+  --policy-accent: #7a6ed6;
+}
+
+.politica-bienestar {
+  --policy-accent: #4aa56f;
+}
+
+.politica-seguridad {
+  --policy-accent: #d96745;
+}
+
 .politica-documento {
   min-height: 100%;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid var(--color-borde);
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 42%, var(--color-borde));
   border-radius: 8px;
-  background-color: var(--color-superficie);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--policy-accent) 9%, transparent), transparent 38%),
+    var(--color-superficie);
   box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .politica-encabezado {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
-  padding: 18px;
-  border-bottom: 1px solid rgba(213, 222, 217, 0.95);
-  background:
-    linear-gradient(135deg, rgba(11, 36, 51, 0.96), rgba(29, 52, 70, 0.96)),
-    var(--color-principal);
-  color: #ffffff;
 }
 
-.politica-encabezado img {
-  width: 48px;
-  height: 48px;
+.policy-icon {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 56%, var(--color-borde));
   border-radius: 8px;
-  background-color: #03131d;
+  background-color: color-mix(in srgb, var(--policy-accent) 18%, var(--color-superficie));
+  color: var(--policy-accent);
+  display: grid;
+  place-items: center;
 }
 
-.politica-encabezado span {
-  display: block;
-  margin-bottom: 3px;
-  color: var(--color-progreso);
-  font-size: 0.78rem;
-  font-weight: 800;
+.policy-icon svg {
+  width: 31px;
+  height: 31px;
+}
+
+.policy-icon path,
+.policy-icon rect {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.politica-codigo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 48%, var(--color-borde));
+  border-radius: 999px;
+  color: var(--policy-accent);
+  background-color: color-mix(in srgb, var(--policy-accent) 10%, transparent);
+  font-size: 0.72rem;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
 .politica-encabezado h3 {
-  font-family: var(--fuente-titulos);
-  font-size: 1.1rem;
-  line-height: 1.2;
-}
-
-.politica-detalle {
-  display: grid;
-  gap: 0;
-  padding: 0;
-}
-
-.politica-detalle div {
-  display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
-  gap: 14px;
-  padding: 15px 18px;
-  border-bottom: 1px solid rgba(213, 222, 217, 0.8);
-}
-
-.politica-detalle dt {
   color: var(--color-principal);
-  font-weight: 800;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.25rem, 2vw, 1.58rem);
+  line-height: 1.12;
 }
 
-.politica-detalle dd {
+.politica-cuerpo {
+  display: grid;
+  gap: 12px;
+}
+
+.politica-cuerpo p:not(.politica-destacado) {
   color: var(--color-texto-suave);
 }
 
+.politica-destacado {
+  color: var(--color-principal);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.politica-metadatos {
+  margin-top: 4px;
+  border-top: 1px solid color-mix(in srgb, var(--policy-accent) 24%, var(--color-borde));
+  padding-top: 12px;
+}
+
+.politica-metadatos summary {
+  color: var(--policy-accent);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.politica-metadatos dl {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.politica-metadatos div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.politica-metadatos dt {
+  color: var(--color-principal);
+  font-weight: 900;
+}
+
+.politica-metadatos dd {
+  color: var(--color-texto-suave);
+}
+
+.estado-activo {
+  width: 9px;
+  height: 9px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: var(--color-acento);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-acento) 16%, transparent);
+  display: inline-block;
+  animation: estado-pulso 1.8s ease-in-out infinite;
+}
+
 .politica-documento .boton {
-  margin: 18px;
+  width: 100%;
+  margin-top: auto;
+  justify-content: center;
 }
 
 /* Contacto */
@@ -1711,11 +1955,10 @@ main section {
 .pie-contenido {
   width: min(1120px, 90%);
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(280px, 0.82fr) minmax(220px, auto);
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 28px;
 }
 
 .pie-marca {
@@ -1741,6 +1984,30 @@ main section {
 .pie-marca p {
   color: #cbd5e1;
   font-size: 0.9rem;
+}
+
+.pie-cta {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.pie-cta p {
+  max-width: 360px;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.pie-cta .boton {
+  min-height: 42px;
+  padding: 10px 16px;
+}
+
+.pie-social {
+  display: grid;
+  justify-items: end;
+  gap: 14px;
 }
 
 .pie-redes {
@@ -1796,6 +2063,19 @@ main section {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes estado-pulso {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.74;
+  }
+
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
   }
 }
 
@@ -1943,6 +2223,14 @@ main section {
     grid-template-columns: 1fr;
   }
 
+  .criterios-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .criterios-visual {
+    min-height: 300px;
+  }
+
   .page-hero-visual,
   .media-placeholder {
     min-height: 220px;
@@ -1954,8 +2242,8 @@ main section {
   }
 
   .pie-contenido {
+    grid-template-columns: 1fr;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
     text-align: center;
   }
@@ -1966,6 +2254,10 @@ main section {
 
   .pie-redes {
     justify-content: center;
+  }
+
+  .pie-social {
+    justify-items: center;
   }
 
   .ruta-etapas::before {
@@ -2100,6 +2392,29 @@ main section {
     font-size: 2rem;
   }
 
+  .criterios-hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .criterios-visual {
+    min-height: 250px;
+  }
+
+  .criterios-visual-nucleo {
+    width: 128px;
+    min-height: 128px;
+  }
+
+  .criterio-orbita {
+    width: 58px;
+    height: 58px;
+  }
+
+  .criterio-orbita .policy-icon {
+    width: 44px;
+    height: 44px;
+  }
+
   .page-hero-visual,
   .media-placeholder {
     min-height: 180px;
@@ -2133,7 +2448,7 @@ main section {
     text-align: center;
   }
 
-  .politica-detalle div {
+  .politica-metadatos div {
     grid-template-columns: 1fr;
     gap: 4px;
   }

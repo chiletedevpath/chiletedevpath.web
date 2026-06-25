@@ -35,14 +35,14 @@ if (typeof document !== "undefined") {
     const texto = botonTema.querySelector(".tema-texto");
     const esOscuro = tema === "dark";
 
-    botonTema.setAttribute("aria-label", esOscuro ? "Cambiar a modo dia" : "Cambiar a modo noche");
+    botonTema.setAttribute("aria-label", esOscuro ? "Cambiar a modo día" : "Cambiar a modo noche");
 
     if (icono) {
       icono.textContent = esOscuro ? "☀" : "☾";
     }
 
     if (texto) {
-      texto.textContent = esOscuro ? "Dia" : "Noche";
+      texto.textContent = esOscuro ? "Día" : "Noche";
     }
   };
 
@@ -121,7 +121,7 @@ if (typeof document !== "undefined") {
   }
 
   const elementosAnimados = document.querySelectorAll(
-    ".hero-texto, .hero-visual, .hero-indicadores, .hero-marca-panel, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-social"
+    ".hero-texto, .hero-visual, .hero-indicadores, .hero-marca-panel, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-social, .politica-documento, .criterios-visual, .pie-cta"
   );
 
   elementosAnimados.forEach((elemento) => {

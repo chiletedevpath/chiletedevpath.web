@@ -1,0 +1,40 @@
+---
+const { name = "editorial" } = Astro.props;
+---
+
+<span class="policy-icon" aria-hidden="true">
+  {
+    name === "editorial" && (
+      <svg viewBox="0 0 48 48" role="img">
+        <path d="M14 8h16l6 6v26H14Z" />
+        <path d="M30 8v8h8" />
+        <path d="M20 23h12M20 29h10M20 35h7" />
+      </svg>
+    )
+  }
+  {
+    name === "ia" && (
+      <svg viewBox="0 0 48 48" role="img">
+        <rect x="13" y="13" width="22" height="22" rx="6" />
+        <path d="M18 6v7M24 6v7M30 6v7M18 35v7M24 35v7M30 35v7M6 18h7M6 24h7M6 30h7M35 18h7M35 24h7M35 30h7" />
+        <path d="M20 28c2.2-5.4 5.8-5.4 8 0M20 20h.1M28 20h.1" />
+      </svg>
+    )
+  }
+  {
+    name === "bienestar" && (
+      <svg viewBox="0 0 48 48" role="img">
+        <path d="M24 39s-14-8.6-14-19a8 8 0 0 1 14-5.3A8 8 0 0 1 38 20c0 10.4-14 19-14 19Z" />
+        <path d="M15 25h6l3-7 4 12 3-5h4" />
+      </svg>
+    )
+  }
+  {
+    name === "seguridad" && (
+      <svg viewBox="0 0 48 48" role="img">
+        <path d="M24 6 38 12v10c0 10-5.8 16.8-14 20-8.2-3.2-14-10-14-20V12Z" />
+        <path d="m17 24 5 5 10-12" />
+      </svg>
+    )
+  }
+</span>

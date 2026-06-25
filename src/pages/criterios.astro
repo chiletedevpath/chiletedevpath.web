@@ -1,50 +1,76 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PageHero from "../components/PageHero.astro";
+import PolicyIcon from "../components/PolicyIcon.astro";
 import { policies } from "../data/recursos.js";
 ---
 
 <BaseLayout title="Criterios | Chilete DevPath">
-  <PageHero
-    eyebrow="Criterios"
-    title="Aprender tambien implica publicar con responsabilidad"
-    description="Las politicas protegen autoria, fuentes, privacidad, bienestar, IA y seguridad antes de convertir contenido en material publico."
-    variant="criterios"
-    visualTitle="Gobierno de marca"
-    visualText="Politicas para publicar con autoria, privacidad y criterio profesional."
-  />
+  <section class="seccion criterios-hero">
+    <div class="contenedor criterios-hero-grid">
+      <div class="criterios-hero-texto">
+        <nav class="miga" aria-label="Ruta de navegacion">
+          <a href="/">Inicio</a>
+          <span>/</span>
+          <span>Criterios</span>
+        </nav>
+        <p class="etiqueta">Criterios de publicación</p>
+        <h1>Publicamos con criterio, no con prisa</h1>
+        <p class="criterios-frase">Aprender también implica publicar con responsabilidad.</p>
+        <p class="seccion-descripcion">
+          Las políticas de Chilete DevPath protegen autoría, fuentes, privacidad, bienestar,
+          uso responsable de IA y seguridad antes de convertir contenido en material público.
+        </p>
+      </div>
+
+      <div class="criterios-visual" aria-label="Sistema de criterios Chilete DevPath">
+        <div class="criterios-visual-nucleo">
+          <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
+          <span>Chilete DevPath</span>
+        </div>
+        {policies.map((policy, index) => (
+          <span class:list={["criterio-orbita", `criterio-orbita-${index + 1}`, `politica-${policy.tone}`]}>
+            <PolicyIcon name={policy.icon} />
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <section class="seccion">
     <div class="contenedor">
       <div class="politicas-grid">
         {policies.map((policy) => (
-          <article class="politica-documento">
+          <article class:list={["politica-documento", `politica-${policy.tone}`]}>
             <header class="politica-encabezado">
-              <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
+              <PolicyIcon name={policy.icon} />
               <div>
-                <span>{policy.code}</span>
+                <span class="politica-codigo">{policy.code}</span>
                 <h3>{policy.title}</h3>
               </div>
             </header>
-            <dl class="politica-detalle">
-              <div>
-                <dt>Objetivo</dt>
-                <dd>{policy.objective}</dd>
-              </div>
-              <div>
-                <dt>Alcance</dt>
-                <dd>{policy.scope}</dd>
-              </div>
-              <div>
-                <dt>Responsable</dt>
-                <dd>{policy.owner}</dd>
-              </div>
-              <div>
-                <dt>Version</dt>
-                <dd>{policy.version} - {policy.status}</dd>
-              </div>
-            </dl>
-            <a class="boton boton-principal" href={policy.href} target="_blank" rel="noopener">Abrir politica</a>
+            <div class="politica-cuerpo">
+              <p class="politica-destacado">{policy.highlight}</p>
+              <p>{policy.objective}</p>
+
+              <details class="politica-metadatos">
+                <summary>Ver alcance y control</summary>
+                <dl>
+                  <div>
+                    <dt>Alcance</dt>
+                    <dd>{policy.scope}</dd>
+                  </div>
+                  <div>
+                    <dt>Responsable</dt>
+                    <dd>{policy.owner}</dd>
+                  </div>
+                  <div>
+                    <dt>Estado</dt>
+                    <dd><span class="estado-activo"></span>{policy.version} - {policy.status}</dd>
+                  </div>
+                </dl>
+              </details>
+            </div>
+            <a class="boton boton-principal" href={policy.href} target="_blank" rel="noopener">Abrir política</a>
           </article>
         ))}
       </div>

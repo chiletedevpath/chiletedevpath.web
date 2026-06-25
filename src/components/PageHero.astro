@@ -9,6 +9,8 @@ const {
   visualTitle = "Espacio visual reservado",
   visualText = "Aqui ira una imagen propia de Chilete DevPath.",
   showVisual = true,
+  imageSrc,
+  imageAlt = "",
 } = Astro.props;
 ---
 
@@ -21,7 +23,11 @@ const {
     </div>
     {showVisual && (
       <div class="page-hero-visual" aria-label={visualTitle}>
-        <SectionVisual variant={variant} title={visualTitle} />
+        {imageSrc ? (
+          <img class="page-hero-foto" src={imageSrc} alt={imageAlt} />
+        ) : (
+          <SectionVisual variant={variant} title={visualTitle} />
+        )}
         <div class="page-hero-leyenda">
           <span>{visualTitle}</span>
           <strong>{visualText}</strong>

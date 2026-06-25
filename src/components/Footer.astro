@@ -16,14 +16,23 @@ import SocialIcon from "./SocialIcon.astro";
       </div>
     </div>
 
-    <nav class="pie-redes" aria-label="Redes oficiales">
-      {socials.map((social) => (
-        <a href={social.href} target="_blank" rel="noopener" aria-label={social.name}>
-          <SocialIcon name={social.name} />
-        </a>
-      ))}
-    </nav>
+    <div class="pie-cta">
+      <p>Comparte avances, preguntas y práctica con la comunidad.</p>
+      <a class="boton boton-principal" href="https://discord.gg/4XsXRT4rG" target="_blank" rel="noopener">
+        Unirme a Discord
+      </a>
+    </div>
 
-    <span class="version-marca">{site.version}</span>
+    <div class="pie-social">
+      <nav class="pie-redes" aria-label="Redes oficiales">
+        {socials.map((social) => (
+          <a href={social.href} target="_blank" rel="noopener" aria-label={social.name}>
+            <SocialIcon name={social.name} />
+          </a>
+        ))}
+      </nav>
+
+      <span class="version-marca">{site.version}</span>
+    </div>
   </div>
 </footer>

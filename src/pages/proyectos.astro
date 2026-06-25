@@ -9,19 +9,21 @@ import { academicProjects, projectAreas } from "../data/proyectos.js";
 <BaseLayout title="Proyectos | Chilete DevPath">
   <PageHero
     eyebrow="Proyectos"
-    title="Evidencia tecnica sin confundir avance con portafolio"
-    description="Cada proyecto se muestra con estado, contexto y criterio de publicacion para proteger la marca y explicar el aprendizaje real."
+    title="Evidencia técnica sin confundir avance con portafolio"
+    description="Cada proyecto se muestra con estado, contexto y criterio de publicación para proteger la marca y explicar el aprendizaje real."
     variant="proyectos"
-    visualTitle="Portadas pendientes"
-    visualText="Evidencias ordenadas por estado, contexto y publicacion segura."
+    visualTitle="Trabajo en construcción"
+    visualText="Evidencias ordenadas por estado, contexto y publicación segura."
+    imageSrc="/assets/img/editorial/adrian-workstation-devpath.jpg"
+    imageAlt="Adrian Pisco trabajando en el ecosistema Chilete DevPath desde una estacion de trabajo."
   />
 
   <section class="seccion">
     <div class="contenedor">
       <SectionHeader
         eyebrow="Mapa del ecosistema"
-        title="Primero se aprende, luego se evidencia, despues se selecciona"
-        description="La web diferencia contenido de aprendizaje, evidencia academica y futuros proyectos de portafolio para no mezclar etapas."
+        title="Primero se aprende, luego se evidencia, después se selecciona"
+        description="La web diferencia contenido de aprendizaje, evidencia académica y futuros proyectos de portafolio para no mezclar etapas."
       />
       <div class="tarjetas tarjetas-3">
         {projectAreas.map((project) => <ProjectCard project={project} />)}
@@ -33,8 +35,8 @@ import { academicProjects, projectAreas } from "../data/proyectos.js";
     <div class="contenedor">
       <SectionHeader
         eyebrow="Evidencia en proceso"
-        title="Proyectos academicos en revision"
-        description="Estos proyectos se enlazan como avance tecnico documentado. Aun no representan portafolio final ni casos listos para destacar."
+        title="Proyectos académicos en revisión"
+        description="Estos proyectos se enlazan como avance técnico documentado. Aún no representan portafolio final ni casos listos para destacar."
       />
       <div class="tarjetas tarjetas-3">
         {academicProjects.map((project) => <ProjectCard project={project} />)}

@@ -2,6 +2,25 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V3.3
+
+- Fecha de cierre: 25/06/2026
+- Estado: en revisión
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Rediseño de la página Criterios para comunicar marca, responsabilidad editorial y publicación segura con mayor jerarquía visual.
+- Reemplazo del uso repetido del logo por iconos SVG propios y acentos diferenciados para cada política.
+- Reorganización de las tarjetas de políticas para destacar objetivo, criterio principal, metadatos colapsables y CTA visible.
+- Incorporación de una fotografía propia sanitizada como visual editorial en la página Proyectos.
+- Mejora del footer como punto de conversión hacia Discord y redes oficiales.
+- Limpieza de textos visibles con tildes y corrección de caracteres dañados en header, footer y control de tema.
+
+### Criterio de cierre
+
+La V3.3 se considera en revisión hasta validar visualmente que las fotografías, el rediseño de Criterios y el footer mantengan coherencia en escritorio y móvil sin exponer información sensible.
+
 ## V3.2
 
 - Fecha de cierre: 25/06/2026
