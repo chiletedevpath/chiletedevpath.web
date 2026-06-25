@@ -1682,8 +1682,18 @@ main section {
   }
 
   .pie-contenido {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .pie-marca {
+    justify-content: center;
+  }
+
+  .pie-redes {
+    justify-content: center;
   }
 
   .ruta-etapas::before {
@@ -1709,25 +1719,45 @@ main section {
   }
 
   .navegacion {
-    align-items: stretch;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    gap: 14px;
+    padding: 14px 0;
   }
 
   .nav-acciones {
-    width: 100%;
+    flex: 1 1 100%;
     justify-content: space-between;
+    order: 4;
   }
 
   .tema-boton {
-    flex: 1;
+    flex: 0 1 auto;
     justify-content: center;
+    min-width: 116px;
+    min-height: 42px;
+    padding: 8px 14px;
   }
 
   .menu-boton {
     display: inline-block;
+    min-height: 42px;
+    padding: 8px 14px;
+  }
+
+  .marca {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.08rem;
+  }
+
+  .marca-logo {
+    width: 50px;
+    height: 50px;
   }
 
   .menu {
+    width: 100%;
     display: none;
     flex-direction: column;
     gap: 12px;
@@ -1735,6 +1765,7 @@ main section {
     border: 1px solid var(--color-borde);
     border-radius: 8px;
     background-color: var(--color-superficie);
+    order: 5;
   }
 
   .menu.menu-abierto {
@@ -1748,6 +1779,37 @@ main section {
 }
 
 @media (max-width: 520px) {
+  .contenedor {
+    width: min(100% - 32px, 1120px);
+  }
+
+  .navegacion {
+    gap: 12px;
+  }
+
+  .marca {
+    gap: 10px;
+  }
+
+  .marca-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .tema-texto {
+    display: none;
+  }
+
+  .tema-boton {
+    min-width: 46px;
+    width: 46px;
+    padding: 8px;
+  }
+
+  .menu-boton {
+    min-width: 76px;
+  }
+
   .seccion {
     padding: 64px 0;
   }
@@ -1800,6 +1862,20 @@ main section {
 
   .red-social {
     min-height: auto;
+  }
+
+  .pie {
+    padding: 30px 0;
+  }
+
+  .pie-marca {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .version-marca {
+    justify-content: center;
+    text-align: center;
   }
 }
 
