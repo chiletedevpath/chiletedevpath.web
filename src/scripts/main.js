@@ -121,7 +121,7 @@ if (typeof document !== "undefined") {
   }
 
   const elementosAnimados = document.querySelectorAll(
-    ".hero-texto, .hero-visual, .hero-indicadores, .hero-marca-panel, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-social, .politica-documento, .criterios-visual, .pie-cta"
+    ".hero-texto, .hero-visual, .hero-indicadores, .hero-marca-panel, .hero-strip, .page-hero-badges, .page-hero-acciones, .page-hero-stats, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-social, .politica-documento, .criterios-visual, .pie-cta"
   );
 
   elementosAnimados.forEach((elemento) => {
