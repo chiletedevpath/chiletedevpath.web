@@ -10,6 +10,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, site.url).href;
+const socialImage = `${site.url}/assets/img/og-image.jpg`;
 ---
 
 <!doctype html>
@@ -19,16 +20,29 @@ const canonicalUrl = new URL(Astro.url.pathname, site.url).href;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content={site.author} />
+    <meta name="robots" content="index, follow" />
+    <meta name="application-name" content={site.name} />
+    <meta name="apple-mobile-web-app-title" content={site.name} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={`${site.url}/assets/img/marca-banner-principal.png`} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:secure_url" content={socialImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Chilete DevPath, marca personal de Adrian Pisco para aprendizaje y proyectos Full Stack." />
     <meta property="og:locale" content="es_PE" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${site.url}/assets/img/marca-banner-principal.png`} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Chilete DevPath, marca personal de Adrian Pisco para aprendizaje y proyectos Full Stack." />
     <meta name="theme-color" content="#f5f7f5" />
     <script is:inline>
       (() => {
@@ -39,7 +53,9 @@ const canonicalUrl = new URL(Astro.url.pathname, site.url).href;
     </script>
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/img/marca-simbolo-nav.png" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

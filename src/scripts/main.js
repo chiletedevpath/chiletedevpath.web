@@ -1,6 +1,14 @@
 if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-activo");
 
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js").catch(() => {
+        // El sitio sigue funcionando aunque el navegador no registre el modo offline.
+      });
+    });
+  }
+
   const anio = document.querySelector("#anio");
   const encabezado = document.querySelector(".encabezado");
   const enlacesMenu = document.querySelectorAll(".menu a[href^='#']");

@@ -1,0 +1,5 @@
+Contact: https://github.com/chiletedevpath
+Preferred-Languages: es
+Canonical: https://chiletedevpath.github.io/.well-known/security.txt
+Policy: https://chiletedevpath.github.io/criterios/
+Expires: 2027-06-24T23:59:59-05:00

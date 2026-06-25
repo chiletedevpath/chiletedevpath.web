@@ -14,13 +14,13 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V3.0 | Sistema visual y tema adaptable`
+`V3.1 | Publicacion segura y PWA base`
 
 - Fecha de cierre: 24/06/2026
 - Estado: cerrada y publicada
 - Sitio: https://chiletedevpath.github.io/
 
-Esta version consolida la identidad visual de Chilete DevPath con ilustraciones SVG propias, modo dia/noche y una navegacion mas preparada para evolucionar como plataforma de aprendizaje.
+Esta version agrega una base PWA, metadatos sociales completos, archivos de descubrimiento publico y una portada optimizada para compartir la web en redes.
 
 ## Tecnologias
 
@@ -29,6 +29,7 @@ Esta version consolida la identidad visual de Chilete DevPath con ilustraciones 
 - CSS
 - JavaScript
 - SVG propio
+- PWA base
 - Google Fonts
 - GitHub Pages
 - GitHub Actions
@@ -55,14 +56,14 @@ chiletedevpath-web/
 `-- CHANGELOG.md
 ```
 
-## Alcance de V3.0
+## Alcance de V3.1
 
-- Sistema de tema dia/noche con preferencia guardada en el navegador.
-- Visuales SVG propios para secciones internas, sin depender de imagenes generadas por IA.
-- Heroes internos con identidad de ruta, proyectos, recursos, criterios, comunidad y origen.
-- Navegacion preparada para escritorio y movil con control de tema visible.
-- Version visible, metadata y paquete actualizados a V3.0.
-- Base visual lista para evolucionar hacia interactividad avanzada sin romper la arquitectura actual.
+- Manifest PWA con iconos propios de Chilete DevPath.
+- Service worker basico para cache de paginas y assets principales.
+- Portada social `og-image.jpg` optimizada para WhatsApp, LinkedIn y redes sociales.
+- Metadatos Open Graph y Twitter ampliados con dimensiones, tipo y texto alternativo.
+- Archivos `robots.txt`, `sitemap.xml` y `security.txt`.
+- Version visible, metadata y paquete actualizados a V3.1.
 
 ## Decisiones de diseno
 
@@ -72,6 +73,7 @@ chiletedevpath-web/
 - Ruta presentada como avance progresivo, con practica y evidencia esperada.
 - Navegacion pensada para comunidad, no solo para mostrar repositorios.
 - Separacion entre aprendizaje, evidencia academica, portafolio futuro y criterios de publicacion segura.
+- La PWA es basica: permite instalacion y cache inicial, pero no reemplaza una auditoria avanzada de aplicacion con backend.
 
 ## Validacion realizada
 

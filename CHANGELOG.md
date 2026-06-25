@@ -2,6 +2,26 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V3.1 | Publicacion segura y PWA base
+
+- Fecha de cierre: 24/06/2026
+- Estado: cerrada y publicada
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Creacion de `manifest.webmanifest` para instalacion basica como PWA.
+- Registro de `sw.js` para cache inicial de paginas y assets principales.
+- Generacion de iconos PWA `192x192`, `512x512` y `apple-touch-icon`.
+- Generacion de `og-image.jpg` en formato `1200x630` para compartir en WhatsApp y redes.
+- Ampliacion de metadatos Open Graph y Twitter con dimensiones, tipo y texto alternativo.
+- Incorporacion de `robots.txt`, `sitemap.xml` y `security.txt`.
+- Revision de secretos, datos sensibles y referencias restringidas antes de publicar.
+
+### Criterio de cierre
+
+La V3.1 se considera cerrada porque la web mejora su presentacion publica, queda preparada para instalacion basica y reduce riesgos editoriales al compartir el sitio fuera de GitHub.
+
 ## V3.0 | Sistema visual y tema adaptable
 
 - Fecha de cierre: 24/06/2026
