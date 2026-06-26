@@ -1,49 +1,13 @@
 ---
-import { navItems } from "../data/site.js";
+import HeaderNav from "./HeaderNav.jsx";
+import { navItems, socials } from "../data/site.js";
 
 const { currentPath = "/" } = Astro.props;
 const normalize = (path) => (path === "/index.html" ? "/" : path);
 const activePath = normalize(currentPath);
+const githubHref = socials.find((social) => social.name === "GitHub")?.href ?? "https://github.com/chiletedevpath";
 ---
 
 <header class="encabezado">
-  <nav class="navegacion contenedor" aria-label="Navegación principal">
-    <a class="marca" href="/">
-      <span class="marca-logo" aria-hidden="true">
-        <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
-      </span>
-      <span>Chilete DevPath</span>
-    </a>
-
-    <div class="nav-acciones">
-      <button class="tema-boton" type="button" aria-label="Cambiar tema" data-theme-toggle>
-        <span class="tema-icono" aria-hidden="true">○</span>
-        <span class="tema-texto">Tema</span>
-      </button>
-
-      <button
-        class="menu-boton"
-        type="button"
-        aria-expanded="false"
-        aria-controls="menu-principal"
-      >
-        Menú
-      </button>
-    </div>
-
-    <ul id="menu-principal" class="menu">
-      {
-        navItems.map((item) => {
-          const isActive = item.href === activePath;
-          return (
-            <li>
-              <a class={isActive ? "enlace-activo" : ""} href={item.href} aria-current={isActive ? "page" : undefined}>
-                {item.label}
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </nav>
+  <HeaderNav navItems={navItems} currentPath={activePath} githubHref={githubHref} client:load />
 </header>

@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -47,8 +49,9 @@
   --color-seccion-oscura-dos: var(--tema-seccion-oscura-dos);
   --sombra-suave: var(--tema-sombra-suave);
   --sombra-media: var(--tema-sombra-media);
-  --fuente-base: "Inter", Arial, sans-serif;
-  --fuente-titulos: "Space Grotesk", "Inter", Arial, sans-serif;
+  --fuente-base: "Outfit", Arial, sans-serif;
+  --fuente-titulos: "Fraunces", "Outfit", Arial, sans-serif;
+  --fuente-mono: "Geist Mono", Consolas, monospace;
   --espacio-ancla: 112px;
 }
 
@@ -202,6 +205,8 @@ main section {
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-acciones {
@@ -209,6 +214,29 @@ main section {
   align-items: center;
   gap: 10px;
   order: 3;
+}
+
+.nav-github {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-borde) 82%, var(--color-principal));
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--color-superficie) 92%, transparent);
+  color: var(--color-principal);
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-github:hover {
+  border-color: var(--color-acento);
+  background-color: color-mix(in srgb, var(--color-acento) 15%, var(--color-superficie));
+  transform: translateY(-1px);
 }
 
 .tema-boton {
@@ -244,7 +272,11 @@ main section {
   color: var(--color-superficie);
   display: grid;
   place-items: center;
-  font-size: 0.82rem;
+}
+
+.tema-icono svg {
+  width: 15px;
+  height: 15px;
 }
 
 .menu {
@@ -2336,6 +2368,12 @@ main section {
     order: 4;
   }
 
+  .nav-github {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-height: 42px;
+  }
+
   .tema-boton {
     flex: 0 1 auto;
     justify-content: center;
@@ -2345,7 +2383,7 @@ main section {
   }
 
   .menu-boton {
-    display: inline-block;
+    display: inline-flex;
     min-height: 42px;
     padding: 8px 14px;
   }
@@ -2402,6 +2440,16 @@ main section {
   }
 
   .tema-texto {
+    display: none;
+  }
+
+  .nav-github {
+    flex: 0 0 46px;
+    width: 46px;
+    padding: 8px;
+  }
+
+  .nav-github span {
     display: none;
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "chiletedevpath.github.io",
-  "version": "3.5.0",
+  "version": "3.7.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,12 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^7.0.2"
+    "@astrojs/react": "^6.0.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^7.0.2",
+    "tailwindcss": "^4.3.1"
+  },
+  "dependencies": {
+    "lucide-react": "^1.21.0"
   }
 }

@@ -2,6 +2,26 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V3.7
+
+- Fecha de cierre: 25/06/2026
+- Estado: en revisión
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Reversión del intento visual V3.6 para recuperar la base estable de la web.
+- Incorporación de React como isla de interacción para la navegación principal.
+- Incorporación de Tailwind CSS como base técnica para futuros componentes consistentes.
+- Incorporación de `lucide-react` para iconografía real en controles y acciones.
+- Separación de la lógica del header respecto al script global de animaciones.
+- Mejora del header con CTA a GitHub, control de tema y menú móvil manejados desde un componente dedicado.
+- Actualización del sistema tipográfico a una base con mayor personalidad de marca: Fraunces, Outfit y Geist Mono.
+
+### Criterio de cierre
+
+La V3.7 queda en revisión porque su objetivo no es cerrar un rediseño visual completo, sino preparar una arquitectura frontal más limpia para rediseñar secciones sin duplicar lógica ni romper la navegación.
+
 ## V3.5
 
 - Fecha de cierre: 25/06/2026
