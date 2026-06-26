@@ -120,6 +120,39 @@
   overflow: hidden;
 }
 
+.avance-proyecto {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  margin: -2px 0 16px;
+}
+
+.avance-proyecto-barra {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--color-borde) 65%, var(--color-superficie));
+}
+
+.avance-proyecto-barra span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-acento), var(--color-progreso));
+}
+
+.avance-proyecto strong {
+  min-width: 46px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background-color: var(--color-principal);
+  color: var(--color-superficie);
+  font-family: var(--fuente-mono);
+  font-size: 0.76rem;
+  text-align: center;
+}
+
 .proyecto-visual span {
   display: inline-flex;
   padding: 7px 10px;

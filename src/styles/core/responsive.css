@@ -114,10 +114,6 @@
     grid-template-columns: 1fr;
   }
 
-  .criterios-visual {
-    min-height: 300px;
-  }
-
   .page-hero-visual,
   .media-placeholder {
     min-height: 220px;
@@ -322,25 +318,6 @@
 
   .criterios-hero h1 {
     font-size: 2.4rem;
-  }
-
-  .criterios-visual {
-    min-height: 250px;
-  }
-
-  .criterios-visual-nucleo {
-    width: 128px;
-    min-height: 128px;
-  }
-
-  .criterio-orbita {
-    width: 58px;
-    height: 58px;
-  }
-
-  .criterio-orbita .policy-icon {
-    width: 44px;
-    height: 44px;
   }
 
   .page-hero-visual,

@@ -14,13 +14,13 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V4.1`
+`V4.2`
 
 - Fecha de cierre: 25/06/2026
 - Estado: en revision
 - Sitio: https://chiletedevpath.github.io/
 
-Esta version consolida la base V4 con portadas propias para proyectos, cards mas consistentes y una presentacion mas segura de la evidencia academica.
+Esta version corrige portadas confusas, mejora la presentacion de proyectos academicos con porcentaje de avance y limpia controles que aun no tienen contenido real, como el idioma ingles.
 
 ## Tecnologias
 
@@ -63,13 +63,17 @@ chiletedevpath-web/
 `-- CHANGELOG.md
 ```
 
-## Alcance de V4.1
+## Alcance de V4.2
 
-- Portadas SVG propias para Aprendizaje, Academia, Portafolio y Clinica Salud Vital.
-- Cards de proyectos con soporte para imagen real y fallback visual.
+- Portadas raster propias para Aprendizaje, Academia, Portafolio y proyectos academicos seleccionados.
+- Cards academicas con porcentaje de avance visible.
 - Clinica Salud Vital presentada como evidencia academica terminada, no como portafolio final.
-- Hero de Proyectos ajustado para usar visual propio mientras se define una fotografia profesional definitiva.
-- Version visible, metadata y paquete actualizados a V4.1.
+- Ferreteria Soto DB agregada como evidencia entregada dentro del enfoque academico.
+- Ferreteria Sys Patrones agregada como proyecto academico en proceso.
+- Proyectos La Lucha excluidos de la web por criterio legal y posible sensibilidad de informacion.
+- Selector de idioma limitado a ES hasta contar con traduccion real.
+- Paginas Sobre y Criterios ajustadas para evitar mensajes personales o visuales abstractos que no aporten.
+- Paleta ajustada para mejorar contraste y preparar mejor los modos dia y noche.
 
 ## Decisiones de diseno
 

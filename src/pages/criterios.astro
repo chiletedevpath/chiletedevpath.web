@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Breadcrumb from "../components/Breadcrumb.astro";
 import PolicyIcon from "../components/PolicyIcon.astro";
 import { policies } from "../data/recursos.js";
 ---
@@ -9,27 +8,24 @@ import { policies } from "../data/recursos.js";
   <section class="seccion criterios-hero">
     <div class="contenedor criterios-hero-grid">
       <div class="criterios-hero-texto">
-        <Breadcrumb items={[{ label: "Inicio", href: "/" }, { label: "Criterios" }]} />
-        <p class="etiqueta">Criterios de publicación</p>
+        <p class="etiqueta">Criterios de publicacion</p>
         <h1>Publicamos con criterio, no con prisa</h1>
-        <p class="criterios-frase">Aprender también implica publicar con responsabilidad.</p>
+        <p class="criterios-frase">Aprender tambien implica publicar con responsabilidad.</p>
         <p class="seccion-descripcion">
-          Las políticas de Chilete DevPath protegen autoría, fuentes, privacidad, bienestar,
-          uso responsable de IA y seguridad antes de convertir contenido en material público.
+          Las politicas de Chilete DevPath protegen autoria, fuentes, privacidad, bienestar,
+          uso responsable de IA y seguridad antes de convertir contenido en material publico.
         </p>
       </div>
 
-      <div class="criterios-visual" aria-label="Sistema de criterios Chilete DevPath">
-        <div class="criterios-visual-nucleo">
-          <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
-          <span>Chilete DevPath</span>
-        </div>
-        {policies.map((policy, index) => (
-          <span class:list={["criterio-orbita", `criterio-orbita-${index + 1}`, `politica-${policy.tone}`]}>
-            <PolicyIcon name={policy.icon} />
-          </span>
-        ))}
-      </div>
+      <aside class="criterios-resumen" aria-label="Resumen de criterios de publicacion">
+        <strong>Antes de publicar</strong>
+        <ul>
+          <li>Autoria clara</li>
+          <li>Fuentes revisadas</li>
+          <li>Privacidad protegida</li>
+          <li>Uso responsable de IA</li>
+        </ul>
+      </aside>
     </div>
   </section>
 
@@ -67,7 +63,7 @@ import { policies } from "../data/recursos.js";
                 </dl>
               </details>
             </div>
-            <a class="boton boton-principal" href={policy.href} target="_blank" rel="noopener">Abrir política</a>
+            <a class="boton boton-principal" href={policy.href} target="_blank" rel="noopener">Abrir politica</a>
           </article>
         ))}
       </div>

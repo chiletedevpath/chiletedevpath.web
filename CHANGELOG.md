@@ -2,6 +2,28 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.2
+
+- Fecha de cierre: 25/06/2026
+- Estado: en revision
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Reemplazo de portadas SVG confusas por imagenes propias para areas y proyectos.
+- Presentacion de proyectos academicos con porcentaje de avance visible.
+- Incorporacion de `Ferreteria Soto DB` y `Ferreteria Sys Patrones` sin incluir proyectos La Lucha.
+- Retiro de mensajes internos que no aportaban al usuario final, como notas sobre portadas o sensibilidad.
+- Reenfoque de la pagina Sobre para explicar Chilete DevPath como marca, ruta y criterio de publicacion.
+- Eliminacion de la miga de pan visible en Criterios para evitar doble enlace a Inicio.
+- Reemplazo del visual abstracto de Criterios por un resumen claro de revision previa a publicar.
+- Ocultamiento del idioma ingles hasta que exista una version traducida real.
+- Ajuste de paleta para mejorar contraste y preparar mejor los modos dia y noche.
+
+### Criterio de cierre
+
+La V4.2 corrige comunicacion visual, navegacion y consistencia editorial. La web deja de mostrar controles o imagenes que no explican su funcion y alinea Academia con evidencia academica revisada.
+
 ## V4.1
 
 - Fecha de cierre: 25/06/2026

@@ -6,24 +6,24 @@
 
 :root {
   color-scheme: light;
-  --tema-fondo: #f5f7f5;
+  --tema-fondo: #f6faf8;
   --tema-superficie: #ffffff;
-  --tema-superficie-alterna: #edf3f0;
-  --tema-principal: #0a2636;
-  --tema-principal-suave: #18394b;
-  --tema-texto: #17252b;
-  --tema-texto-suave: #53666d;
-  --tema-acento: #2b7a5b;
-  --tema-dorado: #c89d2c;
-  --tema-agua: #4f9caf;
+  --tema-superficie-alterna: #eaf4f1;
+  --tema-principal: #082333;
+  --tema-principal-suave: #123d52;
+  --tema-texto: #13272f;
+  --tema-texto-suave: #526870;
+  --tema-acento: #0aa36f;
+  --tema-dorado: #e0b33f;
+  --tema-agua: #35a6c8;
   --tema-raiz: #705334;
   --tema-alerta: #b93832;
-  --tema-borde: #d6e0db;
+  --tema-borde: #cfe0db;
   --tema-blanco: #ffffff;
   --tema-azul-claro: #dcebf2;
   --tema-sombra-suave: 0 14px 30px rgba(10, 38, 54, 0.1);
   --tema-sombra-media: 0 20px 46px rgba(10, 38, 54, 0.16);
-  --tema-header: rgba(255, 255, 255, 0.9);
+  --tema-header: rgba(255, 255, 255, 0.92);
   --tema-header-solido: rgba(255, 255, 255, 0.97);
   --tema-hero-uno: rgba(10, 38, 54, 0.96);
   --tema-hero-dos: rgba(24, 57, 75, 0.9);
@@ -55,29 +55,29 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --tema-fondo: #07151f;
-  --tema-superficie: #0f2532;
-  --tema-superficie-alterna: #102f3f;
+  --tema-fondo: #061018;
+  --tema-superficie: #0c202b;
+  --tema-superficie-alterna: #0f2a36;
   --tema-principal: #e7f2f4;
   --tema-principal-suave: #b9d4dc;
   --tema-texto: #e5eef1;
   --tema-texto-suave: #a7bbc2;
-  --tema-acento: #62b889;
-  --tema-dorado: #d8b64a;
-  --tema-agua: #68b7c8;
+  --tema-acento: #55d995;
+  --tema-dorado: #f2c94c;
+  --tema-agua: #62c7e8;
   --tema-raiz: #b08a59;
   --tema-alerta: #f06f68;
-  --tema-borde: #244555;
+  --tema-borde: #264957;
   --tema-blanco: #ffffff;
   --tema-azul-claro: #cce4ec;
   --tema-sombra-suave: 0 14px 30px rgba(0, 0, 0, 0.22);
   --tema-sombra-media: 0 22px 48px rgba(0, 0, 0, 0.32);
-  --tema-header: rgba(7, 21, 31, 0.9);
+  --tema-header: rgba(6, 16, 24, 0.92);
   --tema-header-solido: rgba(9, 28, 40, 0.97);
   --tema-hero-uno: rgba(7, 21, 31, 0.98);
   --tema-hero-dos: rgba(12, 45, 61, 0.92);
-  --tema-seccion-oscura: #06131d;
-  --tema-seccion-oscura-dos: #0c2d3d;
+  --tema-seccion-oscura: #061018;
+  --tema-seccion-oscura-dos: #0d3040;
 }
 
 html {

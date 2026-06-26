@@ -16,9 +16,7 @@ export default function HeaderNav({
 
   useEffect(() => {
     const temaGuardado = localStorage.getItem("cdp-theme");
-    const temaSistema = window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    const temaSistema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
     setTema(temaGuardado || temaSistema);
   }, []);
@@ -30,7 +28,7 @@ export default function HeaderNav({
     const metaThemeColor = document.querySelector("meta[name='theme-color']");
 
     if (metaThemeColor) {
-      metaThemeColor.setAttribute("content", tema === "dark" ? "#07151f" : "#f5f7f5");
+      metaThemeColor.setAttribute("content", tema === "dark" ? "#061018" : "#f6faf8");
     }
   }, [tema]);
 
@@ -56,10 +54,10 @@ export default function HeaderNav({
   const rutaActiva = normalizarRuta(currentPath);
   const esOscuro = tema === "dark";
   const masActivo = moreItems.some((item) => item.href === rutaActiva);
-  const idiomaActual = languages.find((language) => language.available) ?? languages[0];
+  const idiomaActual = languages.find((language) => language.available);
 
   return (
-    <nav className="navegacion contenedor" aria-label="Navegación principal">
+    <nav className="navegacion contenedor" aria-label="Navegacion principal">
       <a className="marca" href="/" onClick={() => setMenuAbierto(false)}>
         <span className="marca-logo" aria-hidden="true">
           <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
@@ -94,7 +92,7 @@ export default function HeaderNav({
               aria-controls="submenu-mas"
               onClick={() => setMasAbierto((abierto) => !abierto)}
             >
-              Más
+              Mas
               <ChevronDown size={16} aria-hidden="true" />
             </button>
 
@@ -130,33 +128,21 @@ export default function HeaderNav({
         </a>
 
         {idiomaActual && (
-          <div className="idioma-control" aria-label="Selector de idioma">
+          <div className="idioma-control" aria-label="Idioma actual">
             <span className="idioma-activo">{idiomaActual.label}</span>
-            {languages
-              .filter((language) => language.code !== idiomaActual.code)
-              .map((language) => (
-                <span
-                  key={language.code}
-                  className="idioma-pendiente"
-                  title={`${language.name} en preparación`}
-                  aria-disabled="true"
-                >
-                  {language.label}
-                </span>
-              ))}
           </div>
         )}
 
         <button
           className="tema-boton"
           type="button"
-          aria-label={esOscuro ? "Cambiar a modo día" : "Cambiar a modo noche"}
+          aria-label={esOscuro ? "Cambiar a modo dia" : "Cambiar a modo noche"}
           onClick={() => setTema(esOscuro ? "light" : "dark")}
         >
           <span className="tema-icono" aria-hidden="true">
             {esOscuro ? <Sun size={15} /> : <Moon size={15} />}
           </span>
-          <span className="tema-texto">{esOscuro ? "Día" : "Noche"}</span>
+          <span className="tema-texto">{esOscuro ? "Dia" : "Noche"}</span>
         </button>
 
         <button
@@ -167,7 +153,7 @@ export default function HeaderNav({
           onClick={() => setMenuAbierto((abierto) => !abierto)}
         >
           {menuAbierto ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
-          <span>Menú</span>
+          <span>Menu</span>
         </button>
       </div>
     </nav>

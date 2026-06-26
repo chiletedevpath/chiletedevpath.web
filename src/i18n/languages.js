@@ -2,7 +2,7 @@ export const languages = [
   {
     code: "es",
     label: "ES",
-    name: "Español",
+    name: "Espanol",
     href: "/",
     available: true,
   },

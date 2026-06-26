@@ -14,6 +14,14 @@ const { project } = Astro.props;
     </div>
   )}
   <span class="estado">{project.status}</span>
+  {typeof project.progress === "number" && (
+    <div class="avance-proyecto" aria-label={`Avance del proyecto ${project.progress}%`}>
+      <div class="avance-proyecto-barra">
+        <span style={`width: ${project.progress}%`}></span>
+      </div>
+      <strong>{project.progress}%</strong>
+    </div>
+  )}
   <h3>{project.title}</h3>
   <p>{project.description}</p>
   <ul class="tarjeta-detalles">
