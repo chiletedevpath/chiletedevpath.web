@@ -4,6 +4,30 @@ import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import SocialIcon from "../components/SocialIcon.astro";
 import { socials } from "../data/site.js";
+
+const buscarCanal = (nombre) => socials.find((social) => social.name === nombre);
+const gruposSociales = [
+  {
+    title: "Evidencia técnica",
+    description: "Código, proyectos, avances y trazabilidad del ecosistema.",
+    channels: [buscarCanal("GitHub")],
+  },
+  {
+    title: "Perfil profesional",
+    description: "Trayectoria, aprendizaje y evolución como desarrollador.",
+    channels: [buscarCanal("LinkedIn")],
+  },
+  {
+    title: "Comunidad y conversación",
+    description: "Un espacio para compartir dudas, avances e ideas con más cercanía.",
+    channels: [buscarCanal("Discord")],
+  },
+  {
+    title: "Contenido corto",
+    description: "Publicaciones breves para seguir el proceso y acercar la ruta a más estudiantes.",
+    channels: [buscarCanal("Instagram"), buscarCanal("TikTok"), buscarCanal("Facebook")],
+  },
+];
 ---
 
 <BaseLayout title="Comunidad | Chilete DevPath">
@@ -23,14 +47,24 @@ import { socials } from "../data/site.js";
         title="Sigue el avance por el canal que uses mejor"
         description="GitHub conserva el código y la evidencia. Las redes me sirven para explicar el proceso con un lenguaje más cercano y compartir avances de la marca."
       />
-      <div class="redes" aria-label="Canales oficiales de Chilete DevPath">
-        {socials.map((social) => (
-          <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener">
-            <SocialIcon name={social.name} />
-            <span>{social.label}</span>
-            <strong>{social.name}</strong>
-            <small>{social.description}</small>
-          </a>
+      <div class="redes-grupos" aria-label="Canales oficiales de Chilete DevPath">
+        {gruposSociales.map((group) => (
+          <article class="red-grupo">
+            <div class="red-grupo-cabecera">
+              <span>{group.title}</span>
+              <p>{group.description}</p>
+            </div>
+            <div class="red-grupo-canales">
+              {group.channels.filter(Boolean).map((social) => (
+                <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener">
+                  <SocialIcon name={social.name} />
+                  <span>{social.label}</span>
+                  <strong>{social.name}</strong>
+                  <small>{social.description}</small>
+                </a>
+              ))}
+            </div>
+          </article>
         ))}
       </div>
     </div>
@@ -72,8 +106,16 @@ import { socials } from "../data/site.js";
           </select>
         </label>
         <label>
+          Asunto
+          <input type="text" name="asunto" placeholder="Ejemplo: mejorar ejercicios de pseudocódigo" required />
+        </label>
+        <label>
           Sugerencia
           <textarea name="sugerencia" rows="5" maxlength="700" data-countable placeholder="Describe qué mejorarías, dónde lo viste y por qué ayudaría a la comunidad." required></textarea>
+        </label>
+        <label class="confirmacion-datos">
+          <input type="checkbox" name="confirmacion" required />
+          <span>Confirmo que no estoy enviando datos personales sensibles, contraseñas ni información privada de terceros.</span>
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Por ahora no habrá comentarios públicos. Primero necesito un sistema de moderación y seguridad para evitar spam, exposición de datos o contenido fuera de contexto.</p>

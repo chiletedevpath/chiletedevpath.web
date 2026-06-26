@@ -6,6 +6,11 @@ const { stage } = Astro.props;
   <span class="ruta-numero">{stage.number}</span>
   <span class="ruta-meta">{stage.intent}</span>
   <h3>{stage.title}</h3>
+  {Array.isArray(stage.technologies) && (
+    <div class="ruta-tecnologias" aria-label="Tecnologías y conceptos de la etapa">
+      {stage.technologies.map((tech) => <span>{tech}</span>)}
+    </div>
+  )}
   <ol class="ruta-lista">
     {stage.topics.map((topic) => (
       <li>
@@ -13,6 +18,17 @@ const { stage } = Astro.props;
       </li>
     ))}
   </ol>
+  {typeof stage.progress === "number" && (
+    <div class="ruta-avance" aria-label={`Avance de etapa ${stage.progress}%`}>
+      <div>
+        <span>Avance de etapa</span>
+        <strong>{stage.progress}%</strong>
+      </div>
+      <div class="ruta-avance-barra">
+        <span style={`width: ${stage.progress}%`}></span>
+      </div>
+    </div>
+  )}
   <p class="ruta-resultado">Resultado: {stage.result}</p>
   <div class="ruta-pie">
     <span class="estado estado-etapa">{stage.status}</span>

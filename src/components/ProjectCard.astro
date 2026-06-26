@@ -14,6 +14,7 @@ const { project } = Astro.props;
     </div>
   )}
   <span class="estado">{project.status}</span>
+  {project.level && <span class="proyecto-nivel">{project.level}</span>}
   {typeof project.progress === "number" && (
     <div class="avance-proyecto" aria-label={`Avance del proyecto ${project.progress}%`}>
       <div class="avance-proyecto-barra">
@@ -24,9 +25,36 @@ const { project } = Astro.props;
   )}
   <h3>{project.title}</h3>
   <p>{project.description}</p>
+  {Array.isArray(project.technologies) && (
+    <div class="proyecto-tech" aria-label="Tecnologías del proyecto">
+      {project.technologies.map((tech) => <span>{tech}</span>)}
+    </div>
+  )}
   <ul class="tarjeta-detalles">
     {project.details.map((detail) => <li>{detail}</li>)}
   </ul>
+  {(project.problem || project.learned || project.improve) && (
+    <div class="proyecto-ficha">
+      {project.problem && (
+        <div>
+          <span>Problema</span>
+          <p>{project.problem}</p>
+        </div>
+      )}
+      {project.learned && (
+        <div>
+          <span>Qué aprendí</span>
+          <p>{project.learned}</p>
+        </div>
+      )}
+      {project.improve && (
+        <div>
+          <span>Qué mejoraría</span>
+          <p>{project.improve}</p>
+        </div>
+      )}
+    </div>
+  )}
   <a class="boton boton-principal" href={project.href} target="_blank" rel="noopener">
     {project.action}
   </a>

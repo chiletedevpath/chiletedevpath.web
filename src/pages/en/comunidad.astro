@@ -4,6 +4,30 @@ import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import SocialIcon from "../../components/SocialIcon.astro";
 import { socialsEn } from "../../data/site.js";
+
+const findChannel = (name) => socialsEn.find((social) => social.name === name);
+const socialGroups = [
+  {
+    title: "Technical evidence",
+    description: "Code, projects, progress and traceability of the ecosystem.",
+    channels: [findChannel("GitHub")],
+  },
+  {
+    title: "Professional profile",
+    description: "Trajectory, learning process and evolution as a developer.",
+    channels: [findChannel("LinkedIn")],
+  },
+  {
+    title: "Community and conversation",
+    description: "A closer space to share questions, progress and ideas.",
+    channels: [findChannel("Discord")],
+  },
+  {
+    title: "Short content",
+    description: "Brief posts to follow the process and bring the path closer to more students.",
+    channels: [findChannel("Instagram"), findChannel("TikTok"), findChannel("Facebook")],
+  },
+];
 ---
 
 <BaseLayout title="Community | Chilete DevPath">
@@ -23,14 +47,24 @@ import { socialsEn } from "../../data/site.js";
         title="Follow the progress through the channel that fits you best"
         description="GitHub keeps the technical evidence. Social channels help explain the process, share progress and bring the path closer to more students."
       />
-      <div class="redes" aria-label="Official Chilete DevPath channels">
-        {socialsEn.map((social) => (
-          <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener">
-            <SocialIcon name={social.name} />
-            <span>{social.label}</span>
-            <strong>{social.name}</strong>
-            <small>{social.description}</small>
-          </a>
+      <div class="redes-grupos" aria-label="Official Chilete DevPath channels">
+        {socialGroups.map((group) => (
+          <article class="red-grupo">
+            <div class="red-grupo-cabecera">
+              <span>{group.title}</span>
+              <p>{group.description}</p>
+            </div>
+            <div class="red-grupo-canales">
+              {group.channels.filter(Boolean).map((social) => (
+                <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener">
+                  <SocialIcon name={social.name} />
+                  <span>{social.label}</span>
+                  <strong>{social.name}</strong>
+                  <small>{social.description}</small>
+                </a>
+              ))}
+            </div>
+          </article>
         ))}
       </div>
     </div>
@@ -68,8 +102,16 @@ import { socialsEn } from "../../data/site.js";
           </select>
         </label>
         <label>
+          Subject
+          <input type="text" name="asunto" placeholder="Example: improve pseudocode exercises" required />
+        </label>
+        <label>
           Suggestion
           <textarea name="sugerencia" rows="5" maxlength="700" data-countable placeholder="Describe what you would improve, where you saw it and why it would help the community." required></textarea>
+        </label>
+        <label class="confirmacion-datos">
+          <input type="checkbox" name="confirmacion" required />
+          <span>I confirm I am not sending sensitive personal data, passwords or private information from third parties.</span>
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Public comments will be considered later, when there is moderation and a secure backend.</p>

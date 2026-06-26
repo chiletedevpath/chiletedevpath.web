@@ -139,6 +139,29 @@ const audience = [
     </div>
   </section>
 
+  <section class="seccion seccion-clara criterio-home">
+    <div class="contenedor criterio-home-grid">
+      <div>
+        <p class="etiqueta">Publicar con criterio</p>
+        <h2>Antes de compartir algo, lo reviso como material para comunidad</h2>
+        <p>
+          Chilete DevPath no busca publicar por llenar una web. Cada recurso o proyecto debe tener sentido,
+          cuidar la autoría, evitar datos sensibles y explicar qué aporta al aprendizaje.
+        </p>
+      </div>
+      <div class="criterio-home-panel">
+        <span>Revisión previa</span>
+        <ul>
+          <li>Autoría, fuentes y contexto del contenido.</li>
+          <li>Privacidad, datos personales y exposición innecesaria.</li>
+          <li>Uso responsable de IA y utilidad real para quien aprende.</li>
+          <li>Estado honesto: práctica, evidencia académica o portafolio futuro.</li>
+        </ul>
+        <a class="boton boton-secundario" href="/criterios/">Ver criterios</a>
+      </div>
+    </div>
+  </section>
+
   <section class="seccion seccion-clara">
     <div class="contenedor">
       <SectionHeader
@@ -191,8 +214,16 @@ const audience = [
           </select>
         </label>
         <label>
+          Asunto
+          <input type="text" name="asunto" placeholder="Ejemplo: duda sobre la ruta de Java" required />
+        </label>
+        <label>
           Mensaje
           <textarea name="mensaje" rows="5" maxlength="700" data-countable placeholder="Cuéntame el contexto con claridad. Mientras más concreto, mejor puedo revisar tu mensaje." required></textarea>
+        </label>
+        <label class="confirmacion-datos">
+          <input type="checkbox" name="confirmacion" required />
+          <span>Confirmo que no estoy enviando datos personales sensibles, contraseñas ni información privada de terceros.</span>
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Tu mensaje no aparece públicamente ni se guarda en una base de datos. Solo se usa para preparar un correo dirigido a Chilete DevPath.</p>

@@ -57,13 +57,16 @@
   .tarjetas-4,
   .ruta-etapas,
   .redes,
+  .red-grupo,
+  .red-grupo-canales,
   .contenido-ruta,
   .tech-grid,
   .politicas-grid,
   .acciones-aprendizaje,
   .metricas-panel,
   .contacto-grid,
-  .sobre-marca-grid {
+  .sobre-marca-grid,
+  .criterio-home-grid {
     grid-template-columns: 1fr;
   }
 
@@ -348,6 +351,11 @@
   .politica-metadatos div {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .formulario-opciones,
+  .recurso-meta div {
+    grid-template-columns: 1fr;
   }
 
   .red-social {

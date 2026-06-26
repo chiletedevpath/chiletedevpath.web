@@ -3,16 +3,27 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import { resourcesEn } from "../../data/recursos.js";
+
+const resourceFilters = [
+  { label: "All", value: "todos" },
+  { label: "Exercises", value: "exercises" },
+  { label: "Challenges", value: "challenges" },
+  { label: "Glossary", value: "glossary" },
+  { label: "Guides", value: "guides" },
+  { label: "Java", value: "java" },
+  { label: "Web", value: "web" },
+  { label: "SQL", value: "sql" },
+];
 ---
 
 <BaseLayout title="Resources | Chilete DevPath">
   <PageHero
     eyebrow="Resources"
     title="Practice, review and move forward with organized material"
-    description="This section gathers exercises, challenges, glossary entries and criteria so students can practice without getting lost in folders."
+    description="This section helps students find what to solve, what to review and what to consult without guessing inside folders."
     variant="recursos"
-    visualTitle="DevPath library"
-    visualText="Material to solve, study and publish with criteria."
+    visualTitle="Practice library"
+    visualText="Resources organized by use."
   />
 
   <section class="seccion">
@@ -20,15 +31,41 @@ import { resourcesEn } from "../../data/recursos.js";
       <SectionHeader
         eyebrow="How to use this section"
         title="Choose a resource according to your learning moment"
-        description="If you are practicing, start with challenges. If you already tried, review solved exercises. If a concept is unclear, open the glossary."
+        description="If you want to practice, open challenges. If you already tried, review solved exercises. If a concept is unclear, use the glossary as support."
       />
+      <div class="filtros-recursos" aria-label="Resource filters">
+        {resourceFilters.map((filter, index) => (
+          <button
+            class={index === 0 ? "filtro-recurso filtro-activo" : "filtro-recurso"}
+            type="button"
+            data-resource-filter={filter.value}
+            aria-pressed={index === 0 ? "true" : "false"}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
       <div class="tarjetas tarjetas-4">
         {resourcesEn.map((resource) => (
-          <article class="tarjeta recurso-card">
+          <article class="tarjeta recurso-card" data-resource-category={resource.category} data-resource-tags={resource.tags?.join(" ")}>
             <span class="estado">{resource.status}</span>
             <small>{resource.type}</small>
             <h3>{resource.title}</h3>
             <p>{resource.description}</p>
+            <dl class="recurso-meta">
+              <div>
+                <dt>Level</dt>
+                <dd>{resource.level}</dd>
+              </div>
+              <div>
+                <dt>Topic</dt>
+                <dd>{resource.topic}</dd>
+              </div>
+              <div>
+                <dt>Time</dt>
+                <dd>{resource.time}</dd>
+              </div>
+            </dl>
             <a href={resource.href} target={resource.href.startsWith("http") ? "_blank" : undefined} rel={resource.href.startsWith("http") ? "noopener" : undefined}>
               Open resource
             </a>
@@ -42,14 +79,32 @@ import { resourcesEn } from "../../data/recursos.js";
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Resource suggestions</p>
-        <h2>Help me prioritize missing material</h2>
+        <h2>Suggest a resource that would really help</h2>
         <p>
-          If a topic needs exercises, a glossary entry or a lab, send the idea.
-          I review it before turning it into public content.
+          If a topic needs an exercise, glossary entry, guide or lab, send the idea with context.
+          I review whether it fits the path before turning it into public material.
         </p>
       </div>
       <div class="formulario-contacto panel-contacto formulario-recursos" data-contact-panel data-context="Resource suggestion">
-        <p class="formulario-intro">This prepares an email. I review suggestions before publishing them as learning material.</p>
+        <div class="formulario-cabecera">
+          <span>Proposed resource</span>
+          <strong>Tell me what is missing and why it matters</strong>
+          <p>The clearer the problem is, the easier it is to turn it into useful practice for the community.</p>
+        </div>
+        <div class="formulario-opciones">
+          <label>
+            Name
+            <input type="text" name="nombre" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="correo" autocomplete="email" placeholder="your.email@example.com" required />
+          </label>
+        </div>
+        <label>
+          Subject
+          <input type="text" name="asunto" placeholder="Example: missing conditionals practice" required />
+        </label>
         <div class="formulario-opciones">
           <label>
             Suggested topic
@@ -70,8 +125,12 @@ import { resourcesEn } from "../../data/recursos.js";
           Why should it be part of the path?
           <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explain what problem it helps solve or what topic needs reinforcement." required></textarea>
         </label>
+        <label class="confirmacion-datos">
+          <input type="checkbox" name="confirmacion" required />
+          <span>I confirm I am not sending personal data, passwords or sensitive information.</span>
+        </label>
         <small class="contador-caracteres" data-counter>0/700</small>
-        <p class="nota-privacidad">Suggestions are not published automatically. They are reviewed for usefulness, clarity and editorial criteria.</p>
+        <p class="nota-privacidad">I review usefulness, clarity, sources and relation with the path before turning the idea into public content.</p>
         <div class="acciones-formulario">
           <button class="boton boton-principal" type="button" data-send-email>Prepare email</button>
         </div>

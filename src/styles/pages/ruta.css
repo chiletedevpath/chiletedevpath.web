@@ -24,8 +24,8 @@
 .ruta-etapas {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
 }
 
 .ruta-etapas::before {
@@ -48,10 +48,13 @@
 
 .ruta-etapa {
   position: relative;
-  padding: 28px;
+  padding: 30px 28px 28px 34px;
   border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  background-color: var(--color-fondo);
+  border-left: 6px solid color-mix(in srgb, var(--color-acento) 72%, var(--color-progreso));
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--color-acento) 7%, transparent), transparent 48%),
+    var(--color-fondo);
   box-shadow: var(--sombra-suave);
   isolation: isolate;
   transition:
@@ -72,6 +75,7 @@
 
 .ruta-etapa:hover {
   border-color: var(--color-acento);
+  border-left-color: var(--color-progreso);
   transform: translateY(-4px);
 }
 
@@ -80,16 +84,17 @@
 }
 
 .ruta-numero {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   margin-bottom: 18px;
   border-radius: 50%;
-  background-color: var(--color-camino);
+  background: linear-gradient(135deg, var(--color-progreso), var(--color-acento));
   color: var(--color-principal);
-  font-weight: 700;
+  font-family: var(--fuente-mono);
+  font-weight: 900;
   display: grid;
   place-items: center;
-  box-shadow: 0 0 0 6px rgba(242, 212, 107, 0.24);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-progreso) 18%, transparent);
 }
 
 .ruta-etapa h3 {
@@ -111,6 +116,7 @@
 .ruta-lista {
   display: grid;
   gap: 10px;
+  margin-top: 16px;
   list-style: none;
   counter-reset: ruta-tema;
 }
@@ -159,6 +165,60 @@
   border-top: 1px solid rgba(216, 207, 189, 0.9);
   color: var(--color-texto);
   font-size: 0.94rem;
+}
+
+.ruta-tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+
+.ruta-tecnologias span {
+  padding: 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--color-acento) 32%, var(--color-borde));
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--color-acento) 8%, var(--color-superficie));
+  color: var(--color-principal);
+  font-family: var(--fuente-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.ruta-avance {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 16px;
+  background-color: color-mix(in srgb, var(--color-superficie) 78%, var(--color-fondo));
+}
+
+.ruta-avance > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 10px;
+  color: var(--color-principal);
+  font-size: 0.85rem;
+  font-weight: 900;
+}
+
+.ruta-avance strong {
+  color: var(--color-acento);
+  font-family: var(--fuente-mono);
+}
+
+.ruta-avance-barra {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--color-borde) 70%, transparent);
+}
+
+.ruta-avance-barra span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-acento), var(--color-progreso));
 }
 
 .ruta-pie {

@@ -3,6 +3,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import { resources } from "../data/recursos.js";
+
+const resourceFilters = [
+  { label: "Todos", value: "todos" },
+  { label: "Ejercicios", value: "ejercicios" },
+  { label: "Retos", value: "retos" },
+  { label: "Glosario", value: "glosario" },
+  { label: "Guías", value: "guias" },
+  { label: "Java", value: "java" },
+  { label: "Web", value: "web" },
+  { label: "SQL", value: "sql" },
+];
 ---
 
 <BaseLayout title="Recursos | Chilete DevPath">
@@ -22,13 +33,39 @@ import { resources } from "../data/recursos.js";
         title="Elige el recurso según tu momento de aprendizaje"
         description="Si quieres practicar, entra a retos. Si ya intentaste resolver algo, revisa ejercicios desarrollados. Si un término no queda claro, usa el glosario como apoyo."
       />
+      <div class="filtros-recursos" aria-label="Filtros de recursos">
+        {resourceFilters.map((filter, index) => (
+          <button
+            class={index === 0 ? "filtro-recurso filtro-activo" : "filtro-recurso"}
+            type="button"
+            data-resource-filter={filter.value}
+            aria-pressed={index === 0 ? "true" : "false"}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
       <div class="tarjetas tarjetas-4">
         {resources.map((resource) => (
-          <article class="tarjeta recurso-card">
+          <article class="tarjeta recurso-card" data-resource-category={resource.category} data-resource-tags={resource.tags?.join(" ")}>
             <span class="estado">{resource.status}</span>
             <small>{resource.type}</small>
             <h3>{resource.title}</h3>
             <p>{resource.description}</p>
+            <dl class="recurso-meta">
+              <div>
+                <dt>Nivel</dt>
+                <dd>{resource.level}</dd>
+              </div>
+              <div>
+                <dt>Tema</dt>
+                <dd>{resource.topic}</dd>
+              </div>
+              <div>
+                <dt>Tiempo</dt>
+                <dd>{resource.time}</dd>
+              </div>
+            </dl>
             <a href={resource.href} target={resource.href.startsWith("http") ? "_blank" : undefined} rel={resource.href.startsWith("http") ? "noopener" : undefined}>
               Ver recurso
             </a>
@@ -56,6 +93,20 @@ import { resources } from "../data/recursos.js";
         </div>
         <div class="formulario-opciones">
           <label>
+            Nombre
+            <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+          </label>
+          <label>
+            Correo
+            <input type="email" name="correo" autocomplete="email" placeholder="tu.correo@ejemplo.com" required />
+          </label>
+        </div>
+        <label>
+          Asunto
+          <input type="text" name="asunto" placeholder="Ejemplo: falta práctica de condicionales" required />
+        </label>
+        <div class="formulario-opciones">
+          <label>
             Tema sugerido
             <input type="text" name="tema" placeholder="Ejemplo: arreglos en Java" required />
           </label>
@@ -73,6 +124,10 @@ import { resources } from "../data/recursos.js";
         <label>
           ¿Por qué debería estar en la ruta?
           <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explica qué problema ayudaría a resolver o qué tema falta reforzar." required></textarea>
+        </label>
+        <label class="confirmacion-datos">
+          <input type="checkbox" name="confirmacion" required />
+          <span>Confirmo que no estoy enviando datos personales, contraseñas ni información sensible.</span>
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Primero revisaré la utilidad, claridad, fuentes y relación con la ruta antes de convertir la idea en contenido público.</p>

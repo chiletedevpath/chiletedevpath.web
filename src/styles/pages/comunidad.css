@@ -48,6 +48,47 @@
   max-width: 1040px;
 }
 
+.redes-grupos {
+  display: grid;
+  gap: 18px;
+}
+
+.red-grupo {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
+    rgba(255, 255, 255, 0.05);
+}
+
+.red-grupo-cabecera {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+}
+
+.red-grupo-cabecera span {
+  color: var(--color-progreso);
+  font-family: var(--fuente-mono);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.red-grupo-cabecera p {
+  color: #dbeafe;
+}
+
+.red-grupo-canales {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
 .red-social {
   min-height: 150px;
   padding: 20px;

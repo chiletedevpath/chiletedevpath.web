@@ -2,13 +2,41 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
-import { valuePropsEn } from "../../data/site.js";
+import ProjectCard from "../../components/ProjectCard.astro";
+import RouteStage from "../../components/RouteStage.astro";
+import { routeStagesEn } from "../../data/ruta.js";
+import { projectAreasEn } from "../../data/proyectos.js";
+import { site, valuePropsEn } from "../../data/site.js";
 
 const metricsEn = [
   { label: "Available topics", value: "11", detail: "Path from fundamentals to backend" },
   { label: "Academic projects", value: "3", detail: "Evidence with status and progress" },
   { label: "Active policies", value: "4", detail: "Publishing, AI, wellbeing and authorship" },
   { label: "Active paths", value: "4", detail: "Foundation, software, web-data and specialization" },
+];
+
+const learningActionsEn = [
+  {
+    step: "01",
+    title: "Start with fundamentals",
+    text: "Before rushing into frameworks, the base must be clear: logic, decisions, loops and problem solving.",
+    href: "/en/ruta/",
+    action: "View path",
+  },
+  {
+    step: "02",
+    title: "Practice with exercises",
+    text: "Exercises help you make mistakes, compare, correct and learn with better technical judgment.",
+    href: "/en/recursos/",
+    action: "Open resources",
+  },
+  {
+    step: "03",
+    title: "Review real evidence",
+    text: "Projects show progress with context, without presenting unfinished academic work as final portfolio.",
+    href: "/en/proyectos/",
+    action: "View projects",
+  },
 ];
 
 const audienceEn = [
@@ -29,14 +57,35 @@ const audienceEn = [
     visualText="From fundamentals to real projects."
   />
 
+  <section class="seccion seccion-clara inicio-aprendizaje">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Start here"
+        title="A path to learn with order, practice and evidence"
+        description="Chilete DevPath shares my learning process and turns it into a useful guide for other students."
+      />
+
+      <div class="acciones-aprendizaje">
+        {learningActionsEn.map((item) => (
+          <article class="accion-aprendizaje">
+            <span>{item.step}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <a href={item.href}>{item.action}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="seccion">
     <div class="contenedor">
       <SectionHeader
         eyebrow="Why Chilete DevPath"
         title="Learning is not collecting folders. It is building judgment."
-        description="The ecosystem explains what to practice, what to review and how to publish technical progress responsibly."
+        description="This ecosystem explains what to learn, how to practice and when something is ready to be shared responsibly."
       />
-      <div class="tarjetas tarjetas-4">
+      <div class="tarjetas tarjetas-4 valor-grid">
         {valuePropsEn.map((item) => (
           <article class="tarjeta valor-card">
             <h3>{item.title}</h3>
@@ -52,7 +101,7 @@ const audienceEn = [
       <SectionHeader
         eyebrow="Who it is for"
         title="A website for guided learning, practice and context"
-        description="Chilete DevPath is designed for people who want to move step by step and understand why each piece of content exists."
+        description="If you are starting or reinforcing your base, this site should help you move without getting lost among folders, repositories or technical names."
       />
       <div class="tarjetas tarjetas-4">
         {audienceEn.map((item) => (
@@ -68,9 +117,12 @@ const audienceEn = [
   <section class="seccion seccion-clara">
     <div class="contenedor metricas-panel">
       <div>
-        <p class="etiqueta">Ecosystem status</p>
-        <h2>Real indicators of published progress</h2>
-        <p>These metrics summarize available content and change only when the path, projects or policies are verifiably updated.</p>
+        <p class="etiqueta">Growing ecosystem</p>
+        <h2>How Chilete DevPath is growing</h2>
+        <p>
+          These numbers do not try to inflate the project. I update them when real content is added:
+          reviewed topics, contextualized projects or criteria that improve responsible publishing.
+        </p>
       </div>
       <div class="metricas-grid">
         {metricsEn.map((metric) => (
@@ -80,6 +132,118 @@ const audienceEn = [
             <small>{metric.detail}</small>
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Learning path"
+        title="From fundamentals to technical construction"
+        description="The path shows where to start, what to practice next and how to connect progress with real projects."
+      />
+      <div class="ruta-etapas ruta-etapas-compacta">
+        {routeStagesEn.slice(0, 4).map((stage) => <RouteStage stage={stage} />)}
+      </div>
+      <div class="ruta-accion">
+        <p>Explore the full path, solved exercises and practices designed to learn by building.</p>
+        <a class="boton boton-principal" href="/en/ruta/">View full path</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara criterio-home">
+    <div class="contenedor criterio-home-grid">
+      <div>
+        <p class="etiqueta">Publish with criteria</p>
+        <h2>Before sharing something, I review it as material for the community</h2>
+        <p>
+          Chilete DevPath is not about filling a website. Every resource or project must make sense,
+          respect authorship, avoid sensitive data and explain how it supports learning.
+        </p>
+      </div>
+      <div class="criterio-home-panel">
+        <span>Previous review</span>
+        <ul>
+          <li>Authorship, sources and content context.</li>
+          <li>Privacy, personal data and unnecessary exposure.</li>
+          <li>Responsible AI use and real usefulness for learners.</li>
+          <li>Honest status: practice, academic evidence or future portfolio.</li>
+        </ul>
+        <a class="boton boton-secundario" href="/en/criterios/">View criteria</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="DevPath ecosystem"
+        title="Each space has a clear function"
+        description="Learning is for practice, academia is for evidence, portfolio is for future selection and criteria are for responsible publishing."
+      />
+      <div class="tarjetas tarjetas-3">
+        {projectAreasEn.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion contacto-formal" id="contacto">
+    <div class="contenedor contacto-grid">
+      <div>
+        <p class="etiqueta">Contact and feedback</p>
+        <h2>Write if something in the path can improve</h2>
+        <p>
+          This form prepares an email. I use it to receive questions, ideas and improvements without publishing
+          anyone's data on the website. For direct contact, the WhatsApp button is available separately.
+        </p>
+        <a class="boton boton-secundario boton-mapa" href={site.mapsHref} target="_blank" rel="noopener">
+          View Chilete on the map
+        </a>
+      </div>
+      <div class="formulario-contacto panel-contacto formulario-correo" data-contact-panel data-context="Contact from English home">
+        <div class="formulario-cabecera">
+          <span>Reviewable email</span>
+          <strong>Your message is prepared before sending</strong>
+          <p>The website does not store your information. It opens your email client so you can review the content before sending it.</p>
+        </div>
+        <div class="formulario-opciones">
+          <label>
+            Name
+            <input type="text" name="nombre" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="correo" autocomplete="email" placeholder="your.email@example.com" required />
+          </label>
+        </div>
+        <label>
+          Message type
+          <select name="tipo" required>
+            <option value="Path question">Path question</option>
+            <option value="Resource suggestion">Resource suggestion</option>
+            <option value="Collaboration proposal">Collaboration proposal</option>
+            <option value="Improvement report">Improvement report</option>
+          </select>
+        </label>
+        <label>
+          Subject
+          <input type="text" name="asunto" placeholder="Example: question about the Java path" required />
+        </label>
+        <label>
+          Message
+          <textarea name="mensaje" rows="5" maxlength="700" data-countable placeholder="Tell me the context clearly. The more concrete it is, the better I can review it." required></textarea>
+        </label>
+        <label class="confirmacion-datos">
+          <input type="checkbox" name="confirmacion" required />
+          <span>I confirm I am not sending sensitive personal data, passwords or private information from third parties.</span>
+        </label>
+        <small class="contador-caracteres" data-counter>0/700</small>
+        <p class="nota-privacidad">Your message is not published or stored in a database. It is only used to prepare an email to Chilete DevPath.</p>
+        <div class="acciones-formulario">
+          <button class="boton boton-principal" type="button" data-send-email>Prepare email</button>
+        </div>
       </div>
     </div>
   </section>

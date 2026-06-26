@@ -16,6 +16,8 @@ if (typeof document !== "undefined") {
   const correoContacto = document.querySelector("meta[name='cdp-email']")?.content ?? "";
   const camposContables = document.querySelectorAll("[data-countable]");
   const metricasAnimadas = document.querySelectorAll("[data-count]");
+  const filtrosRecursos = document.querySelectorAll("[data-resource-filter]");
+  const tarjetasRecursos = document.querySelectorAll("[data-resource-category]");
 
   if (anio) {
     anio.textContent = new Date().getFullYear();
@@ -33,7 +35,7 @@ if (typeof document !== "undefined") {
   window.addEventListener("scroll", actualizarEncabezado, { passive: true });
 
   const elementosAnimados = document.querySelectorAll(
-    ".hero-texto, .hero-visual, .hero-indicadores, .dashboard-step, .dashboard-terminal, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-social, .politica-documento, .criterios-resumen, .pie-cta"
+    ".hero-texto, .hero-visual, .hero-indicadores, .dashboard-step, .dashboard-terminal, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-grupo, .red-social, .politica-documento, .criterios-resumen, .pie-cta"
   );
 
   elementosAnimados.forEach((elemento) => {
@@ -108,6 +110,7 @@ if (typeof document !== "undefined") {
       obtenerValor(panel, "sugerencia") ||
       obtenerValor(panel, "motivo") ||
       "";
+    const asuntoDetalle = obtenerValor(panel, "asunto");
     const tema = obtenerValor(panel, "tema");
     const tipo = obtenerValor(panel, "tipo");
 
@@ -115,6 +118,7 @@ if (typeof document !== "undefined") {
       `Contexto: ${contexto}`,
       `Nombre: ${nombre}`,
       `Correo: ${correo}`,
+      asuntoDetalle ? `Asunto: ${asuntoDetalle}` : "",
       tema ? `Tema: ${tema}` : "",
       tipo ? `Tipo: ${tipo}` : "",
       `Mensaje: ${mensaje || "Sin mensaje"}`,
@@ -177,6 +181,26 @@ if (typeof document !== "undefined") {
   } else {
     metricasAnimadas.forEach(animarNumero);
   }
+
+  filtrosRecursos.forEach((filtro) => {
+    filtro.addEventListener("click", () => {
+      const categoria = filtro.dataset.resourceFilter;
+
+      filtrosRecursos.forEach((item) => {
+        item.classList.toggle("filtro-activo", item === filtro);
+        item.setAttribute("aria-pressed", String(item === filtro));
+      });
+
+      tarjetasRecursos.forEach((tarjeta) => {
+        const tags = (tarjeta.dataset.resourceTags || "").split(" ");
+        const visible =
+          categoria === "todos" ||
+          tarjeta.dataset.resourceCategory === categoria ||
+          tags.includes(categoria);
+        tarjeta.hidden = !visible;
+      });
+    });
+  });
 
   panelesContacto.forEach((panel) => {
     const botonCorreo = panel.querySelector("[data-send-email]");
