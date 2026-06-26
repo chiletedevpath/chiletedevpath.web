@@ -3,28 +3,41 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
-import { academicProjects } from "../../data/proyectos.js";
+import { academicProjectsEn, projectAreasEn } from "../../data/proyectos.js";
 ---
 
 <BaseLayout title="Projects | Chilete DevPath">
   <PageHero
     eyebrow="Projects"
     title="Technical evidence without confusing progress with portfolio"
-    description="Academic projects are shown with context, status and publishing criteria."
+    description="Projects are shown with context: what was learned, current status and why not everything should be presented as a final portfolio piece."
     variant="proyectos"
-    visualTitle="Academic evidence"
-    visualText="Projects with documented progress."
+    visualTitle="Project progress"
+    visualText="Clean project dashboard without overlaid text."
   />
 
   <section class="seccion">
     <div class="contenedor">
       <SectionHeader
-        eyebrow="Reviewed evidence"
-        title="Academic projects with context"
-        description="These projects are evidence of learning, not final portfolio pieces yet."
+        eyebrow="Ecosystem map"
+        title="Each space has a clear role"
+        description="Learning is for practice, academia is for evidence and portfolio is for a future professional selection."
       />
       <div class="tarjetas tarjetas-3">
-        {academicProjects.map((project) => <ProjectCard project={project} />)}
+        {projectAreasEn.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Reviewed evidence"
+        title="Academic projects with context"
+        description="These projects are learning evidence. They include progress, technologies and publishing criteria."
+      />
+      <div class="tarjetas tarjetas-3">
+        {academicProjectsEn.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
   </section>

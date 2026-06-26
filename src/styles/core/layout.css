@@ -1,10 +1,15 @@
 ﻿/* Estructura general */
 .seccion {
   padding: 80px 0;
+  position: relative;
 }
 
 .seccion-clara {
-  background-color: var(--color-superficie);
+  overflow: hidden;
+  background:
+    linear-gradient(color-mix(in srgb, var(--color-superficie) 84%, transparent), color-mix(in srgb, var(--color-superficie) 84%, transparent)),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-texto-suave) 9%, transparent) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-texto-suave) 7%, transparent) 0 1px, transparent 1px 44px);
 }
 
 .etiqueta {

@@ -14,13 +14,13 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V4.5`
+`V4.6`
 
-- Fecha de cierre: 25/06/2026
-- Estado: en revision
+- Fecha de cierre: 26/06/2026
+- Estado: en revisión
 - Sitio: https://chiletedevpath.github.io/
 
-Esta version corrige la voz publica de la web, simplifica formularios a correo, usa imagenes editoriales en heroes clave y mejora la lectura visual de secciones internas.
+Esta versión fortalece la web como plataforma educativa de marca: mejora el hero principal, completa páginas en inglés, refuerza formularios, agrega SEO básico y ajusta la paleta día/noche.
 
 ## Tecnologias
 
@@ -32,7 +32,7 @@ Esta version corrige la voz publica de la web, simplifica formularios a correo, 
 - JavaScript
 - Lucide React
 - SVG propio
-- PWA base
+- SEO y vista previa social
 - Google Fonts
 - GitHub Pages
 - GitHub Actions
@@ -63,14 +63,15 @@ chiletedevpath-web/
 `-- CHANGELOG.md
 ```
 
-## Alcance de V4.5
+## Alcance de V4.6
 
-- Textos publicos reescritos con una voz mas cercana, como mensaje directo a la comunidad.
-- Formularios simplificados a correo; WhatsApp queda solo como boton flotante.
-- Heroes de Ruta y Proyectos reemplazados por imagenes editoriales sin texto superpuesto.
-- Acceso al mapa con mejor espaciado y texto mas claro.
-- Formularios de feedback y sugerencias rediseñados con mejor jerarquia y microcopy.
-- Seccion Sobre ajustada para explicar Chilete DevPath como marca, ruta y comunidad.
+- Hero principal rediseñado como panel de aprendizaje, sin depender de una foto poco integrada.
+- Páginas en inglés ampliadas para evitar secciones incompletas o mezclas de idioma.
+- Formularios mejorados con tipo de mensaje, placeholders, contador de caracteres y nota de privacidad.
+- Métricas con animación ligera y mayor jerarquía visual.
+- Paleta ajustada hacia producto educativo tech, compatible con modo claro y oscuro.
+- `robots.txt`, `sitemap.xml` y alternates `hreflang` para SEO básico.
+- Sección "Para quién es" agregada para orientar a visitantes nuevos.
 
 ## Decisiones de diseno
 

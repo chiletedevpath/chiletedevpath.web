@@ -10,12 +10,10 @@ import { academicProjects, projectAreas } from "../data/proyectos.js";
   <PageHero
     eyebrow="Proyectos"
     title="Evidencia técnica sin confundir avance con portafolio"
-    description="Aquí muestro proyectos con contexto: qué aprendí, en qué estado están y por qué todavía no todo debe presentarse como portafolio final."
+    description="Aquí muestro mis proyectos con contexto: qué problema trabajan, cuánto han avanzado y por qué algunos todavía son evidencia académica, no portafolio final."
     variant="proyectos"
-    visualTitle="Evidencia en construcción"
-    visualText="Proyectos y documentación con criterio."
-    imageSrc="/assets/img/heros/proyectos.png"
-    imageAlt="Escritorio de trabajo con laptop, apuntes y documentación técnica de proyectos."
+    visualTitle="Proyectos con avance"
+    visualText="Tablero visual sin texto superpuesto."
   />
 
   <section class="seccion">
@@ -23,7 +21,7 @@ import { academicProjects, projectAreas } from "../data/proyectos.js";
       <SectionHeader
         eyebrow="Mapa del ecosistema"
         title="Primero se aprende, luego se evidencia, después se selecciona"
-        description="No quiero mezclar ejercicios, entregas académicas y portafolio profesional. Cada cosa tiene su lugar para que el avance se entienda mejor."
+        description="No quiero mezclar ejercicios, entregas académicas y portafolio profesional. Cada espacio tiene una función para que mi avance se entienda sin inflarlo."
       />
       <div class="tarjetas tarjetas-3">
         {projectAreas.map((project) => <ProjectCard project={project} />)}
@@ -36,7 +34,7 @@ import { academicProjects, projectAreas } from "../data/proyectos.js";
       <SectionHeader
         eyebrow="Evidencia revisada"
         title="Proyectos académicos con contexto"
-        description="Estos proyectos muestran mi avance académico. Algunos están terminados, otros siguen en proceso, y todos deben cuidarse antes de convertirse en material público."
+        description="Estos proyectos muestran avance académico real. Los publico con cuidado: sin datos sensibles, sin marcas que no correspondan y con un estado honesto de avance."
       />
       <div class="tarjetas tarjetas-3">
         {academicProjects.map((project) => <ProjectCard project={project} />)}

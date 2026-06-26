@@ -11,12 +11,10 @@ import { routeStages, techStack } from "../data/ruta.js";
   <PageHero
     eyebrow="Ruta de aprendizaje"
     title="Empieza por fundamentos y avanza con práctica real"
-    description="Aquí ordeno el camino como me hubiera gustado encontrarlo: primero entender, luego practicar y después construir con más criterio."
+    description="Aquí ordeno el camino como me hubiera gustado encontrarlo: primero entender la base, luego practicar y después construir proyectos con más criterio."
     variant="ruta"
-    visualTitle="Mapa de avance"
-    visualText="Ruta visual de aprendizaje."
-    imageSrc="/assets/img/heros/ruta.png"
-    imageAlt="Cuaderno oscuro con una ruta visual de aprendizaje técnico por etapas."
+    visualTitle="Ruta progresiva"
+    visualText="Secuencia visual sin texto superpuesto."
   />
 
   <section class="seccion">
@@ -25,7 +23,7 @@ import { routeStages, techStack } from "../data/ruta.js";
         {routeStages.map((stage) => <RouteStage stage={stage} />)}
       </div>
       <div class="ruta-accion">
-        <p>El contenido práctico vive en el repositorio de aprendizaje. Lo seguiré ampliando con ejercicios que tengan sentido, no con carpetas de relleno.</p>
+        <p>El contenido práctico vive en el repositorio de aprendizaje. Lo seguiré ampliando con ejercicios útiles, glosarios puntuales y laboratorios cuando realmente ayuden a aprender.</p>
         <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener">
           Abrir aprendizaje
         </a>

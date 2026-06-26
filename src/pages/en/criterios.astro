@@ -1,29 +1,70 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHero from "../../components/PageHero.astro";
-import { policies } from "../../data/recursos.js";
+import PolicyIcon from "../../components/PolicyIcon.astro";
+import { policiesEn } from "../../data/recursos.js";
 ---
 
 <BaseLayout title="Criteria | Chilete DevPath">
-  <PageHero
-    eyebrow="Publishing criteria"
-    title="We publish with judgment, not with rush"
-    description="Policies protect authorship, sources, privacy, well-being, responsible AI usage and safe publishing."
-    variant="criterios"
-    visualTitle="Editorial control"
-    visualText="Review before public publishing."
-  />
+  <section class="seccion criterios-hero">
+    <div class="contenedor criterios-hero-grid">
+      <div>
+        <p class="etiqueta">Publishing criteria</p>
+        <h1>We publish with judgment, not with rush</h1>
+        <strong>Learning also means taking care of what we share.</strong>
+        <p class="seccion-descripcion">
+          Before a resource, project or guide becomes public, it must have context, respect authorship
+          and avoid exposing sensitive data. That is the difference between publishing content and building trust.
+        </p>
+      </div>
+      <aside class="criterios-resumen" aria-label="Publishing criteria summary">
+        <strong>Before publishing I review</strong>
+        <ul>
+          <li>Clear authorship</li>
+          <li>Visible context</li>
+          <li>Protected privacy</li>
+          <li>Responsible AI use</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
   <section class="seccion">
-    <div class="contenedor politicas-grid">
-      {policies.map((policy) => (
-        <article class:list={["politica-documento", `politica-${policy.tone}`]}>
-          <span class="politica-codigo">{policy.code}</span>
-          <h3>{policy.title}</h3>
-          <p>{policy.highlight}</p>
-          <a class="boton boton-principal" href={policy.href}>Open policy</a>
-        </article>
-      ))}
+    <div class="contenedor">
+      <div class="politicas-grid">
+        {policiesEn.map((policy) => (
+          <article class:list={["politica-documento", `politica-${policy.tone}`]}>
+            <header class="politica-encabezado">
+              <PolicyIcon name={policy.icon} />
+              <div>
+                <span class="politica-codigo">{policy.code}</span>
+                <h3>{policy.title}</h3>
+              </div>
+            </header>
+            <div class="politica-cuerpo">
+              <p class="politica-destacado">{policy.highlight}</p>
+              <p>{policy.objective}</p>
+              <details class="politica-metadatos">
+                <summary>View policy metadata</summary>
+                <dl>
+                  <div>
+                    <dt>Scope</dt>
+                    <dd>{policy.scope}</dd>
+                  </div>
+                  <div>
+                    <dt>Responsible</dt>
+                    <dd>{policy.owner}</dd>
+                  </div>
+                  <div>
+                    <dt>Status</dt>
+                    <dd><span class="estado-activo"></span>{policy.version} - {policy.status}</dd>
+                  </div>
+                </dl>
+              </details>
+            </div>
+            <a class="boton boton-principal" href={policy.href}>Open policy</a>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>

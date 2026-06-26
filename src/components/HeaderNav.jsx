@@ -68,7 +68,7 @@ export default function HeaderNav({
   const idiomaActivo = rutaActiva.startsWith("/en") ? "en" : "es";
 
   return (
-    <nav className="navegacion contenedor" aria-label="Navegacion principal">
+    <nav className="navegacion contenedor" aria-label="Navegación principal">
       <a className="marca" href={idiomaActivo === "en" ? "/en/" : "/"} onClick={() => setMenuAbierto(false)}>
         <span className="marca-logo" aria-hidden="true">
           <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
@@ -103,7 +103,7 @@ export default function HeaderNav({
               aria-controls="submenu-mas"
               onClick={() => setMasAbierto((abierto) => !abierto)}
             >
-              {idiomaActivo === "en" ? "More" : "Mas"}
+              {idiomaActivo === "en" ? "More" : "Más"}
               <ChevronDown size={16} aria-hidden="true" />
             </button>
 
@@ -154,8 +154,8 @@ export default function HeaderNav({
         <button
           className="tema-boton tema-boton-icono"
           type="button"
-          aria-label={esOscuro ? "Cambiar a modo dia" : "Cambiar a modo noche"}
-          title={esOscuro ? "Modo dia" : "Modo noche"}
+          aria-label={esOscuro ? "Cambiar a modo día" : "Cambiar a modo noche"}
+          title={esOscuro ? "Modo día" : "Modo noche"}
           onClick={() => setTema(esOscuro ? "light" : "dark")}
         >
           <span className="tema-icono" aria-hidden="true">

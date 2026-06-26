@@ -1,15 +1,82 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SocialIcon from "../../components/SocialIcon.astro";
+import { socialsEn } from "../../data/site.js";
 ---
 
 <BaseLayout title="Community | Chilete DevPath">
   <PageHero
     eyebrow="Community"
     title="Learning with others makes the path sustainable"
-    description="Official channels help share progress, questions, practice and responsible learning."
+    description="Chilete DevPath is also a space to share progress, questions and learning without losing technical criteria."
     variant="comunidad"
     visualTitle="Learning network"
-    visualText="Channels for progress and community."
+    visualText="Channels for progress, questions and responsible learning."
   />
+
+  <section class="seccion contacto">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Official channels"
+        title="Follow the progress through the channel that fits you best"
+        description="GitHub keeps the technical evidence. Social channels help explain the process, share progress and bring the path closer to more students."
+      />
+      <div class="redes" aria-label="Official Chilete DevPath channels">
+        {socialsEn.map((social) => (
+          <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener">
+            <SocialIcon name={social.name} />
+            <span>{social.label}</span>
+            <strong>{social.name}</strong>
+            <small>{social.description}</small>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor contacto-grid">
+      <div>
+        <p class="etiqueta">Community feedback</p>
+        <h2>Tell me what you would improve</h2>
+        <p>
+          If you find a confusing topic, an incomplete section or an idea that could help others,
+          send it by email. I prefer reviewing each contribution before publishing it.
+        </p>
+      </div>
+      <div class="formulario-contacto panel-contacto formulario-feedback" data-contact-panel data-context="Community feedback">
+        <p class="formulario-intro">This space is for concrete improvements. For now, I review them by email to avoid spam and public personal data.</p>
+        <div class="formulario-opciones">
+          <label>
+            Name
+            <input type="text" name="nombre" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="correo" autocomplete="email" placeholder="your.email@example.com" required />
+          </label>
+        </div>
+        <label>
+          Contribution type
+          <select name="tipo" required>
+            <option value="Content improvement">Content improvement</option>
+            <option value="Visual improvement">Visual improvement</option>
+            <option value="Detected issue">Detected issue</option>
+            <option value="Community idea">Community idea</option>
+          </select>
+        </label>
+        <label>
+          Suggestion
+          <textarea name="sugerencia" rows="5" maxlength="700" data-countable placeholder="Describe what you would improve, where you saw it and why it would help the community." required></textarea>
+        </label>
+        <small class="contador-caracteres" data-counter>0/700</small>
+        <p class="nota-privacidad">Public comments will be considered later, when there is moderation and a secure backend.</p>
+        <div class="acciones-formulario">
+          <button class="boton boton-principal" type="button" data-send-email>Send suggestion by email</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

@@ -31,6 +31,13 @@ const learningActions = [
     action: "Ver proyectos",
   },
 ];
+
+const audience = [
+  "Estudiantes que empiezan programación y necesitan una ruta clara.",
+  "Personas que quieren practicar con ejercicios antes de saltar a proyectos.",
+  "Desarrolladores en formación que quieren documentar y publicar mejor.",
+  "Comunidad que busca ejemplos reales sin perder criterio técnico.",
+];
 ---
 
 <BaseLayout>
@@ -62,7 +69,7 @@ const learningActions = [
       <SectionHeader
         eyebrow="Por qué Chilete DevPath"
         title="Aprender no es acumular carpetas: es construir criterio"
-        description="La idea no es llenar GitHub de archivos. La idea es que cada tema, ejercicio y proyecto tenga una razón para estar publicado."
+        description="No quiero que Chilete DevPath sea solo un GitHub ordenado. Quiero que sea una guía para saber qué aprender, cómo practicar y cuándo algo está listo para compartirse."
       />
       <div class="tarjetas tarjetas-4 valor-grid">
         {valueProps.map((item) => (
@@ -76,19 +83,37 @@ const learningActions = [
   </section>
 
   <section class="seccion seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Para quién es"
+        title="Una web para aprender con guía, práctica y contexto"
+        description="Si estás empezando o quieres reforzar tu base, esta web debe ayudarte a entrar sin perderte entre carpetas, repositorios o nombres técnicos."
+      />
+      <div class="tarjetas tarjetas-4">
+        {audience.map((item) => (
+          <article class="tarjeta audiencia-card">
+            <span class="estado">DevPath</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
     <div class="contenedor metricas-panel">
       <div>
         <p class="etiqueta">Ecosistema en crecimiento</p>
         <h2>Así va creciendo Chilete DevPath</h2>
         <p>
-          Estos números me ayudan a mostrar el avance sin exagerarlo. Cambian cuando realmente
-          agrego temas, proyectos o criterios que aportan a la ruta.
+          Estos números no intentan aparentar más de lo que hay. Los actualizo cuando agrego contenido real:
+          temas revisados, proyectos con contexto o criterios que sí ayudan a publicar mejor.
         </p>
       </div>
       <div class="metricas-grid">
         {metrics.map((metric) => (
           <article class="metrica-card">
-            <strong>{metric.value}</strong>
+            <strong data-count={metric.value}>{metric.value}</strong>
             <span>{metric.label}</span>
             <small>{metric.detail}</small>
           </article>
@@ -131,29 +156,46 @@ const learningActions = [
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Contacto y feedback</p>
-        <h2>Escríbeme una duda, sugerencia o propuesta</h2>
+        <h2>Escríbeme si algo de la ruta puede mejorar</h2>
         <p>
-          Si algo de la ruta te interesa, falta o puede mejorar, puedes enviarme un correo
-          desde aquí. Lo revisaré como parte del crecimiento de la comunidad.
+          Este formulario prepara un correo. Lo uso para recibir dudas, ideas y mejoras sin publicar datos de nadie
+          en la web. Si quieres contacto directo, el botón de WhatsApp está disponible aparte.
         </p>
         <a class="boton boton-secundario boton-mapa" href={site.mapsHref} target="_blank" rel="noopener">
           Ver Chilete en el mapa
         </a>
       </div>
       <div class="formulario-contacto panel-contacto formulario-correo" data-contact-panel data-context="Consulta desde la página de inicio">
-        <p class="formulario-intro">Tu mensaje se prepara en tu cliente de correo. El WhatsApp queda disponible en el botón flotante.</p>
+        <div class="formulario-cabecera">
+          <span>Correo revisable</span>
+          <strong>Tu mensaje se prepara antes de enviarse</strong>
+          <p>La web no guarda tu información. Al hacer clic se abre tu cliente de correo para que revises el contenido y recién lo envíes.</p>
+        </div>
+        <div class="formulario-opciones">
+          <label>
+            Nombre
+            <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+          </label>
+          <label>
+            Correo
+            <input type="email" name="correo" autocomplete="email" placeholder="tu.correo@ejemplo.com" required />
+          </label>
+        </div>
         <label>
-          Nombre
-          <input type="text" name="nombre" autocomplete="name" required />
-        </label>
-        <label>
-          Correo
-          <input type="email" name="correo" autocomplete="email" required />
+          Tipo de mensaje
+          <select name="tipo" required>
+            <option value="Duda sobre la ruta">Duda sobre la ruta</option>
+            <option value="Sugerencia de recurso">Sugerencia de recurso</option>
+            <option value="Propuesta de colaboración">Propuesta de colaboración</option>
+            <option value="Reporte de mejora">Reporte de mejora</option>
+          </select>
         </label>
         <label>
           Mensaje
-          <textarea name="mensaje" rows="5" required></textarea>
+          <textarea name="mensaje" rows="5" maxlength="700" data-countable placeholder="Cuéntame el contexto con claridad. Mientras más concreto, mejor puedo revisar tu mensaje." required></textarea>
         </label>
+        <small class="contador-caracteres" data-counter>0/700</small>
+        <p class="nota-privacidad">Tu mensaje no aparece públicamente ni se guarda en una base de datos. Solo se usa para preparar un correo dirigido a Chilete DevPath.</p>
         <div class="acciones-formulario">
           <button class="boton boton-principal" type="button" data-send-email>Preparar correo</button>
         </div>

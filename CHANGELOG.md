@@ -2,6 +2,26 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.6
+
+- Fecha de cierre: 26/06/2026
+- Estado: en revisión
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Rediseño del hero principal como dashboard de aprendizaje con ruta, terminal, progreso y métricas.
+- Ampliación de páginas en inglés para que no sean versiones resumidas ni mezclen textos en español.
+- Mejora de formularios con selector de tipo, placeholders, contador de caracteres, validación y nota de privacidad.
+- Ajuste de paleta hacia producto educativo tech, con mejor compatibilidad para modo claro y oscuro.
+- Mejora del sistema visual de tarjetas, imágenes y métricas.
+- Incorporación de `robots.txt`, `sitemap.xml` y enlaces `hreflang`.
+- Incorporación de sección "Para quién es" para orientar a estudiantes y comunidad.
+
+### Criterio de cierre
+
+La V4.6 corrige problemas de madurez visual, bilingüe incompleto, formularios básicos y SEO inicial detectados tras revisar la web publicada.
+
 ## V4.5
 
 - Fecha de cierre: 26/06/2026
@@ -53,7 +73,7 @@ La V4.4 corrige puntos de confianza y presentacion detectados en revision visual
 - Incorporacion de boton flotante de WhatsApp con mensaje predeterminado.
 - Incorporacion de formularios estaticos para contacto, recursos y feedback.
 - Creacion de seccion "Por que Chilete DevPath" con propuesta de valor.
-- Incorporacion de metricas estaticas del ecosistema sin simular usuarios.
+- Incorporacion de metricas del ecosistema actualizadas solo cuando cambia contenido real.
 - Creacion de rutas internas para politicas de publicacion.
 - Activacion de rutas inglesas reales para las secciones principales.
 - Simplificacion del boton dia/noche a icono accesible.

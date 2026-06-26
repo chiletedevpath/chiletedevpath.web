@@ -13,6 +13,11 @@ const {
 const canonicalUrl = new URL(Astro.url.pathname, site.url).href;
 const socialImage = `${site.url}/assets/img/og-image.jpg`;
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+const pathname = Astro.url.pathname;
+const spanishPath = pathname.startsWith("/en") ? pathname.replace(/^\/en/, "") || "/" : pathname;
+const englishPath = pathname.startsWith("/en") ? pathname : `/en${pathname === "/" ? "/" : pathname}`;
+const spanishUrl = new URL(spanishPath, site.url).href;
+const englishUrl = new URL(englishPath, site.url).href;
 ---
 
 <!doctype html>
@@ -38,13 +43,13 @@ const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Chilete DevPath, marca personal de Adrian Pisco para aprendizaje y proyectos Full Stack." />
+    <meta property="og:image:alt" content="Chilete DevPath, marca personal de Adrián Pisco para aprendizaje y proyectos Full Stack." />
     <meta property="og:locale" content="es_PE" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content="Chilete DevPath, marca personal de Adrian Pisco para aprendizaje y proyectos Full Stack." />
+    <meta name="twitter:image:alt" content="Chilete DevPath, marca personal de Adrián Pisco para aprendizaje y proyectos Full Stack." />
     <meta name="theme-color" content="#f5f7f5" />
     <meta name="cdp-email" content={site.email} />
     <script is:inline>
@@ -56,6 +61,9 @@ const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
     </script>
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="es" href={spanishUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="x-default" href={spanishUrl} />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/img/marca-simbolo-nav.png" />
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />

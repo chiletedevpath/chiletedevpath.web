@@ -14,6 +14,8 @@ if (typeof document !== "undefined") {
   const enlacesMenu = document.querySelectorAll(".menu a[href^='#']");
   const panelesContacto = document.querySelectorAll("[data-contact-panel]");
   const correoContacto = document.querySelector("meta[name='cdp-email']")?.content ?? "";
+  const camposContables = document.querySelectorAll("[data-countable]");
+  const metricasAnimadas = document.querySelectorAll("[data-count]");
 
   if (anio) {
     anio.textContent = new Date().getFullYear();
@@ -31,7 +33,7 @@ if (typeof document !== "undefined") {
   window.addEventListener("scroll", actualizarEncabezado, { passive: true });
 
   const elementosAnimados = document.querySelectorAll(
-    ".hero-texto, .hero-visual, .hero-indicadores, .hero-marca-panel, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-social, .politica-documento, .criterios-resumen, .pie-cta"
+    ".hero-texto, .hero-visual, .hero-indicadores, .dashboard-step, .dashboard-terminal, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-social, .politica-documento, .criterios-resumen, .pie-cta"
   );
 
   elementosAnimados.forEach((elemento) => {
@@ -121,10 +123,74 @@ if (typeof document !== "undefined") {
       .join("\n");
   };
 
+  camposContables.forEach((campo) => {
+    const contador = campo.closest("[data-contact-panel]")?.querySelector("[data-counter]");
+    const limite = campo.getAttribute("maxlength") || "700";
+
+    const actualizar = () => {
+      if (contador) {
+        contador.textContent = `${campo.value.length}/${limite}`;
+      }
+    };
+
+    actualizar();
+    campo.addEventListener("input", actualizar);
+  });
+
+  const animarNumero = (elemento) => {
+    const destino = Number(elemento.dataset.count || elemento.textContent);
+
+    if (!Number.isFinite(destino)) {
+      return;
+    }
+
+    const duracion = 900;
+    const inicio = performance.now();
+
+    const pintar = (tiempo) => {
+      const avance = Math.min((tiempo - inicio) / duracion, 1);
+      const suavizado = 1 - Math.pow(1 - avance, 3);
+      elemento.textContent = String(Math.round(destino * suavizado));
+
+      if (avance < 1) {
+        requestAnimationFrame(pintar);
+      }
+    };
+
+    requestAnimationFrame(pintar);
+  };
+
+  if ("IntersectionObserver" in window && metricasAnimadas.length > 0) {
+    const observadorMetricas = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            animarNumero(entrada.target);
+            observadorMetricas.unobserve(entrada.target);
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    metricasAnimadas.forEach((metrica) => observadorMetricas.observe(metrica));
+  } else {
+    metricasAnimadas.forEach(animarNumero);
+  }
+
   panelesContacto.forEach((panel) => {
     const botonCorreo = panel.querySelector("[data-send-email]");
 
     botonCorreo?.addEventListener("click", () => {
+      const camposInvalidos = [...panel.querySelectorAll("input, textarea, select")].filter(
+        (campo) => !campo.checkValidity()
+      );
+
+      if (camposInvalidos.length > 0) {
+        camposInvalidos[0].reportValidity();
+        return;
+      }
+
       const asunto = encodeURIComponent(panel.dataset.context || "Contacto Chilete DevPath");
       const cuerpo = encodeURIComponent(construirMensaje(panel));
       window.location.href = `mailto:${correoContacto}?subject=${asunto}&body=${cuerpo}`;

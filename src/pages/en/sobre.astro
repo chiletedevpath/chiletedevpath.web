@@ -1,15 +1,83 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import { site } from "../../data/site.js";
+
+const principles = [
+  {
+    title: "Origin",
+    text: "Chilete is part of the name because it represents the starting point of the brand, not a decorative reference.",
+  },
+  {
+    title: "Path",
+    text: "DevPath represents the route: learning in stages, practicing, reviewing and turning progress into something useful for others.",
+  },
+  {
+    title: "Criteria",
+    text: "The goal is not to publish for the sake of publishing. Each piece of content should be understandable, reviewable and useful.",
+  },
+];
 ---
 
 <BaseLayout title="About Chilete DevPath">
   <PageHero
     eyebrow="About Chilete DevPath"
     title="A technical learning brand with origin, path and judgment"
-    description="Chilete DevPath organizes learning, resources, projects and policies to turn technical progress into useful public evidence."
+    description="Chilete DevPath is how I am organizing my learning, projects and resources to share them with a community that also wants to grow."
     variant="sobre"
     visualTitle="Chilete + DevPath"
     visualText="Local origin, technical path and responsible publishing."
   />
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor sobre-marca-grid">
+      <div>
+        <p class="etiqueta">What is Chilete DevPath</p>
+        <h2>My learning route turned into a public ecosystem</h2>
+        <p>
+          Chilete DevPath was not created to be a list of links. It was created to organize what I am learning
+          as a Systems and Informatics Engineering student and future Full Stack developer.
+        </p>
+        <p>
+          Here, I want each person to find a clear route: understand the base, practice with exercises,
+          review projects with context and learn to publish without neglecting authorship, privacy or technical criteria.
+        </p>
+        <div class="sobre-claves">
+          <span>Route before disorder</span>
+          <span>Evidence before appearance</span>
+          <span>Community before showcase</span>
+        </div>
+      </div>
+      <div class="mapa-identidad">
+        <span>Brand origin</span>
+        <strong>{site.location}</strong>
+        <p>
+          Chilete is my starting point. I mention it as personal and territorial identity,
+          without using institutional brands or claiming official representation.
+        </p>
+        <a class="boton boton-secundario boton-mapa" href={site.mapsHref} target="_blank" rel="noopener">
+          Open location on map
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Brand difference"
+        title="The website should explain the path, not decorate it"
+        description="Each section exists to guide: learn, practice, show evidence, publish and share responsibly."
+      />
+      <div class="tarjetas tarjetas-3">
+        {principles.map((item) => (
+          <article class="tarjeta valor-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>

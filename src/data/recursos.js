@@ -33,6 +33,124 @@ export const resources = [
   },
 ];
 
+export const resourcesEn = [
+  {
+    title: "Solved exercises",
+    description:
+      "Use them to study an already solved approach, understand the reasoning and compare it with your own answer.",
+    status: "Growing",
+    type: "Study solution",
+    href: "https://github.com/chiletedevpath/aprendizaje",
+  },
+  {
+    title: "Practice challenges",
+    description:
+      "Use them to practice before checking a solution. They are training material before moving to the next topic.",
+    status: "Planned",
+    type: "Solve first",
+    href: "https://github.com/chiletedevpath/aprendizaje",
+  },
+  {
+    title: "Technical glossary",
+    description:
+      "Use it to review key concepts with clear language, short examples and a learning-first approach.",
+    status: "Initial base",
+    type: "Quick reference",
+    href: "https://github.com/chiletedevpath/aprendizaje",
+  },
+  {
+    title: "Guides and criteria",
+    description:
+      "Use them to document, publish and review projects without exposing sensitive information or inflating progress.",
+    status: "Active",
+    type: "Publish with criteria",
+    href: "/en/criterios/",
+  },
+];
+
+export const policiesEn = [
+  {
+    slug: "politica-editorial",
+    code: "CDP-POL-001",
+    title: "Editorial policy",
+    icon: "editorial",
+    tone: "editorial",
+    highlight: "Clear authorship, visible sources and honest context.",
+    objective:
+      "Define how Chilete DevPath documents authorship, sources, academic context and collaborations.",
+    scope: "Applies to repositories, website content, public resources and community material.",
+    owner: "Chilete DevPath",
+    version: "1.0",
+    status: "Active",
+    href: "/politicas/politica-editorial/",
+    principles: [
+      "Separate original work, classroom learning and content inspired by external sources.",
+      "Reference institutions, courses or sources only when they add context and without appropriating their brand.",
+      "Do not present academic submissions as commercial products or final portfolio pieces before they reach that level.",
+    ],
+  },
+  {
+    slug: "uso-responsable-ia",
+    code: "CDP-POL-002",
+    title: "Responsible AI use",
+    icon: "ia",
+    tone: "ia",
+    highlight: "AI supports the process; it does not replace judgment or learning.",
+    objective:
+      "Use AI as support for learning, review and structure without simulating personal mastery.",
+    scope: "Applies to exercises, documentation, publications, reviews and editorial support.",
+    owner: "Chilete DevPath",
+    version: "1.0",
+    status: "Active",
+    href: "/politicas/uso-responsable-ia/",
+    principles: [
+      "Disclose AI use when it significantly shaped structure, writing or review.",
+      "Validate technical content before publishing and do not present generated answers as personal mastery.",
+      "Use AI to learn better, not to avoid practice, analysis or academic responsibility.",
+    ],
+  },
+  {
+    slug: "bienestar-tecnico",
+    code: "CDP-POL-003",
+    title: "Technical wellbeing",
+    icon: "bienestar",
+    tone: "bienestar",
+    highlight: "Learning also requires rest, pauses and health.",
+    objective:
+      "Promote sustainable learning, active pauses, rest and physical and mental care.",
+    scope: "Applies to the community, students and people using the learning path.",
+    owner: "Chilete DevPath",
+    version: "1.0",
+    status: "Active",
+    href: "/politicas/bienestar-tecnico/",
+    principles: [
+      "Avoid normalizing excessive hours as if they were required to learn programming.",
+      "Promote active pauses, study order and rest as real parts of technical growth.",
+      "Remember that progress also means protecting energy, health and mental clarity.",
+    ],
+  },
+  {
+    slug: "publicacion-segura",
+    code: "CDP-POL-004",
+    title: "Safe publishing",
+    icon: "seguridad",
+    tone: "seguridad",
+    highlight: "Before publishing, privacy, brands and sensitive data are reviewed.",
+    objective:
+      "Avoid exposing personal data, credentials, third-party brands or sensitive content.",
+    scope: "Applies before publishing content on GitHub, the website, portfolio or social media.",
+    owner: "Chilete DevPath",
+    version: "1.0",
+    status: "Active",
+    href: "/politicas/publicacion-segura/",
+    principles: [
+      "Do not publish IDs, phone numbers, emails, addresses, credentials or data that looks real.",
+      "Avoid logos, brands, screenshots or company information without permission or safe context.",
+      "Review repositories, images, documents and links before turning them into public content.",
+    ],
+  },
+];
+
 export const policies = [
   {
     slug: "politica-editorial",

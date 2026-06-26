@@ -7,7 +7,7 @@ const {
   description,
   variant = "ruta",
   visualTitle = "Espacio visual reservado",
-  visualText = "Aqui ira una imagen propia de Chilete DevPath.",
+  visualText = "Visual editorial de Chilete DevPath.",
   showVisual = true,
   imageSrc,
   imageAlt = "",
@@ -26,7 +26,7 @@ const {
         {imageSrc ? (
           <img class="page-hero-foto" src={imageSrc} alt={imageAlt} />
         ) : (
-          <SectionVisual variant={variant} title={`${visualTitle}. ${visualText}`} />
+          <SectionVisual variant={variant} title={visualTitle} />
         )}
       </div>
     )}

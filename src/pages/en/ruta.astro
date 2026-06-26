@@ -1,15 +1,71 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import RouteStage from "../../components/RouteStage.astro";
+import TechIcon from "../../components/TechIcon.astro";
+import { routeEntriesEn, routeStagesEn, techStack } from "../../data/ruta.js";
 ---
 
 <BaseLayout title="Learning Path | Chilete DevPath">
   <PageHero
     eyebrow="Learning path"
     title="Start with fundamentals and move forward with real practice"
-    description="The path organizes what to learn first, what to practice next and how to connect progress with projects."
+    description="This path organizes what to understand first, what to practice next and how to connect progress with real projects."
     variant="ruta"
-    visualTitle="Progress map"
-    visualText="A guided sequence from fundamentals to projects."
+    visualTitle="Progressive learning path"
+    visualText="Clean visual sequence without overlaid text."
   />
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Guided stages"
+        title="A route from foundation to production habits"
+        description="Each block links to the learning repository and shows the expected result of that stage."
+      />
+      <div class="ruta-etapas">
+        {routeStagesEn.map((stage) => <RouteStage stage={stage} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Direct access"
+        title="Open a topic according to your current level"
+        description="Use these entries to practice without getting lost in folders."
+      />
+      <div class="tarjetas tarjetas-3">
+        {routeEntriesEn.map((entry) => (
+          <article class="tarjeta tarjeta-con-enlace">
+            <span class="estado">{entry.status}</span>
+            <h3>{entry.title}</h3>
+            <p>{entry.description}</p>
+            <a href={entry.href} target="_blank" rel="noopener">Open section</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Technologies in practice"
+        title="Tools used across the path"
+        description="Each technology appears because it solves something in the route, not as decoration."
+      />
+      <div class="tech-grid">
+        {techStack.map((tech) => (
+          <article class="tech-card">
+            <TechIcon name={tech.name} />
+            <h3>{tech.name}</h3>
+            <p>{tech.descriptionEn ?? tech.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>

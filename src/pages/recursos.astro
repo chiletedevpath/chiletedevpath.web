@@ -9,10 +9,10 @@ import { resources } from "../data/recursos.js";
   <PageHero
     eyebrow="Recursos"
     title="Practica, revisa y avanza con material organizado"
-    description="Esta sección reúne material para practicar y consultar sin perderse entre carpetas: ejercicios, retos, glosarios y criterios."
+    description="Esta sección debe ayudarte a encontrar qué resolver, qué consultar y qué revisar sin tener que adivinar en qué carpeta está cada cosa."
     variant="recursos"
-    visualTitle="Biblioteca DevPath"
-    visualText="Material para resolver, estudiar y publicar con criterio."
+    visualTitle="Biblioteca de práctica"
+    visualText="Recursos organizados por uso."
   />
 
   <section class="seccion">
@@ -20,7 +20,7 @@ import { resources } from "../data/recursos.js";
       <SectionHeader
         eyebrow="Cómo usar esta sección"
         title="Elige el recurso según tu momento de aprendizaje"
-        description="Si estás practicando, empieza por retos. Si ya lo intentaste, revisa ejercicios desarrollados. Si un concepto no queda claro, consulta el glosario."
+        description="Si quieres practicar, entra a retos. Si ya intentaste resolver algo, revisa ejercicios desarrollados. Si un término no queda claro, usa el glosario como apoyo."
       />
       <div class="tarjetas tarjetas-4">
         {resources.map((resource) => (
@@ -42,31 +42,40 @@ import { resources } from "../data/recursos.js";
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Sugerencias de recursos</p>
-        <h2>Ayúdame a priorizar qué material falta</h2>
+        <h2>Propón un recurso que realmente ayude</h2>
         <p>
-          Si hay un tema que debería tener ejercicios, glosario o laboratorio, envíame la idea.
-          La revisaré antes de publicarla para que realmente aporte a la ruta.
+          Si notas que falta un ejercicio, glosario, guía o laboratorio, envíame la idea con contexto.
+          No todo se publicará de inmediato: primero revisaré si encaja con la ruta y si aporta valor real.
         </p>
       </div>
       <div class="formulario-contacto panel-contacto formulario-recursos" data-contact-panel data-context="Sugerencia de recurso">
-        <p class="formulario-intro">La sugerencia se enviará por correo para revisarla con calma antes de convertirla en contenido público.</p>
+        <div class="formulario-cabecera">
+          <span>Recurso propuesto</span>
+          <strong>Dime qué falta y para qué serviría</strong>
+          <p>Mientras más concreto sea el problema, más fácil será convertirlo en una práctica útil para la comunidad.</p>
+        </div>
+        <div class="formulario-opciones">
+          <label>
+            Tema sugerido
+            <input type="text" name="tema" placeholder="Ejemplo: arreglos en Java" required />
+          </label>
+          <label>
+            Tipo de recurso
+            <select name="tipo" required>
+              <option value="Ejercicio">Ejercicio</option>
+              <option value="Reto">Reto</option>
+              <option value="Glosario">Glosario</option>
+              <option value="Guía">Guía</option>
+              <option value="Laboratorio">Laboratorio</option>
+            </select>
+          </label>
+        </div>
         <label>
-          Tema sugerido
-          <input type="text" name="tema" required />
+          ¿Por qué debería estar en la ruta?
+          <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explica qué problema ayudaría a resolver o qué tema falta reforzar." required></textarea>
         </label>
-        <label>
-          Tipo de recurso
-          <select name="tipo" required>
-            <option value="Ejercicio">Ejercicio</option>
-            <option value="Reto">Reto</option>
-            <option value="Glosario">Glosario</option>
-            <option value="Guía">Guía</option>
-          </select>
-        </label>
-        <label>
-          Motivo
-          <textarea name="motivo" rows="5" required></textarea>
-        </label>
+        <small class="contador-caracteres" data-counter>0/700</small>
+        <p class="nota-privacidad">Primero revisaré la utilidad, claridad, fuentes y relación con la ruta antes de convertir la idea en contenido público.</p>
         <div class="acciones-formulario">
           <button class="boton boton-principal" type="button" data-send-email>Enviar idea por correo</button>
         </div>

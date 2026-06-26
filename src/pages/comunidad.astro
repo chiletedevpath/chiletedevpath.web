@@ -10,10 +10,10 @@ import { socials } from "../data/site.js";
   <PageHero
     eyebrow="Comunidad"
     title="Aprender acompañado hace el camino más sostenible"
-    description="Quiero que Chilete DevPath también sea un espacio para compartir avances, dudas y aprendizajes sin perder el criterio."
+    description="Quiero que Chilete DevPath también sea un espacio para conversar sobre aprendizaje, compartir avances y mejorar la ruta con aportes reales."
     variant="comunidad"
-    visualTitle="Red de aprendizaje"
-    visualText="Canales para compartir avance, dudas y aprendizaje responsable."
+    visualTitle="Comunidad conectada"
+    visualText="Canales oficiales y aportes revisados."
   />
 
   <section class="seccion contacto">
@@ -21,7 +21,7 @@ import { socials } from "../data/site.js";
       <SectionHeader
         eyebrow="Canales oficiales"
         title="Sigue el avance por el canal que uses mejor"
-        description="GitHub guarda la evidencia técnica. Las redes me ayudan a explicar el proceso, compartir avances y acercar la ruta a más estudiantes."
+        description="GitHub conserva el código y la evidencia. Las redes me sirven para explicar el proceso con un lenguaje más cercano y compartir avances de la marca."
       />
       <div class="redes" aria-label="Canales oficiales de Chilete DevPath">
         {socials.map((social) => (
@@ -40,26 +40,43 @@ import { socials } from "../data/site.js";
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Feedback de comunidad</p>
-        <h2>Cuéntame qué mejorarías</h2>
+        <h2>Cuéntame qué mejorarías y por qué</h2>
         <p>
-          Si ves un tema confuso, una sección incompleta o una idea que pueda ayudar a otros,
-          déjame la sugerencia por correo. Prefiero revisar cada aporte antes de publicarlo.
+          Si encuentras un tema confuso, una sección incompleta o una idea que podría ayudar a más estudiantes,
+          puedes enviármela por correo. Prefiero revisar cada aporte antes de convertirlo en contenido público.
         </p>
       </div>
       <div class="formulario-contacto panel-contacto formulario-feedback" data-contact-panel data-context="Feedback de comunidad">
-        <p class="formulario-intro">Este espacio es para sugerencias concretas. Mientras no exista backend, las revisaré por correo.</p>
+        <div class="formulario-cabecera">
+          <span>Mejora revisada</span>
+          <strong>Ayúdame a mejorar la ruta con contexto</strong>
+          <p>No busco comentarios sueltos. Busco ideas claras: qué viste, qué problema genera y cómo podría ayudar a la comunidad.</p>
+        </div>
+        <div class="formulario-opciones">
+          <label>
+            Nombre
+            <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+          </label>
+          <label>
+            Correo
+            <input type="email" name="correo" autocomplete="email" placeholder="tu.correo@ejemplo.com" required />
+          </label>
+        </div>
         <label>
-          Nombre
-          <input type="text" name="nombre" autocomplete="name" required />
-        </label>
-        <label>
-          Correo
-          <input type="email" name="correo" autocomplete="email" required />
+          Tipo de aporte
+          <select name="tipo" required>
+            <option value="Mejora de contenido">Mejora de contenido</option>
+            <option value="Mejora visual">Mejora visual</option>
+            <option value="Error detectado">Error detectado</option>
+            <option value="Idea para comunidad">Idea para comunidad</option>
+          </select>
         </label>
         <label>
           Sugerencia
-          <textarea name="sugerencia" rows="5" required></textarea>
+          <textarea name="sugerencia" rows="5" maxlength="700" data-countable placeholder="Describe qué mejorarías, dónde lo viste y por qué ayudaría a la comunidad." required></textarea>
         </label>
+        <small class="contador-caracteres" data-counter>0/700</small>
+        <p class="nota-privacidad">Por ahora no habrá comentarios públicos. Primero necesito un sistema de moderación y seguridad para evitar spam, exposición de datos o contenido fuera de contexto.</p>
         <div class="acciones-formulario">
           <button class="boton boton-principal" type="button" data-send-email>Enviar sugerencia por correo</button>
         </div>

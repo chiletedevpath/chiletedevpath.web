@@ -1,8 +1,8 @@
 export const site = {
   name: "Chilete DevPath",
-  author: "Adrian Pisco",
+  author: "Adrián Pisco",
   url: "https://chiletedevpath.github.io",
-  version: "V4.5",
+  version: "V4.6",
   description:
     "Chilete DevPath es la marca personal de Adrián Pisco para documentar aprendizaje, proyectos, criterio técnico y comunidad.",
   email: "chiletedevpath@gmail.com",
@@ -60,6 +60,65 @@ export const valueProps = [
   {
     title: "Origen con identidad",
     text: "La marca nace desde Chilete, Cajamarca, con una mirada local que apunta a comunidad global.",
+  },
+];
+
+export const valuePropsEn = [
+  {
+    title: "Ordered learning",
+    text: "The path avoids jumping from technology to technology without a base. First understand, then practice.",
+  },
+  {
+    title: "Real evidence",
+    text: "Projects show progress, context and judgment; they are not sold as portfolio pieces before they are ready.",
+  },
+  {
+    title: "Responsible criteria",
+    text: "Each publication considers authorship, sources, privacy, AI and technical wellbeing.",
+  },
+  {
+    title: "Origin with identity",
+    text: "The brand starts from Chilete, Cajamarca, with a local view that aims for a global community.",
+  },
+];
+
+export const socialsEn = [
+  {
+    name: "GitHub",
+    label: "Main repository",
+    description: "Code, projects and technical evolution of the ecosystem.",
+    href: "https://github.com/chiletedevpath",
+    primary: true,
+  },
+  {
+    name: "LinkedIn",
+    label: "Professional profile",
+    description: "Trajectory, learning process and professional profile.",
+    href: "https://www.linkedin.com/in/adrian-pisco",
+  },
+  {
+    name: "Discord",
+    label: "Community space",
+    description: "Channel to share progress, practice and community.",
+    href: "https://discord.gg/4XsXRT4rG",
+  },
+  {
+    name: "Instagram",
+    label: "Visual content",
+    description: "Visual posts about brand and learning.",
+    href: "https://www.instagram.com/chiletedevpath/",
+  },
+  {
+    name: "TikTok",
+    label: "Short content",
+    description: "Short pieces to learn and follow the process.",
+    href: "https://www.tiktok.com/@chiletedevpath",
+  },
+  {
+    name: "Facebook",
+    label: "Community",
+    description: "Social presence of Chilete DevPath.",
+    href: "https://web.facebook.com/chiletedevpath",
   },
 ];
 

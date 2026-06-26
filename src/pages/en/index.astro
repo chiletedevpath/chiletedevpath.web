@@ -2,13 +2,20 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
-import { valueProps } from "../../data/site.js";
+import { valuePropsEn } from "../../data/site.js";
 
 const metricsEn = [
   { label: "Available topics", value: "11", detail: "Path from fundamentals to backend" },
   { label: "Academic projects", value: "3", detail: "Evidence with status and progress" },
   { label: "Active policies", value: "4", detail: "Publishing, AI, wellbeing and authorship" },
   { label: "Active paths", value: "4", detail: "Foundation, software, web-data and specialization" },
+];
+
+const audienceEn = [
+  "Students starting programming who need a clear path.",
+  "People who want to practice with exercises before jumping into projects.",
+  "Developers in training who want to document and publish better.",
+  "Community members looking for real examples without losing technical judgment.",
 ];
 ---
 
@@ -30,10 +37,28 @@ const metricsEn = [
         description="The ecosystem explains what to practice, what to review and how to publish technical progress responsibly."
       />
       <div class="tarjetas tarjetas-4">
-        {valueProps.map((item) => (
+        {valuePropsEn.map((item) => (
           <article class="tarjeta valor-card">
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="Who it is for"
+        title="A website for guided learning, practice and context"
+        description="Chilete DevPath is designed for people who want to move step by step and understand why each piece of content exists."
+      />
+      <div class="tarjetas tarjetas-4">
+        {audienceEn.map((item) => (
+          <article class="tarjeta audiencia-card">
+            <span class="estado">DevPath</span>
+            <p>{item}</p>
           </article>
         ))}
       </div>
@@ -50,7 +75,7 @@ const metricsEn = [
       <div class="metricas-grid">
         {metricsEn.map((metric) => (
           <article class="metrica-card">
-            <strong>{metric.value}</strong>
+            <strong data-count={metric.value}>{metric.value}</strong>
             <span>{metric.label}</span>
             <small>{metric.detail}</small>
           </article>

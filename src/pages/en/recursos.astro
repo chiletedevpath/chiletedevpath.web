@@ -1,15 +1,81 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import { resourcesEn } from "../../data/recursos.js";
 ---
 
 <BaseLayout title="Resources | Chilete DevPath">
   <PageHero
     eyebrow="Resources"
     title="Practice, review and move forward with organized material"
-    description="Resources are organized as exercises, challenges, glossary entries and publishing criteria."
+    description="This section gathers exercises, challenges, glossary entries and criteria so students can practice without getting lost in folders."
     variant="recursos"
     visualTitle="DevPath library"
-    visualText="Material to solve, study and consult."
+    visualText="Material to solve, study and publish with criteria."
   />
+
+  <section class="seccion">
+    <div class="contenedor">
+      <SectionHeader
+        eyebrow="How to use this section"
+        title="Choose a resource according to your learning moment"
+        description="If you are practicing, start with challenges. If you already tried, review solved exercises. If a concept is unclear, open the glossary."
+      />
+      <div class="tarjetas tarjetas-4">
+        {resourcesEn.map((resource) => (
+          <article class="tarjeta recurso-card">
+            <span class="estado">{resource.status}</span>
+            <small>{resource.type}</small>
+            <h3>{resource.title}</h3>
+            <p>{resource.description}</p>
+            <a href={resource.href} target={resource.href.startsWith("http") ? "_blank" : undefined} rel={resource.href.startsWith("http") ? "noopener" : undefined}>
+              Open resource
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor contacto-grid">
+      <div>
+        <p class="etiqueta">Resource suggestions</p>
+        <h2>Help me prioritize missing material</h2>
+        <p>
+          If a topic needs exercises, a glossary entry or a lab, send the idea.
+          I review it before turning it into public content.
+        </p>
+      </div>
+      <div class="formulario-contacto panel-contacto formulario-recursos" data-contact-panel data-context="Resource suggestion">
+        <p class="formulario-intro">This prepares an email. I review suggestions before publishing them as learning material.</p>
+        <div class="formulario-opciones">
+          <label>
+            Suggested topic
+            <input type="text" name="tema" placeholder="Example: Java arrays" required />
+          </label>
+          <label>
+            Resource type
+            <select name="tipo" required>
+              <option value="Exercise">Exercise</option>
+              <option value="Challenge">Challenge</option>
+              <option value="Glossary">Glossary</option>
+              <option value="Guide">Guide</option>
+              <option value="Lab">Lab</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Why should it be part of the path?
+          <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explain what problem it helps solve or what topic needs reinforcement." required></textarea>
+        </label>
+        <small class="contador-caracteres" data-counter>0/700</small>
+        <p class="nota-privacidad">Suggestions are not published automatically. They are reviewed for usefulness, clarity and editorial criteria.</p>
+        <div class="acciones-formulario">
+          <button class="boton boton-principal" type="button" data-send-email>Prepare email</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

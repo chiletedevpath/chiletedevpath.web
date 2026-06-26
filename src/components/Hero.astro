@@ -4,13 +4,13 @@
 <section id="inicio" class="hero">
   <div class="contenedor hero-contenido">
     <div class="hero-texto">
-      <p class="etiqueta">Chilete, Cajamarca, Peru | Desarrollo Full Stack</p>
+      <p class="etiqueta">Desde Chilete, Cajamarca al desarrollo Full Stack</p>
 
-      <h1>Chilete DevPath</h1>
+      <h1>Aprende programación con ruta, práctica y evidencia real</h1>
 
       <p class="hero-descripcion">
-        Una ruta pública para aprender programación, practicar con orden, revisar proyectos
-        reales y publicar contenido técnico con criterio.
+        Chilete DevPath organiza mi camino de aprendizaje para que más estudiantes puedan empezar,
+        practicar y publicar mejor sin perder criterio técnico.
       </p>
 
       <p class="hero-dinamico" aria-label="Mensajes principales de Chilete DevPath">
@@ -22,38 +22,47 @@
 
       <div class="acciones">
         <a class="boton boton-principal" href="/ruta/">Ver ruta de aprendizaje</a>
-        <a class="boton boton-secundario" href="https://github.com/chiletedevpath" target="_blank" rel="noopener">
+        <a class="boton boton-secundario boton-externo" href="https://github.com/chiletedevpath" target="_blank" rel="noopener">
           Explorar GitHub
         </a>
       </div>
 
       <div class="hero-indicadores" aria-label="Resumen de la marca">
-        <span>Origen con identidad</span>
-        <span>Ruta tecnica visible</span>
-        <span>Comunidad en construcción</span>
+        <span>11 temas publicados</span>
+        <span>3 proyectos con contexto</span>
+        <span>4 criterios activos</span>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="hero-imagen">
-        <img
-          src="/assets/img/editorial/hero-inicio-candidato-v1.jpg"
-          width="1792"
-          height="1024"
-          alt="Representacion visual del ecosistema Chilete DevPath."
-        />
-        <div class="hero-marca-panel" aria-label="Enfoque de Chilete DevPath">
+    <div class="hero-visual" aria-label="Panel visual de avance Chilete DevPath">
+      <div class="hero-dashboard">
+        <div class="dashboard-top">
+          <span class="dashboard-status">Ruta activa</span>
+          <strong>Chilete DevPath</strong>
+        </div>
+
+        <div class="dashboard-path" aria-label="Etapas de aprendizaje">
+          {["Fundamentos", "Web", "Datos", "Backend", "Proyectos"].map((item, index) => (
+            <div class="dashboard-step">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{item}</strong>
+            </div>
+          ))}
+        </div>
+
+        <div class="dashboard-terminal" aria-label="Resumen técnico">
+          <span>devpath@chilete:~$</span>
+          <p>aprender --orden --practica --criterio</p>
+          <small>publicando avance verificable...</small>
+        </div>
+
+        <div class="dashboard-progress">
           <div>
-            <span>Origen</span>
-            <strong>Chilete</strong>
+            <span>Base técnica</span>
+            <strong>70%</strong>
           </div>
-          <div>
-            <span>Ruta</span>
-            <strong>Aprendizaje</strong>
-          </div>
-          <div>
-            <span>Construye</span>
-            <strong>Proyectos</strong>
+          <div class="dashboard-barra">
+            <span></span>
           </div>
         </div>
       </div>
