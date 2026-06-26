@@ -1,0 +1,334 @@
+﻿/* Ruta de aprendizaje */
+#ruta {
+  position: relative;
+  overflow: hidden;
+}
+
+#ruta::before {
+  content: "";
+  position: absolute;
+  right: -10%;
+  top: 8%;
+  width: 42%;
+  height: 70%;
+  border-left: 22px solid rgba(242, 212, 107, 0.24);
+  border-radius: 100% 0 0 100%;
+  transform: rotate(14deg);
+}
+
+#ruta .contenedor {
+  position: relative;
+  z-index: 1;
+}
+
+.ruta-etapas {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.ruta-etapas::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-raiz),
+    var(--color-camino),
+    var(--color-agua),
+    var(--color-acento)
+  );
+  opacity: 0.7;
+}
+
+.ruta-etapa {
+  position: relative;
+  padding: 28px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background-color: var(--color-fondo);
+  box-shadow: var(--sombra-suave);
+  isolation: isolate;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ruta-etapa::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(245, 197, 66, 0.16), transparent 44%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ruta-etapa:hover {
+  border-color: var(--color-acento);
+  transform: translateY(-4px);
+}
+
+.ruta-etapa:hover::after {
+  opacity: 1;
+}
+
+.ruta-numero {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background-color: var(--color-camino);
+  color: var(--color-principal);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 6px rgba(242, 212, 107, 0.24);
+}
+
+.ruta-etapa h3 {
+  font-family: var(--fuente-titulos);
+  color: var(--color-principal);
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.ruta-meta {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-acento);
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ruta-lista {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  counter-reset: ruta-tema;
+}
+
+.ruta-lista li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--color-texto-suave);
+  counter-increment: ruta-tema;
+}
+
+.ruta-lista li:hover {
+  color: var(--color-texto);
+}
+
+.ruta-lista a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.ruta-lista a:hover,
+.ruta-lista a:focus-visible {
+  color: var(--color-acento);
+  border-color: currentColor;
+}
+
+.ruta-lista li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.68em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-acento);
+  box-shadow: 0 0 0 4px rgba(47, 143, 91, 0.12);
+}
+
+.ruta-resultado {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(216, 207, 189, 0.9);
+  color: var(--color-texto);
+  font-size: 0.94rem;
+}
+
+.ruta-pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.ruta-pie a,
+.contenido-item a,
+.recurso-card a {
+  color: var(--color-acento);
+  font-weight: 800;
+}
+
+.ruta-pie a:hover,
+.contenido-item a:hover,
+.recurso-card a:hover {
+  color: var(--color-principal);
+}
+
+.ruta-accion {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background-color: var(--color-fondo);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.ruta-accion p {
+  max-width: 720px;
+  color: var(--color-texto-suave);
+}
+
+.contenido-ruta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contenido-item {
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-suave);
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.contenido-item h3 {
+  color: var(--color-principal);
+  font-family: var(--fuente-titulos);
+  font-size: 1.08rem;
+}
+
+.contenido-item p {
+  color: var(--color-texto-suave);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tech-badge {
+  min-height: 158px;
+  padding: 18px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--color-superficie) 88%, transparent), transparent),
+    var(--color-superficie);
+  box-shadow: var(--sombra-suave);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tech-badge:hover {
+  border-color: var(--color-acento);
+  transform: translateY(-3px);
+}
+
+.tech-icono {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background-color: var(--color-principal);
+  color: var(--color-superficie);
+  display: grid;
+  place-items: center;
+}
+
+.tech-icono svg {
+  width: 38px;
+  height: 38px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tech-badge strong {
+  color: var(--color-principal);
+  font-family: var(--fuente-titulos);
+  font-size: 1.08rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tech-badge p {
+  color: var(--color-texto-suave);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.tech-markup .tech-icono {
+  background-color: #d96b2b;
+}
+
+.tech-style .tech-icono {
+  background-color: #2878b8;
+}
+
+.tech-script .tech-icono {
+  background-color: #c9a72d;
+  color: #17252b;
+}
+
+.tech-server .tech-icono {
+  background-color: #5b6595;
+}
+
+.tech-java .tech-icono {
+  background-color: #b94732;
+}
+
+.tech-data .tech-icono {
+  background-color: #2c6f86;
+}
+
+.tech-backend .tech-icono {
+  background-color: #2b7a5b;
+}
+
+.tech-web .tech-icono {
+  background-color: #5b4a86;
+}
+
+.recurso-card small {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-acento);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}

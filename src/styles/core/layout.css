@@ -1,0 +1,71 @@
+﻿/* Estructura general */
+.seccion {
+  padding: 80px 0;
+}
+
+.seccion-clara {
+  background-color: var(--color-superficie);
+}
+
+.etiqueta {
+  color: var(--color-acento);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.seccion h2 {
+  font-family: var(--fuente-titulos);
+  color: var(--color-principal);
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.seccion-descripcion {
+  max-width: 760px;
+  color: var(--color-texto-suave);
+  margin-bottom: 32px;
+}
+
+.section-header {
+  position: relative;
+}
+
+.section-header h2,
+.page-hero h1 {
+  text-wrap: balance;
+}
+
+.miga {
+  margin-bottom: 18px;
+  color: color-mix(in srgb, var(--color-texto-suave) 78%, var(--color-principal));
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.miga ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.miga li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.miga li + li::before {
+  content: "/";
+  color: var(--color-progreso);
+}
+
+.miga a {
+  color: inherit;
+}
+
+.miga a:hover {
+  color: var(--color-acento);
+}

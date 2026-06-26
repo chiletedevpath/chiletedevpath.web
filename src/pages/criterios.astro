@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
 import PolicyIcon from "../components/PolicyIcon.astro";
 import { policies } from "../data/recursos.js";
 ---
@@ -8,11 +9,7 @@ import { policies } from "../data/recursos.js";
   <section class="seccion criterios-hero">
     <div class="contenedor criterios-hero-grid">
       <div class="criterios-hero-texto">
-        <nav class="miga" aria-label="Ruta de navegacion">
-          <a href="/">Inicio</a>
-          <span>/</span>
-          <span>Criterios</span>
-        </nav>
+        <Breadcrumb items={[{ label: "Inicio", href: "/" }, { label: "Criterios" }]} />
         <p class="etiqueta">Criterios de publicación</p>
         <h1>Publicamos con criterio, no con prisa</h1>
         <p class="criterios-frase">Aprender también implica publicar con responsabilidad.</p>

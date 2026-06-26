@@ -1,0 +1,62 @@
+﻿@keyframes aparecer-suave {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes estado-pulso {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.74;
+  }
+
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+
+@keyframes camino-flotante {
+  0%,
+  100% {
+    transform: rotate(-18deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-14deg) translateY(-10px);
+  }
+}
+
+@keyframes pulso-camino {
+  0%,
+  100% {
+    opacity: 0.72;
+    stroke-width: 10;
+  }
+
+  50% {
+    opacity: 1;
+    stroke-width: 13;
+  }
+}
+
+.js-activo .revelar {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease;
+}
+
+.js-activo .revelar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

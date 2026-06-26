@@ -1,0 +1,300 @@
+﻿.criterios-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 20%, color-mix(in srgb, var(--color-progreso) 18%, transparent), transparent 28%),
+    linear-gradient(135deg, var(--color-seccion-oscura), var(--color-seccion-oscura-dos));
+  color: #ffffff;
+}
+
+.criterios-hero::after {
+  content: "";
+  position: absolute;
+  right: -16%;
+  bottom: -54%;
+  width: 46%;
+  height: 124%;
+  border-left: 28px solid color-mix(in srgb, var(--color-progreso) 22%, transparent);
+  border-radius: 100% 0 0 100%;
+  transform: rotate(16deg);
+}
+
+.criterios-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(300px, 0.62fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.criterios-hero .miga {
+  margin-bottom: 28px;
+  color: color-mix(in srgb, #ffffff 72%, transparent);
+}
+
+.criterios-hero .miga a {
+  color: #ffffff;
+}
+
+.criterios-hero .etiqueta {
+  color: var(--color-progreso);
+}
+
+.criterios-hero h1 {
+  max-width: 820px;
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.6rem, 5vw, 5.3rem);
+  line-height: 0.98;
+}
+
+.criterios-frase {
+  max-width: 760px;
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-weight: 700;
+}
+
+.criterios-hero .seccion-descripcion {
+  color: color-mix(in srgb, #ffffff 78%, transparent);
+}
+
+.criterios-visual {
+  position: relative;
+  min-height: 360px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.04);
+  box-shadow: var(--sombra-media);
+}
+
+.criterios-visual::before {
+  content: "";
+  position: absolute;
+  inset: 34px;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+}
+
+.criterios-visual-nucleo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  min-height: 150px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background-color: rgba(4, 17, 26, 0.72);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.criterios-visual-nucleo img {
+  width: 70px;
+  height: 70px;
+}
+
+.criterios-visual-nucleo span {
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+}
+
+.criterio-orbita {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 80%, #ffffff);
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--policy-accent) 26%, rgba(4, 17, 26, 0.78));
+  display: grid;
+  place-items: center;
+  animation: aparecer-suave 0.8s ease both;
+}
+
+.criterio-orbita-1 {
+  left: 12%;
+  top: 16%;
+}
+
+.criterio-orbita-2 {
+  right: 14%;
+  top: 20%;
+  animation-delay: 0.08s;
+}
+
+.criterio-orbita-3 {
+  left: 16%;
+  bottom: 15%;
+  animation-delay: 0.16s;
+}
+
+.criterio-orbita-4 {
+  right: 12%;
+  bottom: 12%;
+  animation-delay: 0.24s;
+}
+
+.politicas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.politica-editorial {
+  --policy-accent: #3f8fb5;
+}
+
+.politica-ia {
+  --policy-accent: #7a6ed6;
+}
+
+.politica-bienestar {
+  --policy-accent: #4aa56f;
+}
+
+.politica-seguridad {
+  --policy-accent: #d96745;
+}
+
+.politica-documento {
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 42%, var(--color-borde));
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--policy-accent) 9%, transparent), transparent 38%),
+    var(--color-superficie);
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.politica-encabezado {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.policy-icon {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 56%, var(--color-borde));
+  border-radius: 8px;
+  background-color: color-mix(in srgb, var(--policy-accent) 18%, var(--color-superficie));
+  color: var(--policy-accent);
+  display: grid;
+  place-items: center;
+}
+
+.policy-icon svg {
+  width: 31px;
+  height: 31px;
+}
+
+.policy-icon path,
+.policy-icon rect {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.politica-codigo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--policy-accent) 48%, var(--color-borde));
+  border-radius: 999px;
+  color: var(--policy-accent);
+  background-color: color-mix(in srgb, var(--policy-accent) 10%, transparent);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.politica-encabezado h3 {
+  color: var(--color-principal);
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.25rem, 2vw, 1.58rem);
+  line-height: 1.12;
+}
+
+.politica-cuerpo {
+  display: grid;
+  gap: 12px;
+}
+
+.politica-cuerpo p:not(.politica-destacado) {
+  color: var(--color-texto-suave);
+}
+
+.politica-destacado {
+  color: var(--color-principal);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.politica-metadatos {
+  margin-top: 4px;
+  border-top: 1px solid color-mix(in srgb, var(--policy-accent) 24%, var(--color-borde));
+  padding-top: 12px;
+}
+
+.politica-metadatos summary {
+  color: var(--policy-accent);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.politica-metadatos dl {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.politica-metadatos div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.politica-metadatos dt {
+  color: var(--color-principal);
+  font-weight: 900;
+}
+
+.politica-metadatos dd {
+  color: var(--color-texto-suave);
+}
+
+.estado-activo {
+  width: 9px;
+  height: 9px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: var(--color-acento);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-acento) 16%, transparent);
+  display: inline-block;
+  animation: estado-pulso 1.8s ease-in-out infinite;
+}
+
+.politica-documento .boton {
+  width: 100%;
+  margin-top: auto;
+  justify-content: center;
+}
+

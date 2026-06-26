@@ -14,20 +14,23 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V3.1`
+`V4.0`
 
-- Fecha de cierre: 24/06/2026
-- Estado: cerrada y publicada
+- Fecha de cierre: 25/06/2026
+- Estado: en revision
 - Sitio: https://chiletedevpath.github.io/
 
-Esta version agrega una base PWA, metadatos sociales completos, archivos de descubrimiento publico y una portada optimizada para compartir la web en redes.
+Esta version inicia la migracion estructural de la web: CSS modular, navegacion simplificada, breadcrumb centralizado y base preparada para internacionalizacion.
 
 ## Tecnologias
 
 - Astro
+- React
+- Tailwind CSS
 - HTML
 - CSS
 - JavaScript
+- Lucide React
 - SVG propio
 - PWA base
 - Google Fonts
@@ -44,10 +47,14 @@ chiletedevpath-web/
 |-- src/
 |   |-- components/
 |   |-- data/
+|   |-- i18n/
 |   |-- layouts/
 |   |-- pages/
 |   |-- scripts/
 |   `-- styles/
+|       |-- components/
+|       |-- core/
+|       `-- pages/
 |-- .github/
 |   `-- workflows/
 |-- astro.config.mjs
@@ -56,14 +63,14 @@ chiletedevpath-web/
 `-- CHANGELOG.md
 ```
 
-## Alcance de V3.1
+## Alcance de V4.0
 
-- Manifest PWA con iconos propios de Chilete DevPath.
-- Service worker basico para cache de paginas y assets principales.
-- Portada social `og-image.jpg` optimizada para WhatsApp, LinkedIn y redes sociales.
-- Metadatos Open Graph y Twitter ampliados con dimensiones, tipo y texto alternativo.
-- Archivos `robots.txt`, `sitemap.xml` y `security.txt`.
-- Version visible, metadata y paquete actualizados a V3.1.
+- Division de `global.css` en archivos por responsabilidad.
+- Navegacion principal reducida para evitar sobrecarga visual.
+- Menu `Mas` para secciones secundarias.
+- Selector `ES / EN` preparado sin enlazar contenido incompleto.
+- Componente `Breadcrumb` para evitar migas de pan duplicadas o inconsistentes.
+- Version visible, metadata y paquete actualizados a V4.0.
 
 ## Decisiones de diseno
 

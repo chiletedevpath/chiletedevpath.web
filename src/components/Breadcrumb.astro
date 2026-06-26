@@ -1,0 +1,24 @@
+---
+const { items = [] } = Astro.props;
+const visibleItems = items.filter((item) => item?.label);
+---
+
+{visibleItems.length > 1 && (
+  <nav class="miga" aria-label="Ruta de navegación">
+    <ol>
+      {visibleItems.map((item, index) => {
+        const isLast = index === visibleItems.length - 1;
+
+        return (
+          <li>
+            {isLast || !item.href ? (
+              <span aria-current={isLast ? "page" : undefined}>{item.label}</span>
+            ) : (
+              <a href={item.href}>{item.label}</a>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </nav>
+)}

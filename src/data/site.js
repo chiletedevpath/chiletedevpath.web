@@ -2,19 +2,22 @@ export const site = {
   name: "Chilete DevPath",
   author: "Adrian Pisco",
   url: "https://chiletedevpath.github.io",
-  version: "V3.7",
+  version: "V4.0",
   description:
     "Chilete DevPath es la marca personal de Adrian Pisco para documentar aprendizaje, proyectos, criterio técnico y comunidad.",
 };
 
 export const navItems = [
   { label: "Inicio", href: "/" },
-  { label: "Sobre", href: "/sobre/" },
   { label: "Ruta", href: "/ruta/" },
   { label: "Proyectos", href: "/proyectos/" },
+  { label: "Comunidad", href: "/comunidad/" },
+];
+
+export const navMoreItems = [
+  { label: "Sobre", href: "/sobre/" },
   { label: "Recursos", href: "/recursos/" },
   { label: "Criterios", href: "/criterios/" },
-  { label: "Comunidad", href: "/comunidad/" },
 ];
 
 export const socials = [

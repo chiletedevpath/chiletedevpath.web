@@ -1,14 +1,17 @@
-import { GitBranch, Menu, Moon, Sun, X } from "lucide-react";
+import { ChevronDown, GitBranch, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const normalizarRuta = (ruta) => (ruta === "/index.html" ? "/" : ruta);
 
 export default function HeaderNav({
   navItems = [],
+  moreItems = [],
+  languages = [],
   currentPath = "/",
   githubHref = "https://github.com/chiletedevpath",
 }) {
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [masAbierto, setMasAbierto] = useState(false);
   const [tema, setTema] = useState("light");
 
   useEffect(() => {
@@ -41,6 +44,7 @@ export default function HeaderNav({
     const cerrarConEscape = (evento) => {
       if (evento.key === "Escape") {
         setMenuAbierto(false);
+        setMasAbierto(false);
       }
     };
 
@@ -51,6 +55,8 @@ export default function HeaderNav({
 
   const rutaActiva = normalizarRuta(currentPath);
   const esOscuro = tema === "dark";
+  const masActivo = moreItems.some((item) => item.href === rutaActiva);
+  const idiomaActual = languages.find((language) => language.available) ?? languages[0];
 
   return (
     <nav className="navegacion contenedor" aria-label="Navegación principal">
@@ -78,6 +84,43 @@ export default function HeaderNav({
             </li>
           );
         })}
+
+        {moreItems.length > 0 && (
+          <li className="menu-grupo">
+            <button
+              className={masActivo ? "mas-boton enlace-activo" : "mas-boton"}
+              type="button"
+              aria-expanded={masAbierto}
+              aria-controls="submenu-mas"
+              onClick={() => setMasAbierto((abierto) => !abierto)}
+            >
+              Más
+              <ChevronDown size={16} aria-hidden="true" />
+            </button>
+
+            <ul id="submenu-mas" className={masAbierto ? "submenu submenu-abierto" : "submenu"}>
+              {moreItems.map((item) => {
+                const estaActivo = item.href === rutaActiva;
+
+                return (
+                  <li key={item.href}>
+                    <a
+                      className={estaActivo ? "enlace-activo" : undefined}
+                      href={item.href}
+                      aria-current={estaActivo ? "page" : undefined}
+                      onClick={() => {
+                        setMenuAbierto(false);
+                        setMasAbierto(false);
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+        )}
       </ul>
 
       <div className="nav-acciones">
@@ -85,6 +128,24 @@ export default function HeaderNav({
           <GitBranch size={18} aria-hidden="true" />
           <span>GitHub</span>
         </a>
+
+        {idiomaActual && (
+          <div className="idioma-control" aria-label="Selector de idioma">
+            <span className="idioma-activo">{idiomaActual.label}</span>
+            {languages
+              .filter((language) => language.code !== idiomaActual.code)
+              .map((language) => (
+                <span
+                  key={language.code}
+                  className="idioma-pendiente"
+                  title={`${language.name} en preparación`}
+                  aria-disabled="true"
+                >
+                  {language.label}
+                </span>
+              ))}
+          </div>
+        )}
 
         <button
           className="tema-boton"

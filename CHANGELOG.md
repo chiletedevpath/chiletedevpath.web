@@ -2,6 +2,26 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.0
+
+- Fecha de cierre: 25/06/2026
+- Estado: en revisión
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Inicio de migración estructural para evitar que la web siga creciendo sobre un CSS global de miles de líneas.
+- División de estilos por responsabilidad: `core`, `components` y `pages`.
+- Reducción de `global.css` a un archivo de entrada con imports ordenados.
+- Simplificación del menú principal: Inicio, Ruta, Proyectos y Comunidad.
+- Agrupación de secciones secundarias en el menú `Más`: Sobre, Recursos y Criterios.
+- Preparación del selector de idioma `ES / EN` sin crear rutas rotas para contenido aún no traducido.
+- Creación de componente `Breadcrumb` para evitar migas de pan escritas manualmente y dobles enlaces inconsistentes.
+
+### Criterio de cierre
+
+La V4.0 se considera una versión de arquitectura base. Su objetivo es sanear estructura, navegación y escalabilidad antes de rediseñar imágenes, cards y heroes con mayor nivel visual.
+
 ## V3.7
 
 - Fecha de cierre: 25/06/2026

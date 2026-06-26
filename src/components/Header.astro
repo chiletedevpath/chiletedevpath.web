@@ -1,6 +1,7 @@
 ---
 import HeaderNav from "./HeaderNav.jsx";
-import { navItems, socials } from "../data/site.js";
+import { navItems, navMoreItems, socials } from "../data/site.js";
+import { languages } from "../i18n/languages.js";
 
 const { currentPath = "/" } = Astro.props;
 const normalize = (path) => (path === "/index.html" ? "/" : path);
@@ -9,5 +10,12 @@ const githubHref = socials.find((social) => social.name === "GitHub")?.href ?? "
 ---
 
 <header class="encabezado">
-  <HeaderNav navItems={navItems} currentPath={activePath} githubHref={githubHref} client:load />
+  <HeaderNav
+    navItems={navItems}
+    moreItems={navMoreItems}
+    languages={languages}
+    currentPath={activePath}
+    githubHref={githubHref}
+    client:load
+  />
 </header>

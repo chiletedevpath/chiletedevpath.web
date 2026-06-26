@@ -1,0 +1,412 @@
+﻿/* Adaptacion responsive */
+@media (max-width: 860px) {
+  .navegacion {
+    flex-wrap: wrap;
+  }
+
+  .menu {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .hero {
+    padding: 80px 0;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-contenido {
+    grid-template-columns: 1fr;
+  }
+
+  .identidad-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bloque-trabajo {
+    grid-template-columns: 1fr;
+  }
+
+  .identidad-media {
+    max-width: 440px;
+  }
+
+  .hero-visual {
+    width: min(100%, 620px);
+    transform: none;
+  }
+
+  .hero-marca-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-marca-panel div {
+    padding: 14px 18px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .hero-marca-panel div:last-child {
+    border-bottom: 0;
+  }
+
+  .tarjetas-3,
+  .tarjetas-4,
+  .ruta-etapas,
+  .redes,
+  .contenido-ruta,
+  .tech-grid,
+  .politicas-grid,
+  .acciones-aprendizaje {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-aura {
+    min-height: auto;
+    display: grid;
+    gap: 18px;
+  }
+
+  .sobre-aura::before {
+    inset: 0;
+    border-radius: 8px;
+  }
+
+  .sobre-persona-pendiente,
+  .sobre-persona-foto {
+    width: min(260px, 74vw);
+    min-height: 360px;
+    margin: 0 auto;
+    order: -1;
+  }
+
+  .sobre-persona-foto {
+    min-height: auto;
+  }
+
+  .aura-texto {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 16px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background-color: color-mix(in srgb, var(--color-superficie) 94%, transparent);
+    text-align: left;
+    transform: none;
+  }
+
+  .aura-texto::before {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .page-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .criterios-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .criterios-visual {
+    min-height: 300px;
+  }
+
+  .page-hero-visual,
+  .media-placeholder {
+    min-height: 220px;
+  }
+
+  .ruta-accion {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pie-contenido {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .pie-marca {
+    justify-content: center;
+  }
+
+  .pie-redes {
+    justify-content: center;
+  }
+
+  .pie-social {
+    justify-items: center;
+  }
+
+  .ruta-etapas::before {
+    left: 20px;
+    right: auto;
+    top: 24px;
+    bottom: 24px;
+    width: 5px;
+    height: auto;
+    background: linear-gradient(
+      180deg,
+      var(--color-raiz),
+      var(--color-camino),
+      var(--color-agua),
+      var(--color-acento)
+    );
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1080px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --espacio-ancla: 148px;
+  }
+
+  .navegacion {
+    align-items: center;
+    flex-direction: row;
+    gap: 14px;
+    padding: 14px 0;
+  }
+
+  .nav-acciones {
+    flex: 1 1 100%;
+    justify-content: space-between;
+    order: 4;
+  }
+
+  .nav-github {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-height: 42px;
+  }
+
+  .tema-boton {
+    flex: 0 1 auto;
+    justify-content: center;
+    min-width: 116px;
+    min-height: 42px;
+    padding: 8px 14px;
+  }
+
+  .menu-boton {
+    display: inline-flex;
+    min-height: 42px;
+    padding: 8px 14px;
+  }
+
+  .marca {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.08rem;
+  }
+
+  .marca-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background-color: var(--color-superficie);
+    order: 5;
+  }
+
+  .menu.menu-abierto {
+    display: flex;
+  }
+
+  .menu a,
+  .mas-boton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .menu-grupo {
+    width: 100%;
+  }
+
+  .submenu {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    border-style: dashed;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .contenedor {
+    width: min(100% - 32px, 1120px);
+  }
+
+  .navegacion {
+    gap: 12px;
+  }
+
+  .marca {
+    gap: 10px;
+  }
+
+  .marca-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .tema-texto {
+    display: none;
+  }
+
+  .nav-github {
+    flex: 0 0 46px;
+    width: 46px;
+    padding: 8px;
+  }
+
+  .nav-github span {
+    display: none;
+  }
+
+  .idioma-control {
+    min-width: 82px;
+    min-height: 46px;
+    justify-content: center;
+  }
+
+  .idioma-activo,
+  .idioma-pendiente {
+    min-width: 30px;
+    padding-inline: 6px;
+  }
+
+  .tema-boton {
+    min-width: 46px;
+    width: 46px;
+    padding: 8px;
+  }
+
+  .menu-boton {
+    min-width: 76px;
+  }
+
+  .seccion {
+    padding: 64px 0;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+
+  .criterios-hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .criterios-visual {
+    min-height: 250px;
+  }
+
+  .criterios-visual-nucleo {
+    width: 128px;
+    min-height: 128px;
+  }
+
+  .criterio-orbita {
+    width: 58px;
+    height: 58px;
+  }
+
+  .criterio-orbita .policy-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .page-hero-visual,
+  .media-placeholder {
+    min-height: 180px;
+    padding: 20px;
+  }
+
+  .hero-codigo {
+    font-size: 2.25rem;
+    white-space: normal;
+  }
+
+  .hero-indicadores {
+    flex-direction: column;
+  }
+
+  .identidad-sello {
+    position: static;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .identidad-puntos {
+    flex-direction: column;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .boton {
+    text-align: center;
+  }
+
+  .politica-metadatos div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .red-social {
+    min-height: auto;
+  }
+
+  .pie {
+    padding: 30px 0;
+  }
+
+  .pie-marca {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .version-marca {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
