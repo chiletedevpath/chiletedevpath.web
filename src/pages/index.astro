@@ -19,14 +19,14 @@ const learningActions = [
   {
     step: "02",
     title: "Practica con ejercicios",
-    text: "Usa ejercicios desarrollados y retos propuestos para convertir teoria en criterio tecnico.",
+    text: "Usa ejercicios desarrollados y retos propuestos para convertir teoría en criterio técnico.",
     href: "/recursos/",
     action: "Abrir recursos",
   },
   {
     step: "03",
     title: "Mira evidencia real",
-    text: "Revisa proyectos academicos en proceso con estado claro, contexto y publicacion responsable.",
+    text: "Revisa proyectos académicos en proceso con estado claro, contexto y publicación responsable.",
     href: "/proyectos/",
     action: "Ver proyectos",
   },
@@ -41,7 +41,7 @@ const learningActions = [
       <SectionHeader
         eyebrow="Empieza aqui"
         title="Una ruta para aprender con orden, practica y evidencia"
-        description="Chilete DevPath no es solo una vitrina personal. Es un camino publico para estudiar, practicar, revisar proyectos y publicar con criterio."
+        description="Chilete DevPath no es solo una vitrina personal. Es un camino público para estudiar, practicar, revisar proyectos y publicar con criterio."
       />
 
       <div class="acciones-aprendizaje">
@@ -78,11 +78,11 @@ const learningActions = [
   <section class="seccion seccion-clara">
     <div class="contenedor metricas-panel">
       <div>
-        <p class="etiqueta">Estado del ecosistema</p>
-        <h2>Avance visible, sin inflar resultados</h2>
+        <p class="etiqueta">Ecosistema en crecimiento</p>
+        <h2>Indicadores reales del avance publicado</h2>
         <p>
-          Estas metricas son estaticas y se actualizan cuando el contenido real cambia.
-          No simulan usuarios ni actividad que aun no existe.
+          Estas métricas resumen el contenido disponible y se actualizan cuando la ruta,
+          los proyectos o las políticas cambian de forma verificable.
         </p>
       </div>
       <div class="metricas-grid">
@@ -131,16 +131,16 @@ const learningActions = [
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Contacto y feedback</p>
-        <h2>Escribe una duda, sugerencia o propuesta</h2>
+        <h2>Envía una duda, sugerencia o propuesta</h2>
         <p>
-          El contacto directo ayuda a priorizar mejoras reales para la comunidad. El formulario prepara
-          un correo y el boton de WhatsApp abre una conversacion con mensaje inicial.
+          El panel prepara tu mensaje en el navegador y abre WhatsApp o tu cliente de correo.
+          No guarda datos en la web ni los publica.
         </p>
         <a class="boton boton-secundario" href={site.mapsHref} target="_blank" rel="noopener">
           Ver origen en Chilete
         </a>
       </div>
-      <form class="formulario-contacto" action={`mailto:${site.email}`} method="post" enctype="text/plain">
+      <div class="formulario-contacto panel-contacto" data-contact-panel data-context="Consulta desde la pagina de inicio">
         <label>
           Nombre
           <input type="text" name="nombre" autocomplete="name" required />
@@ -153,8 +153,11 @@ const learningActions = [
           Mensaje
           <textarea name="mensaje" rows="5" required></textarea>
         </label>
-        <button class="boton boton-principal" type="submit">Enviar mensaje</button>
-      </form>
+        <div class="acciones-formulario">
+          <button class="boton boton-principal" type="button" data-send-whatsapp>Enviar por WhatsApp</button>
+          <button class="boton boton-secundario" type="button" data-send-email>Enviar por correo</button>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

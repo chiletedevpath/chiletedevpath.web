@@ -46,6 +46,8 @@ const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
     <meta name="twitter:image" content={socialImage} />
     <meta name="twitter:image:alt" content="Chilete DevPath, marca personal de Adrian Pisco para aprendizaje y proyectos Full Stack." />
     <meta name="theme-color" content="#f5f7f5" />
+    <meta name="cdp-email" content={site.email} />
+    <meta name="cdp-whatsapp" content={site.whatsapp} />
     <script is:inline>
       (() => {
         const temaGuardado = localStorage.getItem("cdp-theme");
@@ -73,7 +75,7 @@ const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
       <slot />
     </main>
     <ContactFloating />
-    <Footer />
+    <Footer lang={lang} />
     <script src="../scripts/main.js"></script>
   </body>
 </html>

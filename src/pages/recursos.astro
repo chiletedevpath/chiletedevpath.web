@@ -49,7 +49,7 @@ import { site } from "../data/site.js";
           que aporte a la ruta y que pueda publicarse sin riesgo legal o academico.
         </p>
       </div>
-      <form class="formulario-contacto" action={`mailto:${site.email}`} method="post" enctype="text/plain">
+      <div class="formulario-contacto panel-contacto" data-contact-panel data-context="Sugerencia de recurso">
         <label>
           Tema sugerido
           <input type="text" name="tema" required />
@@ -67,8 +67,11 @@ import { site } from "../data/site.js";
           Motivo
           <textarea name="motivo" rows="5" required></textarea>
         </label>
-        <button class="boton boton-principal" type="submit">Enviar sugerencia</button>
-      </form>
+        <div class="acciones-formulario">
+          <button class="boton boton-principal" type="button" data-send-whatsapp>Enviar por WhatsApp</button>
+          <button class="boton boton-secundario" type="button" data-send-email>Enviar por correo</button>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

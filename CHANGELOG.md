@@ -2,6 +2,27 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.4
+
+- Fecha de cierre: 26/06/2026
+- Estado: en revision
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Configuracion del numero real de WhatsApp para contacto directo.
+- Reemplazo de formularios `mailto` por paneles de contacto que preparan mensajes por WhatsApp o correo.
+- Ajuste de mensajes publicos para evitar frases defensivas o poco confiables.
+- Retiro de leyendas superpuestas sobre SVG en heroes internos.
+- Mejora de la pagina Sobre para explicar mejor que es Chilete DevPath.
+- Rediseño de la plantilla de politicas internas con formato formal: encabezado, objetivo, alcance, responsabilidades, lineamientos y control de version.
+- Ajuste del boton de retorno en politicas para indicar claramente que permite regresar a la lista.
+- Footer bilingue segun ruta en espanol o ingles.
+
+### Criterio de cierre
+
+La V4.4 corrige puntos de confianza y presentacion detectados en revision visual: formularios, mensajes, SVG, politicas y footer.
+
 ## V4.3
 
 - Fecha de cierre: 26/06/2026

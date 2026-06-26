@@ -24,14 +24,16 @@ const {
     {showVisual && (
       <div class="page-hero-visual" aria-label={visualTitle}>
         {imageSrc ? (
-          <img class="page-hero-foto" src={imageSrc} alt={imageAlt} />
+          <>
+            <img class="page-hero-foto" src={imageSrc} alt={imageAlt} />
+            <div class="page-hero-leyenda">
+              <span>{visualTitle}</span>
+              <strong>{visualText}</strong>
+            </div>
+          </>
         ) : (
-          <SectionVisual variant={variant} title={visualTitle} />
+          <SectionVisual variant={variant} title={`${visualTitle}. ${visualText}`} />
         )}
-        <div class="page-hero-leyenda">
-          <span>{visualTitle}</span>
-          <strong>{visualText}</strong>
-        </div>
       </div>
     )}
   </div>

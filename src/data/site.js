@@ -2,12 +2,12 @@ export const site = {
   name: "Chilete DevPath",
   author: "Adrian Pisco",
   url: "https://chiletedevpath.github.io",
-  version: "V4.3",
+  version: "V4.4",
   description:
-    "Chilete DevPath es la marca personal de Adrian Pisco para documentar aprendizaje, proyectos, criterio tecnico y comunidad.",
+    "Chilete DevPath es la marca personal de Adrian Pisco para documentar aprendizaje, proyectos, criterio técnico y comunidad.",
   email: "chiletedevpath@gmail.com",
-  whatsapp: "",
-  location: "Chilete, Contumaza, Cajamarca, Peru",
+  whatsapp: "51945834043",
+  location: "Chilete, Contumazá, Cajamarca, Perú",
   mapsHref: "https://www.google.com/maps/search/?api=1&query=Chilete%2C%20Cajamarca%2C%20Peru",
 };
 
@@ -39,15 +39,15 @@ export const navMoreItemsEn = [
 
 export const metrics = [
   { label: "Temas disponibles", value: "11", detail: "Ruta desde fundamentos hasta backend" },
-  { label: "Proyectos academicos", value: "3", detail: "Evidencia con estado y avance" },
-  { label: "Politicas activas", value: "4", detail: "Publicacion, IA, bienestar y autoria" },
-  { label: "Rutas activas", value: "4", detail: "Base, software, web-datos y especializacion" },
+  { label: "Proyectos académicos", value: "3", detail: "Evidencia con estado y avance" },
+  { label: "Políticas activas", value: "4", detail: "Publicación, IA, bienestar y autoría" },
+  { label: "Rutas activas", value: "4", detail: "Base, software, web-datos y especialización" },
 ];
 
 export const valueProps = [
   {
     title: "Aprendizaje con orden",
-    text: "La ruta evita saltar de tecnologia en tecnologia sin base. Primero se entiende, luego se practica.",
+    text: "La ruta evita saltar de tecnología en tecnología sin base. Primero se entiende, luego se practica.",
   },
   {
     title: "Evidencia real",
@@ -55,7 +55,7 @@ export const valueProps = [
   },
   {
     title: "Criterio responsable",
-    text: "Cada publicacion cuida autoria, fuentes, privacidad, IA y bienestar tecnico.",
+    text: "Cada publicación cuida autoría, fuentes, privacidad, IA y bienestar técnico.",
   },
   {
     title: "Origen con identidad",
@@ -67,7 +67,7 @@ export const socials = [
   {
     name: "GitHub",
     label: "Repositorio principal",
-    description: "Codigo, proyectos y evolucion tecnica del ecosistema.",
+    description: "Código, proyectos y evolución técnica del ecosistema.",
     href: "https://github.com/chiletedevpath",
     primary: true,
   },
@@ -80,7 +80,7 @@ export const socials = [
   {
     name: "Discord",
     label: "Espacio de comunidad",
-    description: "Canal para compartir avance, practica y comunidad.",
+    description: "Canal para compartir avance, práctica y comunidad.",
     href: "https://discord.gg/4XsXRT4rG",
   },
   {

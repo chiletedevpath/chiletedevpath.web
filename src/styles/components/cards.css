@@ -275,6 +275,23 @@
   color: var(--color-texto-suave);
 }
 
+.sobre-claves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.sobre-claves span {
+  padding: 8px 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  background-color: var(--color-superficie);
+  color: var(--color-principal);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
 .metricas-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -340,6 +357,18 @@
   background-color: var(--color-fondo);
   color: var(--color-texto);
   font: inherit;
+}
+
+.acciones-formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.acciones-formulario .boton {
+  flex: 1 1 180px;
+  border: 0;
+  cursor: pointer;
 }
 
 .mapa-identidad {

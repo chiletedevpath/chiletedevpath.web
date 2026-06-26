@@ -40,13 +40,13 @@ import { site, socials } from "../data/site.js";
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Feedback de comunidad</p>
-        <h2>Envia una mejora sin exponer datos publicamente</h2>
+        <h2>Comparte una mejora para la comunidad</h2>
         <p>
-          Por ahora el feedback se recibe por correo para evitar spam, datos personales visibles y moderacion
-          innecesaria. Los comentarios publicos se evaluaran cuando exista backend y control de seguridad.
+          Tu sugerencia se envia por el canal que elijas. La web no publica comentarios ni almacena
+          tus datos; eso mantiene la comunidad ordenada mientras no exista un sistema de moderacion propio.
         </p>
       </div>
-      <form class="formulario-contacto" action={`mailto:${site.email}`} method="post" enctype="text/plain">
+      <div class="formulario-contacto panel-contacto" data-contact-panel data-context="Feedback de comunidad">
         <label>
           Nombre
           <input type="text" name="nombre" autocomplete="name" required />
@@ -59,8 +59,11 @@ import { site, socials } from "../data/site.js";
           Sugerencia
           <textarea name="sugerencia" rows="5" required></textarea>
         </label>
-        <button class="boton boton-principal" type="submit">Enviar feedback</button>
-      </form>
+        <div class="acciones-formulario">
+          <button class="boton boton-principal" type="button" data-send-whatsapp>Enviar por WhatsApp</button>
+          <button class="boton boton-secundario" type="button" data-send-email>Enviar por correo</button>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

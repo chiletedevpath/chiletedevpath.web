@@ -1,7 +1,17 @@
 ---
-import { navItems, navMoreItems, site, socials } from "../data/site.js";
+import { navItems, navItemsEn, navMoreItems, navMoreItemsEn, site, socials } from "../data/site.js";
 import { policies } from "../data/recursos.js";
 import SocialIcon from "./SocialIcon.astro";
+
+const { lang = "es" } = Astro.props;
+const isEnglish = lang === "en";
+const footerNav = isEnglish ? [...navItemsEn, ...navMoreItemsEn] : [...navItems, ...navMoreItems];
+const policyTitlesEn = {
+  "politica-editorial": "Editorial policy",
+  "uso-responsable-ia": "Responsible AI use",
+  "bienestar-tecnico": "Technical wellbeing",
+  "publicacion-segura": "Safe publishing",
+};
 ---
 
 <footer class="pie">
@@ -10,23 +20,31 @@ import SocialIcon from "./SocialIcon.astro";
       <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
       <div>
         <strong>{site.name}</strong>
-        <p>Desarrollado desde Chilete, Cajamarca, Peru para compartir aprendizaje tecnico con criterio.</p>
+        <p>
+          {isEnglish
+            ? "Built from Chilete, Cajamarca, Peru to share technical learning with judgment."
+            : "Desarrollado desde Chilete, Cajamarca, Perú para compartir aprendizaje técnico con criterio."}
+        </p>
       </div>
     </div>
 
-    <nav class="pie-columna" aria-label="Enlaces rapidos">
-      <strong>Navegacion</strong>
-      {[...navItems, ...navMoreItems].map((item) => <a href={item.href}>{item.label}</a>)}
+    <nav class="pie-columna" aria-label={isEnglish ? "Quick links" : "Enlaces rápidos"}>
+      <strong>{isEnglish ? "Navigation" : "Navegación"}</strong>
+      {footerNav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
 
-    <nav class="pie-columna" aria-label="Politicas de Chilete DevPath">
-      <strong>Politicas</strong>
-      {policies.map((policy) => <a href={policy.href}>{policy.title}</a>)}
+    <nav class="pie-columna" aria-label={isEnglish ? "Chilete DevPath policies" : "Políticas de Chilete DevPath"}>
+      <strong>{isEnglish ? "Policies" : "Políticas"}</strong>
+      {policies.map((policy) => <a href={policy.href}>{isEnglish ? policyTitlesEn[policy.slug] : policy.title}</a>)}
     </nav>
 
     <div class="pie-social">
-      <p>Unete a Discord o revisa el avance publico en GitHub.</p>
-      <nav class="pie-redes" aria-label="Redes oficiales">
+      <p>
+        {isEnglish
+          ? "Join Discord or review the public progress on GitHub."
+          : "Únete a Discord o revisa el avance público en GitHub."}
+      </p>
+      <nav class="pie-redes" aria-label={isEnglish ? "Official social links" : "Redes oficiales"}>
         {socials.map((social) => (
           <a href={social.href} target="_blank" rel="noopener" aria-label={social.name}>
             <SocialIcon name={social.name} />
@@ -37,7 +55,7 @@ import SocialIcon from "./SocialIcon.astro";
     </div>
   </div>
   <div class="pie-inferior">
-    <span>Chilete DevPath por Adrian Pisco.</span>
-    <span>© 2024-2026</span>
+    <span>{isEnglish ? "Chilete DevPath by Adrian Pisco." : "Chilete DevPath por Adrian Pisco."}</span>
+    <span>&copy; 2024-2026</span>
   </div>
 </footer>

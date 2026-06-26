@@ -17,37 +17,81 @@ const { policy } = Astro.props;
   <section class:list={["seccion", "politica-detalle-hero", `politica-${policy.tone}`]}>
     <div class="contenedor politica-detalle-grid">
       <div>
-        <a class="enlace-retorno" href="/politicas/">Volver a politicas</a>
+        <a class="enlace-retorno" href="/politicas/" aria-label="Regresar a la lista de políticas">
+          Regresar a políticas
+        </a>
         <p class="etiqueta">{policy.code}</p>
         <h1>{policy.title}</h1>
         <p class="politica-destacado">{policy.highlight}</p>
       </div>
       <div class="politica-sello">
         <PolicyIcon name={policy.icon} />
-        <span>{policy.version} - {policy.status}</span>
+        <span>Documento vigente</span>
       </div>
     </div>
   </section>
 
   <section class="seccion">
-    <div class="contenedor politica-detalle-contenido">
-      <article class="bloque-nota">
-        <h2>Objetivo</h2>
+    <div class="contenedor politica-documento-formal">
+      <header class="politica-formal-encabezado">
+        <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
+        <div>
+          <strong>Chilete DevPath</strong>
+          <span>Sistema de políticas internas</span>
+        </div>
+      </header>
+
+      <div class="politica-tabla">
+        <div>
+          <span>Código</span>
+          <strong>{policy.code}</strong>
+        </div>
+        <div>
+          <span>Versión</span>
+          <strong>{policy.version}</strong>
+        </div>
+        <div>
+          <span>Estado</span>
+          <strong>{policy.status}</strong>
+        </div>
+        <div>
+          <span>Responsable</span>
+          <strong>{policy.owner}</strong>
+        </div>
+      </div>
+
+      <article>
+        <h2>1. Objetivo</h2>
         <p>{policy.objective}</p>
       </article>
-      <article class="bloque-nota">
-        <h2>Alcance</h2>
+
+      <article>
+        <h2>2. Alcance</h2>
         <p>{policy.scope}</p>
       </article>
-      <article class="bloque-nota">
-        <h2>Responsable</h2>
-        <p>{policy.owner}</p>
+
+      <article>
+        <h2>3. Responsabilidades</h2>
+        <ul>
+          <li>Aplicar esta política antes de publicar contenido en la web, GitHub o redes oficiales.</li>
+          <li>Revisar que el contenido respete autoría, privacidad, contexto académico y seguridad.</li>
+          <li>Actualizar la política cuando cambie el alcance del ecosistema Chilete DevPath.</li>
+        </ul>
       </article>
-      <article class="bloque-nota politica-principios">
-        <h2>Principios de aplicacion</h2>
+
+      <article>
+        <h2>4. Lineamientos</h2>
         <ul>
           {policy.principles.map((principle) => <li>{principle}</li>)}
         </ul>
+      </article>
+
+      <article>
+        <h2>5. Control de versión</h2>
+        <div class="politica-version-control">
+          <span>Versión {policy.version}</span>
+          <p>Documento vigente para la web pública de Chilete DevPath.</p>
+        </div>
       </article>
     </div>
   </section>

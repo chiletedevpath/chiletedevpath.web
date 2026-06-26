@@ -14,13 +14,13 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V4.3`
+`V4.4`
 
 - Fecha de cierre: 25/06/2026
 - Estado: en revision
 - Sitio: https://chiletedevpath.github.io/
 
-Esta version mejora experiencia publica, contacto, politicas internas, idioma ingles navegable, metricas estaticas y narrativa de marca.
+Esta version corrige mensajes publicos, formularios, politica interna formal, visuales de seccion sin texto superpuesto y footer bilingue.
 
 ## Tecnologias
 
@@ -63,17 +63,16 @@ chiletedevpath-web/
 `-- CHANGELOG.md
 ```
 
-## Alcance de V4.3
+## Alcance de V4.4
 
-- Boton flotante de WhatsApp con mensaje inicial.
-- Formularios estaticos de contacto y feedback compatibles con GitHub Pages.
-- Seccion "Por que Chilete DevPath" y metricas estaticas del ecosistema.
-- Politicas internas con rutas propias dentro de la web.
-- Footer reorganizado con navegacion, redes, politicas y version.
-- Rutas inglesas reales para las secciones principales.
-- Boton de tema reducido a icono con etiqueta accesible.
-- Seccion Sobre reenfocada en la marca, origen Chilete y criterio editorial.
-- Visuales SVG de ruta, proyectos, recursos, comunidad, sobre y criterios rediseñados con mayor sentido.
+- WhatsApp configurado con el numero real de contacto.
+- Paneles de contacto sin `form action="mailto"` para evitar advertencias de formulario inseguro.
+- Mensajes publicos ajustados para sonar confiables y profesionales.
+- Visuales SVG sin leyendas superpuestas que tapen la ilustracion.
+- Paginas internas de politicas con estructura formal de documento.
+- Boton de regreso a politicas con texto claro y clicleable.
+- Footer bilingue segun ruta ES/EN.
+- Seccion Sobre ajustada para explicar mejor que es Chilete DevPath.
 
 ## Decisiones de diseno
 
