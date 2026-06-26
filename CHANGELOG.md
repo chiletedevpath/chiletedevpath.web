@@ -2,25 +2,6 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
-## V3.6
-
-- Fecha de cierre: 25/06/2026
-- Estado: en revisión
-- Sitio: https://chiletedevpath.github.io/
-
-### Alcance
-
-- Rediseño premium del hero principal de Inicio con titular en tres niveles, fotografía editorial, panel de identidad y strip de estado.
-- Evolución del componente `PageHero` para incluir breadcrumb, badges, acciones principales y métricas por sección.
-- Mejora de los heroes de Ruta, Recursos, Proyectos, Sobre y Comunidad con intención propia, CTAs y señales de avance.
-- Replanteamiento del hero de Criterios con métricas editoriales, CTA a políticas y documentos de marca.
-- Corrección de textos visibles con tildes y limpieza de caracteres dañados en heroes principales.
-- Ajustes responsive para que badges, métricas, visuales y CTAs mantengan lectura en móvil.
-
-### Criterio de cierre
-
-La V3.6 se considera en revisión hasta validar visualmente que cada hero tenga jerarquía clara, propósito propio y coherencia con la marca en escritorio y móvil.
-
 ## V3.5
 
 - Fecha de cierre: 25/06/2026

@@ -7,63 +7,20 @@ const {
   description,
   variant = "ruta",
   visualTitle = "Espacio visual reservado",
-  visualText = "Aquí irá una imagen propia de Chilete DevPath.",
+  visualText = "Aqui ira una imagen propia de Chilete DevPath.",
   showVisual = true,
   imageSrc,
   imageAlt = "",
-  badges = [],
-  stats = [],
-  primaryAction,
-  secondaryAction,
 } = Astro.props;
 ---
 
 <section class:list={["seccion", "page-hero", `page-hero-${variant}`, !showVisual && "page-hero-sin-visual"]}>
   <div class="contenedor page-hero-grid">
     <div class="page-hero-texto">
-      <nav class="miga page-hero-miga" aria-label="Ruta de navegación">
-        <a href="/">Inicio</a>
-        <span>/</span>
-        <span>{eyebrow}</span>
-      </nav>
-
       {eyebrow && <p class="etiqueta">{eyebrow}</p>}
       <h1>{title}</h1>
       {description && <p class="seccion-descripcion">{description}</p>}
-
-      {badges.length > 0 && (
-        <div class="page-hero-badges" aria-label="Enfoque de la sección">
-          {badges.map((badge) => <span>{badge}</span>)}
-        </div>
-      )}
-
-      {(primaryAction || secondaryAction) && (
-        <div class="acciones page-hero-acciones">
-          {primaryAction && (
-            <a class="boton boton-principal" href={primaryAction.href} target={primaryAction.external ? "_blank" : undefined} rel={primaryAction.external ? "noopener" : undefined}>
-              {primaryAction.label}
-            </a>
-          )}
-          {secondaryAction && (
-            <a class="boton boton-secundario" href={secondaryAction.href} target={secondaryAction.external ? "_blank" : undefined} rel={secondaryAction.external ? "noopener" : undefined}>
-              {secondaryAction.label}
-            </a>
-          )}
-        </div>
-      )}
-
-      {stats.length > 0 && (
-        <div class="page-hero-stats" aria-label="Resumen de la sección">
-          {stats.map((stat) => (
-            <div>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
-
     {showVisual && (
       <div class="page-hero-visual" aria-label={visualTitle}>
         {imageSrc ? (

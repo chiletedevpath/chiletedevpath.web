@@ -8,27 +8,19 @@ import { resources } from "../data/recursos.js";
 <BaseLayout title="Recursos | Chilete DevPath">
   <PageHero
     eyebrow="Recursos"
-    title="Material para practicar, revisar y avanzar con criterio"
-    description="Una biblioteca de ejercicios, retos, glosarios y guías para que la comunidad estudie sin depender de carpetas sueltas."
+    title="Practica, revisa y avanza con material organizado"
+    description="Esta seccion debe funcionar como biblioteca de aprendizaje: ejercicios, retos, glosarios y criterios listos para consultar."
     variant="recursos"
     visualTitle="Biblioteca DevPath"
     visualText="Material preparado para estudiar, practicar y consultar."
-    badges={["Ejercicios", "Glosarios", "Guías breves"]}
-    stats={[
-      { value: "Resolver", label: "antes de mirar solución" },
-      { value: "Consultar", label: "conceptos clave" },
-      { value: "Mejorar", label: "con práctica guiada" },
-    ]}
-    primaryAction={{ label: "Ver recursos", href: "#recursos" }}
-    secondaryAction={{ label: "Abrir GitHub", href: "https://github.com/chiletedevpath/aprendizaje", external: true }}
   />
 
-  <section id="recursos" class="seccion">
+  <section class="seccion">
     <div class="contenedor">
       <SectionHeader
-        eyebrow="Cómo usar esta sección"
+        eyebrow="Como usar esta seccion"
         title="Elige si quieres resolver, estudiar o consultar"
-        description="Cada recurso tiene un propósito concreto para que la comunidad no dependa solo de navegar carpetas en GitHub."
+        description="Cada recurso tiene un proposito concreto para que la comunidad no dependa solo de navegar carpetas en GitHub."
       />
       <div class="tarjetas tarjetas-4">
         {resources.map((resource) => (

@@ -10,28 +10,20 @@ import { routeStages, techStack } from "../data/ruta.js";
 <BaseLayout title="Ruta de aprendizaje | Chilete DevPath">
   <PageHero
     eyebrow="Ruta de aprendizaje"
-    title="Aprende desde fundamentos hasta construcción real"
-    description="Una ruta progresiva para saber qué estudiar, qué practicar y cuándo avanzar sin saltar etapas importantes."
+    title="Empieza por fundamentos y avanza con practica real"
+    description="La ruta organiza que aprender, que practicar y que revisar antes de pasar al siguiente nivel."
     variant="ruta"
     visualTitle="Mapa de avance"
     visualText="Secuencia visual para avanzar desde fundamentos hasta proyectos."
-    badges={["Desde cero", "Ejercicios reales", "Criterio técnico"]}
-    stats={[
-      { value: "10+", label: "módulos ordenados" },
-      { value: "4", label: "fases de avance" },
-      { value: "GitHub", label: "evidencia pública" },
-    ]}
-    primaryAction={{ label: "Entrar a la ruta", href: "#contenido-ruta" }}
-    secondaryAction={{ label: "Ver aprendizaje", href: "https://github.com/chiletedevpath/aprendizaje", external: true }}
   />
 
-  <section id="contenido-ruta" class="seccion">
+  <section class="seccion">
     <div class="contenedor">
       <div class="ruta-etapas">
         {routeStages.map((stage) => <RouteStage stage={stage} />)}
       </div>
       <div class="ruta-accion">
-        <p>El contenido práctico vive en el repositorio de aprendizaje y seguirá creciendo con ejercicios aprobados, desarrollados y revisados.</p>
+        <p>El contenido practico vive en el repositorio de aprendizaje y seguira creciendo con ejercicios aprobados, desarrollados y revisados.</p>
         <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener">
           Abrir aprendizaje
         </a>
@@ -42,11 +34,11 @@ import { routeStages, techStack } from "../data/ruta.js";
   <section class="seccion">
     <div class="contenedor">
       <SectionHeader
-        eyebrow="Tecnologías en práctica"
+        eyebrow="Tecnologias en practica"
         title="Herramientas que aparecen en la ruta"
-        description="La ruta combina bases web, programación, datos y backend. Cada tecnología entra cuando aporta al aprendizaje, no por adorno."
+        description="La ruta combina bases web, programacion, datos y backend. Cada tecnologia entra cuando aporta al aprendizaje, no por adorno."
       />
-      <div class="tech-grid" aria-label="Tecnologías usadas en Chilete DevPath">
+      <div class="tech-grid" aria-label="Tecnologias usadas en Chilete DevPath">
         {techStack.map((tech) => (
           <a
             class={`tech-badge tech-${tech.tone}`}
