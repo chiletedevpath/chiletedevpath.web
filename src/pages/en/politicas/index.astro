@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import PolicyIcon from "../../../components/PolicyIcon.astro";
+import { policiesEn } from "../../../data/recursos.js";
+---
+
+<BaseLayout title="Policies | Chilete DevPath">
+  <PageHero
+    eyebrow="Internal policies"
+    title="Criteria for publishing with responsibility"
+    description="These policies turn the brand into a responsible practice: clear authorship, privacy, AI use, wellbeing and security."
+    variant="criterios"
+    visualTitle="Editorial control"
+    visualText="Review before publishing public content."
+  />
+
+  <section class="seccion">
+    <div class="contenedor politicas-grid">
+      {policiesEn.map((policy) => (
+        <article class:list={["politica-documento", `politica-${policy.tone}`]}>
+          <header class="politica-encabezado">
+            <PolicyIcon name={policy.icon} />
+            <div>
+              <span class="politica-codigo">{policy.code}</span>
+              <h3>{policy.title}</h3>
+            </div>
+          </header>
+          <div class="politica-cuerpo">
+            <p class="politica-destacado">{policy.highlight}</p>
+            <p>{policy.objective}</p>
+          </div>
+          <a class="boton boton-principal" href={`/en/politicas/${policy.slug}/`}>Open policy</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

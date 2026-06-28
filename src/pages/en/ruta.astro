@@ -4,7 +4,7 @@ import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import RouteStage from "../../components/RouteStage.astro";
 import TechIcon from "../../components/TechIcon.astro";
-import { routeEntriesEn, routeStagesEn, techStack } from "../../data/ruta.js";
+import { routeStagesEn, techStack } from "../../data/ruta.js";
 ---
 
 <BaseLayout title="Learning Path | Chilete DevPath">
@@ -27,25 +27,11 @@ import { routeEntriesEn, routeStagesEn, techStack } from "../../data/ruta.js";
       <div class="ruta-etapas">
         {routeStagesEn.map((stage) => <RouteStage stage={stage} />)}
       </div>
-    </div>
-  </section>
-
-  <section class="seccion seccion-clara">
-    <div class="contenedor">
-      <SectionHeader
-        eyebrow="Direct access"
-        title="Open a topic according to your current level"
-        description="Use these entries to practice without getting lost in folders."
-      />
-      <div class="tarjetas tarjetas-3">
-        {routeEntriesEn.map((entry) => (
-          <article class="tarjeta tarjeta-con-enlace">
-            <span class="estado">{entry.status}</span>
-            <h3>{entry.title}</h3>
-            <p>{entry.description}</p>
-            <a href={entry.href} target="_blank" rel="noopener">Open section</a>
-          </article>
-        ))}
+      <div class="ruta-accion">
+        <p>The practical content lives in the learning repository. I will keep expanding it with useful exercises, focused glossaries and labs when they truly help people learn.</p>
+        <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener">
+          Open learning repository
+        </a>
       </div>
     </div>
   </section>
@@ -59,11 +45,19 @@ import { routeEntriesEn, routeStagesEn, techStack } from "../../data/ruta.js";
       />
       <div class="tech-grid">
         {techStack.map((tech) => (
-          <article class="tech-card">
-            <TechIcon name={tech.name} />
-            <h3>{tech.name}</h3>
-            <p>{tech.descriptionEn ?? tech.description}</p>
-          </article>
+          <a
+            class={`tech-badge tech-${tech.tone}`}
+            href={tech.href}
+            target="_blank"
+            rel="noopener"
+            aria-label={`Open learning content related to ${tech.name}`}
+          >
+            <span class="tech-icono"><TechIcon name={tech.name} /></span>
+            <div>
+              <strong>{tech.name}</strong>
+              <p>{tech.descriptionEn ?? tech.description}</p>
+            </div>
+          </a>
         ))}
       </div>
     </div>

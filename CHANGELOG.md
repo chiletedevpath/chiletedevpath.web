@@ -2,6 +2,24 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.8
+
+- Fecha de cierre: 28/06/2026
+- Estado: en revisión
+- Sitio: https://chiletedevpath.github.io/
+
+### Alcance
+
+- Incorporación de proyectos Tecsup en la página de proyectos con enlaces directos a cada carpeta dentro de `academia`.
+- Actualización de métricas visibles para reflejar seis proyectos académicos y doce temas de aprendizaje.
+- Ampliación de la ruta hacia publicación y producción básica.
+- Corrección de paridad entre español e inglés en la página de ruta.
+- Revisión de enlaces principales para evitar accesos genéricos cuando corresponde abrir una sección específica.
+
+### Criterio de cierre
+
+La V4.8 alinea la web con el estado actual del ecosistema GitHub: más proyectos visibles, ruta más completa y navegación bilingüe más consistente.
+
 ## V4.6
 
 - Fecha de cierre: 26/06/2026

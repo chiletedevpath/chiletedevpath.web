@@ -1,17 +1,14 @@
 ---
 import { navItems, navItemsEn, navMoreItems, navMoreItemsEn, site, socials } from "../data/site.js";
-import { policies } from "../data/recursos.js";
+import { policies, policiesEn } from "../data/recursos.js";
 import SocialIcon from "./SocialIcon.astro";
 
 const { lang = "es" } = Astro.props;
 const isEnglish = lang === "en";
 const footerNav = isEnglish ? [...navItemsEn, ...navMoreItemsEn] : [...navItems, ...navMoreItems];
-const policyTitlesEn = {
-  "politica-editorial": "Editorial policy",
-  "uso-responsable-ia": "Responsible AI use",
-  "bienestar-tecnico": "Technical wellbeing",
-  "publicacion-segura": "Safe publishing",
-};
+const footerPolicies = isEnglish
+  ? policiesEn.map((policy) => ({ ...policy, href: `/en/politicas/${policy.slug}/` }))
+  : policies;
 ---
 
 <footer class="pie">
@@ -35,7 +32,7 @@ const policyTitlesEn = {
 
     <nav class="pie-columna" aria-label={isEnglish ? "Chilete DevPath policies" : "Políticas de Chilete DevPath"}>
       <strong>{isEnglish ? "Policies" : "Políticas"}</strong>
-      {policies.map((policy) => <a href={policy.href}>{isEnglish ? policyTitlesEn[policy.slug] : policy.title}</a>)}
+      {footerPolicies.map((policy) => <a href={policy.href}>{policy.title}</a>)}
     </nav>
 
     <div class="pie-social">

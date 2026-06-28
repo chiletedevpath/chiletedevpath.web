@@ -98,6 +98,10 @@ export const routeStages = [
         label: "Proyectos integradores",
         href: "https://github.com/chiletedevpath/academia",
       },
+      {
+        label: "Publicación y producción",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+      },
     ],
     result:
       "Proyectos con arquitectura inicial, criterios de publicación y evidencia profesional.",
@@ -106,6 +110,32 @@ export const routeStages = [
     technologies: ["Patrones", "Backend", "Frontend"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/08-patrones",
     action: "Ver patrones",
+  },
+  {
+    number: "05",
+    title: "Publicación básica",
+    intent: "Preparar proyectos antes de mostrarlos",
+    topics: [
+      {
+        label: "Checklist de publicación",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+      },
+      {
+        label: "Configuración segura",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+      },
+      {
+        label: "README y ejecución",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+      },
+    ],
+    result:
+      "Proyectos listos para revisión pública: enlaces probados, datos ficticios y estado honesto.",
+    status: "Base inicial",
+    progress: 40,
+    technologies: ["GitHub", "README", "Deploy"],
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+    action: "Ver publicación",
   },
 ];
 
@@ -172,9 +202,15 @@ export const learningSections = [
   },
   {
     title: "Frontend moderno",
-    status: "Reservado",
-    description: "Se activará cuando existan prácticas reales revisadas y aprobadas.",
+    status: "Base inicial",
+    description: "Componentes, estado, formularios, consumo de APIs y experiencia de usuario.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/10-frontend",
+  },
+  {
+    title: "Publicación y producción",
+    status: "Base inicial",
+    description: "Checklist para preparar proyectos antes de mostrarlos en GitHub, web o portafolio.",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
   },
 ];
 
@@ -285,7 +321,7 @@ export const routeStagesEn = [
     status: "Growing",
     progress: 65,
     technologies: ["Java", "OOP", "Algorithms"],
-    href: "https://github.com/chiletedevpath/aprendizaje",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
     action: "View progress",
   },
   {
@@ -303,7 +339,7 @@ export const routeStagesEn = [
       },
       {
         label: "Git, GitHub and technical documentation",
-        href: "https://github.com/chiletedevpath/aprendizaje",
+        href: "https://github.com/chiletedevpath/chiletedevpath/tree/main/docs",
       },
     ],
     result: "Web practice, data queries and repositories documented with context.",
@@ -332,7 +368,11 @@ export const routeStagesEn = [
       },
       {
         label: "Integrating projects",
-        href: "https://github.com/chiletedevpath/aprendizaje",
+        href: "https://github.com/chiletedevpath/academia",
+      },
+      {
+        label: "Publishing and production",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
       },
     ],
     result: "Projects with initial architecture, publishing criteria and professional evidence.",
@@ -342,43 +382,29 @@ export const routeStagesEn = [
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/08-patrones",
     action: "View patterns",
   },
-];
-
-export const routeEntriesEn = [
   {
-    status: "Available",
-    title: "Fundamentals",
-    description: "Conceptual base to start the path with shared language and judgment.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/00-fundamentos",
-  },
-  {
-    status: "Available",
-    title: "Pseudocode",
-    description: "Algorithm principles exercises organized to practice logic.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/01-pseudocodigo",
-  },
-  {
-    status: "Growing",
-    title: "Basic programming",
-    description: "Initial practice to translate reasoning into executable code.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/02-programacion-basica",
-  },
-  {
-    status: "Growing",
-    title: "OOP",
-    description: "Classes, objects, encapsulation, inheritance, abstraction and polymorphism.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
-  },
-  {
-    status: "Growing",
-    title: "Data structures",
-    description: "Lists, hash tables and graphs to organize information with judgment.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/04-estructuras-datos",
-  },
-  {
-    status: "Growing",
-    title: "Algorithms",
-    description: "Search, sorting, recursion, backtracking and problem solving.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/05-algoritmos",
+    number: "05",
+    intent: "Prepare projects before showing them",
+    title: "Basic publishing",
+    topics: [
+      {
+        label: "Publishing checklist",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+      },
+      {
+        label: "Safe configuration",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+      },
+      {
+        label: "README and execution",
+        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+      },
+    ],
+    result: "Projects ready for public review: tested links, fictitious data and honest status.",
+    status: "Initial base",
+    progress: 40,
+    technologies: ["GitHub", "README", "Deploy"],
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+    action: "Open publishing",
   },
 ];
