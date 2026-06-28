@@ -1,5 +1,10 @@
 ﻿---
-const { variant = "ruta", title = "Visual Chilete DevPath" } = Astro.props;
+const {
+  variant = "ruta",
+  title = "Visual Chilete DevPath",
+  visualLabel = "Mapa de avance",
+  visualHeadline = "De fundamentos a proyectos",
+} = Astro.props;
 ---
 
 <div class={`section-visual section-visual-${variant}`} aria-label={title}>
@@ -14,8 +19,8 @@ const { variant = "ruta", title = "Visual Chilete DevPath" } = Astro.props;
       />
       <div class="ruta-capa"></div>
       <div class="ruta-panel">
-        <span>Mapa de avance</span>
-        <strong>De fundamentos a proyectos</strong>
+        <span>{visualLabel}</span>
+        <strong>{visualHeadline}</strong>
       </div>
       <svg class="ruta-overlay" viewBox="0 0 720 460" aria-hidden="true">
         <defs>
