@@ -21,6 +21,24 @@ const {
       {eyebrow && <p class="etiqueta">{eyebrow}</p>}
       <h1>{title}</h1>
       {description && <p class="seccion-descripcion">{description}</p>}
+      {(visualText || visualItems.length > 0) && (
+        <div class="page-hero-claves" aria-label={visualTitle}>
+          {visualText && <p class="page-hero-claves-intro">{visualText}</p>}
+          {visualItems.length > 0 && (
+            <div class="page-hero-claves-grid">
+              {visualItems.map((item, index) => (
+                <article class="page-hero-clave">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <strong>{item.title}</strong>
+                    {item.text && <p>{item.text}</p>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
     {showVisual && (
       <div class="page-hero-visual" aria-label={visualTitle}>
@@ -28,23 +46,6 @@ const {
           <img class="page-hero-foto" src={imageSrc} alt={imageAlt} />
         ) : (
           <SectionVisual variant={variant} title={visualTitle} />
-        )}
-        <div class="page-hero-leyenda">
-          <span>{visualTitle}</span>
-          <strong>{visualText}</strong>
-        </div>
-        {visualItems.length > 0 && (
-          <div class="page-hero-puntos" aria-label={visualTitle}>
-            {visualItems.map((item, index) => (
-              <article class="page-hero-punto">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <strong>{item.title}</strong>
-                  {item.text && <p>{item.text}</p>}
-                </div>
-              </article>
-            ))}
-          </div>
         )}
       </div>
     )}

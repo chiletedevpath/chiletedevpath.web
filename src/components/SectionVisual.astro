@@ -31,16 +31,18 @@ const { variant = "ruta", title = "Visual Chilete DevPath" } = Astro.props;
 
     {variant === "ruta" && (
       <g class="visual-ruta">
-        <path class="visual-carretera-sombra" d="M86 384 C178 318 218 318 282 260 C338 210 350 160 418 132 C486 104 552 86 654 34" />
-        <path class="visual-carretera" d="M86 384 C178 318 218 318 282 260 C338 210 350 160 418 132 C486 104 552 86 654 34" filter={`url(#resplandor-${variant})`} />
-        <path class="visual-ladera" d="M0 386 C142 300 250 336 362 272 C464 214 556 168 720 132 L720 460 L0 460Z" />
+        <path class="visual-cerros visual-cerros-fondo" d="M0 288 C90 224 164 238 242 190 C326 138 418 168 500 118 C584 66 650 90 720 46" />
+        <path class="visual-cerros visual-cerros-frente" d="M0 354 C124 278 220 306 332 244 C452 178 560 172 720 108" />
+        <path class="visual-ladera" d="M0 376 C132 294 250 332 366 268 C480 206 570 176 720 132 L720 460 L0 460Z" />
+        <path class="visual-carretera-sombra" d="M74 392 C164 328 216 322 282 260 C342 204 362 154 430 126 C502 96 568 78 656 34" />
+        <path class="visual-carretera" d="M74 392 C164 328 216 322 282 260 C342 204 362 154 430 126 C502 96 568 78 656 34" filter={`url(#resplandor-${variant})`} />
         {[1, 2, 3, 4, 5].map((step, index) => {
           const points = [
-            [118, 360],
-            [246, 284],
-            [362, 178],
-            [492, 104],
-            [632, 48],
+            [112, 370],
+            [252, 284],
+            [372, 174],
+            [508, 98],
+            [640, 50],
           ];
           const [cx, cy] = points[index];
           return (
