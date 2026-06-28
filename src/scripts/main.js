@@ -1,4 +1,4 @@
-if (typeof document !== "undefined") {
+﻿if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-activo");
 
   if ("serviceWorker" in navigator) {

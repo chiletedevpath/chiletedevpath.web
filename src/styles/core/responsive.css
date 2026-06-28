@@ -308,7 +308,18 @@
   }
 
   .page-hero h1 {
-    font-size: 2rem;
+    max-width: calc(100vw - 32px);
+    font-size: clamp(1.45rem, 7.4vw, 1.95rem);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .page-hero .seccion-descripcion,
+  .page-hero-claves-intro {
+    max-width: calc(100vw - 32px);
+    font-size: 0.94rem;
+    overflow-wrap: break-word;
   }
 
   .criterios-hero h1 {

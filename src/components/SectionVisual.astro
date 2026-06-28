@@ -1,8 +1,57 @@
----
+﻿---
 const { variant = "ruta", title = "Visual Chilete DevPath" } = Astro.props;
 ---
 
 <div class={`section-visual section-visual-${variant}`} aria-label={title}>
+  {variant === "ruta" && (
+    <div class="ruta-escena" role="img" aria-label={title}>
+      <img
+        class="ruta-imagen"
+        src="/assets/img/heros/ruta-aprendizaje-camino-chilete.png"
+        alt=""
+        loading="eager"
+        decoding="async"
+      />
+      <div class="ruta-capa"></div>
+      <div class="ruta-panel">
+        <span>Mapa de avance</span>
+        <strong>De fundamentos a proyectos</strong>
+      </div>
+      <svg class="ruta-overlay" viewBox="0 0 720 460" aria-hidden="true">
+        <defs>
+          <filter id="ruta-resplandor" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path
+          class="ruta-overlay-sombra"
+          d="M430 398 C474 354 520 312 562 254 C604 196 632 156 682 112"
+        />
+        <path
+          class="ruta-overlay-linea"
+          d="M430 398 C474 354 520 312 562 254 C604 196 632 156 682 112"
+          filter="url(#ruta-resplandor)"
+        />
+        {[
+          { n: "01", x: 430, y: 398 },
+          { n: "02", x: 512, y: 320 },
+          { n: "03", x: 574, y: 238 },
+          { n: "04", x: 622, y: 170 },
+          { n: "05", x: 682, y: 112 },
+        ].map((item) => (
+          <g class="ruta-overlay-nodo">
+            <circle cx={item.x} cy={item.y} r="20" />
+            <text x={item.x} y={item.y + 1}>{item.n}</text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  )}
+  {variant !== "ruta" && (
   <svg viewBox="0 0 720 460" role="img" aria-labelledby={`visual-${variant}-title`}>
     <title id={`visual-${variant}-title`}>{title}</title>
     <defs>
@@ -146,4 +195,5 @@ const { variant = "ruta", title = "Visual Chilete DevPath" } = Astro.props;
       </g>
     )}
   </svg>
+  )}
 </div>
