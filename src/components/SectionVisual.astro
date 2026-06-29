@@ -34,21 +34,22 @@ const {
         </defs>
         <path
           class="ruta-overlay-sombra"
-          d="M430 398 C474 354 520 312 562 254 C604 196 632 156 682 112"
+          d="M406 426 C468 402 526 372 580 336 C626 306 670 292 706 282"
         />
         <path
           class="ruta-overlay-linea"
-          d="M430 398 C474 354 520 312 562 254 C604 196 632 156 682 112"
+          d="M406 426 C468 402 526 372 580 336 C626 306 670 292 706 282"
           filter="url(#ruta-resplandor)"
+          pathLength="1"
         />
         {[
-          { n: "01", x: 430, y: 398 },
-          { n: "02", x: 512, y: 320 },
-          { n: "03", x: 574, y: 238 },
-          { n: "04", x: 622, y: 170 },
-          { n: "05", x: 682, y: 112 },
+          { n: "01", x: 406, y: 426, delay: "0s" },
+          { n: "02", x: 500, y: 386, delay: "1.1s" },
+          { n: "03", x: 580, y: 336, delay: "2.2s" },
+          { n: "04", x: 648, y: 306, delay: "3.3s" },
+          { n: "05", x: 706, y: 282, delay: "4.4s" },
         ].map((item) => (
-          <g class="ruta-overlay-nodo">
+          <g class="ruta-overlay-nodo" style={`--delay:${item.delay};`}>
             <circle cx={item.x} cy={item.y} r="20" />
             <text x={item.x} y={item.y + 1}>{item.n}</text>
           </g>
