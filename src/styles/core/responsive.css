@@ -175,16 +175,10 @@
     order: 4;
   }
 
-  .nav-github {
-    flex: 1 1 auto;
-    justify-content: center;
-    min-height: 42px;
-  }
-
   .tema-boton {
     flex: 0 1 auto;
     justify-content: center;
-    min-width: 116px;
+    min-width: 46px;
     min-height: 42px;
     padding: 8px 14px;
   }
@@ -260,16 +254,6 @@
   }
 
   .tema-texto {
-    display: none;
-  }
-
-  .nav-github {
-    flex: 0 0 46px;
-    width: 46px;
-    padding: 8px;
-  }
-
-  .nav-github span {
     display: none;
   }
 

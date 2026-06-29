@@ -1,13 +1,12 @@
 ---
 import HeaderNav from "./HeaderNav.jsx";
-import { navItems, navItemsEn, navMoreItems, navMoreItemsEn, socials } from "../data/site.js";
+import { navItems, navItemsEn, navMoreItems, navMoreItemsEn } from "../data/site.js";
 import { languages } from "../i18n/languages.js";
 
 const { currentPath = "/" } = Astro.props;
 const normalize = (path) => (path === "/index.html" ? "/" : path);
 const activePath = normalize(currentPath);
 const isEnglish = activePath.startsWith("/en");
-const githubHref = socials.find((social) => social.name === "GitHub")?.href ?? "https://github.com/chiletedevpath";
 ---
 
 <header class="encabezado">
@@ -16,7 +15,6 @@ const githubHref = socials.find((social) => social.name === "GitHub")?.href ?? "
     moreItems={isEnglish ? navMoreItemsEn : navMoreItems}
     languages={languages}
     currentPath={activePath}
-    githubHref={githubHref}
     client:load
   />
 </header>

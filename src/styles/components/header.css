@@ -3,18 +3,22 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-borde) 86%, transparent);
-  background-color: var(--tema-header);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-borde) 76%, transparent);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--tema-header) 78%, var(--color-acento) 8%), var(--tema-header)),
+    var(--tema-header);
   color: var(--color-principal);
   backdrop-filter: blur(16px);
   box-shadow: 0 10px 26px rgba(16, 43, 60, 0);
   transition:
     box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    background 0.2s ease;
 }
 
 .encabezado-desplazado {
-  background-color: var(--tema-header-solido);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--tema-header-solido) 80%, var(--color-acento) 7%), var(--tema-header-solido)),
+    var(--tema-header-solido);
   box-shadow: var(--sombra-suave);
 }
 
@@ -72,29 +76,6 @@
   align-items: center;
   gap: 10px;
   order: 3;
-}
-
-.nav-github {
-  min-height: 40px;
-  padding: 8px 12px;
-  border: 1px solid color-mix(in srgb, var(--color-borde) 82%, var(--color-principal));
-  border-radius: 999px;
-  background-color: color-mix(in srgb, var(--color-superficie) 92%, transparent);
-  color: var(--color-principal);
-  font-weight: 800;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.nav-github:hover {
-  border-color: var(--color-acento);
-  background-color: color-mix(in srgb, var(--color-acento) 15%, var(--color-superficie));
-  transform: translateY(-1px);
 }
 
 .idioma-control {

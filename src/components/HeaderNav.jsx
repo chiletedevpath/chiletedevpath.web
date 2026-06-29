@@ -1,4 +1,4 @@
-import { ChevronDown, GitBranch, Menu, Moon, Sun, X } from "lucide-react";
+import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const normalizarRuta = (ruta) => (ruta === "/index.html" ? "/" : ruta);
@@ -19,7 +19,6 @@ export default function HeaderNav({
   moreItems = [],
   languages = [],
   currentPath = "/",
-  githubHref = "https://github.com/chiletedevpath",
 }) {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [masAbierto, setMasAbierto] = useState(false);
@@ -133,11 +132,6 @@ export default function HeaderNav({
       </ul>
 
       <div className="nav-acciones">
-        <a className="nav-github" href={githubHref} target="_blank" rel="noopener">
-          <GitBranch size={18} aria-hidden="true" />
-          <span>GitHub</span>
-        </a>
-
         <div className="idioma-control" aria-label={idiomaActivo === "en" ? "Language selector" : "Selector de idioma"}>
           {languages.map((language) => (
             <a
