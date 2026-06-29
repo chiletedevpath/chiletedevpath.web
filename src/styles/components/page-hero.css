@@ -131,6 +131,27 @@
   text-wrap: balance;
 }
 
+.page-hero.page-hero-con-fondo h1 {
+  color: #f2f8fb;
+}
+
+.page-hero.page-hero-con-fondo .etiqueta {
+  color: #6bd4ef;
+}
+
+.page-hero.page-hero-con-fondo .seccion-descripcion,
+.page-hero.page-hero-con-fondo .page-hero-claves-intro {
+  color: rgba(242, 248, 251, 0.9);
+}
+
+.page-hero.page-hero-con-fondo .page-hero-clave strong {
+  color: #ffffff;
+}
+
+.page-hero-comunidad.page-hero-con-fondo .page-hero-grid {
+  transform: translateY(-28px);
+}
+
 .page-hero-visual,
 .media-placeholder {
   position: relative;
@@ -805,6 +826,10 @@
   .page-hero-con-fondo .page-hero-grid {
     padding-top: 26px;
     padding-bottom: 26px;
+  }
+
+  .page-hero-comunidad.page-hero-con-fondo .page-hero-grid {
+    transform: none;
   }
 
   .page-hero-acciones {
