@@ -654,6 +654,10 @@
   gap: 12px;
 }
 
+.page-hero-con-fondo:not(.page-hero-ruta) .page-hero-claves-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .page-hero-clave {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -894,6 +898,10 @@
   }
 
   .page-hero-ruta .page-hero-claves-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero-con-fondo:not(.page-hero-ruta) .page-hero-claves-grid {
     grid-template-columns: 1fr;
   }
 
