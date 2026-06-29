@@ -375,34 +375,57 @@
 .visual-proyectos-header path,
 .visual-proyectos-ruta-base,
 .visual-proyecto-linea {
-  stroke-width: 4;
-  opacity: 0.42;
+  stroke-width: 3;
+  opacity: 0.46;
 }
 
 .visual-proyectos-ruta-base {
-  stroke: rgba(238, 247, 248, 0.2);
-  stroke-width: 16;
+  stroke: rgba(145, 166, 184, 0.24);
+  stroke-width: 10;
 }
 
 .visual-proyectos-ruta-activa {
   fill: none;
-  stroke: url(#trazo-proyectos);
+  stroke: color-mix(in srgb, var(--color-agua) 76%, #ffffff);
   stroke-linecap: round;
-  stroke-width: 8;
+  stroke-width: 5;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation: visual-proyectos-ruta 5.8s ease-in-out infinite;
 }
 
-.visual-proyecto-card rect {
-  fill:
-    color-mix(in srgb, var(--color-superficie) 74%, rgba(255, 255, 255, 0.08));
-  stroke: color-mix(in srgb, var(--color-borde) 70%, rgba(255, 255, 255, 0.18));
-  stroke-width: 2;
-  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.22));
+.visual-proyectos-sidebar rect,
+.visual-proyectos-tabla-fondo,
+.visual-proyecto-fila rect {
+  fill: rgba(7, 18, 31, 0.64);
+  stroke: rgba(150, 174, 196, 0.22);
+  stroke-width: 1.5;
 }
 
-.visual-proyecto-card {
+.visual-proyectos-sidebar path,
+.visual-proyectos-sidebar circle,
+.visual-proyectos-tabla-linea {
+  fill: none;
+  stroke: rgba(155, 178, 198, 0.34);
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.visual-proyectos-sidebar circle {
+  fill: color-mix(in srgb, var(--color-agua) 72%, #ffffff);
+  stroke: none;
+}
+
+.visual-proyectos-tabla-linea {
+  stroke-width: 1.3;
+}
+
+.visual-proyecto-fila rect {
+  fill: rgba(11, 27, 45, 0.82);
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.18));
+}
+
+.visual-proyecto-fila {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
@@ -412,68 +435,46 @@
 
 .visual-proyecto-inst,
 .visual-proyecto-tech,
-.visual-proyectos-check text,
-.visual-proyectos-nodo text {
+.visual-proyecto-porcentaje {
   font-family: var(--fuente-mono);
   font-weight: 900;
-  text-anchor: middle;
   dominant-baseline: middle;
 }
 
 .visual-proyecto-inst {
-  fill: var(--color-progreso);
-  font-size: 15px;
+  fill: color-mix(in srgb, var(--color-agua) 82%, #ffffff);
+  font-size: 13px;
   letter-spacing: 0.04em;
   text-anchor: start;
 }
 
 .visual-proyecto-tech {
-  fill: color-mix(in srgb, var(--color-agua) 82%, #ffffff);
-  font-size: 13px;
+  fill: rgba(238, 247, 248, 0.66);
+  font-size: 11px;
+  text-anchor: start;
+}
+
+.visual-proyecto-porcentaje {
+  fill: rgba(238, 247, 248, 0.76);
+  font-size: 11px;
   text-anchor: start;
 }
 
 .visual-proyecto-barra-base {
-  fill: rgba(238, 247, 248, 0.16);
+  fill: rgba(238, 247, 248, 0.14);
 }
 
 .visual-proyecto-barra {
-  fill: url(#trazo-proyectos);
+  fill: color-mix(in srgb, var(--color-agua) 72%, var(--color-progreso));
   transform-box: fill-box;
   transform-origin: left center;
   animation: visual-proyecto-barra 5.8s ease-in-out infinite;
 }
 
-.visual-proyectos-nodo circle {
-  fill: var(--color-progreso);
-  stroke: rgba(255, 255, 255, 0.88);
-  stroke-width: 3;
-  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--color-progreso) 54%, transparent));
-}
-
-.visual-proyectos-nodo text {
-  fill: var(--color-principal);
-  font-size: 12px;
-}
-
-.visual-proyectos-check circle {
-  fill: color-mix(in srgb, var(--color-acento) 18%, rgba(255, 255, 255, 0.08));
-  stroke: var(--color-progreso);
+.visual-proyectos-grafico circle {
+  fill: color-mix(in srgb, var(--color-agua) 82%, #ffffff);
+  stroke: rgba(7, 18, 31, 0.88);
   stroke-width: 4;
-  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--color-progreso) 28%, transparent));
-}
-
-.visual-proyectos-check path {
-  fill: none;
-  stroke: color-mix(in srgb, var(--color-agua) 86%, #ffffff);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 8;
-}
-
-.visual-proyectos-check text {
-  fill: var(--color-progreso);
-  font-size: 16px;
 }
 
 .visual-hito text {
@@ -643,9 +644,8 @@
 
 .page-hero-proyectos .page-hero-visual {
   background:
-    radial-gradient(circle at 76% 22%, rgba(245, 197, 66, 0.18), transparent 30%),
-    radial-gradient(circle at 22% 82%, rgba(79, 156, 175, 0.18), transparent 32%),
-    linear-gradient(135deg, rgba(10, 38, 54, 0.98), rgba(17, 30, 48, 0.92)),
+    radial-gradient(circle at 72% 26%, rgba(79, 156, 175, 0.16), transparent 30%),
+    linear-gradient(135deg, rgba(8, 18, 32, 0.98), rgba(12, 32, 48, 0.94)),
     var(--color-principal);
 }
 

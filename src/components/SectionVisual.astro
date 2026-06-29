@@ -113,51 +113,47 @@ const {
 
     {variant === "proyectos" && (
       <g class="visual-proyectos">
-        <rect class="visual-panel visual-proyectos-panel" x="68" y="58" width="584" height="344" rx="28" />
+        <rect class="visual-panel visual-proyectos-panel" x="62" y="54" width="596" height="352" rx="24" />
         <g class="visual-proyectos-header">
-          <circle cx="112" cy="104" r="10" />
-          <circle cx="144" cy="104" r="10" />
-          <circle cx="176" cy="104" r="10" />
-          <path d="M230 104h232M500 104h78" />
+          <circle cx="104" cy="92" r="6" />
+          <circle cx="128" cy="92" r="6" />
+          <circle cx="152" cy="92" r="6" />
+          <path d="M206 92h194M486 92h92" />
         </g>
-        <g class="visual-proyectos-flujo">
-          <path class="visual-proyectos-ruta-base" d="M116 326 C208 292 272 300 350 258 C432 214 486 214 590 172" />
-          <path class="visual-proyectos-ruta-activa" d="M116 326 C208 292 272 300 350 258 C432 214 486 214 590 172" filter={`url(#resplandor-${variant})`} pathLength="1" />
-          {[0, 1, 2].map((index) => {
-            const points = [
-              [116, 326],
-              [350, 258],
-              [590, 172],
-            ];
-            const [cx, cy] = points[index];
-            return (
-              <g class="visual-proyectos-nodo">
-                <circle cx={cx} cy={cy} r="18" />
-                <text x={cx} y={cy + 1}>{String(index + 1).padStart(2, "0")}</text>
-              </g>
-            );
-          })}
+        <g class="visual-proyectos-sidebar">
+          <rect x="90" y="126" width="120" height="232" rx="18" />
+          <path d="M118 164h64M118 204h46M118 244h70M118 284h54M118 324h76" />
+          <circle cx="116" cy="164" r="5" />
+          <circle cx="116" cy="204" r="5" />
+          <circle cx="116" cy="244" r="5" />
+          <circle cx="116" cy="284" r="5" />
+          <circle cx="116" cy="324" r="5" />
         </g>
-        <g class="visual-proyectos-cards">
+        <g class="visual-proyectos-tabla">
+          <rect class="visual-proyectos-tabla-fondo" x="238" y="126" width="360" height="232" rx="18" />
+          <path class="visual-proyectos-tabla-linea" d="M266 166h298M266 232h298M266 298h298" />
           {[
-            { x: 102, y: 152, inst: "UTP", tech: "Java", progress: 196 },
-            { x: 270, y: 126, inst: "UTP", tech: "SQL", progress: 196 },
-            { x: 438, y: 152, inst: "TECSUP", tech: "React", progress: 166 },
+            { y: 146, inst: "UTP", tech: "Java", width: 92 },
+            { y: 212, inst: "UTP", tech: "SQL", width: 92 },
+            { y: 278, inst: "TECSUP", tech: "React", width: 82 },
           ].map((card, index) => (
-            <g class="visual-proyecto-card" style={`--i:${index};`}>
-              <rect x={card.x} y={card.y} width="142" height="132" rx="18" />
-              <text class="visual-proyecto-inst" x={card.x + 18} y={card.y + 32}>{card.inst}</text>
-              <path class="visual-proyecto-linea" d={`M${card.x + 18} ${card.y + 58}h84M${card.x + 18} ${card.y + 82}h62`} />
-              <rect class="visual-proyecto-barra-base" x={card.x + 18} y={card.y + 104} width="96" height="8" rx="4" />
-              <rect class="visual-proyecto-barra" x={card.x + 18} y={card.y + 104} width={card.progress / 2} height="8" rx="4" />
-              <text class="visual-proyecto-tech" x={card.x + 18} y={card.y + 126}>{card.tech}</text>
+            <g class="visual-proyecto-fila" style={`--i:${index};`}>
+              <rect x="262" y={card.y} width="312" height="46" rx="12" />
+              <text class="visual-proyecto-inst" x="282" y={card.y + 18}>{card.inst}</text>
+              <text class="visual-proyecto-tech" x="282" y={card.y + 36}>{card.tech}</text>
+              <path class="visual-proyecto-linea" d={`M356 ${card.y + 18}h72M356 ${card.y + 36}h42`} />
+              <rect class="visual-proyecto-barra-base" x="452" y={card.y + 19} width="92" height="8" rx="4" />
+              <rect class="visual-proyecto-barra" x="452" y={card.y + 19} width={card.width} height="8" rx="4" />
+              <text class="visual-proyecto-porcentaje" x="548" y={card.y + 26}>{index === 2 ? "90%" : "100%"}</text>
             </g>
           ))}
         </g>
-        <g class="visual-proyectos-check">
-          <circle cx="590" cy="316" r="48" />
-          <path d="M568 318l18 18 40-50" />
-          <text x="590" y="376">100%</text>
+        <g class="visual-proyectos-grafico">
+          <path class="visual-proyectos-ruta-base" d="M270 382 C340 354 402 372 468 336 C520 308 558 318 612 286" />
+          <path class="visual-proyectos-ruta-activa" d="M270 382 C340 354 402 372 468 336 C520 308 558 318 612 286" filter={`url(#resplandor-${variant})`} pathLength="1" />
+          <circle cx="270" cy="382" r="8" />
+          <circle cx="468" cy="336" r="8" />
+          <circle cx="612" cy="286" r="8" />
         </g>
       </g>
     )}
