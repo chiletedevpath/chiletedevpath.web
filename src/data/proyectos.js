@@ -3,7 +3,7 @@ export const projectAreas = [
     status: "Ruta activa",
     title: "Camino de aprendizaje",
     visual: "Ruta",
-    imageSrc: "/assets/img/projects/aprendizaje-cover.png",
+    imageSrc: "/assets/img/projects/aprendizaje-cover.webp",
     imageAlt: "Espacio de aprendizaje técnico organizado para Chilete DevPath.",
     description:
       "Ruta progresiva de ejercicios, laboratorios y prácticas técnicas organizadas por nivel de avance.",
@@ -15,7 +15,7 @@ export const projectAreas = [
     status: "Evidencia revisada",
     title: "Evidencia académica",
     visual: "Academia",
-    imageSrc: "/assets/img/projects/academia-cover.png",
+    imageSrc: "/assets/img/projects/academia-cover.webp",
     imageAlt: "Documentación académica y evidencia técnica organizada.",
     description:
       "Índice de proyectos académicos y entregas con contexto, tecnologías y evidencia técnica.",
@@ -27,7 +27,7 @@ export const projectAreas = [
     status: "Selección futura",
     title: "Portafolio en construcción",
     visual: "Portafolio",
-    imageSrc: "/assets/img/projects/portafolio-cover.png",
+    imageSrc: "/assets/img/projects/portafolio-cover.webp",
     imageAlt: "Selección profesional futura de proyectos de software.",
     description:
       "Espacio en preparación para seleccionar proyectos que demuestren valor profesional real.",
@@ -50,7 +50,7 @@ export const academicProjects = [
     category: "utp",
     level: "Proyecto UTP",
     technologies: ["Java", "POO", "Estructuras de datos", "CSV"],
-    imageSrc: "/assets/img/projects/clinica-salud-vital-cover.png",
+    imageSrc: "/assets/img/projects/clinica-salud-vital-cover.webp",
     imageAlt: "Imagen editorial de un sistema académico de gestión clínica.",
     description:
       "Sistema académico en Java para gestionar pacientes, citas, doctores y horarios dentro de un flujo de atención clínica.",
@@ -73,7 +73,7 @@ export const academicProjects = [
     category: "utp",
     level: "Proyecto UTP",
     technologies: ["SQL", "Modelo relacional", "Consultas", "Inventario"],
-    imageSrc: "/assets/img/projects/ferreteria-soto-db-cover.png",
+    imageSrc: "/assets/img/projects/ferreteria-soto-db-cover.webp",
     imageAlt: "Imagen editorial de inventario y base de datos para ferretería académica.",
     description:
       "Proyecto académico de base de datos para organizar inventario, productos, ventas y consultas de una ferretería.",
@@ -96,7 +96,7 @@ export const academicProjects = [
     category: "utp",
     level: "Proyecto UTP",
     technologies: ["Java", "Patrones de diseño", "Capas", "SOLID"],
-    imageSrc: "/assets/img/projects/ferreteria-sys-patrones-cover.png",
+    imageSrc: "/assets/img/projects/ferreteria-sys-patrones-cover.webp",
     imageAlt: "Imagen editorial de arquitectura de software y patrones de diseño.",
     description:
       "Proyecto académico en Java orientado a aplicar patrones de diseño, separación de responsabilidades y organización de reglas de negocio.",
@@ -119,7 +119,7 @@ export const academicProjects = [
     category: "tecsup",
     level: "Proyecto Tecsup",
     technologies: ["Java", "Spring Boot", "OpenFeign", "H2"],
-    imageSrc: "/assets/img/projects/sunat-consulta-cover.png",
+    imageSrc: "/assets/img/projects/sunat-consulta-cover.webp",
     imageAlt: "Imagen editorial para proyecto académico backend con integración de servicios.",
     description:
       "Backend académico desarrollado en Tecsup para practicar integración con servicios externos, controladores y organización de una API.",
@@ -142,7 +142,7 @@ export const academicProjects = [
     category: "tecsup",
     level: "Proyecto Tecsup",
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
-    imageSrc: "/assets/img/projects/backend-pedidos-cover.png",
+    imageSrc: "/assets/img/projects/backend-pedidos-cover.webp",
     imageAlt: "Imagen editorial para entrega académica backend con Spring Boot.",
     description:
       "Entrega académica de backend orientada a consolidar servicios, persistencia y estructura de aplicación con Spring Boot.",
@@ -165,7 +165,7 @@ export const academicProjects = [
     category: "tecsup",
     level: "Proyecto Tecsup",
     technologies: ["React", "Vite", "JavaScript", "Fetch API"],
-    imageSrc: "/assets/img/projects/catalogo-productos-cover.png",
+    imageSrc: "/assets/img/projects/catalogo-productos-cover.webp",
     imageAlt: "Imagen editorial para práctica frontend de productos con React.",
     description:
       "Práctica académica frontend para gestionar productos, consumir servicios y ordenar componentes en una aplicación React.",
@@ -187,7 +187,7 @@ export const projectAreasEn = [
     status: "Active path",
     title: "Learning path",
     visual: "Path",
-    imageSrc: "/assets/img/projects/aprendizaje-cover.png",
+    imageSrc: "/assets/img/projects/aprendizaje-cover.webp",
     imageAlt: "Organized technical learning space for Chilete DevPath.",
     description:
       "Progressive route with exercises, labs and technical practice organized by learning stage.",
@@ -199,7 +199,7 @@ export const projectAreasEn = [
     status: "Reviewed evidence",
     title: "Academic evidence",
     visual: "Academia",
-    imageSrc: "/assets/img/projects/academia-cover.png",
+    imageSrc: "/assets/img/projects/academia-cover.webp",
     imageAlt: "Academic documentation and organized technical evidence.",
     description:
       "Index of academic projects and submissions with context, technologies and technical evidence.",
@@ -211,7 +211,7 @@ export const projectAreasEn = [
     status: "Future selection",
     title: "Portfolio in progress",
     visual: "Portfolio",
-    imageSrc: "/assets/img/projects/portafolio-cover.png",
+    imageSrc: "/assets/img/projects/portafolio-cover.webp",
     imageAlt: "Future professional selection of software projects.",
     description:
       "Space prepared to select projects that demonstrate real professional value.",
@@ -230,7 +230,7 @@ export const academicProjectsEn = [
     category: "utp",
     level: "UTP project",
     technologies: ["Java", "OOP", "Data structures", "CSV"],
-    imageSrc: "/assets/img/projects/clinica-salud-vital-cover.png",
+    imageSrc: "/assets/img/projects/clinica-salud-vital-cover.webp",
     imageAlt: "Editorial image of an academic clinical management system.",
     description:
       "Academic Java system for managing patients, appointments, doctors and schedules in a clinical workflow.",
@@ -249,7 +249,7 @@ export const academicProjectsEn = [
     category: "utp",
     level: "UTP project",
     technologies: ["SQL", "Relational model", "Queries", "Inventory"],
-    imageSrc: "/assets/img/projects/ferreteria-soto-db-cover.png",
+    imageSrc: "/assets/img/projects/ferreteria-soto-db-cover.webp",
     imageAlt: "Editorial inventory and database image for an academic hardware store system.",
     description:
       "Academic database project to organize inventory, products, sales and queries for a hardware store context.",
@@ -268,7 +268,7 @@ export const academicProjectsEn = [
     category: "utp",
     level: "UTP project",
     technologies: ["Java", "Design patterns", "Layers", "SOLID"],
-    imageSrc: "/assets/img/projects/ferreteria-sys-patrones-cover.png",
+    imageSrc: "/assets/img/projects/ferreteria-sys-patrones-cover.webp",
     imageAlt: "Editorial image about software architecture and design patterns.",
     description:
       "Academic Java project focused on design patterns, responsibility separation and business-rule organization.",
@@ -287,7 +287,7 @@ export const academicProjectsEn = [
     category: "tecsup",
     level: "Tecsup project",
     technologies: ["Java", "Spring Boot", "OpenFeign", "H2"],
-    imageSrc: "/assets/img/projects/sunat-consulta-cover.png",
+    imageSrc: "/assets/img/projects/sunat-consulta-cover.webp",
     imageAlt: "Editorial image for an academic backend project with service integration.",
     description:
       "Academic backend project developed at Tecsup to practice external service integration, controllers and API organization.",
@@ -306,7 +306,7 @@ export const academicProjectsEn = [
     category: "tecsup",
     level: "Tecsup project",
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
-    imageSrc: "/assets/img/projects/backend-pedidos-cover.png",
+    imageSrc: "/assets/img/projects/backend-pedidos-cover.webp",
     imageAlt: "Editorial image for an academic backend submission with Spring Boot.",
     description:
       "Academic backend submission focused on services, persistence and application structure with Spring Boot.",
@@ -325,7 +325,7 @@ export const academicProjectsEn = [
     category: "tecsup",
     level: "Tecsup project",
     technologies: ["React", "Vite", "JavaScript", "Fetch API"],
-    imageSrc: "/assets/img/projects/catalogo-productos-cover.png",
+    imageSrc: "/assets/img/projects/catalogo-productos-cover.webp",
     imageAlt: "Editorial image for a frontend products practice with React.",
     description:
       "Academic frontend practice to manage products, consume services and organize components in a React application.",

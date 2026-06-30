@@ -1,4 +1,4 @@
-const CACHE_VERSION = "chiletedevpath-v4-10-1";
+const CACHE_VERSION = "chiletedevpath-v4-10-2";
 
 const STATIC_ASSETS = [
   "/",

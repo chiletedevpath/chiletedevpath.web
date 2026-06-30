@@ -1,4 +1,4 @@
-﻿---
+---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
@@ -10,23 +10,23 @@ const discord = buscarCanal("Discord");
 const github = buscarCanal("GitHub");
 const gruposSociales = [
   {
-    title: "Evidencia tÃ©cnica",
-    description: "CÃ³digo, proyectos, avances y trazabilidad del ecosistema.",
+    title: "Evidencia técnica",
+    description: "Código, proyectos, avances y trazabilidad del ecosistema.",
     channels: [buscarCanal("GitHub")],
   },
   {
     title: "Perfil profesional",
-    description: "Trayectoria, aprendizaje y evoluciÃ³n como desarrollador.",
+    description: "Trayectoria, aprendizaje y evolución como desarrollador.",
     channels: [buscarCanal("LinkedIn")],
   },
   {
-    title: "Comunidad y conversaciÃ³n",
-    description: "Un espacio para compartir dudas, avances e ideas con mÃ¡s cercanÃ­a.",
+    title: "Comunidad y conversación",
+    description: "Un espacio para compartir dudas, avances e ideas con más cercanía.",
     channels: [buscarCanal("Discord")],
   },
   {
     title: "Contenido corto",
-    description: "Publicaciones breves para seguir el proceso y acercar la ruta a mÃ¡s estudiantes.",
+    description: "Publicaciones breves para seguir el proceso y acercar la ruta a más estudiantes.",
     channels: [buscarCanal("Instagram"), buscarCanal("TikTok"), buscarCanal("Facebook")],
   },
 ];
@@ -35,10 +35,10 @@ const gruposSociales = [
 <BaseLayout title="Comunidad | Chilete DevPath">
   <PageHero
     eyebrow="Comunidad"
-    title="Aprender acompaÃ±ado hace el camino mÃ¡s sostenible"
-    description="Quiero que Chilete DevPath tambiÃ©n sea un espacio para conversar sobre aprendizaje, compartir avances y mejorar la ruta con aportes reales."
+    title="Aprender acompañado hace el camino más sostenible"
+    description="Quiero que Chilete DevPath también sea un espacio para conversar sobre aprendizaje, compartir avances y mejorar la ruta con aportes reales."
     variant="comunidad"
-    heroImage="/assets/img/heros/comunidad-chiletedevpath.png"
+    heroImage="/assets/img/heros/comunidad-chiletedevpath.webp"
     showVisual={false}
     visualTitle="Punto de encuentro"
     visualText="Un espacio abierto para conversar, practicar y mejorar juntos."
@@ -49,7 +49,7 @@ const gruposSociales = [
     visualItems={[
       { title: "Canales", text: "GitHub, Discord y redes con roles claros." },
       { title: "Aportes", text: "Ideas y sugerencias que ayuden a la ruta." },
-      { title: "CercanÃ­a", text: "Aprender con comunidad sin perder criterio." },
+      { title: "Cercanía", text: "Aprender con comunidad sin perder criterio." },
     ]}
   />
 
@@ -58,7 +58,7 @@ const gruposSociales = [
       <SectionHeader
         eyebrow="Canales oficiales"
         title="Sigue el avance por el canal que uses mejor"
-        description="GitHub conserva el cÃ³digo y la evidencia. Las redes me sirven para explicar el proceso con un lenguaje mÃ¡s cercano y compartir avances de la marca."
+        description="GitHub conserva el código y la evidencia. Las redes me sirven para explicar el proceso con un lenguaje más cercano y compartir avances de la marca."
       />
       <div class="redes-grupos" aria-label="Canales oficiales de Chilete DevPath">
         {gruposSociales.map((group) => (
@@ -87,17 +87,17 @@ const gruposSociales = [
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Feedback de comunidad</p>
-        <h2>CuÃ©ntame quÃ© mejorarÃ­as y por quÃ©</h2>
+        <h2>Cuéntame qué mejorarías y por qué</h2>
         <p>
-          Si encuentras un tema confuso, una secciÃ³n incompleta o una idea que podrÃ­a ayudar a mÃ¡s estudiantes,
-          puedes enviÃ¡rmela por correo. Prefiero revisar cada aporte antes de convertirlo en contenido pÃºblico.
+          Si encuentras un tema confuso, una sección incompleta o una idea que podría ayudar a más estudiantes,
+          puedes enviármela por correo. Prefiero revisar cada aporte antes de convertirlo en contenido público.
         </p>
       </div>
       <div class="formulario-contacto panel-contacto formulario-feedback" data-contact-panel data-context="Feedback de comunidad">
         <div class="formulario-cabecera">
           <span>Mejora revisada</span>
-          <strong>AyÃºdame a mejorar la ruta con contexto</strong>
-          <p>No busco comentarios sueltos. Busco ideas claras: quÃ© viste, quÃ© problema genera y cÃ³mo podrÃ­a ayudar a la comunidad.</p>
+          <strong>Ayúdame a mejorar la ruta con contexto</strong>
+          <p>No busco comentarios sueltos. Busco ideas claras: qué viste, qué problema genera y cómo podría ayudar a la comunidad.</p>
         </div>
         <div class="formulario-opciones">
           <label>
@@ -120,18 +120,18 @@ const gruposSociales = [
         </label>
         <label>
           Asunto
-          <input type="text" name="asunto" maxlength="120" placeholder="Ejemplo: mejorar ejercicios de pseudocÃ³digo" required />
+          <input type="text" name="asunto" maxlength="120" placeholder="Ejemplo: mejorar ejercicios de pseudocódigo" required />
         </label>
         <label>
           Sugerencia
-          <textarea name="sugerencia" rows="5" maxlength="700" data-countable placeholder="Describe quÃ© mejorarÃ­as, dÃ³nde lo viste y por quÃ© ayudarÃ­a a la comunidad." required></textarea>
+          <textarea name="sugerencia" rows="5" maxlength="700" data-countable placeholder="Describe qué mejorarías, dónde lo viste y por qué ayudaría a la comunidad." required></textarea>
         </label>
         <label class="confirmacion-datos">
           <input type="checkbox" name="confirmacion" required />
-          <span>Confirmo que no estoy enviando datos personales sensibles, contraseÃ±as ni informaciÃ³n privada de terceros.</span>
+          <span>Confirmo que no estoy enviando datos personales sensibles, contraseñas ni información privada de terceros.</span>
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
-        <p class="nota-privacidad">Por ahora no habrÃ¡ comentarios pÃºblicos. Primero necesito un sistema de moderaciÃ³n y seguridad para evitar spam, exposiciÃ³n de datos o contenido fuera de contexto.</p>
+        <p class="nota-privacidad">Por ahora no habrá comentarios públicos. Primero necesito un sistema de moderación y seguridad para evitar spam, exposición de datos o contenido fuera de contexto.</p>
         <div class="acciones-formulario">
           <button class="boton boton-principal" type="button" data-send-email>Enviar sugerencia por correo</button>
         </div>
