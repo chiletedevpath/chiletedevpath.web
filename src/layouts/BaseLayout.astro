@@ -54,9 +54,13 @@ const englishUrl = new URL(englishPath, site.url).href;
     <meta name="cdp-email" content={site.email} />
     <script is:inline>
       (() => {
-        const temaGuardado = localStorage.getItem("cdp-theme");
-        const temaSistema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        document.documentElement.dataset.theme = temaGuardado || temaSistema;
+        try {
+          const temaGuardado = localStorage.getItem("cdp-theme");
+          const temaSistema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = temaGuardado || temaSistema;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
       })();
     </script>
     <title>{title}</title>

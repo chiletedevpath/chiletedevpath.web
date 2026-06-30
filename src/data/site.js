@@ -1,8 +1,8 @@
 export const site = {
   name: "Chilete DevPath",
   author: "Adrián Pisco",
-  url: "https://chiletedevpath.github.io",
-  version: "V4.10",
+  url: "https://chiletedevpath.com",
+  version: "V4.10.1",
   description:
     "Chilete DevPath es la marca personal de Adrián Pisco para documentar aprendizaje, proyectos, criterio técnico y comunidad.",
   email: "chiletedevpath@gmail.com",

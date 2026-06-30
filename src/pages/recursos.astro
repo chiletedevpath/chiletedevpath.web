@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
@@ -9,7 +9,7 @@ const resourceFilters = [
   { label: "Ejercicios", value: "ejercicios" },
   { label: "Retos", value: "retos" },
   { label: "Glosario", value: "glosario" },
-  { label: "Guías", value: "guias" },
+  { label: "GuÃ­as", value: "guias" },
   { label: "Java", value: "java" },
   { label: "Web", value: "web" },
   { label: "SQL", value: "sql" },
@@ -20,26 +20,26 @@ const resourceFilters = [
   <PageHero
     eyebrow="Recursos"
     title="Practica, revisa y avanza con material organizado"
-    description="Esta sección debe ayudarte a encontrar qué resolver, qué consultar y qué revisar sin tener que adivinar en qué carpeta está cada cosa."
+    description="Esta secciÃ³n debe ayudarte a encontrar quÃ© resolver, quÃ© consultar y quÃ© revisar sin tener que adivinar en quÃ© carpeta estÃ¡ cada cosa."
     variant="recursos"
     heroImage="/assets/img/heros/recursos-chiletedevpath.png"
     showVisual={false}
-    visualTitle="Biblioteca práctica"
-    visualText="Ejercicios, retos, guías y glosarios conectados a la ruta."
+    visualTitle="Biblioteca prÃ¡ctica"
+    visualText="Ejercicios, retos, guÃ­as y glosarios conectados a la ruta."
     visualItems={[
-      { title: "Resolver", text: "Practicar antes de mirar una solución." },
+      { title: "Resolver", text: "Practicar antes de mirar una soluciÃ³n." },
       { title: "Estudiar", text: "Revisar ejercicios desarrollados con calma." },
-      { title: "Consultar", text: "Usar glosarios y guías cuando falte contexto." },
+      { title: "Consultar", text: "Usar glosarios y guÃ­as cuando falte contexto." },
     ]}
   />
 
   <section class="seccion seccion-editorial">
     <div class="contenedor editorial-bloque">
       <div class="editorial-frase">
-        <p class="etiqueta">Material con intención</p>
-        <blockquote>Un recurso sirve cuando te ayuda a intentar, equivocarte, revisar y volver a intentarlo con más claridad.</blockquote>
+        <p class="etiqueta">Material con intenciÃ³n</p>
+        <blockquote>Un recurso sirve cuando te ayuda a intentar, equivocarte, revisar y volver a intentarlo con mÃ¡s claridad.</blockquote>
         <p>
-          Los ejercicios, glosarios y guías deben acompañar el proceso de aprendizaje. No se trata de acumular enlaces,
+          Los ejercicios, glosarios y guÃ­as deben acompaÃ±ar el proceso de aprendizaje. No se trata de acumular enlaces,
           sino de tener apoyo concreto para avanzar con orden.
         </p>
       </div>
@@ -52,9 +52,9 @@ const resourceFilters = [
   <section class="seccion">
     <div class="contenedor">
       <SectionHeader
-        eyebrow="Cómo usar esta sección"
-        title="Elige el recurso según tu momento de aprendizaje"
-        description="Si quieres practicar, entra a retos. Si ya intentaste resolver algo, revisa ejercicios desarrollados. Si un término no queda claro, usa el glosario como apoyo."
+        eyebrow="CÃ³mo usar esta secciÃ³n"
+        title="Elige el recurso segÃºn tu momento de aprendizaje"
+        description="Si quieres practicar, entra a retos. Si ya intentaste resolver algo, revisa ejercicios desarrollados. Si un tÃ©rmino no queda claro, usa el glosario como apoyo."
       />
       <div class="filtros-recursos" aria-label="Filtros de recursos">
         {resourceFilters.map((filter, index) => (
@@ -102,36 +102,36 @@ const resourceFilters = [
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Sugerencias de recursos</p>
-        <h2>Propón un recurso que realmente ayude</h2>
+        <h2>PropÃ³n un recurso que realmente ayude</h2>
         <p>
-          Si notas que falta un ejercicio, glosario, guía o laboratorio, envíame la idea con contexto.
-          No todo se publicará de inmediato: primero revisaré si encaja con la ruta y si aporta valor real.
+          Si notas que falta un ejercicio, glosario, guÃ­a o laboratorio, envÃ­ame la idea con contexto.
+          No todo se publicarÃ¡ de inmediato: primero revisarÃ© si encaja con la ruta y si aporta valor real.
         </p>
       </div>
       <div class="formulario-contacto panel-contacto formulario-recursos" data-contact-panel data-context="Sugerencia de recurso">
         <div class="formulario-cabecera">
           <span>Recurso propuesto</span>
-          <strong>Dime qué falta y para qué serviría</strong>
-          <p>Mientras más concreto sea el problema, más fácil será convertirlo en una práctica útil para la comunidad.</p>
+          <strong>Dime quÃ© falta y para quÃ© servirÃ­a</strong>
+          <p>Mientras mÃ¡s concreto sea el problema, mÃ¡s fÃ¡cil serÃ¡ convertirlo en una prÃ¡ctica Ãºtil para la comunidad.</p>
         </div>
         <div class="formulario-opciones">
           <label>
             Nombre
-            <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+            <input type="text" name="nombre" autocomplete="name" maxlength="80" placeholder="Tu nombre" required />
           </label>
           <label>
             Correo
-            <input type="email" name="correo" autocomplete="email" placeholder="tu.correo@ejemplo.com" required />
+            <input type="email" name="correo" autocomplete="email" maxlength="120" placeholder="tu.correo@ejemplo.com" required />
           </label>
         </div>
         <label>
           Asunto
-          <input type="text" name="asunto" placeholder="Ejemplo: falta práctica de condicionales" required />
+          <input type="text" name="asunto" maxlength="120" placeholder="Ejemplo: falta prÃ¡ctica de condicionales" required />
         </label>
         <div class="formulario-opciones">
           <label>
             Tema sugerido
-            <input type="text" name="tema" placeholder="Ejemplo: arreglos en Java" required />
+            <input type="text" name="tema" maxlength="120" placeholder="Ejemplo: arreglos en Java" required />
           </label>
           <label>
             Tipo de recurso
@@ -139,21 +139,21 @@ const resourceFilters = [
               <option value="Ejercicio">Ejercicio</option>
               <option value="Reto">Reto</option>
               <option value="Glosario">Glosario</option>
-              <option value="Guía">Guía</option>
+              <option value="GuÃ­a">GuÃ­a</option>
               <option value="Laboratorio">Laboratorio</option>
             </select>
           </label>
         </div>
         <label>
-          ¿Por qué debería estar en la ruta?
-          <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explica qué problema ayudaría a resolver o qué tema falta reforzar." required></textarea>
+          Â¿Por quÃ© deberÃ­a estar en la ruta?
+          <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explica quÃ© problema ayudarÃ­a a resolver o quÃ© tema falta reforzar." required></textarea>
         </label>
         <label class="confirmacion-datos">
           <input type="checkbox" name="confirmacion" required />
-          <span>Confirmo que no estoy enviando datos personales, contraseñas ni información sensible.</span>
+          <span>Confirmo que no estoy enviando datos personales, contraseÃ±as ni informaciÃ³n sensible.</span>
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
-        <p class="nota-privacidad">Primero revisaré la utilidad, claridad, fuentes y relación con la ruta antes de convertir la idea en contenido público.</p>
+        <p class="nota-privacidad">Primero revisarÃ© la utilidad, claridad, fuentes y relaciÃ³n con la ruta antes de convertir la idea en contenido pÃºblico.</p>
         <div class="acciones-formulario">
           <button class="boton boton-principal" type="button" data-send-email>Enviar idea por correo</button>
         </div>

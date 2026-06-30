@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
@@ -69,7 +69,7 @@ const socialGroups = [
             </div>
             <div class="red-grupo-canales">
               {group.channels.filter(Boolean).map((social) => (
-                <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener">
+                <a class={social.primary ? "red-social red-social-principal" : "red-social"} href={social.href} target="_blank" rel="noopener noreferrer">
                   <SocialIcon name={social.name} />
                   <span>{social.label}</span>
                   <strong>{social.name}</strong>
@@ -98,11 +98,11 @@ const socialGroups = [
         <div class="formulario-opciones">
           <label>
             Name
-            <input type="text" name="nombre" autocomplete="name" placeholder="Your name" required />
+            <input type="text" name="nombre" autocomplete="name" maxlength="80" placeholder="Your name" required />
           </label>
           <label>
             Email
-            <input type="email" name="correo" autocomplete="email" placeholder="your.email@example.com" required />
+            <input type="email" name="correo" autocomplete="email" maxlength="120" placeholder="your.email@example.com" required />
           </label>
         </div>
         <label>
@@ -116,7 +116,7 @@ const socialGroups = [
         </label>
         <label>
           Subject
-          <input type="text" name="asunto" placeholder="Example: improve pseudocode exercises" required />
+          <input type="text" name="asunto" maxlength="120" placeholder="Example: improve pseudocode exercises" required />
         </label>
         <label>
           Suggestion

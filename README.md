@@ -4,7 +4,7 @@ Web oficial de Chilete DevPath, marca personal de Adrian Pisco para documentar a
 
 Sitio publicado:
 
-https://chiletedevpath.github.io/
+https://chiletedevpath.com/
 
 ## Objetivo
 
@@ -18,7 +18,7 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 - Fecha de cierre: 26/06/2026
 - Estado: en revisión
-- Sitio: https://chiletedevpath.github.io/
+- Sitio: https://chiletedevpath.com/
 
 Esta versión fortalece la web como plataforma educativa de marca: mejora el hero principal, completa páginas en inglés, refuerza formularios, agrega SEO básico y ajusta la paleta día/noche.
 

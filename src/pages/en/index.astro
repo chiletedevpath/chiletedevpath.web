@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
@@ -205,7 +205,7 @@ const audienceEn = [
           This form prepares an email. I use it to receive questions, ideas and improvements without publishing
           anyone's data on the website. For direct contact, the WhatsApp button is available separately.
         </p>
-        <a class="boton boton-secundario boton-mapa" href={site.mapsHref} target="_blank" rel="noopener">
+        <a class="boton boton-secundario boton-mapa" href={site.mapsHref} target="_blank" rel="noopener noreferrer">
           View Chilete on the map
         </a>
       </div>
@@ -218,11 +218,11 @@ const audienceEn = [
         <div class="formulario-opciones">
           <label>
             Name
-            <input type="text" name="nombre" autocomplete="name" placeholder="Your name" required />
+            <input type="text" name="nombre" autocomplete="name" maxlength="80" placeholder="Your name" required />
           </label>
           <label>
             Email
-            <input type="email" name="correo" autocomplete="email" placeholder="your.email@example.com" required />
+            <input type="email" name="correo" autocomplete="email" maxlength="120" placeholder="your.email@example.com" required />
           </label>
         </div>
         <label>
@@ -236,7 +236,7 @@ const audienceEn = [
         </label>
         <label>
           Subject
-          <input type="text" name="asunto" placeholder="Example: question about the Java path" required />
+          <input type="text" name="asunto" maxlength="120" placeholder="Example: question about the Java path" required />
         </label>
         <label>
           Message

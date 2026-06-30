@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
@@ -117,21 +117,21 @@ const resourceFilters = [
         <div class="formulario-opciones">
           <label>
             Name
-            <input type="text" name="nombre" autocomplete="name" placeholder="Your name" required />
+            <input type="text" name="nombre" autocomplete="name" maxlength="80" placeholder="Your name" required />
           </label>
           <label>
             Email
-            <input type="email" name="correo" autocomplete="email" placeholder="your.email@example.com" required />
+            <input type="email" name="correo" autocomplete="email" maxlength="120" placeholder="your.email@example.com" required />
           </label>
         </div>
         <label>
           Subject
-          <input type="text" name="asunto" placeholder="Example: missing conditionals practice" required />
+          <input type="text" name="asunto" maxlength="120" placeholder="Example: missing conditionals practice" required />
         </label>
         <div class="formulario-opciones">
           <label>
             Suggested topic
-            <input type="text" name="tema" placeholder="Example: Java arrays" required />
+            <input type="text" name="tema" maxlength="120" placeholder="Example: Java arrays" required />
           </label>
           <label>
             Resource type

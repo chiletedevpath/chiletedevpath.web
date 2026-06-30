@@ -184,7 +184,7 @@ const audience = [
           Este formulario prepara un correo. Lo uso para recibir dudas, ideas y mejoras sin publicar datos de nadie
           en la web. Si quieres contacto directo, el botón de WhatsApp está disponible aparte.
         </p>
-        <a class="boton boton-secundario boton-mapa" href={site.mapsHref} target="_blank" rel="noopener">
+        <a class="boton boton-secundario boton-mapa" href={site.mapsHref} target="_blank" rel="noopener noreferrer">
           Ver Chilete en el mapa
         </a>
       </div>
@@ -197,11 +197,11 @@ const audience = [
         <div class="formulario-opciones">
           <label>
             Nombre
-            <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre" required />
+            <input type="text" name="nombre" autocomplete="name" maxlength="80" placeholder="Tu nombre" required />
           </label>
           <label>
             Correo
-            <input type="email" name="correo" autocomplete="email" placeholder="tu.correo@ejemplo.com" required />
+            <input type="email" name="correo" autocomplete="email" maxlength="120" placeholder="tu.correo@ejemplo.com" required />
           </label>
         </div>
         <label>
@@ -215,7 +215,7 @@ const audience = [
         </label>
         <label>
           Asunto
-          <input type="text" name="asunto" placeholder="Ejemplo: duda sobre la ruta de Java" required />
+          <input type="text" name="asunto" maxlength="120" placeholder="Ejemplo: duda sobre la ruta de Java" required />
         </label>
         <label>
           Mensaje

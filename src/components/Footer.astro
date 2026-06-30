@@ -43,7 +43,7 @@ const footerPolicies = isEnglish
       </p>
       <nav class="pie-redes" aria-label={isEnglish ? "Official social links" : "Redes oficiales"}>
         {socials.map((social) => (
-          <a href={social.href} target="_blank" rel="noopener" aria-label={social.name}>
+          <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>
             <SocialIcon name={social.name} />
           </a>
         ))}

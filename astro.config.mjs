@@ -3,9 +3,12 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://chiletedevpath.github.io",
+  site: "https://chiletedevpath.com",
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      sourcemap: false,
+    },
   },
 });

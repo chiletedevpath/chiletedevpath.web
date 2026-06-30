@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
@@ -56,7 +56,7 @@ import { routeStagesEn, techStack } from "../../data/ruta.js";
       </div>
       <div class="ruta-accion">
         <p>The practical content lives in the learning repository. I will keep expanding it with useful exercises, focused glossaries and labs when they truly help people learn.</p>
-        <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener">
+        <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener noreferrer">
           Open learning repository
         </a>
       </div>
@@ -76,7 +76,7 @@ import { routeStagesEn, techStack } from "../../data/ruta.js";
             class={`tech-badge tech-${tech.tone}`}
             href={tech.href}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             aria-label={`Open learning content related to ${tech.name}`}
           >
             <span class="tech-icono"><TechIcon name={tech.name} /></span>
