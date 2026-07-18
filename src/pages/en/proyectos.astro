@@ -6,10 +6,17 @@ import SectionHeader from "../../components/SectionHeader.astro";
 import { academicProjectsEn, projectAreasEn } from "../../data/proyectos.js";
 
 const projectFilters = [
-  { label: "All", value: "todos" },
+  { label: "Full path", value: "todos" },
+  { label: "Data", value: "datos" },
+  { label: "Software", value: "software" },
+  { label: "Patterns", value: "patrones" },
+  { label: "Backend", value: "backend" },
+  { label: "Frontend", value: "frontend" },
   { label: "UTP", value: "utp" },
   { label: "Tecsup", value: "tecsup" },
 ];
+
+const orderedAcademicProjects = [...academicProjectsEn].sort((a, b) => a.routeOrder - b.routeOrder);
 ---
 
 <BaseLayout title="Projects | Chilete DevPath">
@@ -21,7 +28,7 @@ const projectFilters = [
     heroImage="/assets/img/heros/proyectos-chiletedevpath.webp"
     showVisual={false}
     visualTitle="Project board"
-    visualText="Evidence organized by institution, progress and learning."
+    visualText="Evidence organized by path, progress and learning."
     visualItems={[
       { title: "Context", text: "Each project explains why it exists." },
       { title: "Progress", text: "The bar shows real status, not appearance." },
@@ -45,9 +52,9 @@ const projectFilters = [
   <section class="seccion seccion-clara">
     <div class="contenedor">
       <SectionHeader
-        eyebrow="Reviewed evidence"
-        title="Academic projects with context"
-        description="These projects show real academic progress with status, technologies, learning notes and direct access to review them with context."
+        eyebrow="Evidence path"
+        title="Academic projects ordered by path"
+        description="These projects read as a path: data, software construction, patterns, backend and frontend. Institution remains visible, but the main order is the learning journey."
       />
       <div class="filtros-recursos filtros-proyectos" aria-label="Academic project filters">
         {projectFilters.map((filter, index) => (
@@ -62,7 +69,7 @@ const projectFilters = [
         ))}
       </div>
       <div class="tarjetas tarjetas-3">
-        {academicProjectsEn.map((project) => <ProjectCard project={project} />)}
+        {orderedAcademicProjects.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
   </section>

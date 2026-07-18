@@ -10,6 +10,7 @@ const labels = isEnglish
   class="tarjeta tarjeta-con-enlace"
   data-project-card={project.category ? "true" : undefined}
   data-project-category={project.category}
+  data-project-route={project.routeStage}
 >
   {project.imageSrc ? (
     <figure class="proyecto-visual proyecto-visual-imagen">
@@ -23,6 +24,7 @@ const labels = isEnglish
   )}
   <span class="estado">{project.status}</span>
   {project.level && <span class="proyecto-nivel">{project.level}</span>}
+  {project.routeLabel && <span class="proyecto-nivel">{project.routeLabel}</span>}
   {typeof project.progress === "number" && (
     <div class="avance-proyecto" aria-label={`Avance del proyecto ${project.progress}%`}>
       <div class="avance-proyecto-barra">

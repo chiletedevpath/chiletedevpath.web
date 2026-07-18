@@ -6,10 +6,17 @@ import SectionHeader from "../components/SectionHeader.astro";
 import { academicProjects, projectAreas } from "../data/proyectos.js";
 
 const projectFilters = [
-  { label: "Todos", value: "todos" },
+  { label: "Ruta completa", value: "todos" },
+  { label: "Datos", value: "datos" },
+  { label: "Software", value: "software" },
+  { label: "Patrones", value: "patrones" },
+  { label: "Backend", value: "backend" },
+  { label: "Frontend", value: "frontend" },
   { label: "UTP", value: "utp" },
   { label: "Tecsup", value: "tecsup" },
 ];
+
+const orderedAcademicProjects = [...academicProjects].sort((a, b) => a.routeOrder - b.routeOrder);
 ---
 
 <BaseLayout title="Proyectos | Chilete DevPath">
@@ -21,7 +28,7 @@ const projectFilters = [
     heroImage="/assets/img/heros/proyectos-chiletedevpath.webp"
     showVisual={false}
     visualTitle="Tablero de proyectos"
-    visualText="Evidencia ordenada por institución, avance y aprendizaje."
+    visualText="Evidencia ordenada por ruta, avance y aprendizaje."
     visualItems={[
       { title: "Contexto", text: "Cada proyecto explica por qué existe." },
       { title: "Avance", text: "La barra muestra estado real, no apariencia." },
@@ -45,9 +52,9 @@ const projectFilters = [
   <section class="seccion seccion-clara">
     <div class="contenedor">
       <SectionHeader
-        eyebrow="Evidencia revisada"
-        title="Proyectos académicos con contexto"
-        description="Estos proyectos muestran avance académico real, con estado, tecnologías, aprendizaje y acceso directo para revisarlos sin perder contexto."
+        eyebrow="Ruta de evidencia"
+        title="Proyectos académicos ordenados por ruta"
+        description="Estos proyectos se leen como una ruta: datos, construcción de software, patrones, backend y frontend. La institución sigue visible, pero el orden principal es el camino de aprendizaje."
       />
       <div class="filtros-recursos filtros-proyectos" aria-label="Filtros de proyectos académicos">
         {projectFilters.map((filter, index) => (
@@ -62,7 +69,7 @@ const projectFilters = [
         ))}
       </div>
       <div class="tarjetas tarjetas-3">
-        {academicProjects.map((project) => <ProjectCard project={project} />)}
+        {orderedAcademicProjects.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
   </section>

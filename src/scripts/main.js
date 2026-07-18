@@ -1,4 +1,4 @@
-﻿if (typeof document !== "undefined") {
+if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-activo");
 
   if ("serviceWorker" in navigator) {
@@ -215,7 +215,9 @@
 
       tarjetasProyectos.forEach((tarjeta) => {
         const visible =
-          categoria === "todos" || tarjeta.dataset.projectCategory === categoria;
+          categoria === "todos" ||
+          tarjeta.dataset.projectCategory === categoria ||
+          tarjeta.dataset.projectRoute === categoria;
         tarjeta.hidden = !visible;
       });
     });
