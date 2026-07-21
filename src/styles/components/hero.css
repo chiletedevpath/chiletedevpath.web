@@ -41,6 +41,7 @@
 
 .hero-texto {
   position: relative;
+  animation: aparecer-suave 0.7s ease both;
 }
 
 .hero-texto::after {
@@ -67,7 +68,6 @@
   grid-template-columns: minmax(0, 1fr) minmax(380px, 560px);
   align-items: center;
   gap: 48px;
-  animation: aparecer-suave 0.8s ease both;
 }
 
 .hero h1 {
@@ -139,6 +139,7 @@
   width: min(100%, 560px);
   justify-self: center;
   transform: translateY(-6px);
+  animation: aparecer-visual-hero 0.7s 0.12s ease both;
 }
 
 .hero-dashboard {

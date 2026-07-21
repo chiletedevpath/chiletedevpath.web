@@ -20,6 +20,8 @@ if (typeof document !== "undefined") {
   const tarjetasRecursos = document.querySelectorAll("[data-resource-category]");
   const filtrosProyectos = document.querySelectorAll("[data-project-filter]");
   const tarjetasProyectos = document.querySelectorAll("[data-project-card]");
+  const preferenciaMovimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const zonasMovimiento = document.querySelectorAll(".hero, .page-hero, .politica-documento");
 
   if (anio) {
     anio.textContent = new Date().getFullYear();
@@ -37,14 +39,23 @@ if (typeof document !== "undefined") {
   window.addEventListener("scroll", actualizarEncabezado, { passive: true });
 
   const elementosAnimados = document.querySelectorAll(
-    ".hero-texto, .hero-visual, .hero-indicadores, .dashboard-step, .dashboard-terminal, .identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-grupo, .red-social, .politica-documento, .criterios-resumen, .pie-cta"
+    ".identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-grupo, .red-social, .politica-documento, .criterios-resumen, .pie-cta"
   );
 
+  const secuenciaPorContenedor = new Map();
+
   elementosAnimados.forEach((elemento) => {
+    const contenedor = elemento.parentElement;
+    const posicion = secuenciaPorContenedor.get(contenedor) || 0;
+
     elemento.classList.add("revelar");
+    elemento.classList.add(`revelar-retraso-${Math.min(posicion, 4)}`);
+    secuenciaPorContenedor.set(contenedor, posicion + 1);
   });
 
-  if ("IntersectionObserver" in window) {
+  if (preferenciaMovimientoReducido.matches) {
+    elementosAnimados.forEach((elemento) => elemento.classList.add("visible"));
+  } else if ("IntersectionObserver" in window) {
     const observadorAnimacion = new IntersectionObserver(
       (entradas) => {
         entradas.forEach((entrada) => {
@@ -55,13 +66,31 @@ if (typeof document !== "undefined") {
         });
       },
       {
-        threshold: 0.14,
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.08,
       }
     );
 
     elementosAnimados.forEach((elemento) => observadorAnimacion.observe(elemento));
   } else {
     elementosAnimados.forEach((elemento) => elemento.classList.add("visible"));
+  }
+
+  zonasMovimiento.forEach((zona) => zona.classList.add("movimiento-observable"));
+
+  if (preferenciaMovimientoReducido.matches || !("IntersectionObserver" in window)) {
+    zonasMovimiento.forEach((zona) => zona.classList.add("movimiento-activo"));
+  } else {
+    const observadorMovimiento = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          entrada.target.classList.toggle("movimiento-activo", entrada.isIntersecting);
+        });
+      },
+      { rootMargin: "120px 0px", threshold: 0.02 }
+    );
+
+    zonasMovimiento.forEach((zona) => observadorMovimiento.observe(zona));
   }
 
   if ("IntersectionObserver" in window && enlacesMenu.length > 0) {
@@ -150,10 +179,20 @@ if (typeof document !== "undefined") {
       return;
     }
 
+    if (preferenciaMovimientoReducido.matches) {
+      elemento.textContent = String(destino);
+      return;
+    }
+
     const duracion = 900;
     const inicio = performance.now();
 
     const pintar = (tiempo) => {
+      if (preferenciaMovimientoReducido.matches) {
+        elemento.textContent = String(destino);
+        return;
+      }
+
       const avance = Math.min((tiempo - inicio) / duracion, 1);
       const suavizado = 1 - Math.pow(1 - avance, 3);
       elemento.textContent = String(Math.round(destino * suavizado));
@@ -166,7 +205,7 @@ if (typeof document !== "undefined") {
     requestAnimationFrame(pintar);
   };
 
-  if ("IntersectionObserver" in window && metricasAnimadas.length > 0) {
+  if (!preferenciaMovimientoReducido.matches && "IntersectionObserver" in window && metricasAnimadas.length > 0) {
     const observadorMetricas = new IntersectionObserver(
       (entradas) => {
         entradas.forEach((entrada) => {
@@ -184,6 +223,40 @@ if (typeof document !== "undefined") {
     metricasAnimadas.forEach(animarNumero);
   }
 
+  const temporizadoresFiltro = new WeakMap();
+
+  const actualizarTarjetaFiltrada = (tarjeta, debeMostrar) => {
+    const temporizadorAnterior = temporizadoresFiltro.get(tarjeta);
+
+    if (temporizadorAnterior) {
+      window.clearTimeout(temporizadorAnterior);
+    }
+
+    tarjeta.classList.remove("filtro-entrando", "filtro-saliendo");
+
+    if (preferenciaMovimientoReducido.matches) {
+      tarjeta.hidden = !debeMostrar;
+      return;
+    }
+
+    if (debeMostrar) {
+      tarjeta.hidden = false;
+      tarjeta.classList.add("filtro-entrando");
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => tarjeta.classList.remove("filtro-entrando"));
+      });
+      return;
+    }
+
+    tarjeta.classList.add("filtro-saliendo");
+    const temporizador = window.setTimeout(() => {
+      tarjeta.hidden = true;
+      tarjeta.classList.remove("filtro-saliendo");
+      temporizadoresFiltro.delete(tarjeta);
+    }, 180);
+    temporizadoresFiltro.set(tarjeta, temporizador);
+  };
+
   filtrosRecursos.forEach((filtro) => {
     filtro.addEventListener("click", () => {
       const categoria = filtro.dataset.resourceFilter;
@@ -199,7 +272,7 @@ if (typeof document !== "undefined") {
           categoria === "todos" ||
           tarjeta.dataset.resourceCategory === categoria ||
           tags.includes(categoria);
-        tarjeta.hidden = !visible;
+        actualizarTarjetaFiltrada(tarjeta, visible);
       });
     });
   });
@@ -218,7 +291,7 @@ if (typeof document !== "undefined") {
           categoria === "todos" ||
           tarjeta.dataset.projectCategory === categoria ||
           tarjeta.dataset.projectRoute === categoria;
-        tarjeta.hidden = !visible;
+        actualizarTarjetaFiltrada(tarjeta, visible);
       });
     });
   });

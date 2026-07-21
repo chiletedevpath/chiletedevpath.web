@@ -729,6 +729,25 @@
   display: none;
 }
 
+.tarjeta.filtro-entrando,
+.tarjeta.filtro-saliendo,
+.recurso-card.filtro-entrando,
+.recurso-card.filtro-saliendo,
+[data-project-card].filtro-entrando,
+[data-project-card].filtro-saliendo {
+  opacity: 0;
+  transform: translateY(8px) scale(0.99);
+}
+
+.recurso-card,
+[data-project-card] {
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
 .recurso-meta {
   display: grid;
   gap: 8px;
