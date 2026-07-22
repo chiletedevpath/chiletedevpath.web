@@ -160,7 +160,7 @@ if (typeof document !== "undefined") {
   const emailJsConfig = {
     serviceId: "service_qtj5rkm",
     templateId: "template_qfaomfd",
-    publicKey: "IVqMAbSHdW7Iz4mUI",
+    publicKey: "lVqMAbSHdWZlz4mUl",
   };
 
   const enviarMensaje = async (templateParams) => {
