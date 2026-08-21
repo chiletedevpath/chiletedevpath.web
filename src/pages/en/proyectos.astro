@@ -7,13 +7,12 @@ import { academicProjectsEn, projectAreasEn } from "../../data/proyectos.js";
 
 const projectFilters = [
   { label: "Full path", value: "todos" },
-  { label: "Data", value: "datos" },
   { label: "Software", value: "software" },
+  { label: "Data", value: "datos" },
   { label: "Patterns", value: "patrones" },
   { label: "Backend", value: "backend" },
   { label: "Frontend", value: "frontend" },
-  { label: "UTP", value: "utp" },
-  { label: "Tecsup", value: "tecsup" },
+  { label: "Full stack", value: "fullstack" },
 ];
 
 const orderedAcademicProjects = [...academicProjectsEn].sort((a, b) => a.routeOrder - b.routeOrder);
@@ -54,7 +53,7 @@ const orderedAcademicProjects = [...academicProjectsEn].sort((a, b) => a.routeOr
       <SectionHeader
         eyebrow="Evidence path"
         title="Academic projects ordered by path"
-        description="These projects read as a path: data, software construction, patterns, backend and frontend. Institution remains visible, but the main order is the learning journey."
+        description="Each project summarizes what I built, the problem it addresses, the capabilities I developed and how it could evolve technically. You can filter them by the learning area you want to review."
       />
       <div class="filtros-recursos filtros-proyectos" aria-label="Academic project filters">
         {projectFilters.map((filter, index) => (

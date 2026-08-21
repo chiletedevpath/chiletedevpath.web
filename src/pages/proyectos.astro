@@ -7,13 +7,12 @@ import { academicProjects, projectAreas } from "../data/proyectos.js";
 
 const projectFilters = [
   { label: "Ruta completa", value: "todos" },
-  { label: "Datos", value: "datos" },
   { label: "Software", value: "software" },
+  { label: "Datos", value: "datos" },
   { label: "Patrones", value: "patrones" },
   { label: "Backend", value: "backend" },
   { label: "Frontend", value: "frontend" },
-  { label: "UTP", value: "utp" },
-  { label: "Tecsup", value: "tecsup" },
+  { label: "Full Stack", value: "fullstack" },
 ];
 
 const orderedAcademicProjects = [...academicProjects].sort((a, b) => a.routeOrder - b.routeOrder);
@@ -54,7 +53,7 @@ const orderedAcademicProjects = [...academicProjects].sort((a, b) => a.routeOrde
       <SectionHeader
         eyebrow="Ruta de evidencia"
         title="Proyectos académicos ordenados por ruta"
-        description="Estos proyectos se leen como una ruta: datos, construcción de software, patrones, backend y frontend. La institución sigue visible, pero el orden principal es el camino de aprendizaje."
+        description="Cada proyecto resume qué construí, qué problema abordé, qué capacidades desarrollé y cómo podría evolucionar técnicamente. Puedes filtrarlos por el área de aprendizaje que quieras revisar."
       />
       <div class="filtros-recursos filtros-proyectos" aria-label="Filtros de proyectos académicos">
         {projectFilters.map((filter, index) => (

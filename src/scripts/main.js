@@ -335,10 +335,8 @@ if (typeof document !== "undefined") {
       });
 
       tarjetasProyectos.forEach((tarjeta) => {
-        const visible =
-          categoria === "todos" ||
-          tarjeta.dataset.projectCategory === categoria ||
-          tarjeta.dataset.projectRoute === categoria;
+        const filtros = tarjeta.dataset.projectFilters?.split(" ") ?? [];
+        const visible = categoria === "todos" || filtros.includes(categoria);
         actualizarTarjetaFiltrada(tarjeta, visible);
       });
     });
