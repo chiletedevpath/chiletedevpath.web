@@ -19,6 +19,9 @@ if (typeof document !== "undefined") {
   const tarjetasRecursos = document.querySelectorAll("[data-resource-category]");
   const filtrosProyectos = document.querySelectorAll("[data-project-filter]");
   const tarjetasProyectos = document.querySelectorAll("[data-project-card]");
+  const busquedaProyectos = document.querySelector("[data-project-search]");
+  const contadorProyectos = document.querySelector("[data-project-count]");
+  const vacioProyectos = document.querySelector("[data-project-empty]");
   const preferenciaMovimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)");
   const zonasMovimiento = document.querySelectorAll(".hero, .page-hero, .politica-documento");
 
@@ -325,22 +328,38 @@ if (typeof document !== "undefined") {
     });
   });
 
+  let filtroProyectoActivo = "todos";
+  const filtrarProyectos = () => {
+    const consulta = busquedaProyectos?.value.trim().toLowerCase() ?? "";
+    let visibles = 0;
+    tarjetasProyectos.forEach((tarjeta) => {
+      const filtros = tarjeta.dataset.projectFilters?.split(" ") ?? [];
+      const coincideFiltro = filtroProyectoActivo === "todos" || filtros.includes(filtroProyectoActivo);
+      const coincideTexto = !consulta || (tarjeta.dataset.projectSearchText ?? "").includes(consulta);
+      const visible = coincideFiltro && coincideTexto;
+      actualizarTarjetaFiltrada(tarjeta, visible);
+      if (visible) visibles += 1;
+    });
+    if (contadorProyectos) {
+      const idiomaIngles = document.documentElement.lang === "en";
+      contadorProyectos.textContent = idiomaIngles ? `${visibles} ${visibles === 1 ? "case" : "cases"} available` : `${visibles} ${visibles === 1 ? "caso disponible" : "casos disponibles"}`;
+    }
+    if (vacioProyectos) vacioProyectos.hidden = visibles !== 0;
+  };
+
   filtrosProyectos.forEach((filtro) => {
     filtro.addEventListener("click", () => {
-      const categoria = filtro.dataset.projectFilter;
+      filtroProyectoActivo = filtro.dataset.projectFilter;
 
       filtrosProyectos.forEach((item) => {
         item.classList.toggle("filtro-activo", item === filtro);
         item.setAttribute("aria-pressed", String(item === filtro));
       });
 
-      tarjetasProyectos.forEach((tarjeta) => {
-        const filtros = tarjeta.dataset.projectFilters?.split(" ") ?? [];
-        const visible = categoria === "todos" || filtros.includes(categoria);
-        actualizarTarjetaFiltrada(tarjeta, visible);
-      });
+      filtrarProyectos();
     });
   });
+  busquedaProyectos?.addEventListener("input", filtrarProyectos);
 
   panelesContacto.forEach((panel) => {
     const botonCorreo = panel.querySelector("[data-send-email]");

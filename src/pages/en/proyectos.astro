@@ -1,80 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHero from "../../components/PageHero.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
-import SectionHeader from "../../components/SectionHeader.astro";
-import { academicProjectsEn, projectAreasEn } from "../../data/proyectos.js";
-
-const projectFilters = [
-  { label: "Full path", value: "todos" },
-  { label: "Software", value: "software" },
-  { label: "Data", value: "datos" },
-  { label: "Patterns", value: "patrones" },
-  { label: "Backend", value: "backend" },
-  { label: "Frontend", value: "frontend" },
-  { label: "Full stack", value: "fullstack" },
-];
-
-const orderedAcademicProjects = [...academicProjectsEn].sort((a, b) => a.routeOrder - b.routeOrder);
-const projectCount = orderedAcademicProjects.length;
+import AcademicProjectCard from "../../components/AcademicProjectCard.astro";
+import { projectCatalogEn } from "../../data/projectCatalog.js";
+const filters = [["todos", "All"], ["software", "Software"], ["datos", "Data"], ["backend", "Backend"], ["frontend", "Frontend"], ["fullstack", "Full stack"], ["patrones", "Patterns"]];
+const featured = projectCatalogEn.filter((project) => project.featured);
 ---
-
-<BaseLayout title="Projects | Chilete DevPath">
-  <PageHero
-    eyebrow="Projects"
-    title="Technical evidence without confusing progress with portfolio"
-    description="Projects are shown with context: what problem they address, what I learned, which technologies I used and where you can review them."
-    variant="proyectos"
-    heroImage="/assets/img/heros/proyectos-chiletedevpath.webp"
-    showVisual={false}
-    visualTitle="Project board"
-    visualText="Evidence organized by path, progress and learning."
-    visualItems={[
-      { title: "Context", text: "Each project explains why it exists." },
-      { title: "Progress", text: "The bar shows real status, not appearance." },
-      { title: "Review", text: "Learning is summarized with technical judgment." },
-    ]}
-  />
-
-  <section class="seccion">
-    <div class="contenedor">
-      <SectionHeader
-        eyebrow="Ecosystem map"
-        title="Each space has a clear role"
-        description="Learning is for practice, academia is for evidence and portfolio is for a future professional selection."
-      />
-      <div class="tarjetas tarjetas-3">
-        {projectAreasEn.map((project) => <ProjectCard project={project} />)}
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion seccion-clara">
-    <div class="contenedor">
-      <SectionHeader
-        eyebrow="Evidence path"
-        title="Academic projects ordered by path"
-        description="Each project summarizes what I built, the problem it addresses, the capabilities I developed and how it could evolve technically. You can filter them by the learning area you want to review."
-      />
-      <div class="proyectos-resumen" aria-label="Academic catalog summary">
-        <p><strong>{projectCount} projects</strong> organized by area and progress level.</p>
-        <p>Technical summaries stay collapsed until you choose to inspect them.</p>
-      </div>
-      <div class="filtros-recursos filtros-proyectos" aria-label="Academic project filters">
-        {projectFilters.map((filter, index) => (
-          <button
-            class={index === 0 ? "filtro-recurso filtro-activo" : "filtro-recurso"}
-            type="button"
-            data-project-filter={filter.value}
-            aria-pressed={index === 0 ? "true" : "false"}
-          >
-            {filter.label}
-          </button>
-        ))}
-      </div>
-      <div class="tarjetas proyectos-grid">
-        {orderedAcademicProjects.map((project) => <ProjectCard project={project} />)}
-      </div>
-    </div>
-  </section>
+<BaseLayout title="Projects | Chilete DevPath" description="Academic technical case studies with context, decisions, evidence and honest limits.">
+  <header class="catalogo-hero"><div class="contenedor catalogo-hero-grid"><div><span class="etiqueta">Projects</span><h1>Technical cases, not an endless card queue</h1><p>Each case explains the problem, the solution, the technology and its honest next step. Exercises remain in the learning path; this page focuses on work with project-level scope.</p></div><dl class="catalogo-metricas"><div><dt>8</dt><dd>academic projects</dd></div><div><dt>7</dt><dd>technical cases</dd></div><div><dt>2</dt><dd>institutions</dd></div></dl></div></header>
+  <section class="seccion catalogo-destacados"><div class="contenedor"><div class="catalogo-seccion-cabecera"><div><span class="etiqueta">Selected work</span><h2>Projects that best explain the progression</h2></div><p>Three cases with especially relevant integration, architecture or technical decisions.</p></div><div class="catalogo-destacados-grid">{featured.map((project) => <AcademicProjectCard project={project} lang="en" featured />)}</div></div></section>
+  <section class="seccion seccion-clara" id="catalog"><div class="contenedor"><div class="catalogo-seccion-cabecera"><div><span class="etiqueta">Full catalog</span><h2>Explore by technology or area</h2></div><p>ComidaPerucha combines its two related submissions into one full-stack case.</p></div><div class="catalogo-herramientas"><label class="catalogo-busqueda"><span>Search projects</span><input type="search" placeholder="Java, Spring Boot, data..." data-project-search /></label><div class="filtros-recursos filtros-proyectos" aria-label="Filter projects">{filters.map(([value, label], index) => <button class:list={["filtro-recurso", { "filtro-activo": index === 0 }]} type="button" data-project-filter={value} aria-pressed={index === 0 ? "true" : "false"}>{label}</button>)}</div></div><p class="catalogo-resultados" aria-live="polite" data-project-count>{projectCatalogEn.length} cases available</p><div class="catalogo-grid">{projectCatalogEn.map((project) => <AcademicProjectCard project={project} lang="en" />)}</div><div class="catalogo-vacio" data-project-empty hidden><h3>No matches found</h3><p>Try another technology or select “All”.</p></div></div></section>
+  <section class="seccion catalogo-criterio"><div class="contenedor catalogo-criterio-grid"><div><span class="etiqueta">Editorial criteria</span><h2>Learning, evidence and selection are different stages</h2></div><p><strong>Learning</strong> contains exercises and labs. <strong>Academia</strong> preserves formal submissions. <strong>Portfolio</strong> will only include cases that reach verifiable professional evidence.</p></div></section>
 </BaseLayout>

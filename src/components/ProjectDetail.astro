@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const { project, lang = "es" } = Astro.props;
+const isEn = lang === "en";
+---
+
+<BaseLayout title={`${project.title} | Chilete DevPath`} description={project.description}>
+  <header class="detalle-proyecto-hero">
+    <div class="contenedor detalle-proyecto-hero-grid">
+      <div>
+        <a class="detalle-volver" href={isEn ? "/en/proyectos/" : "/proyectos/"}>← {isEn ? "Projects" : "Proyectos"}</a>
+        <span class="etiqueta">{project.type}</span>
+        <h1>{project.title}</h1>
+        <p>{project.description}</p>
+      </div>
+      <dl class="detalle-proyecto-meta">
+        <div><dt>{isEn ? "Institution" : "Institución"}</dt><dd>{project.institution}</dd></div>
+        <div><dt>{isEn ? "Course" : "Curso"}</dt><dd>{project.course}</dd></div>
+        <div><dt>{isEn ? "Status" : "Estado"}</dt><dd>{project.status}</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="seccion seccion-clara">
+    <div class="contenedor detalle-proyecto-layout">
+      <article class="detalle-proyecto-contenido">
+        <section>
+          <span class="etiqueta">01</span>
+          <h2>{isEn ? "Problem addressed" : "Problema abordado"}</h2>
+          <p>{project.problem}</p>
+        </section>
+        <section>
+          <span class="etiqueta">02</span>
+          <h2>{isEn ? "What the solution includes" : "Qué incluye la solución"}</h2>
+          <ul>{project.details.map((detail) => <li>{detail}</li>)}</ul>
+        </section>
+        <section>
+          <span class="etiqueta">03</span>
+          <h2>{isEn ? "Demonstrated learning" : "Aprendizaje demostrado"}</h2>
+          <p>{project.learned}</p>
+        </section>
+        <section>
+          <span class="etiqueta">04</span>
+          <h2>{isEn ? "Honest next step" : "Siguiente paso realista"}</h2>
+          <p>{project.improve}</p>
+        </section>
+      </article>
+      <aside class="detalle-proyecto-lateral">
+        <h2>{isEn ? "Technology" : "Tecnología"}</h2>
+        <div class="proyecto-tech">{project.technologies.map((tech) => <span>{tech}</span>)}</div>
+        <h2>{isEn ? "Evidence" : "Evidencia"}</h2>
+        <div class="detalle-proyecto-enlaces">
+          {project.repositories.map((repo) => <a class="boton boton-principal" href={repo.href} target="_blank" rel="noopener noreferrer">{repo.label}</a>)}
+        </div>
+        <p class="detalle-proyecto-nota">{isEn ? "Academic evidence. A public live demo is only shown when a stable deployment actually exists." : "Evidencia académica. Solo se muestra una demo pública cuando existe un despliegue estable y verificable."}</p>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .detalle-proyecto-hero { padding: clamp(110px, 13vw, 150px) 0 64px; background: var(--color-fondo); }
+  .detalle-proyecto-hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, .65fr); gap: 48px; align-items: end; }
+  .detalle-volver { display: block; width: fit-content; margin-bottom: 28px; color: var(--color-acento); font-weight: 800; }
+  .detalle-proyecto-hero h1 { max-width: 820px; margin: 12px 0 18px; color: var(--color-principal); font-family: var(--fuente-titulos); font-size: clamp(2.5rem, 6vw, 5rem); line-height: .98; }
+  .detalle-proyecto-hero p { max-width: 760px; color: var(--color-texto-suave); font-size: 1.12rem; }
+  .detalle-proyecto-meta { margin: 0; padding: 24px; border: 1px solid var(--color-borde); border-radius: 18px; background: var(--color-superficie); }
+  .detalle-proyecto-meta div + div { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-borde); }
+  .detalle-proyecto-meta dt { color: var(--color-acento); font-family: var(--fuente-mono); font-size: .72rem; font-weight: 900; text-transform: uppercase; }
+  .detalle-proyecto-meta dd { margin: 5px 0 0; color: var(--color-principal); font-weight: 700; }
+  .detalle-proyecto-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, .65fr); gap: 48px; align-items: start; }
+  .detalle-proyecto-contenido { display: grid; gap: 18px; }
+  .detalle-proyecto-contenido section { padding: 28px; border: 1px solid var(--color-borde); border-radius: 18px; background: var(--color-superficie); }
+  .detalle-proyecto-contenido h2, .detalle-proyecto-lateral h2 { margin: 8px 0 12px; color: var(--color-principal); font-family: var(--fuente-titulos); }
+  .detalle-proyecto-contenido p, .detalle-proyecto-contenido li { color: var(--color-texto-suave); }
+  .detalle-proyecto-lateral { position: sticky; top: 110px; padding: 26px; border: 1px solid var(--color-borde); border-radius: 18px; background: var(--color-superficie); }
+  .detalle-proyecto-lateral h2:not(:first-child) { margin-top: 28px; }
+  .detalle-proyecto-enlaces { display: grid; gap: 10px; }
+  .detalle-proyecto-enlaces .boton { width: 100%; text-align: center; }
+  .detalle-proyecto-nota { margin: 18px 0 0; color: var(--color-texto-suave); font-size: .84rem; }
+  @media (max-width: 760px) { .detalle-proyecto-hero-grid, .detalle-proyecto-layout { grid-template-columns: 1fr; gap: 28px; } .detalle-proyecto-lateral { position: static; } }
+</style>

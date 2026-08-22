@@ -1,0 +1,29 @@
+---
+const { project, lang = "es", featured = false } = Astro.props;
+const detailHref = lang === "en" ? `/en/proyectos/${project.slug}/` : `/proyectos/${project.slug}/`;
+const tags = project.filterTags ?? [project.routeStage];
+const searchText = [project.title, project.description, project.institution, project.course, ...project.technologies].join(" ").toLowerCase();
+---
+
+<article
+  class:list={["catalogo-proyecto", { "catalogo-proyecto-destacado": featured }]}
+  data-project-card={featured ? undefined : "true"}
+  data-project-filters={tags.filter(Boolean).join(" ")}
+  data-project-search-text={searchText}
+>
+  <div class="catalogo-proyecto-cabecera">
+    <span class="catalogo-proyecto-tipo">{project.type}</span>
+    <span class="catalogo-proyecto-estado">{project.status}</span>
+  </div>
+  <div>
+    <p class="catalogo-proyecto-contexto">{project.institution} · {project.course}</p>
+    <h3>{project.title}</h3>
+    <p>{project.description}</p>
+  </div>
+  <div class="proyecto-tech" aria-label={lang === "en" ? "Technologies" : "Tecnologías"}>
+    {project.technologies.slice(0, featured ? 6 : 4).map((tech) => <span>{tech}</span>)}
+  </div>
+  <a class="catalogo-proyecto-enlace" href={detailHref}>
+    {lang === "en" ? "View case study" : "Ver caso técnico"}<span aria-hidden="true">→</span>
+  </a>
+</article>
