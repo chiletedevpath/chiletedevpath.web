@@ -16,6 +16,7 @@ const projectFilters = [
 ];
 
 const orderedAcademicProjects = [...academicProjectsEn].sort((a, b) => a.routeOrder - b.routeOrder);
+const projectCount = orderedAcademicProjects.length;
 ---
 
 <BaseLayout title="Projects | Chilete DevPath">
@@ -55,6 +56,10 @@ const orderedAcademicProjects = [...academicProjectsEn].sort((a, b) => a.routeOr
         title="Academic projects ordered by path"
         description="Each project summarizes what I built, the problem it addresses, the capabilities I developed and how it could evolve technically. You can filter them by the learning area you want to review."
       />
+      <div class="proyectos-resumen" aria-label="Academic catalog summary">
+        <p><strong>{projectCount} projects</strong> organized by area and progress level.</p>
+        <p>Technical summaries stay collapsed until you choose to inspect them.</p>
+      </div>
       <div class="filtros-recursos filtros-proyectos" aria-label="Academic project filters">
         {projectFilters.map((filter, index) => (
           <button
@@ -67,7 +72,7 @@ const orderedAcademicProjects = [...academicProjectsEn].sort((a, b) => a.routeOr
           </button>
         ))}
       </div>
-      <div class="tarjetas tarjetas-3">
+      <div class="tarjetas proyectos-grid">
         {orderedAcademicProjects.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
