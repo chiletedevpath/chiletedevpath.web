@@ -2,12 +2,106 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AcademicProjectCard from "../../components/AcademicProjectCard.astro";
 import { projectCatalogEn } from "../../data/projectCatalog.js";
-const filters = [["todos", "All"], ["software", "Software"], ["datos", "Data"], ["backend", "Backend"], ["frontend", "Frontend"], ["fullstack", "Full stack"], ["patrones", "Patterns"]];
-const featured = projectCatalogEn.filter((project) => project.featured);
+
+const filters = [
+  ["todos", "All"],
+  ["software", "Software"],
+  ["datos", "Data"],
+  ["backend", "Backend"],
+  ["frontend", "Frontend"],
+  ["fullstack", "Full stack"],
+  ["patrones", "Patterns"],
+];
+
+const projectCount = projectCatalogEn.length;
+const technologyCount = new Set(projectCatalogEn.flatMap((project) => project.technologies)).size;
+const areaCount = new Set(projectCatalogEn.map((project) => project.routeStage)).size;
 ---
-<BaseLayout title="Projects | Chilete DevPath" description="Academic technical case studies with context, decisions, evidence and honest limits.">
-  <header class="catalogo-hero"><div class="contenedor catalogo-hero-grid"><div><span class="etiqueta">Projects</span><h1>Technical cases, not an endless card queue</h1><p>Each case explains the problem, the solution, the technology and its honest next step. Exercises remain in the learning path; this page focuses on work with project-level scope.</p></div><dl class="catalogo-metricas"><div><dt>8</dt><dd>academic projects</dd></div><div><dt>7</dt><dd>technical cases</dd></div><div><dt>2</dt><dd>institutions</dd></div></dl></div></header>
-  <section class="seccion catalogo-destacados"><div class="contenedor"><div class="catalogo-seccion-cabecera"><div><span class="etiqueta">Selected work</span><h2>Projects that best explain the progression</h2></div><p>Three cases with especially relevant integration, architecture or technical decisions.</p></div><div class="catalogo-destacados-grid">{featured.map((project) => <AcademicProjectCard project={project} lang="en" featured />)}</div></div></section>
-  <section class="seccion seccion-clara" id="catalog"><div class="contenedor"><div class="catalogo-seccion-cabecera"><div><span class="etiqueta">Full catalog</span><h2>Explore by technology or area</h2></div><p>ComidaPerucha combines its two related submissions into one full-stack case.</p></div><div class="catalogo-herramientas"><label class="catalogo-busqueda"><span>Search projects</span><input type="search" placeholder="Java, Spring Boot, data..." data-project-search /></label><div class="filtros-recursos filtros-proyectos" aria-label="Filter projects">{filters.map(([value, label], index) => <button class:list={["filtro-recurso", { "filtro-activo": index === 0 }]} type="button" data-project-filter={value} aria-pressed={index === 0 ? "true" : "false"}>{label}</button>)}</div></div><p class="catalogo-resultados" aria-live="polite" data-project-count>{projectCatalogEn.length} cases available</p><div class="catalogo-grid">{projectCatalogEn.map((project) => <AcademicProjectCard project={project} lang="en" />)}</div><div class="catalogo-vacio" data-project-empty hidden><h3>No matches found</h3><p>Try another technology or select “All”.</p></div></div></section>
-  <section class="seccion catalogo-criterio"><div class="contenedor catalogo-criterio-grid"><div><span class="etiqueta">Editorial criteria</span><h2>Learning, evidence and selection are different stages</h2></div><p><strong>Learning</strong> contains exercises and labs. <strong>Academia</strong> preserves formal submissions. <strong>Portfolio</strong> will only include cases that reach verifiable professional evidence.</p></div></section>
+
+<BaseLayout
+  title="Projects | Chilete DevPath"
+  description="Academic projects explained as technical cases: problem, solution, technology, learning and next steps."
+>
+  <header class="catalogo-hero">
+    <div class="contenedor catalogo-hero-contenido">
+      <span class="etiqueta">Projects</span>
+      <h1>From a concrete need to a solution I can explain</h1>
+      <p>
+        This page brings together academic work with a clear project scope. Each case
+        explains the problem, the solution, what I learned and how I would improve it.
+      </p>
+      <div class="catalogo-hero-acciones">
+        <a class="boton boton-principal" href="#catalog">Explore projects</a>
+        <span>{projectCount} documented technical cases</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="seccion catalogo-introduccion">
+      <div class="contenedor catalogo-introduccion-grid">
+        <div>
+          <span class="etiqueta">Technical evidence</span>
+          <h2>Projects with context, decisions and real learning</h2>
+        </div>
+        <div class="catalogo-introduccion-datos" aria-label="Catalog summary">
+          <p><strong>{projectCount}</strong><span>published cases</span></p>
+          <p><strong>{technologyCount}</strong><span>technologies applied</span></p>
+          <p><strong>{areaCount}</strong><span>technical areas</span></p>
+        </div>
+      </div>
+  </section>
+
+  <section class="seccion seccion-clara catalogo-seccion" id="catalog">
+      <div class="contenedor">
+        <div class="catalogo-seccion-cabecera">
+          <div>
+            <span class="etiqueta">Catalog</span>
+            <h2>Find the project you want to review</h2>
+          </div>
+          <p>
+            Filter by area or search for a technology. Each card opens a technical case
+            with enough context to understand the project before reviewing its code.
+          </p>
+        </div>
+
+        <div class="catalogo-herramientas">
+          <label class="catalogo-busqueda">
+            <span>Search projects</span>
+            <input
+              type="search"
+              placeholder="Example: Java, Spring Boot or data"
+              data-project-search
+            />
+          </label>
+          <div class="filtros-recursos filtros-proyectos" aria-label="Filter projects">
+            {filters.map(([value, label], index) => (
+              <button
+                class:list={["filtro-recurso", { "filtro-activo": index === 0 }]}
+                type="button"
+                data-project-filter={value}
+                aria-pressed={index === 0 ? "true" : "false"}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <p class="catalogo-resultados" aria-live="polite" data-project-count>
+          {projectCount} cases available
+        </p>
+
+        <div class="catalogo-grid">
+          {projectCatalogEn.map((project) => (
+            <AcademicProjectCard project={project} lang="en" featured={project.featured} />
+          ))}
+        </div>
+
+        <div class="catalogo-vacio" data-project-empty hidden>
+          <h3>No matches found</h3>
+          <p>Try another technology or select “All”.</p>
+        </div>
+      </div>
+  </section>
+
 </BaseLayout>
