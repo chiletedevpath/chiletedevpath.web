@@ -1,0 +1,135 @@
+---
+const { projects, lang = "es" } = Astro.props;
+const isEn = lang === "en";
+
+const filters = isEn
+  ? [["todos", "All"], ["software", "Software"], ["datos", "Data"], ["backend", "Backend"], ["frontend", "Frontend"], ["fullstack", "Full stack"], ["patrones", "Patterns"]]
+  : [["todos", "Todos"], ["software", "Software"], ["datos", "Datos"], ["backend", "Backend"], ["frontend", "Frontend"], ["fullstack", "Full stack"], ["patrones", "Patrones"]];
+
+const repositoryLabel = (repository, index, total) => {
+  if (total === 1) return isEn ? "View project in Academia" : "Ver proyecto en Academia";
+  if (index === 0) return isEn ? "View frontend in Academia" : "Ver frontend en Academia";
+  return isEn ? "View backend in Academia" : "Ver backend en Academia";
+};
+---
+
+<section class="seccion seccion-clara explorador-proyectos" id={isEn ? "project-explorer" : "explorador-proyectos"} data-project-explorer>
+  <div class="contenedor">
+    <header class="explorador-cabecera">
+      <div>
+        <span class="etiqueta">{isEn ? "Project explorer" : "Explorador de proyectos"}</span>
+        <h2>{isEn ? "Choose a project and see how I built it" : "Elige un proyecto y conoce cómo lo construí"}</h2>
+      </div>
+      <p>{isEn
+        ? "Search by name, area or technology. When you choose one, I will show you what I solved and take you directly to its code."
+        : "Busca por nombre, área o tecnología. Cuando elijas uno, te mostraré qué resolví y podrás ir directamente a su código."}</p>
+    </header>
+
+    <div class="explorador-herramientas">
+      <label class="explorador-busqueda">
+        <span>{isEn ? "Search projects" : "Buscar proyecto"}</span>
+        <input type="search" placeholder={isEn ? "Example: Java, data or Spring Boot" : "Ejemplo: Java, datos o Spring Boot"} data-project-search />
+      </label>
+      <div class="filtros-recursos filtros-proyectos" aria-label={isEn ? "Filter projects" : "Filtrar proyectos"}>
+        {filters.map(([value, label], index) => (
+          <button class:list={["filtro-recurso", { "filtro-activo": index === 0 }]} type="button" data-project-filter={value} aria-pressed={index === 0 ? "true" : "false"}>{label}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="explorador-layout">
+      <aside class="explorador-indice" aria-label={isEn ? "Available projects" : "Proyectos disponibles"}>
+        <p class="explorador-contador" aria-live="polite" data-project-count>{projects.length} {isEn ? "projects available" : "proyectos disponibles"}</p>
+        <div class="explorador-lista" role="tablist" aria-orientation="vertical">
+          {projects.map((project, index) => {
+            const id = `project-${lang}-${index + 1}`;
+            const filters = project.filterTags ?? [project.routeStage];
+            const searchText = [project.title, project.description, project.type, ...project.technologies].join(" ").toLowerCase();
+            return (
+              <button
+                class:list={["explorador-opcion", { "explorador-opcion-activa": index === 0 }]}
+                type="button"
+                role="tab"
+                id={`${id}-tab`}
+                aria-controls={id}
+                aria-selected={index === 0 ? "true" : "false"}
+                tabindex={index === 0 ? "0" : "-1"}
+                data-project-option={id}
+                data-project-filters={filters.filter(Boolean).join(" ")}
+                data-project-search-text={searchText}
+              >
+                <img src={project.imageSrc} alt="" loading="lazy" width="96" height="72" />
+                <span class="explorador-opcion-numero">{String(index + 1).padStart(2, "0")}</span>
+                <span class="explorador-opcion-texto">
+                  <strong>{project.title}</strong>
+                  <small>{project.type}</small>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+        <div class="explorador-vacio" data-project-empty hidden>
+          <strong>{isEn ? "No matches found" : "No encontramos coincidencias"}</strong>
+          <span>{isEn ? "Try another term or select All." : "Prueba otro término o selecciona Todos."}</span>
+        </div>
+      </aside>
+
+      <div class="explorador-paneles">
+        {projects.map((project, index) => {
+          const id = `project-${lang}-${index + 1}`;
+          return (
+            <article class="explorador-detalle" id={id} role="tabpanel" aria-labelledby={`${id}-tab`} data-project-panel={id} hidden={index !== 0}>
+              <div class="explorador-presentacion">
+                <figure class="explorador-media">
+                  <img src={project.imageSrc} alt={project.imageAlt} loading={index === 0 ? "eager" : "lazy"} width="1200" height="628" />
+                  <figcaption>{project.visual}</figcaption>
+                </figure>
+
+                <div class="explorador-intro">
+                  <div class="explorador-meta">
+                    <span>{project.type}</span>
+                    <span class="explorador-estado"><i aria-hidden="true"></i>{project.status}</span>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p class="explorador-descripcion">{project.description}</p>
+
+                  <div class="proyecto-tech" aria-label={isEn ? "Technologies" : "Tecnologías"}>
+                    {project.technologies.map((tech) => <span>{tech}</span>)}
+                  </div>
+                </div>
+              </div>
+
+              <div class="explorador-contenido">
+                <div class="explorador-evidencia">
+                  <section>
+                    <span>01</span>
+                    <h4>{isEn ? "Problem" : "Problema"}</h4>
+                    <p>{project.problem}</p>
+                  </section>
+                  <section>
+                    <span>02</span>
+                    <h4>{isEn ? "Built solution" : "Solución construida"}</h4>
+                    <ul>{project.details.map((detail) => <li>{detail}</li>)}</ul>
+                  </section>
+                  <section>
+                    <span>03</span>
+                    <h4>{isEn ? "Demonstrated learning" : "Aprendizaje demostrado"}</h4>
+                    <p>{project.learned}</p>
+                  </section>
+                </div>
+
+                <div class="explorador-acciones">
+                  {project.repositories.map((repository, repositoryIndex) => (
+                    <a class="boton boton-principal" href={repository.href} target="_blank" rel="noopener noreferrer">
+                      {repositoryLabel(repository, repositoryIndex, project.repositories.length)}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>

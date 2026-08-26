@@ -17,11 +17,14 @@ if (typeof document !== "undefined") {
   const metricasAnimadas = document.querySelectorAll("[data-count]");
   const filtrosRecursos = document.querySelectorAll("[data-resource-filter]");
   const tarjetasRecursos = document.querySelectorAll("[data-resource-category]");
+  const exploradorProyectos = document.querySelector("[data-project-explorer]");
   const filtrosProyectos = document.querySelectorAll("[data-project-filter]");
-  const tarjetasProyectos = document.querySelectorAll("[data-project-card]");
+  const opcionesProyectos = document.querySelectorAll("[data-project-option]");
+  const panelesProyectos = document.querySelectorAll("[data-project-panel]");
   const busquedaProyectos = document.querySelector("[data-project-search]");
   const contadorProyectos = document.querySelector("[data-project-count]");
   const vacioProyectos = document.querySelector("[data-project-empty]");
+  const puentesProyectos = document.querySelectorAll("[data-project-bridge]");
   const preferenciaMovimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)");
   const zonasMovimiento = document.querySelectorAll(".hero, .page-hero, .politica-documento");
 
@@ -93,6 +96,23 @@ if (typeof document !== "undefined") {
     );
 
     zonasMovimiento.forEach((zona) => observadorMovimiento.observe(zona));
+  }
+
+  if (preferenciaMovimientoReducido.matches || !("IntersectionObserver" in window)) {
+    puentesProyectos.forEach((puente) => puente.classList.add("puente-visible"));
+  } else {
+    const observadorPuente = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (!entrada.isIntersecting) return;
+          entrada.target.classList.add("puente-visible");
+          observadorPuente.unobserve(entrada.target);
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.2 }
+    );
+
+    puentesProyectos.forEach((puente) => observadorPuente.observe(puente));
   }
 
   if ("IntersectionObserver" in window && enlacesMenu.length > 0) {
@@ -329,23 +349,73 @@ if (typeof document !== "undefined") {
   });
 
   let filtroProyectoActivo = "todos";
+  let proyectoActivo = opcionesProyectos[0]?.dataset.projectOption ?? "";
+
+  const activarProyecto = (projectId) => {
+    proyectoActivo = projectId;
+
+    opcionesProyectos.forEach((opcion) => {
+      const estaActiva = opcion.dataset.projectOption === projectId;
+      opcion.classList.toggle("explorador-opcion-activa", estaActiva);
+      opcion.setAttribute("aria-selected", String(estaActiva));
+      opcion.setAttribute("tabindex", estaActiva ? "0" : "-1");
+    });
+
+    panelesProyectos.forEach((panel) => {
+      panel.hidden = panel.dataset.projectPanel !== projectId;
+    });
+  };
+
   const filtrarProyectos = () => {
     const consulta = busquedaProyectos?.value.trim().toLowerCase() ?? "";
     let visibles = 0;
-    tarjetasProyectos.forEach((tarjeta) => {
-      const filtros = tarjeta.dataset.projectFilters?.split(" ") ?? [];
+    let primeraVisible = "";
+
+    opcionesProyectos.forEach((opcion) => {
+      const filtros = opcion.dataset.projectFilters?.split(" ") ?? [];
       const coincideFiltro = filtroProyectoActivo === "todos" || filtros.includes(filtroProyectoActivo);
-      const coincideTexto = !consulta || (tarjeta.dataset.projectSearchText ?? "").includes(consulta);
+      const coincideTexto = !consulta || (opcion.dataset.projectSearchText ?? "").includes(consulta);
       const visible = coincideFiltro && coincideTexto;
-      actualizarTarjetaFiltrada(tarjeta, visible);
-      if (visible) visibles += 1;
+
+      opcion.hidden = !visible;
+      if (visible) {
+        primeraVisible ||= opcion.dataset.projectOption;
+        visibles += 1;
+      }
     });
+
+    const opcionActivaVisible = [...opcionesProyectos].some(
+      (opcion) => opcion.dataset.projectOption === proyectoActivo && !opcion.hidden
+    );
+
+    if (!opcionActivaVisible && primeraVisible) activarProyecto(primeraVisible);
+    if (!primeraVisible) panelesProyectos.forEach((panel) => (panel.hidden = true));
+
     if (contadorProyectos) {
       const idiomaIngles = document.documentElement.lang === "en";
-      contadorProyectos.textContent = idiomaIngles ? `${visibles} ${visibles === 1 ? "case" : "cases"} available` : `${visibles} ${visibles === 1 ? "caso disponible" : "casos disponibles"}`;
+      contadorProyectos.textContent = idiomaIngles
+        ? `${visibles} ${visibles === 1 ? "project" : "projects"} available`
+        : `${visibles} ${visibles === 1 ? "proyecto disponible" : "proyectos disponibles"}`;
     }
     if (vacioProyectos) vacioProyectos.hidden = visibles !== 0;
   };
+
+  opcionesProyectos.forEach((opcion) => {
+    opcion.addEventListener("click", () => activarProyecto(opcion.dataset.projectOption));
+
+    opcion.addEventListener("keydown", (event) => {
+      if (!["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft"].includes(event.key)) return;
+
+      const opcionesVisibles = [...opcionesProyectos].filter((item) => !item.hidden);
+      const indiceActual = opcionesVisibles.indexOf(opcion);
+      const incremento = ["ArrowDown", "ArrowRight"].includes(event.key) ? 1 : -1;
+      const siguiente = opcionesVisibles[(indiceActual + incremento + opcionesVisibles.length) % opcionesVisibles.length];
+
+      event.preventDefault();
+      siguiente?.focus();
+      if (siguiente) activarProyecto(siguiente.dataset.projectOption);
+    });
+  });
 
   filtrosProyectos.forEach((filtro) => {
     filtro.addEventListener("click", () => {
@@ -360,6 +430,7 @@ if (typeof document !== "undefined") {
     });
   });
   busquedaProyectos?.addEventListener("input", filtrarProyectos);
+  if (exploradorProyectos && proyectoActivo) activarProyecto(proyectoActivo);
 
   panelesContacto.forEach((panel) => {
     const botonCorreo = panel.querySelector("[data-send-email]");
