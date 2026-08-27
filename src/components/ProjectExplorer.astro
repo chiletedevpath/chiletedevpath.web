@@ -119,6 +119,11 @@ const repositoryLabel = (repository, index, total) => {
                 </div>
 
                 <div class="explorador-acciones">
+                  {project.demoHref && (
+                    <a class="boton boton-secundario boton-externo" href={project.demoHref} target="_blank" rel="noopener noreferrer">
+                      {isEn ? "View live demo" : "Ver demo en vivo"}
+                    </a>
+                  )}
                   {project.repositories.map((repository, repositoryIndex) => (
                     <a class="boton boton-principal" href={repository.href} target="_blank" rel="noopener noreferrer">
                       {repositoryLabel(repository, repositoryIndex, project.repositories.length)}
