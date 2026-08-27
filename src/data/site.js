@@ -93,7 +93,7 @@ export const socialsEn = [
     name: "LinkedIn",
     label: "Professional profile",
     description: "Trajectory, learning process and professional profile.",
-    href: "https://www.linkedin.com/in/adrian-pisco",
+    href: "https://www.linkedin.com/in/adri%C3%A1n-piscos",
   },
   {
     name: "Discord",
@@ -133,7 +133,7 @@ export const socials = [
     name: "LinkedIn",
     label: "Perfil profesional",
     description: "Trayectoria, aprendizaje y perfil profesional.",
-    href: "https://www.linkedin.com/in/adrian-pisco",
+    href: "https://www.linkedin.com/in/adri%C3%A1n-piscos",
   },
   {
     name: "Discord",
