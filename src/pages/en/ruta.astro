@@ -49,10 +49,10 @@ import { routeStagesEn, techStack } from "../../data/ruta.js";
       <SectionHeader
         eyebrow="Guided stages"
         title="A route from foundation to production habits"
-        description="Each block links to the learning repository and shows the expected result of that stage."
+        description="Progress follows one rule: available is 100%, under review 75%, in development 50% and planned 0%. Each stage shows the average of its contents."
       />
       <div class="ruta-etapas">
-        {routeStagesEn.map((stage) => <RouteStage stage={stage} />)}
+        {routeStagesEn.map((stage) => <RouteStage stage={stage} lang="en" />)}
       </div>
       <div class="ruta-accion">
         <p>The practical content lives in the learning repository. I will keep expanding it with useful exercises, focused glossaries and labs when they truly help people learn.</p>
@@ -70,20 +70,25 @@ import { routeStagesEn, techStack } from "../../data/ruta.js";
         title="Tools used across the path"
         description="Each technology appears because it solves something in the route, not as decoration."
       />
-      <div class="tech-grid">
-        {techStack.map((tech) => (
+      <div class="tech-showcase" aria-label="Technologies used across Chilete DevPath">
+        {techStack.map((tech, index) => (
           <a
-            class={`tech-badge tech-${tech.tone}`}
+            class="tech-item"
             href={tech.href}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open learning content related to ${tech.name}`}
           >
-            <span class="tech-icono"><TechIcon name={tech.name} /></span>
-            <div>
+            <div class="tech-item-cabecera">
+              <TechIcon name={tech.name} />
+              <span class="tech-orden" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <div class="tech-item-contenido">
+              <span class="tech-categoria">{tech.categoryEn}</span>
               <strong>{tech.name}</strong>
               <p>{tech.descriptionEn ?? tech.description}</p>
             </div>
+            <span class="tech-acceso">Open content <span aria-hidden="true">↗</span></span>
           </a>
         ))}
       </div>

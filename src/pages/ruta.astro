@@ -46,6 +46,11 @@ import { routeStages, techStack } from "../data/ruta.js";
 
   <section class="seccion">
     <div class="contenedor">
+      <SectionHeader
+        eyebrow="Etapas guiadas"
+        title="Una ruta desde la base hasta hábitos de producción"
+        description="El avance se calcula con una regla común: disponible vale 100%, en revisión 75%, en desarrollo 50% y planificado 0%. Cada etapa muestra el promedio de sus contenidos."
+      />
       <div class="ruta-etapas">
         {routeStages.map((stage) => <RouteStage stage={stage} />)}
       </div>
@@ -65,20 +70,25 @@ import { routeStages, techStack } from "../data/ruta.js";
         title="Herramientas que aparecen en la ruta"
         description="Estas tecnologías aparecen porque ayudan a resolver algo dentro de la ruta. No están para decorar una lista, sino para practicar con propósito."
       />
-      <div class="tech-grid" aria-label="Tecnologías usadas en Chilete DevPath">
-        {techStack.map((tech) => (
+      <div class="tech-showcase" aria-label="Tecnologías usadas en Chilete DevPath">
+        {techStack.map((tech, index) => (
           <a
-            class={`tech-badge tech-${tech.tone}`}
+            class="tech-item"
             href={tech.href}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Ver aprendizaje relacionado con ${tech.name}`}
           >
-            <span class="tech-icono"><TechIcon name={tech.name} /></span>
-            <div>
+            <div class="tech-item-cabecera">
+              <TechIcon name={tech.name} />
+              <span class="tech-orden" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <div class="tech-item-contenido">
+              <span class="tech-categoria">{tech.category}</span>
               <strong>{tech.name}</strong>
               <p>{tech.description}</p>
             </div>
+            <span class="tech-acceso">Abrir contenido <span aria-hidden="true">↗</span></span>
           </a>
         ))}
       </div>

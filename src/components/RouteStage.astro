@@ -1,5 +1,16 @@
 ---
-const { stage } = Astro.props;
+const { stage, lang = "es" } = Astro.props;
+const labels = lang === "en"
+  ? {
+      technologies: "Technologies and concepts in this stage",
+      progress: "Stage progress",
+      result: "Result",
+    }
+  : {
+      technologies: "Tecnologías y conceptos de la etapa",
+      progress: "Avance de etapa",
+      result: "Resultado",
+    };
 ---
 
 <article class="ruta-etapa">
@@ -7,7 +18,7 @@ const { stage } = Astro.props;
   <span class="ruta-meta">{stage.intent}</span>
   <h3>{stage.title}</h3>
   {Array.isArray(stage.technologies) && (
-    <div class="ruta-tecnologias" aria-label="Tecnologías y conceptos de la etapa">
+    <div class="ruta-tecnologias" aria-label={labels.technologies}>
       {stage.technologies.map((tech) => <span>{tech}</span>)}
     </div>
   )}
@@ -19,9 +30,9 @@ const { stage } = Astro.props;
     ))}
   </ol>
   {typeof stage.progress === "number" && (
-    <div class="ruta-avance" aria-label={`Avance de etapa ${stage.progress}%`}>
+    <div class="ruta-avance" aria-label={`${labels.progress} ${stage.progress}%`}>
       <div>
-        <span>Avance de etapa</span>
+        <span>{labels.progress}</span>
         <strong>{stage.progress}%</strong>
       </div>
       <div class="ruta-avance-barra">
@@ -29,7 +40,7 @@ const { stage } = Astro.props;
       </div>
     </div>
   )}
-  <p class="ruta-resultado">Resultado: {stage.result}</p>
+  <p class="ruta-resultado">{labels.result}: {stage.result}</p>
   <div class="ruta-pie">
     <span class="estado estado-etapa">{stage.status}</span>
     <a href={stage.href} target="_blank" rel="noopener noreferrer">{stage.action}</a>

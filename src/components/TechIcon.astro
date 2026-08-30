@@ -1,53 +1,42 @@
 ---
+import {
+  siAstro,
+  siCss,
+  siHtml5,
+  siJavascript,
+  siPhp,
+  siPostgresql,
+  siSpringboot,
+} from "simple-icons";
+
 const { name } = Astro.props;
+
+const icons = {
+  HTML: siHtml5,
+  CSS: siCss,
+  JavaScript: siJavascript,
+  PHP: siPhp,
+  PostgreSQL: siPostgresql,
+  "Spring Boot": siSpringboot,
+  Astro: siAstro,
+};
+
+const icon = icons[name];
+const isJava = name === "Java";
 ---
 
-{name === "HTML" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <path d="M9 5h30l-2.7 32.5L24 43l-12.3-5.5L9 5Z" />
-    <path d="M17 15h14M18 23h12l-.8 8.2L24 33.6l-5.2-2.4" />
-  </svg>
-)}
-{name === "CSS" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <path d="M9 5h30l-2.8 32.5L24 43l-12.2-5.5L9 5Z" />
-    <path d="M31 15H17l.5 8H30l-.8 8.2L24 33.6l-5.3-2.4" />
-  </svg>
-)}
-{name === "JavaScript" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <rect x="8" y="8" width="32" height="32" rx="5" />
-    <path d="M18 30c1.2 2.4 5.7 2.2 5.7-1.2V18M29 31c1.4 1.4 5 1.4 5-1.1 0-3.1-5.4-1.9-5.4-5.2 0-2.6 3.5-3 5.2-1.5" />
-  </svg>
-)}
-{name === "PHP" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <ellipse cx="24" cy="24" rx="19" ry="11" />
-    <path d="M14 29l2-10h5.5c3.4 0 3.1 5.7-.5 5.7h-4M25 29l2-10M27.7 24.4h5.8M34 29l2-10h4.2c3.2 0 3 5.6-.5 5.6h-3.4" />
-  </svg>
-)}
-{name === "Java" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <path d="M28 5c-5 4.1 4.7 6.5-1.4 11M22 8c-4.8 3.8 4 6.3-1.2 10.5" />
-    <path d="M14 24h19c0 7-3.5 11-9.5 11S14 31 14 24Z" />
-    <path d="M33 25h3.5c3.4 0 3.4 5.8-.8 5.8H33M13 39c6 2.2 16 2.2 22 0" />
-  </svg>
-)}
-{name === "SQL" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <ellipse cx="24" cy="11" rx="14" ry="6" />
-    <path d="M10 11v24c0 3.3 6.3 6 14 6s14-2.7 14-6V11M10 23c0 3.3 6.3 6 14 6s14-2.7 14-6" />
-  </svg>
-)}
-{name === "Spring Boot" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <path d="M38 9c-14 1-25 8-25 20 0 6.4 5 10 10.8 10 9.7 0 15.7-9.4 14.2-30Z" />
-    <path d="M14 34c6-9 12-13 21-16" />
-  </svg>
-)}
-{name === "Astro" && (
-  <svg viewBox="0 0 48 48" aria-hidden="true">
-    <path d="M24 5l12 30H12L24 5Z" />
-    <path d="M17 35c2.5 5.5 11.5 5.5 14 0M20 26h8" />
-  </svg>
+{(icon || isJava) && (
+  <span
+    class:list={["tech-icono", { "tech-icono-java": isJava }]}
+    style={`--tech-brand: ${isJava ? "#e76f00" : `#${icon.hex}`}`}
+    title={isJava ? "Java" : icon.title}
+  >
+    {isJava ? (
+      <img src="/assets/img/technologies/java-original.svg" alt="" aria-hidden="true" />
+    ) : (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d={icon.path} />
+      </svg>
+    )}
+  </span>
 )}

@@ -13,15 +13,16 @@ const {
   primaryLabel = "Ver ruta de aprendizaje",
   secondaryHref = "https://github.com/chiletedevpath",
   secondaryLabel = "Explorar GitHub",
-  indicators = ["12 temas publicados", "6 proyectos con contexto", "4 criterios activos"],
+  indicators = ["12 módulos ordenados", "8 proyectos académicos", "4 criterios activos"],
   dashboardStatus = "Ruta activa",
   dashboardTitle = "Chilete DevPath",
-  pathSteps = ["Fundamentos", "Web", "Datos", "Backend", "Proyectos"],
+  pathSteps = ["Fundamentos", "Software", "Web y datos", "Especialización", "Publicación"],
   terminalPrompt = "devpath@chilete:~$",
   terminalCommand = "aprender --orden --practica --criterio",
   terminalStatus = "publicando avance verificable...",
-  progressLabel = "Base técnica",
-  progressValue = "70%",
+  progressLabel = "Módulos disponibles",
+  progressValue = "10 de 12",
+  progressPercent = 83,
 } = Astro.props;
 ---
 
@@ -79,8 +80,8 @@ const {
             <span>{progressLabel}</span>
             <strong>{progressValue}</strong>
           </div>
-          <div class="dashboard-barra">
-            <span></span>
+          <div class="dashboard-barra" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="10">
+            <span style={`width: ${progressPercent}%`}></span>
           </div>
         </div>
       </div>

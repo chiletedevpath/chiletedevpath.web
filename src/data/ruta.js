@@ -21,7 +21,7 @@ export const routeStages = [
       "Ejercicios simples, razonamiento paso a paso y primeras soluciones explicadas.",
     status: "Disponible",
     progress: 100,
-    technologies: ["Lógica", "Pseudocódigo", "Java"],
+    technologies: ["Lógica", "Pseudocódigo", "Java", "Scala"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/00-fundamentos",
     action: "Entrar a fundamentos",
   },
@@ -45,8 +45,8 @@ export const routeStages = [
     ],
     result:
       "Código más ordenado, estructuras reutilizables y solución de problemas con mejor diseño.",
-    status: "En crecimiento",
-    progress: 65,
+    status: "Disponible",
+    progress: 100,
     technologies: ["Java", "POO", "Algoritmos"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
     action: "Ver avance",
@@ -72,7 +72,7 @@ export const routeStages = [
     result:
       "Prácticas web, consultas de datos y repositorios documentados con contexto.",
     status: "Disponible",
-    progress: 80,
+    progress: 100,
     technologies: ["SQL", "HTML", "CSS", "PHP"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
     action: "Abrir desarrollo web",
@@ -92,7 +92,7 @@ export const routeStages = [
       },
       {
         label: "Frontend moderno",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/10-frontend",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
       {
         label: "Proyectos integradores",
@@ -100,13 +100,13 @@ export const routeStages = [
       },
       {
         label: "Publicación y producción",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
     ],
     result:
       "Proyectos con arquitectura inicial, criterios de publicación y evidencia profesional.",
-    status: "En revisión",
-    progress: 55,
+    status: "En desarrollo",
+    progress: 67,
     technologies: ["Patrones", "Backend", "Frontend"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/08-patrones",
     action: "Ver patrones",
@@ -118,24 +118,24 @@ export const routeStages = [
     topics: [
       {
         label: "Checklist de publicación",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
       {
         label: "Configuración segura",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
       {
         label: "README y ejecución",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
     ],
     result:
-      "Proyectos listos para revisión pública: enlaces probados, datos ficticios y estado honesto.",
-    status: "Base inicial",
-    progress: 40,
+      "Checklist y experiencia aplicada, con laboratorios reproducibles todavía pendientes.",
+    status: "Planificado",
+    progress: 0,
     technologies: ["GitHub", "README", "Deploy"],
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
-    action: "Ver publicación",
+    href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
+    action: "Ver estado de la ruta",
   },
 ];
 
@@ -155,7 +155,7 @@ export const learningSections = [
   {
     title: "Programación básica",
     status: "Disponible",
-    description: "Prácticas iniciales para traducir razonamiento a código ejecutable.",
+    description: "Prácticas iniciales en Java y primeros ejercicios secuenciales en Scala.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/02-programacion-basica",
   },
   {
@@ -179,13 +179,13 @@ export const learningSections = [
   {
     title: "Bases de datos",
     status: "Disponible",
-    description: "Modelado, SQL y criterios de publicación segura de datos.",
+    description: "Modelado, SQL, bases relacionales y NoSQL con prácticas organizadas y verificadas.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/06-bases-de-datos",
   },
   {
     title: "Desarrollo web",
     status: "Disponible",
-    description: "HTML, CSS, JavaScript inicial y PHP desarrollado como avance académico.",
+    description: "HTML, CSS, Bootstrap y JavaScript del navegador con prácticas progresivas.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
   },
   {
@@ -196,21 +196,21 @@ export const learningSections = [
   },
   {
     title: "Backend",
-    status: "En revisión segura",
+    status: "Disponible",
     description: "APIs, persistencia, seguridad, testing e integraciones con variables de entorno.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/09-backend",
   },
   {
     title: "Frontend moderno",
-    status: "Base inicial",
-    description: "Componentes, estado, formularios, consumo de APIs y experiencia de usuario.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/10-frontend",
+    status: "Planificado",
+    description: "La secuencia está definida; las prácticas se incorporarán conforme avance el aprendizaje.",
+    href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
   },
   {
     title: "Publicación y producción",
-    status: "Base inicial",
-    description: "Checklist para preparar proyectos antes de mostrarlos en GitHub, web o portafolio.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+    status: "Planificado",
+    description: "Se incorporará cuando existan laboratorios propios, reproducibles y revisados.",
+    href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
   },
 ];
 
@@ -218,6 +218,8 @@ export const techStack = [
   {
     name: "HTML",
     tone: "markup",
+    category: "Estructura web",
+    categoryEn: "Web structure",
     description: "Estructura semántica del contenido y base de accesibilidad.",
     descriptionEn: "Semantic content structure and accessibility foundation.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
@@ -225,6 +227,8 @@ export const techStack = [
   {
     name: "CSS",
     tone: "style",
+    category: "Diseño de interfaz",
+    categoryEn: "Interface design",
     description: "Layout responsive, jerarquía visual y sistema de temas.",
     descriptionEn: "Responsive layout, visual hierarchy and theme system.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
@@ -232,6 +236,8 @@ export const techStack = [
   {
     name: "JavaScript",
     tone: "script",
+    category: "Interacción web",
+    categoryEn: "Web interaction",
     description: "Interacción, asincronía inicial y comportamiento en navegador.",
     descriptionEn: "Interaction, initial asynchrony and browser behavior.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
@@ -239,27 +245,35 @@ export const techStack = [
   {
     name: "PHP",
     tone: "server",
+    category: "Web del lado servidor",
+    categoryEn: "Server-side web",
     description: "Formularios, ciclos, arreglos y procesamiento web básico.",
     descriptionEn: "Forms, loops, arrays and basic web processing.",
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web/php",
+    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/09-backend/03-procesamiento-del-lado-servidor",
   },
   {
     name: "Java",
     tone: "java",
+    category: "Programación y backend",
+    categoryEn: "Programming and backend",
     description: "POO, estructuras, algoritmos, patrones y backend académico.",
     descriptionEn: "OOP, structures, algorithms, patterns and academic backend.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
   },
   {
-    name: "SQL",
+    name: "PostgreSQL",
     tone: "data",
-    description: "Modelado, consultas y criterio de datos seguros.",
-    descriptionEn: "Modeling, queries and safe data criteria.",
+    category: "Base de datos relacional",
+    categoryEn: "Relational database",
+    description: "Modelado relacional, restricciones, consultas e índices.",
+    descriptionEn: "Relational modeling, constraints, queries and indexes.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/06-bases-de-datos",
   },
   {
     name: "Spring Boot",
     tone: "backend",
+    category: "Backend con Java",
+    categoryEn: "Java backend",
     description: "APIs, persistencia, seguridad, pruebas e integraciones.",
     descriptionEn: "APIs, persistence, security, testing and integrations.",
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/09-backend",
@@ -267,9 +281,11 @@ export const techStack = [
   {
     name: "Astro",
     tone: "web",
+    category: "Publicación web",
+    categoryEn: "Web publishing",
     description: "Base estática de la web pública de Chilete DevPath.",
     descriptionEn: "Static base for the public Chilete DevPath website.",
-    href: "https://github.com/chiletedevpath/chiletedevpath.github.io",
+    href: "https://github.com/chiletedevpath/chiletedevpath.web",
   },
 ];
 
@@ -295,7 +311,7 @@ export const routeStagesEn = [
     result: "Simple exercises, step-by-step reasoning and explained solutions.",
     status: "Available",
     progress: 100,
-    technologies: ["Logic", "Pseudocode", "Java"],
+    technologies: ["Logic", "Pseudocode", "Java", "Scala"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/00-fundamentos",
     action: "Open foundation",
   },
@@ -318,8 +334,8 @@ export const routeStagesEn = [
       },
     ],
     result: "More organized code, reusable structures and better problem-solving design.",
-    status: "Growing",
-    progress: 65,
+    status: "Available",
+    progress: 100,
     technologies: ["Java", "OOP", "Algorithms"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/03-poo",
     action: "View progress",
@@ -344,7 +360,7 @@ export const routeStagesEn = [
     ],
     result: "Web practice, data queries and repositories documented with context.",
     status: "Available",
-    progress: 80,
+    progress: 100,
     technologies: ["SQL", "HTML", "CSS", "PHP"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/07-desarrollo-web",
     action: "Open web",
@@ -364,7 +380,7 @@ export const routeStagesEn = [
       },
       {
         label: "Modern frontend",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/10-frontend",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
       {
         label: "Integrating projects",
@@ -372,12 +388,12 @@ export const routeStagesEn = [
       },
       {
         label: "Publishing and production",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
     ],
     result: "Projects with initial architecture, publishing criteria and professional evidence.",
-    status: "Under review",
-    progress: 55,
+    status: "In development",
+    progress: 67,
     technologies: ["Patterns", "Backend", "Frontend"],
     href: "https://github.com/chiletedevpath/aprendizaje/tree/main/08-patrones",
     action: "View patterns",
@@ -389,22 +405,22 @@ export const routeStagesEn = [
     topics: [
       {
         label: "Publishing checklist",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
       {
         label: "Safe configuration",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
       {
         label: "README and execution",
-        href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
+        href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
       },
     ],
-    result: "Projects ready for public review: tested links, fictitious data and honest status.",
-    status: "Initial base",
-    progress: 40,
+    result: "A checklist and applied experience, with reproducible labs still pending.",
+    status: "Planned",
+    progress: 0,
     technologies: ["GitHub", "README", "Deploy"],
-    href: "https://github.com/chiletedevpath/aprendizaje/tree/main/11-publicacion-y-produccion",
-    action: "Open publishing",
+    href: "https://github.com/chiletedevpath/aprendizaje#estado-verificable-de-la-ruta",
+    action: "View route status",
   },
 ];

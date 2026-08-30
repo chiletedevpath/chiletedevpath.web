@@ -9,10 +9,10 @@ import { projectAreasEn } from "../../data/proyectos.js";
 import { site, valuePropsEn } from "../../data/site.js";
 
 const metricsEn = [
-  { label: "Available topics", value: "12", detail: "Path from fundamentals to publishing" },
-  { label: "Academic projects", value: "6", detail: "UTP and Tecsup evidence with status and progress" },
+  { label: "Organized modules", value: "12", detail: "7 available, 4 in development or review and 1 planned" },
+  { label: "Academic projects", value: "8", detail: "Formal evidence preserved in Academia" },
   { label: "Active policies", value: "4", detail: "Publishing, AI, wellbeing and authorship" },
-  { label: "Active paths", value: "4", detail: "Foundation, software, web-data and specialization" },
+  { label: "Path stages", value: "5", detail: "Foundation, software, web and data, specialization and publishing" },
 ];
 
 const learningActionsEn = [
@@ -56,12 +56,14 @@ const audienceEn = [
     primaryHref="/en/ruta/"
     primaryLabel="View learning path"
     secondaryLabel="Explore GitHub"
-    indicators={["12 published topics", "6 contextualized projects", "4 active criteria"]}
+    indicators={["12 organized modules", "8 academic projects", "4 active criteria"]}
     dashboardStatus="Active path"
-    pathSteps={["Foundations", "Web", "Data", "Backend", "Projects"]}
+    pathSteps={["Foundations", "Software", "Web and data", "Specialization", "Publishing"]}
     terminalCommand="learn --order --practice --criteria"
     terminalStatus="publishing verifiable progress..."
-    progressLabel="Technical base"
+    progressLabel="Available modules"
+    progressValue="10 of 12"
+    progressPercent={83}
   />
 
   <section class="seccion seccion-clara inicio-aprendizaje">
@@ -151,7 +153,7 @@ const audienceEn = [
         description="The path shows where to start, what to practice next and how to connect progress with real projects."
       />
       <div class="ruta-etapas ruta-etapas-compacta">
-        {routeStagesEn.slice(0, 4).map((stage) => <RouteStage stage={stage} />)}
+        {routeStagesEn.slice(0, 4).map((stage) => <RouteStage stage={stage} lang="en" />)}
       </div>
       <div class="ruta-accion">
         <p>Explore the full path, solved exercises and practices designed to learn by building.</p>

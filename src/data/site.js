@@ -37,10 +37,10 @@ export const navMoreItemsEn = [
 ];
 
 export const metrics = [
-  { label: "Temas disponibles", value: "12", detail: "Ruta desde fundamentos hasta publicación" },
-  { label: "Proyectos académicos", value: "6", detail: "UTP y Tecsup con estado y avance" },
+  { label: "Módulos ordenados", value: "12", detail: "10 disponibles y 2 planificados sin contenido publicado" },
+  { label: "Proyectos académicos", value: "8", detail: "Evidencia formal conservada en Academia" },
   { label: "Políticas activas", value: "4", detail: "Publicación, IA, bienestar y autoría" },
-  { label: "Rutas activas", value: "4", detail: "Base, software, web-datos y especialización" },
+  { label: "Etapas de la ruta", value: "5", detail: "Base, software, web y datos, especialización y publicación" },
 ];
 
 export const valueProps = [

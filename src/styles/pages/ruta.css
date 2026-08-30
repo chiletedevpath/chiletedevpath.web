@@ -288,100 +288,159 @@
   color: var(--color-texto-suave);
 }
 
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.tech-badge {
-  min-height: 158px;
-  padding: 18px;
+.tech-showcase {
+  overflow: hidden;
   border: 1px solid var(--color-borde);
   border-radius: 8px;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--color-superficie) 88%, transparent), transparent),
-    var(--color-superficie);
+  background-color: var(--color-superficie);
   box-shadow: var(--sombra-suave);
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tech-item {
+  min-height: 250px;
+  padding: 24px;
+  border-right: 1px solid var(--color-borde);
+  border-bottom: 1px solid var(--color-borde);
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  isolation: isolate;
   transition:
-    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.tech-item:nth-child(4n) {
+  border-right: 0;
+}
+
+.tech-item:nth-last-child(-n + 4) {
+  border-bottom: 0;
+}
+
+.tech-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background-color: var(--tech-brand, var(--color-acento));
+  opacity: 0;
+  transform: scaleY(0.35);
+  transition:
+    opacity 0.2s ease,
     transform 0.2s ease;
 }
 
-.tech-badge:hover {
-  border-color: var(--color-acento);
-  transform: translateY(-3px);
+.tech-item:hover,
+.tech-item:focus-visible {
+  background-color: color-mix(in srgb, var(--color-agua) 8%, var(--color-superficie));
+}
+
+.tech-item:hover::before,
+.tech-item:focus-visible::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.tech-item:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-acento) 62%, transparent);
+  outline-offset: -3px;
+}
+
+.tech-item-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .tech-icono {
   width: 58px;
   height: 58px;
-  border-radius: 14px;
-  background-color: var(--color-principal);
-  color: var(--color-superficie);
+  border: 1px solid color-mix(in srgb, var(--tech-brand) 30%, var(--color-borde));
+  border-radius: 8px;
+  background-color: color-mix(in srgb, var(--tech-brand) 10%, var(--color-superficie));
+  color: var(--tech-brand);
   display: grid;
   place-items: center;
 }
 
 .tech-icono svg {
-  width: 38px;
-  height: 38px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
 }
 
-.tech-badge strong {
+.tech-icono-java {
+  border-color: color-mix(in srgb, #e76f00 30%, var(--color-borde));
+  background-color: #fff;
+}
+
+.tech-icono img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.tech-orden {
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-mono);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.tech-item-contenido {
+  display: grid;
+  gap: 7px;
+}
+
+.tech-categoria {
+  color: var(--color-acento);
+  font-family: var(--fuente-mono);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.tech-item strong {
   color: var(--color-principal);
   font-family: var(--fuente-titulos);
-  font-size: 1.08rem;
-  display: block;
-  margin-bottom: 8px;
+  font-size: 1.18rem;
 }
 
-.tech-badge p {
+.tech-item p {
   color: var(--color-texto-suave);
-  font-size: 0.92rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
-.tech-markup .tech-icono {
-  background-color: #d96b2b;
+.tech-acceso {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid var(--color-borde);
+  color: var(--color-principal);
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.tech-style .tech-icono {
-  background-color: #2878b8;
+.tech-acceso span {
+  color: var(--color-acento);
+  font-size: 1rem;
+  transition: transform 0.2s ease;
 }
 
-.tech-script .tech-icono {
-  background-color: #c9a72d;
-  color: #17252b;
-}
-
-.tech-server .tech-icono {
-  background-color: #5b6595;
-}
-
-.tech-java .tech-icono {
-  background-color: #b94732;
-}
-
-.tech-data .tech-icono {
-  background-color: #2c6f86;
-}
-
-.tech-backend .tech-icono {
-  background-color: #2b7a5b;
-}
-
-.tech-web .tech-icono {
-  background-color: #5b4a86;
+.tech-item:hover .tech-acceso span,
+.tech-item:focus-visible .tech-acceso span {
+  transform: translate(2px, -2px);
 }
 
 .recurso-card small {

@@ -60,7 +60,6 @@
   .red-grupo,
   .red-grupo-canales,
   .contenido-ruta,
-  .tech-grid,
   .politicas-grid,
   .acciones-aprendizaje,
   .metricas-panel,
@@ -147,11 +146,47 @@
       var(--color-acento)
     );
   }
+
+  .tech-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tech-item:nth-child(4n) {
+    border-right: 1px solid var(--color-borde);
+  }
+
+  .tech-item:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .tech-item:nth-last-child(-n + 4) {
+    border-bottom: 1px solid var(--color-borde);
+  }
+
+  .tech-item:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
 }
 
 @media (min-width: 861px) and (max-width: 1080px) {
-  .tech-grid {
+  .tech-showcase {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tech-item:nth-child(4n) {
+    border-right: 1px solid var(--color-borde);
+  }
+
+  .tech-item:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .tech-item:nth-last-child(-n + 4) {
+    border-bottom: 1px solid var(--color-borde);
+  }
+
+  .tech-item:nth-last-child(-n + 2) {
+    border-bottom: 0;
   }
 }
 
@@ -179,6 +214,29 @@
     min-width: 46px;
     min-height: 42px;
     padding: 8px 14px;
+  }
+
+  .tech-showcase {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    grid-auto-columns: minmax(250px, 82vw);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    scroll-padding-inline: 0;
+    scroll-snap-type: inline mandatory;
+    scrollbar-color: var(--color-acento) transparent;
+    scrollbar-width: thin;
+  }
+
+  .tech-item:nth-child(n) {
+    min-height: 270px;
+    border-right: 1px solid var(--color-borde);
+    border-bottom: 0;
+    scroll-snap-align: start;
+  }
+
+  .tech-item:last-child {
+    border-right: 0;
   }
 
   .menu-boton {
