@@ -1,10 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/pages/ruta.css";
+import "../styles/components/editorial.css";
 import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import RouteStage from "../components/RouteStage.astro";
 import TechIcon from "../components/TechIcon.astro";
-import { routeStages, techStack } from "../data/ruta.js";
+import { getRouteStages, getTechStack } from "../data/ruta.js";
+
+const routeStages = getRouteStages("es");
+const techStack = getTechStack("es");
 ---
 
 <BaseLayout title="Ruta de aprendizaje | Chilete DevPath">
@@ -49,7 +54,7 @@ import { routeStages, techStack } from "../data/ruta.js";
       <SectionHeader
         eyebrow="Etapas guiadas"
         title="Una ruta desde la base hasta hábitos de producción"
-        description="El avance se calcula con una regla común: disponible vale 100%, en revisión 75%, en desarrollo 50% y planificado 0%. Cada etapa muestra el promedio de sus contenidos."
+        description="El avance se calcula con una regla común: disponible vale 100%, en revisión 75%, en desarrollo 50% y planificado 0%. Cada etapa muestra el promedio de sus módulos."
       />
       <div class="ruta-etapas">
         {routeStages.map((stage) => <RouteStage stage={stage} />)}

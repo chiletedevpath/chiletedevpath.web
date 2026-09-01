@@ -18,6 +18,10 @@ out/
 *.log
 *.tmp
 *.bak
+.env
+.env.local
+.dev.vars
+.wrangler/
 
 # Imagenes generadas en revision local
 public/assets/img/ChatGPT Image *.png

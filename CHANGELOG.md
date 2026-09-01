@@ -2,6 +2,38 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.12.0
+
+- Fecha de revisión: 01/09/2026
+- Estado: en revisión local
+- Sitio: https://chiletedevpath.com/
+
+### Alcance
+
+- Centralización de los doce módulos de aprendizaje y cálculo automático de estados, contenidos y avance.
+- Incorporación de identidad estable en el catálogo académico para evitar que el orden intercambie metadatos entre proyectos.
+- Generación de filtros, contadores y relaciones ES/EN desde los datos reales del catálogo.
+- Sincronización de la versión visible con `package.json`.
+- Corrección de `security.txt` para utilizar el dominio oficial.
+- Metadatos SEO particulares por ruta, Open Graph bilingüe y textos accesibles traducidos.
+- Datos estructurados iniciales para `WebSite`, `Person` y la página actual.
+- Formularios HTML semánticos con validación unificada, Turnstile y entrega mediante un Worker protegido por rate limiting.
+- Retiro de la configuración de EmailJS del JavaScript enviado al navegador.
+- Sustitución del encabezado React por Astro y JavaScript nativo, sin hidratación de cliente.
+- Eliminación de React, Lucide React y Tailwind al no existir otros consumidores en el sitio.
+- Organización de los estilos base en `core` y carga selectiva de estilos por componente y página.
+- Separación de los estilos editoriales del sistema compartido de héroes internos.
+- Consolidación de reglas duplicadas y traslado de cada ajuste responsive al módulo que lo utiliza.
+- Verificación de temas claro y oscuro sin desbordes horizontales desde 320 px.
+- Generación automática del sitemap desde las rutas de Astro y actualización de `robots.txt`.
+- Service worker generado con la versión de `package.json`, precarga tolerante a fallos y fallback localizado ES/EN.
+- Precarga de los recursos locales enlazados para conservar una experiencia offline legible desde la primera instalación.
+- Normalización del manifiesto y validación de iconos para instalación estándar y maskable.
+
+### Criterio de revisión
+
+La V4.12.0 alinea la arquitectura pública con la ruta y la evidencia académica actuales, reduce datos y estilos duplicados, y evita inconsistencias silenciosas al reordenar contenido.
+
 ## V4.11
 
 - Fecha de cierre: 21/07/2026

@@ -14,23 +14,21 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V4.6`
+`V4.12.0`
 
-- Fecha de cierre: 26/06/2026
-- Estado: en revisión
+- Fecha de revisión: 01/09/2026
+- Estado: en revisión local
 - Sitio: https://chiletedevpath.com/
 
-Esta versión fortalece la web como plataforma educativa de marca: mejora el hero principal, completa páginas en inglés, refuerza formularios, agrega SEO básico y ajusta la paleta día/noche.
+La versión se obtiene de `package.json`, que actúa como fuente principal para el identificador mostrado por la web.
 
 ## Tecnologias
 
 - Astro
-- React
-- Tailwind CSS
 - HTML
 - CSS
 - JavaScript
-- Lucide React
+- SVG estático basado en Lucide
 - SVG propio
 - SEO y vista previa social
 - Google Fonts
@@ -55,6 +53,10 @@ chiletedevpath-web/
 |       |-- components/
 |       |-- core/
 |       `-- pages/
+|-- worker/
+|   |-- src/
+|   |-- test/
+|   `-- wrangler.jsonc
 |-- .github/
 |   `-- workflows/
 |-- astro.config.mjs
@@ -63,15 +65,17 @@ chiletedevpath-web/
 `-- CHANGELOG.md
 ```
 
-## Alcance de V4.6
+## Alcance actual
 
-- Hero principal rediseñado como panel de aprendizaje, sin depender de una foto poco integrada.
-- Páginas en inglés ampliadas para evitar secciones incompletas o mezclas de idioma.
-- Formularios mejorados con tipo de mensaje, placeholders, contador de caracteres y nota de privacidad.
-- Métricas con animación ligera y mayor jerarquía visual.
-- Paleta ajustada hacia producto educativo tech, compatible con modo claro y oscuro.
-- `robots.txt`, `sitemap.xml` y alternates `hreflang` para SEO básico.
-- Sección "Para quién es" agregada para orientar a visitantes nuevos.
+- Ruta de doce módulos con estados y métricas calculados desde una única estructura bilingüe.
+- Catálogo de ocho proyectos académicos con identidad estable, filtros derivados y enlaces verificados contra `academia`.
+- Páginas completas en español e inglés, con modo claro y oscuro y navegación adaptable.
+- CSS organizado por núcleo, componentes y páginas, con carga específica según el contenido utilizado.
+- Formularios semánticos protegidos con Turnstile y un Worker que valida, limita y entrega los mensajes a EmailJS.
+- Metadatos SEO por página, `hreflang`, Open Graph bilingüe y datos estructurados de `WebSite` y `Person`.
+- PWA controlada con caché versionada, fallback offline ES/EN y precarga tolerante de páginas y recursos locales.
+- Sitemap generado automáticamente desde las rutas de Astro.
+- Políticas editoriales, de seguridad, bienestar y uso responsable de IA.
 
 ## Decisiones de diseno
 
@@ -81,15 +85,28 @@ chiletedevpath-web/
 - Ruta presentada como avance progresivo, con practica y evidencia esperada.
 - Navegacion pensada para comunidad, no solo para mostrar repositorios.
 - Separacion entre aprendizaje, evidencia academica, portafolio futuro y criterios de publicacion segura.
-- La PWA es basica: permite instalacion y cache inicial, pero no reemplaza una auditoria avanzada de aplicacion con backend.
+- La PWA prioriza consulta offline del contenido público; los formularios y servicios externos continúan requiriendo conexión.
 
 ## Validacion realizada
 
 - Ejecucion de `npm audit`.
 - Ejecucion de `npm run build`.
-- Generacion de 7 paginas estaticas.
-- Revision visual en movil, tablet, escritorio y pantalla amplia.
+- Generación de 24 páginas estáticas.
+- Revisión visual en móvil desde 320 px, tablet y escritorio.
 - Verificacion de ausencia de desbordes horizontales en breakpoints principales.
+
+## Formularios protegidos
+
+La solución mantiene los planes gratuitos de Cloudflare y EmailJS. El navegador solo conoce la clave pública del widget; la validación y los identificadores de EmailJS permanecen en el Worker.
+
+Configuración requerida antes de publicar:
+
+1. Crear un widget Turnstile para `chiletedevpath.com`.
+2. Registrar `PUBLIC_TURNSTILE_SITE_KEY` como variable del repositorio en GitHub Actions.
+3. Registrar en Cloudflare Worker los secretos `TURNSTILE_SECRET`, `EMAILJS_SERVICE_ID`, `EMAILJS_TEMPLATE_ID` y `EMAILJS_PUBLIC_KEY` mediante `wrangler secret put`.
+4. Ejecutar `npm run worker:check` y luego `npm run worker:deploy`.
+
+Los valores locales se toman de `.env` y `worker/.dev.vars`; ambos están excluidos de Git. Los archivos `.env.example` y `worker/.dev.vars.example` solo documentan nombres y no contienen credenciales reales.
 
 ## Criterio editorial
 

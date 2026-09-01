@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ASTRO_TELEMETRY_DISABLED: "1"
+      PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,6 +36,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Validate PWA and sitemap
+        run: npm run pwa:check
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

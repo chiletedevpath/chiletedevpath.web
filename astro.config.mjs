@@ -1,12 +1,14 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
-import tailwindcss from "@tailwindcss/vite";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://chiletedevpath.com",
-  integrations: [react()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.endsWith("/sw.js"),
+    }),
+  ],
   vite: {
-    plugins: [tailwindcss()],
     build: {
       sourcemap: false,
     },
