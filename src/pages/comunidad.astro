@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/pages/comunidad.css";
 import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import SocialIcon from "../components/SocialIcon.astro";
+import ContactSecurityFields from "../components/ContactSecurityFields.astro";
 import { socials } from "../data/site.js";
 
 const buscarCanal = (nombre) => socials.find((social) => social.name === nombre);
@@ -32,7 +34,7 @@ const gruposSociales = [
 ];
 ---
 
-<BaseLayout title="Comunidad | Chilete DevPath">
+<BaseLayout title="Comunidad | Chilete DevPath" hasContactForm>
   <PageHero
     eyebrow="Comunidad"
     title="Aprender acompañado hace el camino más sostenible"
@@ -93,7 +95,7 @@ const gruposSociales = [
           puedes enviármela desde este formulario. Prefiero revisar cada aporte antes de convertirlo en contenido público.
         </p>
       </div>
-      <div class="formulario-contacto panel-contacto formulario-feedback" data-contact-panel data-context="Feedback de comunidad">
+      <form class="formulario-contacto panel-contacto formulario-feedback" action="/api/contacto" method="post" data-contact-form data-context="community" data-lang="es">
         <div class="formulario-cabecera">
           <span>Mejora revisada</span>
           <strong>Ayúdame a mejorar la ruta con contexto</strong>
@@ -132,10 +134,12 @@ const gruposSociales = [
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Tus datos se procesan mediante el servicio de correo para revisar y responder la sugerencia. No habrá comentarios públicos sin moderación previa.</p>
+        <ContactSecurityFields lang="es" />
         <div class="acciones-formulario">
-          <button class="boton boton-principal" type="button" data-send-email>Enviar sugerencia</button>
+          <button class="boton boton-principal" type="submit">Enviar sugerencia</button>
+          <p class="formulario-estado" data-form-status role="status" aria-live="polite"></p>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 </BaseLayout>

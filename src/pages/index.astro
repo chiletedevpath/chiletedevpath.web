@@ -4,9 +4,13 @@ import Hero from "../components/Hero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import RouteStage from "../components/RouteStage.astro";
-import { routeStages } from "../data/ruta.js";
+import ContactSecurityFields from "../components/ContactSecurityFields.astro";
+import { getRouteStages } from "../data/ruta.js";
 import { projectAreas } from "../data/proyectos.js";
-import { metrics, site, valueProps } from "../data/site.js";
+import { getMetrics, site, valueProps } from "../data/site.js";
+
+const routeStages = getRouteStages("es");
+const metrics = getMetrics("es");
 
 const learningActions = [
   {
@@ -40,7 +44,7 @@ const audience = [
 ];
 ---
 
-<BaseLayout>
+<BaseLayout hasContactForm>
   <Hero />
 
   <section class="seccion seccion-clara inicio-aprendizaje">
@@ -188,7 +192,7 @@ const audience = [
           Ver Chilete en el mapa
         </a>
       </div>
-      <div class="formulario-contacto panel-contacto formulario-correo" data-contact-panel data-context="Consulta desde la página de inicio">
+      <form class="formulario-contacto panel-contacto formulario-correo" action="/api/contacto" method="post" data-contact-form data-context="home" data-lang="es">
         <div class="formulario-cabecera">
           <span>Contacto directo</span>
           <strong>Tu mensaje llegará a Chilete DevPath</strong>
@@ -227,10 +231,12 @@ const audience = [
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Tus datos se procesan mediante el servicio de correo únicamente para recibir y responder tu consulta. No se publican en la web.</p>
+        <ContactSecurityFields lang="es" />
         <div class="acciones-formulario">
-          <button class="boton boton-principal" type="button" data-send-email>Enviar mensaje</button>
+          <button class="boton boton-principal" type="submit">Enviar mensaje</button>
+          <p class="formulario-estado" data-form-status role="status" aria-live="polite"></p>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 </BaseLayout>

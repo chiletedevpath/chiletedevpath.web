@@ -1,8 +1,10 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/pages/comunidad.css";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import SocialIcon from "../../components/SocialIcon.astro";
+import ContactSecurityFields from "../../components/ContactSecurityFields.astro";
 import { socialsEn } from "../../data/site.js";
 
 const findChannel = (name) => socialsEn.find((social) => social.name === name);
@@ -32,7 +34,7 @@ const socialGroups = [
 ];
 ---
 
-<BaseLayout title="Community | Chilete DevPath">
+<BaseLayout title="Community | Chilete DevPath" hasContactForm>
   <PageHero
     eyebrow="Community"
     title="Learning with others makes the path sustainable"
@@ -93,7 +95,7 @@ const socialGroups = [
           send it through this form. I prefer reviewing each contribution before publishing it.
         </p>
       </div>
-      <div class="formulario-contacto panel-contacto formulario-feedback" data-contact-panel data-context="Community feedback">
+      <form class="formulario-contacto panel-contacto formulario-feedback" action="/api/contacto" method="post" data-contact-form data-context="community" data-lang="en">
         <p class="formulario-intro">This space is for concrete improvements. I review each message privately to avoid spam and public personal data.</p>
         <div class="formulario-opciones">
           <label>
@@ -128,10 +130,12 @@ const socialGroups = [
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Your data is processed through the email service to review and answer the suggestion. Nothing is published without prior moderation.</p>
+        <ContactSecurityFields lang="en" />
         <div class="acciones-formulario">
-          <button class="boton boton-principal" type="button" data-send-email>Send suggestion</button>
+          <button class="boton boton-principal" type="submit">Send suggestion</button>
+          <p class="formulario-estado" data-form-status role="status" aria-live="polite"></p>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 </BaseLayout>

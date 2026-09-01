@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/components/editorial.css";
 import PageHero from "../components/PageHero.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import ContactSecurityFields from "../components/ContactSecurityFields.astro";
 import { resources } from "../data/recursos.js";
 
 const resourceFilters = [
@@ -16,7 +18,7 @@ const resourceFilters = [
 ];
 ---
 
-<BaseLayout title="Recursos | Chilete DevPath">
+<BaseLayout title="Recursos | Chilete DevPath" hasContactForm>
   <PageHero
     eyebrow="Recursos"
     title="Practica, revisa y avanza con material organizado"
@@ -108,7 +110,7 @@ const resourceFilters = [
           No todo se publicará de inmediato: primero revisaré si encaja con la ruta y si aporta valor real.
         </p>
       </div>
-      <div class="formulario-contacto panel-contacto formulario-recursos" data-contact-panel data-context="Sugerencia de recurso">
+      <form class="formulario-contacto panel-contacto formulario-recursos" action="/api/contacto" method="post" data-contact-form data-context="resources" data-lang="es">
         <div class="formulario-cabecera">
           <span>Recurso propuesto</span>
           <strong>Dime qué falta y para qué serviría</strong>
@@ -154,10 +156,12 @@ const resourceFilters = [
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Tus datos se procesan mediante el servicio de correo para revisar y responder la propuesta. La idea no se publicará sin una evaluación previa.</p>
+        <ContactSecurityFields lang="es" />
         <div class="acciones-formulario">
-          <button class="boton boton-principal" type="button" data-send-email>Enviar propuesta</button>
+          <button class="boton boton-principal" type="submit">Enviar propuesta</button>
+          <p class="formulario-estado" data-form-status role="status" aria-live="polite"></p>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 </BaseLayout>

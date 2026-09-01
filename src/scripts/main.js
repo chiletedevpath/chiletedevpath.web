@@ -12,7 +12,7 @@ if (typeof document !== "undefined") {
   const anio = document.querySelector("#anio");
   const encabezado = document.querySelector(".encabezado");
   const enlacesMenu = document.querySelectorAll(".menu a[href^='#']");
-  const panelesContacto = document.querySelectorAll("[data-contact-panel]");
+  const formulariosContacto = document.querySelectorAll("[data-contact-form]");
   const camposContables = document.querySelectorAll("[data-countable]");
   const metricasAnimadas = document.querySelectorAll("[data-count]");
   const filtrosRecursos = document.querySelectorAll("[data-resource-filter]");
@@ -149,73 +149,58 @@ if (typeof document !== "undefined") {
     secciones.forEach((seccion) => observadorSecciones.observe(seccion));
   }
 
-  const obtenerValor = (panel, nombre) => {
-    const campo = panel.querySelector(`[name="${nombre}"]`);
+  const obtenerValor = (formulario, nombre) => {
+    const campo = formulario.querySelector(`[name="${nombre}"]`);
     return campo ? campo.value.trim() : "";
   };
 
-  const construirMensaje = (panel) => {
-    const contexto = panel.dataset.context || "Contacto Chilete DevPath";
-    const nombre = obtenerValor(panel, "nombre") || "Sin nombre";
-    const correo = obtenerValor(panel, "correo") || "Sin correo";
-    const mensaje =
-      obtenerValor(panel, "mensaje") ||
-      obtenerValor(panel, "sugerencia") ||
-      obtenerValor(panel, "motivo") ||
-      "";
-    const asuntoDetalle = obtenerValor(panel, "asunto");
-    const tema = obtenerValor(panel, "tema");
-    const tipo = obtenerValor(panel, "tipo");
+  const construirSolicitudContacto = (formulario) => ({
+    context: formulario.dataset.context || "home",
+    lang: formulario.dataset.lang || document.documentElement.lang || "es",
+    name: obtenerValor(formulario, "nombre"),
+    email: obtenerValor(formulario, "correo"),
+    subject: obtenerValor(formulario, "asunto"),
+    type: obtenerValor(formulario, "tipo"),
+    topic: obtenerValor(formulario, "tema"),
+    message:
+      obtenerValor(formulario, "mensaje") ||
+      obtenerValor(formulario, "sugerencia") ||
+      obtenerValor(formulario, "motivo"),
+    confirmation: formulario.querySelector('[name="confirmacion"]')?.checked === true,
+    website: obtenerValor(formulario, "website"),
+    turnstileToken: obtenerValor(formulario, "cf-turnstile-response"),
+  });
 
-    return [
-      `Contexto: ${contexto}`,
-      `Nombre: ${nombre}`,
-      `Correo: ${correo}`,
-      asuntoDetalle ? `Asunto: ${asuntoDetalle}` : "",
-      tema ? `Tema: ${tema}` : "",
-      tipo ? `Tipo: ${tipo}` : "",
-      `Mensaje: ${mensaje || "Sin mensaje"}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-  };
-
-  const emailJsConfig = {
-    serviceId: "service_qtj5rkm",
-    templateId: "template_qfaomfd",
-    publicKey: "lVqMAbSHdWZlz4mUl",
-  };
-
-  const enviarMensaje = async (templateParams) => {
+  const enviarMensaje = async (formulario, payload) => {
     const controlador = new AbortController();
     const limiteEspera = window.setTimeout(() => controlador.abort(), 15000);
     let respuesta;
 
     try {
-      respuesta = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      respuesta = await fetch(formulario.action, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({
-          service_id: emailJsConfig.serviceId,
-          template_id: emailJsConfig.templateId,
-          user_id: emailJsConfig.publicKey,
-          template_params: templateParams,
-        }),
+        body: JSON.stringify(payload),
         signal: controlador.signal,
       });
     } finally {
       window.clearTimeout(limiteEspera);
     }
 
+    const resultado = await respuesta.json().catch(() => ({}));
     if (!respuesta.ok) {
-      throw new Error(`EmailJS respondió con estado ${respuesta.status}`);
+      const error = new Error("No se pudo procesar el formulario.");
+      error.code = resultado.code || "DELIVERY_FAILED";
+      error.status = respuesta.status;
+      throw error;
     }
   };
 
-  const obtenerEstadoFormulario = (panel) => {
-    let estado = panel.querySelector("[data-form-status]");
+  const obtenerEstadoFormulario = (formulario) => {
+    let estado = formulario.querySelector("[data-form-status]");
 
     if (!estado) {
       estado = document.createElement("p");
@@ -223,14 +208,14 @@ if (typeof document !== "undefined") {
       estado.dataset.formStatus = "";
       estado.setAttribute("role", "status");
       estado.setAttribute("aria-live", "polite");
-      panel.querySelector(".acciones-formulario")?.append(estado);
+      formulario.querySelector(".acciones-formulario")?.append(estado);
     }
 
     return estado;
   };
 
   camposContables.forEach((campo) => {
-    const contador = campo.closest("[data-contact-panel]")?.querySelector("[data-counter]");
+    const contador = campo.closest("[data-contact-form]")?.querySelector("[data-counter]");
     const limite = campo.getAttribute("maxlength") || "700";
 
     const actualizar = () => {
@@ -432,72 +417,96 @@ if (typeof document !== "undefined") {
   busquedaProyectos?.addEventListener("input", filtrarProyectos);
   if (exploradorProyectos && proyectoActivo) activarProyecto(proyectoActivo);
 
-  panelesContacto.forEach((panel) => {
-    const botonCorreo = panel.querySelector("[data-send-email]");
+  const mensajesFormulario = {
+    es: {
+      sending: "Enviando tu mensaje...",
+      success: "Mensaje enviado. Recibirás una confirmación si el correo se procesó correctamente.",
+      verification: "Completa la verificación humana antes de enviar.",
+      unavailable: "El formulario aún no está habilitado. Falta configurar la verificación de producción.",
+      rateLimited: "Se alcanzó el límite temporal de envíos. Inténtalo nuevamente más tarde.",
+      invalid: "Revisa los datos ingresados e inténtalo nuevamente.",
+      error: "No pudimos enviar tu mensaje. Inténtalo nuevamente en unos minutos.",
+    },
+    en: {
+      sending: "Sending your message...",
+      success: "Message sent. You will receive a confirmation if the email was processed successfully.",
+      verification: "Complete the human verification before submitting.",
+      unavailable: "The form is not enabled yet. Production verification still needs to be configured.",
+      rateLimited: "The temporary submission limit was reached. Please try again later.",
+      invalid: "Review the information entered and try again.",
+      error: "We could not send your message. Please try again in a few minutes.",
+    },
+  };
 
-    botonCorreo?.addEventListener("click", async () => {
-      const camposInvalidos = [...panel.querySelectorAll("input, textarea, select")].filter(
-        (campo) => !campo.checkValidity()
-      );
+  formulariosContacto.forEach((formulario) => {
+    formulario.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-      if (camposInvalidos.length > 0) {
-        camposInvalidos[0].reportValidity();
+      if (!formulario.checkValidity()) {
+        formulario.reportValidity();
         return;
       }
 
-      const idiomaIngles = document.documentElement.lang === "en";
-      const estado = obtenerEstadoFormulario(panel);
-      const etiquetaOriginal = botonCorreo.textContent;
-      const campos = [...panel.querySelectorAll("input, textarea, select")];
-      const contexto = panel.dataset.context || "Contacto Chilete DevPath";
+      const idioma = formulario.dataset.lang === "en" ? "en" : "es";
+      const textos = mensajesFormulario[idioma];
+      const estado = obtenerEstadoFormulario(formulario);
+      const botonCorreo = formulario.querySelector('button[type="submit"]');
+      const etiquetaOriginal = botonCorreo?.textContent || "";
 
-      botonCorreo.disabled = true;
-      botonCorreo.setAttribute("aria-busy", "true");
-      botonCorreo.textContent = idiomaIngles ? "Sending..." : "Enviando...";
+      if (formulario.querySelector("[data-turnstile-pending]")) {
+        estado.className = "formulario-estado formulario-estado-error";
+        estado.textContent = textos.unavailable;
+        return;
+      }
+
+      const payload = construirSolicitudContacto(formulario);
+      if (!payload.turnstileToken) {
+        estado.className = "formulario-estado formulario-estado-error";
+        estado.textContent = textos.verification;
+        return;
+      }
+
+      const campos = [...formulario.querySelectorAll("input, textarea, select, button")];
+
+      if (botonCorreo) {
+        botonCorreo.disabled = true;
+        botonCorreo.setAttribute("aria-busy", "true");
+        botonCorreo.textContent = idioma === "en" ? "Sending..." : "Enviando...";
+      }
       campos.forEach((campo) => (campo.disabled = true));
       estado.className = "formulario-estado formulario-estado-enviando";
-      estado.textContent = idiomaIngles
-        ? "Your message is being sent securely."
-        : "Tu mensaje se está enviando de forma segura.";
+      estado.textContent = textos.sending;
 
       try {
-        await enviarMensaje({
-          name: obtenerValor(panel, "nombre"),
-          email: obtenerValor(panel, "correo"),
-          title: obtenerValor(panel, "asunto") || contexto,
-          message: construirMensaje(panel),
-        });
+        await enviarMensaje(formulario, payload);
+        formulario.reset();
 
-        campos.forEach((campo) => {
-          if (campo instanceof HTMLInputElement && campo.type === "checkbox") {
-            campo.checked = false;
-          } else if (campo instanceof HTMLSelectElement) {
-            campo.selectedIndex = 0;
-          } else {
-            campo.value = "";
-          }
-        });
-
-        panel.querySelectorAll("[data-counter]").forEach((contador) => {
-          const campo = contador.closest("[data-contact-panel]")?.querySelector("[data-countable]");
+        formulario.querySelectorAll("[data-counter]").forEach((contador) => {
+          const campo = formulario.querySelector("[data-countable]");
           contador.textContent = `0/${campo?.getAttribute("maxlength") || "700"}`;
         });
 
         estado.className = "formulario-estado formulario-estado-exito";
-        estado.textContent = idiomaIngles
-          ? "Message sent successfully. Check your inbox for the confirmation email."
-          : "Mensaje enviado correctamente. Revisa tu bandeja de entrada para ver la confirmación.";
+        estado.textContent = textos.success;
       } catch (error) {
         console.error("No se pudo enviar el formulario de contacto.", error);
         estado.className = "formulario-estado formulario-estado-error";
-        estado.textContent = idiomaIngles
-          ? "We could not send your message. Please try again in a moment."
-          : "No pudimos enviar tu mensaje. Inténtalo nuevamente en unos minutos.";
+        estado.textContent = error.code === "RATE_LIMITED"
+          ? textos.rateLimited
+          : error.code === "INVALID_PAYLOAD"
+            ? textos.invalid
+            : error.code === "TURNSTILE_REJECTED"
+              ? textos.verification
+              : textos.error;
       } finally {
         campos.forEach((campo) => (campo.disabled = false));
-        botonCorreo.disabled = false;
-        botonCorreo.removeAttribute("aria-busy");
-        botonCorreo.textContent = etiquetaOriginal;
+        if (botonCorreo) {
+          botonCorreo.disabled = false;
+          botonCorreo.removeAttribute("aria-busy");
+          botonCorreo.textContent = etiquetaOriginal;
+        }
+        const widget = formulario.querySelector(".cf-turnstile");
+        if (widget && window.turnstile) window.turnstile.reset(widget);
       }
     });
   });

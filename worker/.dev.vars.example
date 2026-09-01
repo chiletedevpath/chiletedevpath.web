@@ -1,0 +1,4 @@
+TURNSTILE_SECRET="1x0000000000000000000000000000000AA"
+EMAILJS_SERVICE_ID="replace_with_service_id"
+EMAILJS_TEMPLATE_ID="replace_with_template_id"
+EMAILJS_PUBLIC_KEY="replace_with_public_key"

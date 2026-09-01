@@ -4,16 +4,13 @@ import Hero from "../../components/Hero.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import RouteStage from "../../components/RouteStage.astro";
-import { routeStagesEn } from "../../data/ruta.js";
+import ContactSecurityFields from "../../components/ContactSecurityFields.astro";
+import { getRouteStages } from "../../data/ruta.js";
 import { projectAreasEn } from "../../data/proyectos.js";
-import { site, valuePropsEn } from "../../data/site.js";
+import { getMetrics, site, valuePropsEn } from "../../data/site.js";
 
-const metricsEn = [
-  { label: "Organized modules", value: "12", detail: "7 available, 4 in development or review and 1 planned" },
-  { label: "Academic projects", value: "8", detail: "Formal evidence preserved in Academia" },
-  { label: "Active policies", value: "4", detail: "Publishing, AI, wellbeing and authorship" },
-  { label: "Path stages", value: "5", detail: "Foundation, software, web and data, specialization and publishing" },
-];
+const routeStages = getRouteStages("en");
+const metricsEn = getMetrics("en");
 
 const learningActionsEn = [
   {
@@ -47,8 +44,9 @@ const audienceEn = [
 ];
 ---
 
-<BaseLayout title="Chilete DevPath | Learning path">
+<BaseLayout title="Chilete DevPath | Learning path" hasContactForm>
   <Hero
+    lang="en"
     eyebrow="Chilete, Cajamarca, Peru | Full Stack Development"
     title="Learn programming with a path, practice and real evidence"
     description="Chilete DevPath organizes my learning journey so more students can start, practice and publish better without losing technical judgment."
@@ -56,14 +54,9 @@ const audienceEn = [
     primaryHref="/en/ruta/"
     primaryLabel="View learning path"
     secondaryLabel="Explore GitHub"
-    indicators={["12 organized modules", "8 academic projects", "4 active criteria"]}
     dashboardStatus="Active path"
-    pathSteps={["Foundations", "Software", "Web and data", "Specialization", "Publishing"]}
     terminalCommand="learn --order --practice --criteria"
     terminalStatus="publishing verifiable progress..."
-    progressLabel="Available modules"
-    progressValue="10 of 12"
-    progressPercent={83}
   />
 
   <section class="seccion seccion-clara inicio-aprendizaje">
@@ -153,7 +146,7 @@ const audienceEn = [
         description="The path shows where to start, what to practice next and how to connect progress with real projects."
       />
       <div class="ruta-etapas ruta-etapas-compacta">
-        {routeStagesEn.slice(0, 4).map((stage) => <RouteStage stage={stage} lang="en" />)}
+        {routeStages.slice(0, 4).map((stage) => <RouteStage stage={stage} lang="en" />)}
       </div>
       <div class="ruta-accion">
         <p>Explore the full path, solved exercises and practices designed to learn by building.</p>
@@ -211,7 +204,7 @@ const audienceEn = [
           View Chilete on the map
         </a>
       </div>
-      <div class="formulario-contacto panel-contacto formulario-correo" data-contact-panel data-context="Contact from English home">
+      <form class="formulario-contacto panel-contacto formulario-correo" action="/api/contacto" method="post" data-contact-form data-context="home" data-lang="en">
         <div class="formulario-cabecera">
           <span>Direct contact</span>
           <strong>Your message will reach Chilete DevPath</strong>
@@ -250,10 +243,12 @@ const audienceEn = [
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Your data is processed through the email service only to receive and answer your inquiry. It is not published on the website.</p>
+        <ContactSecurityFields lang="en" />
         <div class="acciones-formulario">
-          <button class="boton boton-principal" type="button" data-send-email>Send message</button>
+          <button class="boton boton-principal" type="submit">Send message</button>
+          <p class="formulario-estado" data-form-status role="status" aria-live="polite"></p>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 </BaseLayout>
