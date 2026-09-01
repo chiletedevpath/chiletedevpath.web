@@ -480,3 +480,20 @@
   }
 }
 
+@media (max-width: 860px) {
+  .politicas-grid,
+  .criterios-hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .criterios-hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .politica-metadatos div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

@@ -1,0 +1,260 @@
+---
+const {
+  navItems = [],
+  moreItems = [],
+  languages = [],
+  currentPath = "/",
+} = Astro.props;
+
+const normalizePath = (path) => (path === "/index.html" ? "/" : path);
+const activePath = normalizePath(currentPath);
+const activeLanguage = activePath.startsWith("/en") ? "en" : "es";
+const isEnglish = activeLanguage === "en";
+const moreActive = moreItems.some((item) => item.href === activePath);
+
+const alternatePath = (path, code) => {
+  const cleanPath = normalizePath(path);
+  if (code === "en") return cleanPath.startsWith("/en") ? cleanPath : `/en${cleanPath === "/" ? "/" : cleanPath}`;
+  const spanishPath = cleanPath.replace(/^\/en/, "");
+  return spanishPath || "/";
+};
+
+const labels = isEnglish
+  ? {
+      navigation: "Main navigation",
+      language: "Language selector",
+      more: "More",
+      openMore: "Open more pages",
+      closeMore: "Close more pages",
+      lightMode: "Switch to light mode",
+      darkMode: "Switch to dark mode",
+      lightTitle: "Light mode",
+      darkTitle: "Dark mode",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
+      menu: "Menu",
+    }
+  : {
+      navigation: "Navegación principal",
+      language: "Selector de idioma",
+      more: "Más",
+      openMore: "Abrir más páginas",
+      closeMore: "Cerrar más páginas",
+      lightMode: "Cambiar a modo día",
+      darkMode: "Cambiar a modo noche",
+      lightTitle: "Modo día",
+      darkTitle: "Modo noche",
+      openMenu: "Abrir menú",
+      closeMenu: "Cerrar menú",
+      menu: "Menú",
+    };
+---
+
+<nav
+  class="navegacion contenedor"
+  aria-label={labels.navigation}
+  data-header-nav
+  data-label-open-menu={labels.openMenu}
+  data-label-close-menu={labels.closeMenu}
+  data-label-open-more={labels.openMore}
+  data-label-close-more={labels.closeMore}
+  data-label-light-mode={labels.lightMode}
+  data-label-dark-mode={labels.darkMode}
+  data-title-light={labels.lightTitle}
+  data-title-dark={labels.darkTitle}
+>
+  <a class="marca" href={isEnglish ? "/en/" : "/"} data-nav-link>
+    <span class="marca-logo" aria-hidden="true">
+      <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
+    </span>
+    <span>Chilete DevPath</span>
+  </a>
+
+  <ul id="menu-principal" class="menu" data-main-menu>
+    {
+      navItems.map((item) => {
+        const isActive = item.href === activePath;
+        return (
+          <li>
+            <a class:list={{ "enlace-activo": isActive }} href={item.href} aria-current={isActive ? "page" : undefined} data-nav-link>
+              {item.label}
+            </a>
+          </li>
+        );
+      })
+    }
+
+    {
+      moreItems.length > 0 && (
+        <li class="menu-grupo" data-more-group>
+          <button
+            class:list={["mas-boton", { "enlace-activo": moreActive }]}
+            type="button"
+            aria-label={labels.openMore}
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-mas"
+            data-more-button
+          >
+            {labels.more}
+            <svg class="icono-lucide icono-chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </button>
+
+          <ul id="submenu-mas" class="submenu" data-more-menu>
+            {moreItems.map((item) => {
+              const isActive = item.href === activePath;
+              return (
+                <li>
+                  <a class:list={{ "enlace-activo": isActive }} href={item.href} aria-current={isActive ? "page" : undefined} data-nav-link>
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      )
+    }
+  </ul>
+
+  <div class="nav-acciones">
+    <div class="idioma-control" aria-label={labels.language}>
+      {
+        languages.map((language) => (
+          <a
+            class={language.code === activeLanguage ? "idioma-activo" : "idioma-opcion"}
+            href={alternatePath(activePath, language.code)}
+            lang={language.code}
+            aria-current={language.code === activeLanguage ? "page" : undefined}
+          >
+            {language.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <button class="tema-boton tema-boton-icono" type="button" aria-label={labels.darkMode} title={labels.darkTitle} data-theme-button>
+      <span class="tema-icono" aria-hidden="true">
+        <svg class="icono-lucide" viewBox="0 0 24 24" data-theme-moon>
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+        <svg class="icono-lucide" viewBox="0 0 24 24" data-theme-sun hidden>
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+      </span>
+    </button>
+
+    <button
+      class="menu-boton"
+      type="button"
+      aria-label={labels.openMenu}
+      aria-expanded="false"
+      aria-controls="menu-principal"
+      data-menu-button
+    >
+      <svg class="icono-lucide" viewBox="0 0 24 24" aria-hidden="true" data-menu-open-icon>
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg class="icono-lucide" viewBox="0 0 24 24" aria-hidden="true" data-menu-close-icon hidden>
+        <path d="M18 6 6 18M6 6l12 12"></path>
+      </svg>
+      <span>{labels.menu}</span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const navigation = document.querySelector("[data-header-nav]");
+
+  if (navigation) {
+    const menuButton = navigation.querySelector("[data-menu-button]");
+    const mainMenu = navigation.querySelector("[data-main-menu]");
+    const menuOpenIcon = navigation.querySelector("[data-menu-open-icon]");
+    const menuCloseIcon = navigation.querySelector("[data-menu-close-icon]");
+    const moreGroup = navigation.querySelector("[data-more-group]");
+    const moreButton = navigation.querySelector("[data-more-button]");
+    const moreMenu = navigation.querySelector("[data-more-menu]");
+    const themeButton = navigation.querySelector("[data-theme-button]");
+    const moonIcon = navigation.querySelector("[data-theme-moon]");
+    const sunIcon = navigation.querySelector("[data-theme-sun]");
+    const mobileQuery = window.matchMedia("(max-width: 700px)");
+
+    const setMoreOpen = (open) => {
+      if (!moreButton || !moreMenu) return;
+      moreButton.setAttribute("aria-expanded", String(open));
+      moreButton.setAttribute("aria-label", open ? navigation.dataset.labelCloseMore : navigation.dataset.labelOpenMore);
+      moreMenu.classList.toggle("submenu-abierto", open);
+      moreGroup?.classList.toggle("menu-grupo-abierto", open);
+    };
+
+    const setMenuOpen = (open) => {
+      if (!menuButton || !mainMenu) return;
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? navigation.dataset.labelCloseMenu : navigation.dataset.labelOpenMenu);
+      mainMenu.classList.toggle("menu-abierto", open);
+      document.body.classList.toggle("nav-bloqueado", open && mobileQuery.matches);
+      if (menuOpenIcon) menuOpenIcon.hidden = open;
+      if (menuCloseIcon) menuCloseIcon.hidden = !open;
+      if (!open) setMoreOpen(false);
+    };
+
+    const syncThemeButton = () => {
+      const dark = document.documentElement.dataset.theme === "dark";
+      if (moonIcon) moonIcon.hidden = dark;
+      if (sunIcon) sunIcon.hidden = !dark;
+      if (!themeButton) return;
+      themeButton.setAttribute("aria-label", dark ? navigation.dataset.labelLightMode : navigation.dataset.labelDarkMode);
+      themeButton.setAttribute("title", dark ? navigation.dataset.titleLight : navigation.dataset.titleDark);
+    };
+
+    menuButton?.addEventListener("click", () => {
+      setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
+    });
+
+    moreButton?.addEventListener("click", () => {
+      setMoreOpen(moreButton.getAttribute("aria-expanded") !== "true");
+    });
+
+    themeButton?.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+      try {
+        localStorage.setItem("cdp-theme", nextTheme);
+      } catch {
+        // El tema sigue activo durante esta visita aunque no haya almacenamiento local.
+      }
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", nextTheme === "dark" ? "#061018" : "#f6faf8");
+      syncThemeButton();
+    });
+
+    navigation.querySelectorAll("[data-nav-link]").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (moreGroup && !moreGroup.contains(event.target)) setMoreOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      if (moreButton?.getAttribute("aria-expanded") === "true") {
+        setMoreOpen(false);
+        moreButton.focus();
+        return;
+      }
+      if (menuButton?.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+        menuButton.focus();
+      }
+    });
+
+    mobileQuery.addEventListener("change", (event) => {
+      if (!event.matches) setMenuOpen(false);
+    });
+
+    syncThemeButton();
+  }
+</script>

@@ -1,5 +1,5 @@
 ---
-import HeaderNav from "./HeaderNav.jsx";
+import HeaderNav from "./HeaderNav.astro";
 import { navItems, navItemsEn, navMoreItems, navMoreItemsEn } from "../data/site.js";
 import { languages } from "../i18n/languages.js";
 
@@ -15,6 +15,5 @@ const isEnglish = activePath.startsWith("/en");
     moreItems={isEnglish ? navMoreItemsEn : navMoreItems}
     languages={languages}
     currentPath={activePath}
-    client:load
   />
 </header>

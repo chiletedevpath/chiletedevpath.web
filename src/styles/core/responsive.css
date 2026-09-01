@@ -26,10 +26,6 @@
     grid-template-columns: 1fr;
   }
 
-  .bloque-trabajo {
-    grid-template-columns: 1fr;
-  }
-
   .identidad-media {
     max-width: 440px;
   }
@@ -53,141 +49,10 @@
     border-bottom: 0;
   }
 
-  .tarjetas-3,
-  .tarjetas-4,
-  .ruta-etapas,
-  .redes,
-  .red-grupo,
-  .red-grupo-canales,
-  .contenido-ruta,
-  .politicas-grid,
-  .acciones-aprendizaje,
-  .metricas-panel,
-  .contacto-grid,
-  .sobre-marca-grid,
-  .criterio-home-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sobre-aura {
-    min-height: auto;
-    display: grid;
-    gap: 18px;
-  }
-
-  .sobre-aura::before {
-    inset: 0;
-    border-radius: 8px;
-  }
-
-  .sobre-persona-foto {
-    width: min(260px, 74vw);
-    min-height: 360px;
-    margin: 0 auto;
-    order: -1;
-  }
-
-  .sobre-persona-foto {
-    min-height: auto;
-  }
-
-  .aura-texto {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 16px;
-    border: 1px solid var(--color-borde);
-    border-radius: 8px;
-    background-color: color-mix(in srgb, var(--color-superficie) 94%, transparent);
-    text-align: left;
-    transform: none;
-  }
-
-  .aura-texto::before {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .page-hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .criterios-hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-hero-visual {
-    min-height: 460px;
-  }
-
-  .ruta-accion {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .pie-contenido {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .ruta-etapas::before {
-    left: 20px;
-    right: auto;
-    top: 24px;
-    bottom: 24px;
-    width: 5px;
-    height: auto;
-    background: linear-gradient(
-      180deg,
-      var(--color-raiz),
-      var(--color-camino),
-      var(--color-agua),
-      var(--color-acento)
-    );
-  }
-
-  .tech-showcase {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tech-item:nth-child(4n) {
-    border-right: 1px solid var(--color-borde);
-  }
-
-  .tech-item:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .tech-item:nth-last-child(-n + 4) {
-    border-bottom: 1px solid var(--color-borde);
-  }
-
-  .tech-item:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
-}
-
-@media (min-width: 861px) and (max-width: 1080px) {
-  .tech-showcase {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tech-item:nth-child(4n) {
-    border-right: 1px solid var(--color-borde);
-  }
-
-  .tech-item:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .tech-item:nth-last-child(-n + 4) {
-    border-bottom: 1px solid var(--color-borde);
-  }
-
-  .tech-item:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
 }
 
 @media (max-width: 700px) {
@@ -214,29 +79,6 @@
     min-width: 46px;
     min-height: 42px;
     padding: 8px 14px;
-  }
-
-  .tech-showcase {
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    grid-auto-columns: minmax(250px, 82vw);
-    grid-auto-flow: column;
-    grid-template-columns: none;
-    scroll-padding-inline: 0;
-    scroll-snap-type: inline mandatory;
-    scrollbar-color: var(--color-acento) transparent;
-    scrollbar-width: thin;
-  }
-
-  .tech-item:nth-child(n) {
-    min-height: 270px;
-    border-right: 1px solid var(--color-borde);
-    border-bottom: 0;
-    scroll-snap-align: start;
-  }
-
-  .tech-item:last-child {
-    border-right: 0;
   }
 
   .menu-boton {
@@ -331,10 +173,6 @@
     padding: 8px;
   }
 
-  .metricas-grid {
-    grid-template-columns: 1fr;
-  }
-
   .menu-boton {
     min-width: 76px;
   }
@@ -345,30 +183,6 @@
 
   .hero h1 {
     font-size: 2.1rem;
-  }
-
-  .page-hero h1 {
-    max-width: calc(100vw - 32px);
-    font-size: clamp(1.45rem, 7.4vw, 1.95rem);
-    line-height: 1.08;
-    overflow-wrap: break-word;
-    text-wrap: balance;
-  }
-
-  .page-hero .seccion-descripcion,
-  .page-hero-claves-intro {
-    max-width: calc(100vw - 32px);
-    font-size: 0.94rem;
-    overflow-wrap: break-word;
-  }
-
-  .criterios-hero h1 {
-    font-size: 2.4rem;
-  }
-
-  .page-hero-visual {
-    min-height: 460px;
-    padding: 20px;
   }
 
   .hero-codigo {
@@ -396,20 +210,6 @@
 
   .boton {
     text-align: center;
-  }
-
-  .politica-metadatos div {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-
-  .formulario-opciones,
-  .recurso-meta div {
-    grid-template-columns: 1fr;
-  }
-
-  .red-social {
-    min-height: auto;
   }
 
   .pie {
@@ -445,17 +245,5 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
   }
 }

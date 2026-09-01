@@ -1,0 +1,23 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 0;
+  font-family: var(--fuente-base);
+  color: var(--color-texto);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-acento) 10%, transparent), transparent 32rem),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--color-progreso) 10%, transparent), transparent 28rem),
+    var(--color-fondo);
+  line-height: 1.6;
+}
+
+.contenedor {
+  width: min(1120px, 90%);
+  margin: 0 auto;
+}
+
+main section {
+  scroll-margin-top: var(--espacio-ancla);
+}

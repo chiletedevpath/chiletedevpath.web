@@ -1,0 +1,32 @@
+:focus-visible {
+  outline: 3px solid var(--color-progreso);
+  outline-offset: 4px;
+}
+
+.salto-contenido {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 20;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: var(--color-progreso);
+  color: var(--color-principal);
+  font-weight: 700;
+  transform: translateY(-140%);
+}
+
+.salto-contenido:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -71,6 +71,26 @@
   gap: 8px;
 }
 
+.icono-lucide {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icono-chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.18s ease;
+}
+
+.menu-grupo-abierto .icono-chevron {
+  transform: rotate(180deg);
+}
+
 .nav-acciones {
   display: flex;
   align-items: center;
@@ -229,4 +249,10 @@
 
 .marca:hover {
   color: var(--color-acento);
+}
+
+@media (max-width: 700px) {
+  body.nav-bloqueado {
+    overflow: hidden;
+  }
 }

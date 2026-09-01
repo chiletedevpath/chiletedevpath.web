@@ -147,3 +147,17 @@
   transform: translateY(-3px);
 }
 
+@media (max-width: 860px) {
+  .redes,
+  .red-grupo,
+  .red-grupo-canales {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .red-social {
+    min-height: auto;
+  }
+}
+

@@ -1,15 +1,10 @@
-﻿@import "tailwindcss";
-
 @import "./core/tokens.css";
+@import "./core/reset.css";
+@import "./core/base.css";
+@import "./core/accessibility.css";
 @import "./components/header.css";
 @import "./core/layout.css";
 @import "./components/hero.css";
-@import "./components/cards.css";
-@import "./pages/ruta.css";
-@import "./components/page-hero.css";
-@import "./pages/criterios.css";
-@import "./pages/comunidad.css";
-@import "./pages/proyectos.css";
 @import "./components/footer.css";
 @import "./core/animations.css";
 @import "./core/responsive.css";
