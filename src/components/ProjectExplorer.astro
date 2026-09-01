@@ -1,10 +1,27 @@
 ---
+import "../styles/components/cards.css";
+
 const { projects, lang = "es" } = Astro.props;
 const isEn = lang === "en";
 
-const filters = isEn
-  ? [["todos", "All"], ["software", "Software"], ["datos", "Data"], ["backend", "Backend"], ["frontend", "Frontend"], ["fullstack", "Full stack"], ["patrones", "Patterns"]]
-  : [["todos", "Todos"], ["software", "Software"], ["datos", "Datos"], ["backend", "Backend"], ["frontend", "Frontend"], ["fullstack", "Full stack"], ["patrones", "Patrones"]];
+const filterLabels = isEn
+  ? { todos: "All", software: "Software", datos: "Data", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patterns" }
+  : { todos: "Todos", software: "Software", datos: "Datos", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patrones" };
+const preferredFilterOrder = ["software", "datos", "backend", "frontend", "fullstack", "patrones"];
+const availableFilters = [...new Set(
+  projects.flatMap((project) => project.filterTags ?? [project.routeStage]).filter(Boolean)
+)];
+const orderedFilters = [
+  ...preferredFilterOrder.filter((filter) => availableFilters.includes(filter)),
+  ...availableFilters.filter((filter) => !preferredFilterOrder.includes(filter)),
+];
+const filters = [
+  ["todos", filterLabels.todos],
+  ...orderedFilters.map((filter) => [filter, filterLabels[filter] ?? filter]),
+];
+const projectCountLabel = projects.length === 1
+  ? (isEn ? "project available" : "proyecto disponible")
+  : (isEn ? "projects available" : "proyectos disponibles");
 
 const repositoryLabel = (repository, index, total) => {
   if (total === 1) return isEn ? "View project in Academia" : "Ver proyecto en Academia";
@@ -39,10 +56,10 @@ const repositoryLabel = (repository, index, total) => {
 
     <div class="explorador-layout">
       <aside class="explorador-indice" aria-label={isEn ? "Available projects" : "Proyectos disponibles"}>
-        <p class="explorador-contador" aria-live="polite" data-project-count>{projects.length} {isEn ? "projects available" : "proyectos disponibles"}</p>
+        <p class="explorador-contador" aria-live="polite" data-project-count>{projects.length} {projectCountLabel}</p>
         <div class="explorador-lista" role="tablist" aria-orientation="vertical">
           {projects.map((project, index) => {
-            const id = `project-${lang}-${index + 1}`;
+            const id = `project-${lang}-${project.id}`;
             const filters = project.filterTags ?? [project.routeStage];
             const searchText = [project.title, project.description, project.type, ...project.technologies].join(" ").toLowerCase();
             return (
@@ -76,7 +93,7 @@ const repositoryLabel = (repository, index, total) => {
 
       <div class="explorador-paneles">
         {projects.map((project, index) => {
-          const id = `project-${lang}-${index + 1}`;
+          const id = `project-${lang}-${project.id}`;
           return (
             <article class="explorador-detalle" id={id} role="tabpanel" aria-labelledby={`${id}-tab`} data-project-panel={id} hidden={index !== 0}>
               <div class="explorador-presentacion">

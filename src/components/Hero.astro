@@ -1,4 +1,8 @@
 ---
+import { getHeroStats } from "../data/site.js";
+
+const lang = Astro.props.lang === "en" ? "en" : "es";
+const heroStats = getHeroStats(lang);
 const {
   eyebrow = "Desde Chilete, Cajamarca al desarrollo Full Stack",
   title = "Aprende programación con ruta, práctica y evidencia real",
@@ -13,16 +17,16 @@ const {
   primaryLabel = "Ver ruta de aprendizaje",
   secondaryHref = "https://github.com/chiletedevpath",
   secondaryLabel = "Explorar GitHub",
-  indicators = ["12 módulos ordenados", "8 proyectos académicos", "4 criterios activos"],
+  indicators = heroStats.indicators,
   dashboardStatus = "Ruta activa",
   dashboardTitle = "Chilete DevPath",
-  pathSteps = ["Fundamentos", "Software", "Web y datos", "Especialización", "Publicación"],
+  pathSteps = heroStats.pathSteps,
   terminalPrompt = "devpath@chilete:~$",
   terminalCommand = "aprender --orden --practica --criterio",
   terminalStatus = "publicando avance verificable...",
-  progressLabel = "Módulos disponibles",
-  progressValue = "10 de 12",
-  progressPercent = 83,
+  progressLabel = heroStats.progressLabel,
+  progressValue = heroStats.progressValue,
+  progressPercent = heroStats.progressPercent,
 } = Astro.props;
 ---
 
@@ -80,7 +84,14 @@ const {
             <span>{progressLabel}</span>
             <strong>{progressValue}</strong>
           </div>
-          <div class="dashboard-barra" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="10">
+          <div
+            class="dashboard-barra"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={progressPercent}
+            aria-valuetext={progressValue}
+          >
             <span style={`width: ${progressPercent}%`}></span>
           </div>
         </div>

@@ -1,4 +1,6 @@
 ---
+import "../styles/components/cards.css";
+
 const { project } = Astro.props;
 const normalizedAction = project.action?.toLowerCase() ?? "";
 const isEnglish = normalizedAction.startsWith("view") || normalizedAction.startsWith("explore");
@@ -26,6 +28,7 @@ const projectFilters = project.filterTags ?? [project.routeStage];
 
 <article
   class="tarjeta tarjeta-con-enlace"
+  data-project-id={project.id ?? project.slug ?? undefined}
   data-project-card={project.routeStage ? "true" : undefined}
   data-project-filters={projectFilters.filter(Boolean).join(" ")}
 >

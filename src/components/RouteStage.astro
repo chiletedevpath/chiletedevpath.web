@@ -1,13 +1,17 @@
 ---
+import "../styles/pages/ruta.css";
+
 const { stage, lang = "es" } = Astro.props;
 const labels = lang === "en"
   ? {
       technologies: "Technologies and concepts in this stage",
+      contents: "Published topic blocks",
       progress: "Stage progress",
       result: "Result",
     }
   : {
       technologies: "Tecnologías y conceptos de la etapa",
+      contents: "Bloques temáticos publicados",
       progress: "Avance de etapa",
       result: "Resultado",
     };
@@ -29,6 +33,10 @@ const labels = lang === "en"
       </li>
     ))}
   </ol>
+  <p class="ruta-contenidos">
+    <span>{labels.contents}</span>
+    <strong>{stage.contentCount}</strong>
+  </p>
   {typeof stage.progress === "number" && (
     <div class="ruta-avance" aria-label={`${labels.progress} ${stage.progress}%`}>
       <div>

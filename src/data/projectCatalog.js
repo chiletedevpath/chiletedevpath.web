@@ -1,54 +1,56 @@
 import { academicProjects, academicProjectsEn } from "./proyectos.js";
 
-const slugs = [
-  "gestion-inventario-java",
-  "gestion-clinica-estructuras-datos",
-  "gestion-comercial-db",
-  "comidaperucha-frontend",
-  "comidaperucha-bd-backend",
-  "gestion-ventas-patrones-diseno",
-  "sunat-consulta-api",
-  "plataforma-catalogo-inventario",
-];
+const requiredFields = ["id", "slug", "institution", "course", "type", "href"];
 
-const metaEs = [
-  ["UTP", "Taller de Programación", "Aplicación de consola"],
-  ["UTP", "Algoritmos y Estructuras de Datos", "Aplicación de consola"],
-  ["UTP", "Base de Datos I", "Proyecto de datos"],
-  ["UTP", "Desarrollo Web", "Aplicación frontend"],
-  ["UTP", "Base de Datos II", "Backend y datos"],
-  ["UTP", "Patrones de Diseño", "Arquitectura Java"],
-  ["TECSUP", "Fullstack con Java", "API backend"],
-  ["TECSUP", "Fullstack con Java", "Aplicación fullstack"],
-];
+function assertValidProjects(projects, lang) {
+  const ids = new Set();
+  const slugs = new Set();
 
-const metaEn = [
-  ["UTP", "Programming Workshop", "Console application"],
-  ["UTP", "Algorithms and Data Structures", "Console application"],
-  ["UTP", "Database I", "Data project"],
-  ["UTP", "Web Development", "Frontend application"],
-  ["UTP", "Database II", "Backend and data"],
-  ["UTP", "Design Patterns", "Java architecture"],
-  ["TECSUP", "Full-stack Java", "Backend API"],
-  ["TECSUP", "Full-stack Java", "Full-stack application"],
-];
+  projects.forEach((project) => {
+    requiredFields.forEach((field) => {
+      if (!project[field]) {
+        throw new Error(`Project ${project.id ?? "without id"} is missing ${field} in ${lang}.`);
+      }
+    });
 
-function buildCatalog(projects, lang) {
-  const metadata = lang === "en" ? metaEn : metaEs;
-
-  return projects.map((project, index) => {
-    const [institution, course, type] = metadata[index];
-    return {
-      ...project,
-      slug: slugs[index],
-      institution,
-      course,
-      type,
-      featured: [4, 5, 7].includes(index),
-      repositories: [{ label: lang === "en" ? "Source code" : "Código fuente", href: project.href }],
-    };
+    if (ids.has(project.id)) throw new Error(`Duplicate project id: ${project.id}.`);
+    if (slugs.has(project.slug)) throw new Error(`Duplicate project slug: ${project.slug}.`);
+    ids.add(project.id);
+    slugs.add(project.slug);
   });
 }
 
+function indexProjectsById(projects, lang) {
+  assertValidProjects(projects, lang);
+  return new Map(projects.map((project) => [project.id, project]));
+}
+
+const englishProjectsById = indexProjectsById(academicProjectsEn, "en");
+const spanishProjectsById = indexProjectsById(academicProjects, "es");
+
+const spanishProjectIds = new Set(spanishProjectsById.keys());
+academicProjectsEn.forEach(({ id }) => {
+  if (!spanishProjectIds.has(id)) throw new Error(`English project ${id} has no Spanish source record.`);
+});
+
+function buildCatalog(projects, lang) {
+  return projects.map((project) => ({
+    ...project,
+    repositories: [{ label: lang === "en" ? "Source code" : "Código fuente", href: project.href }],
+  }));
+}
+
 export const projectCatalog = buildCatalog(academicProjects, "es");
-export const projectCatalogEn = buildCatalog(academicProjectsEn, "en");
+export const projectCatalogEn = buildCatalog(
+  academicProjects.map(({ id }) => {
+    const translation = englishProjectsById.get(id);
+    if (!translation) throw new Error(`Missing English translation for project ${id}.`);
+
+    const source = spanishProjectsById.get(id);
+    if (translation.slug !== source.slug || translation.href !== source.href) {
+      throw new Error(`Project ${id} has inconsistent identity across languages.`);
+    }
+    return translation;
+  }),
+  "en"
+);
