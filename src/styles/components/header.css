@@ -81,6 +81,11 @@
   stroke-linejoin: round;
 }
 
+.menu-boton .icono-lucide[hidden],
+.tema-icono .icono-lucide[hidden] {
+  display: none !important;
+}
+
 .icono-chevron {
   width: 16px;
   height: 16px;
@@ -191,12 +196,12 @@
 
 .menu a,
 .mas-boton {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 40px;
-  padding: 8px 12px;
+  padding: 8px 10px;
   border: 0;
-  border-radius: 999px;
   background-color: transparent;
   color: var(--color-texto);
   font-size: 0.98rem;
@@ -210,13 +215,35 @@
     transform 0.2s ease;
 }
 
+.menu a::after,
+.mas-boton::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  bottom: 2px;
+  left: 10px;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-color: var(--color-acento);
+  transition: transform 0.2s ease;
+}
+
 .menu a:hover,
+.mas-boton:hover {
+  color: var(--color-acento);
+}
+
 .menu a.enlace-activo,
-.mas-boton:hover,
 .mas-boton.enlace-activo {
-  background-color: rgba(245, 197, 66, 0.28);
-  color: var(--color-principal);
-  transform: translateY(-1px);
+  color: var(--color-acento);
+}
+
+.menu a:hover::after,
+.menu a.enlace-activo::after,
+.mas-boton:hover::after,
+.mas-boton.enlace-activo::after {
+  transform: scaleX(1);
 }
 
 .menu-grupo {

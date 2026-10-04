@@ -1,3 +1,7 @@
+// @ts-check
+
+/** @typedef {import("./contracts.ts").AcademicProject} AcademicProject */
+
 export const projectAreas = [
   {
     status: "Ruta activa",
@@ -41,7 +45,54 @@ export const projectAreas = [
   },
 ];
 
+export const homeFeaturedProjectIds = [
+  "control-obras-construccion-excel",
+  "gestion-comercial-db",
+  "plataforma-catalogo-inventario",
+];
+
+export const homeProjectStageIds = [
+  "control-obras-construccion-excel",
+  "gestion-clinica-estructuras-datos",
+  "gestion-comercial-db",
+  "comidaperucha-frontend",
+  "gestion-ventas-patrones-diseno",
+  "sunat-consulta-api",
+  "plataforma-catalogo-inventario",
+];
+
+/** @type {AcademicProject[]} */
 export const academicProjects = [
+  {
+    id: "control-obras-construccion-excel",
+    slug: "control-obras-construccion",
+    institution: "Chilete DevPath",
+    course: "Excel y productividad",
+    type: "Proyecto aplicado",
+    featured: true,
+    status: "Funcional y anonimizado",
+    title: "Control de Obras de Construcción",
+    visual: "Excel",
+    progress: 100,
+    routeOrder: 0,
+    routeStage: "productividad-datos",
+    filterTags: ["datos", "productividad"],
+    routeLabel: "Ruta 02 · Productividad y datos",
+    technologies: ["Excel", "VBA", "Tablas dinámicas", "Dashboard"],
+    imageSrc: "/assets/img/projects/academia-cover.webp",
+    imageAlt: "Imagen editorial de evidencia académica para un control de obras desarrollado en Excel.",
+    description: "Libro de Excel para centralizar jornadas, personal, costos, herramientas e indicadores de obras pequeñas mediante tablas, paneles y automatizaciones controladas.",
+    details: [
+      "Jornadas, pagos, personal y proyectos organizados en un solo libro",
+      "Panel de control con tablas dinámicas e indicadores operativos",
+      "Automatizaciones VBA conservadas en una copia pública anonimizada",
+    ],
+    problem: "Evitar que los registros de asistencia, costos, equipos y avances de una obra pequeña quedaran dispersos y sin una vista operativa común.",
+    learned: "Apliqué tablas estructuradas, fórmulas, validaciones, tablas dinámicas, gráficos y VBA para convertir información operativa en un seguimiento consultable.",
+    improve: "Incorporar formularios guiados, trazabilidad por periodo y una variante sin VBA para hojas de cálculo en línea.",
+    href: "https://github.com/chiletedevpath/academia/tree/main/excel-y-productividad/control-obras-construccion",
+    action: "Ver proyecto",
+  },
   {
     id: "gestion-inventario-java",
     slug: "gestion-inventario-java",
@@ -326,7 +377,38 @@ export const projectAreasEn = [
   },
 ];
 
+/** @type {AcademicProject[]} */
 export const academicProjectsEn = [
+  {
+    id: "control-obras-construccion-excel",
+    slug: "control-obras-construccion",
+    institution: "Chilete DevPath",
+    course: "Excel and productivity",
+    type: "Applied project",
+    featured: true,
+    status: "Functional and anonymized",
+    title: "Construction Works Control",
+    visual: "Excel",
+    progress: 100,
+    routeOrder: 0,
+    routeStage: "productivity-data",
+    filterTags: ["data", "productivity"],
+    routeLabel: "Path 02 · Productivity and data",
+    technologies: ["Excel", "VBA", "Pivot tables", "Dashboard"],
+    imageSrc: "/assets/img/projects/academia-cover.webp",
+    imageAlt: "Editorial image for academic evidence of a construction works control built with Excel.",
+    description: "Excel workbook that centralizes workdays, personnel, costs, tools and work indicators through tables, dashboards and controlled automation.",
+    details: [
+      "Workdays, payments, personnel and projects organized in one workbook",
+      "Control dashboard with pivot tables and operational indicators",
+      "VBA automation preserved in an anonymized public copy",
+    ],
+    problem: "Avoid leaving attendance, costs, equipment and small construction progress dispersed without a shared operational view.",
+    learned: "I applied structured tables, formulas, validation, pivot tables, charts and VBA to turn operational data into reviewable tracking.",
+    improve: "Add guided forms, period-level change tracking and a non-VBA version for online spreadsheets.",
+    href: "https://github.com/chiletedevpath/academia/tree/main/excel-y-productividad/control-obras-construccion",
+    action: "View project",
+  },
   {
     id: "gestion-inventario-java",
     slug: "gestion-inventario-java",

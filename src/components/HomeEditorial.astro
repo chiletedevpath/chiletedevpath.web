@@ -1,0 +1,213 @@
+---
+import { academicProjects, academicProjectsEn, homeFeaturedProjectIds, homeProjectStageIds } from "../data/proyectos.js";
+import { policies, policiesEn } from "../data/recursos.js";
+import { getRouteStages, getRouteSummary, getTechnologyRoutes } from "../data/ruta.js";
+
+const lang = Astro.props.lang === "en" ? "en" : "es";
+const routePrefix = lang === "en" ? "/en" : "";
+const routes = getTechnologyRoutes(lang);
+const softwareRoute = routes.find((route) => route.id === "software");
+const productivityRoute = routes.find((route) => route.id === "excel-productivity");
+const routeSummary = getRouteSummary(lang);
+const routeStages = getRouteStages(lang);
+const projects = lang === "en" ? academicProjectsEn : academicProjects;
+const projectsById = new Map(projects.map((project) => [project.id, project]));
+const featuredProjects = homeFeaturedProjectIds.map((id) => projectsById.get(id)).filter(Boolean);
+const stageProjects = homeProjectStageIds.map((id) => projectsById.get(id)).filter(Boolean);
+const currentPolicies = lang === "en" ? policiesEn : policies;
+
+const copy = lang === "en"
+  ? {
+      routesEyebrow: "CHOOSE YOUR PATH",
+      routesTitle: "A starting point for every way of moving forward",
+      routesDescription: "Choose a path with published practice today. New areas join the map only when they have material that can be reviewed.",
+      published: "Published",
+      explore: "Explore full path",
+      modules: "modules",
+      available: "available",
+      planned: "planned",
+      current: "Current focus",
+      projectsEyebrow: "PROJECTS WITH CONTEXT",
+      projectsTitle: "When practice becomes an explainable solution",
+      projectsDescription: "They are not a gallery of claims: each case connects a concrete problem, the work built and the learning it demonstrates.",
+      evidenceIndex: "EVIDENCE BY STAGE",
+      evidenceDescription: "A concrete sample from every published stage, without reducing the path to a single technology.",
+      viewEvidence: "View evidence in Academia",
+      allProjects: "Explore all projects",
+      criteriaEyebrow: "CDP / CRITERIA",
+      criteriaTitle: "A public path needs rules that can be verified",
+      criteriaDescription: "The policies are not decorative: they set the limits for documenting, reviewing and sharing public work.",
+      criteriaAction: "Explore the criteria",
+      policyAction: "Read policy",
+      originEyebrow: "CHILETE · CAJAMARCA · PERU",
+      originTitle: "A concrete origin, more paths to build",
+      originDescription: "Chilete DevPath grows when learning can be organized, practiced and shared with judgment, without losing its origin.",
+      originAction: "Explore the paths",
+      productivityLabel: "Learning path in progress",
+    }
+  : {
+      routesEyebrow: "ELIGE TU RECORRIDO",
+      routesTitle: "Un punto de partida para cada forma de avanzar",
+      routesDescription: "Elige una ruta con práctica publicada hoy. Las áreas nuevas se suman al mapa solo cuando existe material que pueda revisarse.",
+      published: "Publicada",
+      explore: "Explorar ruta completa",
+      modules: "módulos",
+      available: "disponibles",
+      planned: "planificados",
+      current: "Contenido actual",
+      projectsEyebrow: "PROYECTOS CON CONTEXTO",
+      projectsTitle: "Cuando la práctica se convierte en una solución explicable",
+      projectsDescription: "No son una vitrina de promesas: cada caso conecta un problema concreto, el trabajo construido y el aprendizaje que demuestra.",
+      evidenceIndex: "EVIDENCIA POR ETAPA",
+      evidenceDescription: "Una muestra concreta de cada etapa publicada, sin reducir el recorrido a una sola tecnología.",
+      viewEvidence: "Ver evidencia en Academia",
+      allProjects: "Explorar todos los proyectos",
+      criteriaEyebrow: "CDP / CRITERIO",
+      criteriaTitle: "Una ruta pública necesita reglas que se puedan verificar",
+      criteriaDescription: "Las políticas no son decorativas: ponen límites claros para documentar, revisar y compartir trabajo público.",
+      criteriaAction: "Explorar los criterios",
+      policyAction: "Leer política",
+      originEyebrow: "CHILETE · CAJAMARCA · PERÚ",
+      originTitle: "Un origen concreto, más caminos por construir",
+      originDescription: "Chilete DevPath crece cuando el aprendizaje puede ordenarse, practicarse y compartirse con criterio, sin perder su origen.",
+      originAction: "Explorar las rutas",
+      productivityLabel: "Ruta de aprendizaje en crecimiento",
+    };
+---
+
+<section class="home-routes home-reveal" id="rutas" aria-labelledby="rutas-titulo">
+  <div class="contenedor home-section-head">
+    <div>
+      <p class="etiqueta">{copy.routesEyebrow}</p>
+      <h2 id="rutas-titulo">{copy.routesTitle}</h2>
+    </div>
+    <p>{copy.routesDescription}</p>
+  </div>
+
+  <div class="contenedor home-route-layout">
+    <article class="home-route-primary">
+      <div class="home-route-header"><span>01</span><b>{copy.published}</b></div>
+      <h3>{softwareRoute.title}</h3>
+      <p>{softwareRoute.description}</p>
+      <div class="home-route-track" aria-label={softwareRoute.title}>
+        {routeStages.map((stage) => <a href={stage.href}><i></i><strong>{stage.title}</strong><small>{stage.number}</small></a>)}
+      </div>
+      <div class="home-route-meta">
+        <span><strong>{routeSummary.moduleCount}</strong> {copy.modules}</span>
+        <span><strong>{routeSummary.availableCount}</strong> {copy.available}</span>
+        <span><strong>{routeSummary.counts.planned}</strong> {copy.planned}</span>
+      </div>
+      <a class="home-text-link" href={`${routePrefix}/ruta/`}>{copy.explore}<span aria-hidden="true">→</span></a>
+    </article>
+
+    <aside class="home-route-secondary">
+      <div class="home-route-header"><span>02</span><b>{productivityRoute.statusLabel}</b></div>
+      <h3>{productivityRoute.title}</h3>
+      <p>{productivityRoute.description}</p>
+      <div class="home-route-capabilities">
+        {(lang === "en" ? ["Spreadsheets", "Formulas", "Analysis", "Visualization"] : ["Hojas de cálculo", "Fórmulas", "Análisis", "Visualización"]).map((item) => <span>{item}</span>)}
+      </div>
+      <div class="home-route-current"><small>{copy.current}</small><strong>Excel</strong><span>{productivityRoute.moduleCount} {copy.modules}</span></div>
+      <a class="home-text-link" href={productivityRoute.href} target="_blank" rel="noopener noreferrer">{copy.explore}<span aria-hidden="true">↗</span></a>
+    </aside>
+  </div>
+</section>
+
+<section class="home-projects home-reveal" id="proyectos" aria-labelledby="proyectos-titulo">
+  <div class="contenedor home-section-head">
+    <div>
+      <p class="etiqueta">{copy.projectsEyebrow}</p>
+      <h2 id="proyectos-titulo">{copy.projectsTitle}</h2>
+    </div>
+    <p>{copy.projectsDescription}</p>
+  </div>
+  <div class="contenedor home-project-grid">
+    {featuredProjects.map((project, index) => (
+      <a class:list={["home-project-card", { "home-project-main": index === 0 }]} href={project.href} target="_blank" rel="noopener noreferrer">
+        <figure><img src={project.imageSrc} alt={project.imageAlt} loading="lazy" decoding="async" /></figure>
+        <div>
+          <span>{project.routeLabel}</span>
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+          <small>{project.technologies.slice(0, 4).join(" · ")}</small>
+          <b>{copy.viewEvidence}<i aria-hidden="true">↗</i></b>
+        </div>
+      </a>
+    ))}
+  </div>
+  <div class="contenedor home-evidence-index">
+    <div>
+      <p class="etiqueta">{copy.evidenceIndex}</p>
+      <p>{copy.evidenceDescription}</p>
+    </div>
+    <ol>
+      {stageProjects.map((project, index) => (
+        <li>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <a href={project.href} target="_blank" rel="noopener noreferrer">
+            <small>{project.routeLabel}</small>
+            <strong>{project.title}</strong>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <div class="contenedor home-projects-footer"><a href={`${routePrefix}/proyectos/`}>{copy.allProjects}<span aria-hidden="true">→</span></a></div>
+</section>
+
+<section class="home-criteria home-reveal" id="criterio" aria-labelledby="criterio-titulo">
+  <div class="contenedor home-criteria-layout">
+    <div>
+      <p class="etiqueta">{copy.criteriaEyebrow}</p>
+      <h2 id="criterio-titulo">{copy.criteriaTitle}</h2>
+      <p>{copy.criteriaDescription}</p>
+      <a class="home-text-link" href={`${routePrefix}/criterios/`}>{copy.criteriaAction}<span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-policy-grid">
+      {currentPolicies.map((policy) => (
+        <a class:list={["home-policy", `home-policy-${policy.tone}`]} href={policy.href}>
+          <span>{policy.code}</span>
+          <h3>{policy.title}</h3>
+          <p>{policy.highlight}</p>
+          <b>{copy.policyAction}<i aria-hidden="true">→</i></b>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="home-origin home-reveal" id="origen" aria-labelledby="origen-titulo">
+  <div class="home-origin-photo" aria-hidden="true"></div>
+  <div class="home-origin-overlay" aria-hidden="true"></div>
+  <div class="contenedor home-origin-copy">
+    <p class="etiqueta">{copy.originEyebrow}</p>
+    <h2 id="origen-titulo">{copy.originTitle}</h2>
+    <p>{copy.originDescription}</p>
+    <a class="boton boton-principal" href="#rutas">{copy.originAction}<span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<script>
+  const sections = [...document.querySelectorAll(".home-reveal")];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduceMotion && sections.length) {
+    const reveal = (section) => section.classList.add("is-revealed");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.16, rootMargin: "0px 0px -8%" },
+    );
+
+    sections.forEach((section) => {
+      if (section.getBoundingClientRect().top < window.innerHeight * 0.9) reveal(section);
+      else observer.observe(section);
+    });
+
+    document.documentElement.classList.add("home-motion-ready");
+  }
+</script>

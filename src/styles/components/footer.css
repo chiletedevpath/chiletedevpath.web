@@ -1,7 +1,8 @@
 .pie {
   padding: 42px 0 24px;
-  background-color: #020617;
-  color: #cbd5e1;
+  border-top: 1px solid rgba(119, 219, 211, 0.2);
+  background-color: #0b2020;
+  color: #bed0ca;
 }
 
 .pie-contenido {
@@ -30,14 +31,14 @@
 .pie-columna strong {
   display: block;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #eff7f1;
   font-family: var(--fuente-titulos);
   font-size: 1rem;
 }
 
 .pie-marca p,
 .pie-social p {
-  color: #cbd5e1;
+  color: #bed0ca;
   font-size: 0.92rem;
 }
 
@@ -47,12 +48,12 @@
 }
 
 .pie-columna a {
-  color: #cbd5e1;
+  color: #bed0ca;
   font-size: 0.9rem;
 }
 
 .pie-columna a:hover {
-  color: var(--color-progreso);
+  color: #77dbd3;
 }
 
 .pie-social {
@@ -71,10 +72,10 @@
   height: 38px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(190, 208, 202, 0.22);
   border-radius: 8px;
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.06);
+  color: #eff7f1;
+  background-color: rgba(119, 219, 211, 0.05);
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -82,8 +83,8 @@
 }
 
 .pie-redes a:hover {
-  border-color: var(--color-progreso);
-  background-color: rgba(245, 197, 66, 0.14);
+  border-color: #77dbd3;
+  background-color: rgba(119, 219, 211, 0.12);
   transform: translateY(-2px);
 }
 
@@ -96,10 +97,10 @@
   width: fit-content;
   display: inline-flex;
   padding: 6px 10px;
-  border: 1px solid rgba(245, 197, 66, 0.34);
+  border: 1px solid rgba(213, 223, 104, 0.34);
   border-radius: 999px;
   color: var(--color-progreso);
-  background-color: rgba(245, 197, 66, 0.08);
+  background-color: rgba(213, 223, 104, 0.08);
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -108,10 +109,18 @@
   width: min(1120px, 90%);
   margin: 28px auto 0;
   padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(190, 208, 202, 0.16);
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  color: #94a3b8;
+  color: #8da49d;
   font-size: 0.86rem;
+}
+
+.pie-sistema {
+  display: block;
+  margin-bottom: 8px;
+  color: #77dbd3;
+  font: 800 0.62rem var(--fuente-mono);
+  letter-spacing: 0.08em;
 }

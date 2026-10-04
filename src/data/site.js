@@ -45,28 +45,28 @@ export const getPageDescription = (pathname, lang = "es") =>
 
 export const navItems = [
   { label: "Inicio", href: "/" },
-  { label: "Ruta", href: "/ruta/" },
+  { label: "Rutas", href: "/ruta/" },
+  { label: "Recursos", href: "/recursos/" },
   { label: "Proyectos", href: "/proyectos/" },
-  { label: "Comunidad", href: "/comunidad/" },
 ];
 
 export const navMoreItems = [
   { label: "Sobre", href: "/sobre/" },
-  { label: "Recursos", href: "/recursos/" },
   { label: "Criterios", href: "/criterios/" },
+  { label: "Comunidad", href: "/comunidad/" },
 ];
 
 export const navItemsEn = [
   { label: "Home", href: "/en/" },
-  { label: "Path", href: "/en/ruta/" },
+  { label: "Paths", href: "/en/ruta/" },
+  { label: "Resources", href: "/en/recursos/" },
   { label: "Projects", href: "/en/proyectos/" },
-  { label: "Community", href: "/en/comunidad/" },
 ];
 
 export const navMoreItemsEn = [
   { label: "About", href: "/en/sobre/" },
-  { label: "Resources", href: "/en/recursos/" },
   { label: "Criteria", href: "/en/criterios/" },
+  { label: "Community", href: "/en/comunidad/" },
 ];
 
 export const getMetrics = (lang = "es") => {

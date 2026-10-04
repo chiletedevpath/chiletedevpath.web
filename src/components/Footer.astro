@@ -16,6 +16,7 @@ const footerPolicies = isEnglish
     <div class="pie-marca">
       <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
       <div>
+        <span class="pie-sistema">{isEnglish ? "CDP / LEARNING SYSTEM" : "CDP / SISTEMA DE APRENDIZAJE"}</span>
         <strong>{site.name}</strong>
         <p>
           {isEnglish
@@ -38,8 +39,8 @@ const footerPolicies = isEnglish
     <div class="pie-social">
       <p>
         {isEnglish
-          ? "Join Discord or review the public progress on GitHub."
-          : "Únete a Discord o revisa el avance público en GitHub."}
+          ? "Follow the public progress on GitHub and connect through the official community channels."
+          : "Sigue el avance público en GitHub y conecta mediante los canales oficiales de comunidad."}
       </p>
       <nav class="pie-redes" aria-label={isEnglish ? "Official social links" : "Redes oficiales"}>
         {socials.map((social) => (

@@ -1,3 +1,10 @@
+// @ts-check
+
+/** @typedef {import("./contracts.ts").LearningModule} LearningModule */
+/** @typedef {import("./contracts.ts").TechnologyRoute} TechnologyRoute */
+/** @typedef {import("./contracts.ts").Language} Language */
+/** @typedef {import("./contracts.ts").RouteStatus} RouteStatus */
+
 const LEARNING_REPOSITORY = "https://github.com/chiletedevpath/aprendizaje";
 const ROUTE_STATUS_HREF = `${LEARNING_REPOSITORY}#estado-verificable-de-la-ruta`;
 
@@ -8,6 +15,7 @@ export const ROUTE_STATUS = Object.freeze({
   PLANNED: "planned",
 });
 
+/** @type {Readonly<Record<RouteStatus, number>>} */
 export const STATUS_WEIGHT = Object.freeze({
   [ROUTE_STATUS.AVAILABLE]: 100,
   [ROUTE_STATUS.REVIEW]: 75,
@@ -15,6 +23,7 @@ export const STATUS_WEIGHT = Object.freeze({
   [ROUTE_STATUS.PLANNED]: 0,
 });
 
+/** @type {Record<Language, Record<RouteStatus, string>>} */
 const statusLabels = {
   es: {
     [ROUTE_STATUS.AVAILABLE]: "Disponible",
@@ -30,6 +39,7 @@ const statusLabels = {
   },
 };
 
+/** @type {Record<Language, Record<RouteStatus, string>>} */
 const statusCountLabels = {
   es: {
     [ROUTE_STATUS.AVAILABLE]: "disponibles",
@@ -45,6 +55,7 @@ const statusCountLabels = {
   },
 };
 
+/** @type {LearningModule[]} */
 export const learningModules = [
   {
     id: "fundamentos", order: 0, phaseId: "base", status: ROUTE_STATUS.AVAILABLE, contentCount: 6,
@@ -187,6 +198,7 @@ const routePhases = [
   },
 ];
 
+/** @param {string | undefined} lang @returns {Language} */
 const normalizeLang = (lang) => (lang === "en" ? "en" : "es");
 const translate = (item, lang) => item.i18n[normalizeLang(lang)];
 const average = (values) => Math.round(values.reduce((total, value) => total + value, 0) / values.length);
@@ -279,4 +291,37 @@ export const techStack = [
 export const getTechStack = (lang = "es") => {
   const language = normalizeLang(lang);
   return techStack.map((tech) => ({ ...tech, ...tech.i18n[language] }));
+};
+
+/** @type {TechnologyRoute[]} */
+const technologyRoutes = [
+  {
+    id: "software",
+    status: ROUTE_STATUS.AVAILABLE,
+    href: "/ruta/",
+    moduleCount: learningModules.length,
+    i18n: {
+      es: { title: "Desarrollo de software", description: "Lógica, programación, datos, web, patrones y backend organizados como una ruta progresiva.", atlasDescription: "De lógica a proyectos explicables." },
+      en: { title: "Software development", description: "Logic, programming, data, web, patterns and backend organized as a progressive path.", atlasDescription: "From logic to explainable projects." },
+    },
+  },
+  {
+    id: "excel-productivity",
+    status: ROUTE_STATUS.AVAILABLE,
+    href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad`,
+    moduleCount: 10,
+    i18n: {
+      es: { title: "Productividad y datos", description: "Datos, fórmulas, visualización, automatización y modelos aplicados para resolver trabajo real.", atlasDescription: "Excel hoy; datos y automatización como alcance." },
+      en: { title: "Productivity and data", description: "Data, formulas, visualization, automation and applied models for real work.", atlasDescription: "Excel today; data and automation as the broader scope." },
+    },
+  },
+];
+
+export const getTechnologyRoutes = (lang = "es") => {
+  const language = normalizeLang(lang);
+  return technologyRoutes.map((route) => ({
+    ...route,
+    ...translate(route, language),
+    statusLabel: statusLabels[language][route.status],
+  }));
 };

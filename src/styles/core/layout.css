@@ -14,8 +14,12 @@
 
 .etiqueta {
   color: var(--color-acento);
-  font-weight: 700;
+  font-family: var(--fuente-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
   margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
 .seccion h2 {

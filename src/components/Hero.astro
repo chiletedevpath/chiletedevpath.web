@@ -1,101 +1,65 @@
 ---
-import { getHeroStats } from "../data/site.js";
+import { getTechnologyRoutes } from "../data/ruta.js";
 
 const lang = Astro.props.lang === "en" ? "en" : "es";
-const heroStats = getHeroStats(lang);
+const defaultRoutes = getTechnologyRoutes(lang);
 const {
-  eyebrow = "Desde Chilete, Cajamarca al desarrollo Full Stack",
-  title = "Aprende programación con ruta, práctica y evidencia real",
-  description = "Chilete DevPath organiza mi camino de aprendizaje para que más estudiantes puedan empezar, practicar y publicar mejor sin perder criterio técnico.",
-  dynamicMessages = [
-    "Aprende desde cero",
-    "Practica con evidencia",
-    "Construye proyectos reales",
-    "Publica con criterio",
-  ],
-  primaryHref = "/ruta/",
-  primaryLabel = "Ver ruta de aprendizaje",
-  secondaryHref = "https://github.com/chiletedevpath",
-  secondaryLabel = "Explorar GitHub",
-  indicators = heroStats.indicators,
-  dashboardStatus = "Ruta activa",
-  dashboardTitle = "Chilete DevPath",
-  pathSteps = heroStats.pathSteps,
-  terminalPrompt = "devpath@chilete:~$",
-  terminalCommand = "aprender --orden --practica --criterio",
-  terminalStatus = "publicando avance verificable...",
-  progressLabel = heroStats.progressLabel,
-  progressValue = heroStats.progressValue,
-  progressPercent = heroStats.progressPercent,
+  eyebrow = lang === "en" ? "From Chilete, Cajamarca · technology learning" : "Desde Chilete, Cajamarca · aprendizaje tecnológico",
+  titlePrimary = lang === "en" ? "Learning technology" : "Aprender tecnología",
+  titleAccent = lang === "en" ? "also means learning to decide" : "también es aprender a decidir",
+  description = lang === "en" ? "A space to study with order, practice with intention and turn learning into work that can be explained." : "Un espacio para estudiar con orden, practicar con intención y convertir lo aprendido en trabajo que pueda explicarse.",
+  primaryHref = "#rutas",
+  primaryLabel = lang === "en" ? "Explore paths" : "Explorar las rutas",
+  secondaryHref = "/proyectos/",
+  secondaryLabel = lang === "en" ? "View projects" : "Ver proyectos",
+  technologyRoutes = defaultRoutes,
 } = Astro.props;
 ---
 
-<section id="inicio" class="hero">
-  <div class="contenedor hero-contenido">
-    <div class="hero-texto">
+<section id="inicio" class="hero home-hero">
+  <div class="home-hero-photo" aria-hidden="true"></div>
+  <div class="home-hero-overlay" aria-hidden="true"></div>
+  <div class="contenedor home-hero-shell">
+    <div class="home-hero-copy">
       <p class="etiqueta">{eyebrow}</p>
-
-      <h1>{title}</h1>
-
-      <p class="hero-descripcion">
-        {description}
-      </p>
-
-      <p class="hero-dinamico" aria-label="Mensajes principales de Chilete DevPath">
-        {dynamicMessages.map((message) => <span>{message}</span>)}
-      </p>
-
+      <h1><span>{titlePrimary}</span><span>{titleAccent}</span></h1>
+      <p class="hero-descripcion">{description}</p>
       <div class="acciones">
-        <a class="boton boton-principal" href={primaryHref}>{primaryLabel}</a>
-        <a class="boton boton-secundario boton-externo" href={secondaryHref} target="_blank" rel="noopener noreferrer">
-          {secondaryLabel}
-        </a>
-      </div>
-
-      <div class="hero-indicadores" aria-label="Resumen de la marca">
-        {indicators.map((indicator) => <span>{indicator}</span>)}
+        <a class="boton boton-principal" href={primaryHref}>{primaryLabel}<span aria-hidden="true">→</span></a>
+        <a class="boton boton-secundario" href={secondaryHref}>{secondaryLabel}<span aria-hidden="true">↘</span></a>
       </div>
     </div>
 
-    <div class="hero-visual" aria-label="Panel visual de avance Chilete DevPath">
-      <div class="hero-dashboard">
-        <div class="dashboard-top">
-          <span class="dashboard-status">{dashboardStatus}</span>
-          <strong>{dashboardTitle}</strong>
+    <aside class="learning-atlas" aria-label={lang === "en" ? "Technology learning map" : "Mapa de aprendizaje tecnológico"}>
+      <div class="learning-atlas-head">
+        <div>
+          <span>{lang === "en" ? "LEARNING MAP" : "MAPA DE APRENDIZAJE"}</span>
+          <small>{lang === "en" ? "Areas that grow with evidence" : "Áreas que crecen con evidencia"}</small>
         </div>
-
-        <div class="dashboard-path" aria-label="Etapas de aprendizaje">
-          {pathSteps.map((item, index) => (
-            <div class="dashboard-step">
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{item}</strong>
-            </div>
-          ))}
-        </div>
-
-        <div class="dashboard-terminal" aria-label="Resumen técnico">
-          <span>{terminalPrompt}</span>
-          <p>{terminalCommand}</p>
-          <small>{terminalStatus}</small>
-        </div>
-
-        <div class="dashboard-progress">
-          <div>
-            <span>{progressLabel}</span>
-            <strong>{progressValue}</strong>
-          </div>
-          <div
-            class="dashboard-barra"
-            role="progressbar"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow={progressPercent}
-            aria-valuetext={progressValue}
-          >
-            <span style={`width: ${progressPercent}%`}></span>
-          </div>
-        </div>
+        <b>{String(technologyRoutes.length).padStart(2, "0")} {lang === "en" ? "PATHS" : "RUTAS"}</b>
       </div>
-    </div>
+      <div class="learning-atlas-body">
+        <div class="learning-atlas-origin">
+          <span>{lang === "en" ? "STARTING POINT" : "PUNTO DE PARTIDA"}</span>
+          <strong>{lang === "en" ? "Learn with intention" : "Aprender con intención"}</strong>
+        </div>
+        <div class="atlas-line atlas-line-main" aria-hidden="true"></div>
+        <div class="atlas-junction" aria-hidden="true"></div>
+        {technologyRoutes.map((route, index) => (
+          <a class:list={["atlas-route", `atlas-route-${index + 1}`]} href={route.href} target={route.href.startsWith("http") ? "_blank" : undefined} rel={route.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <span>
+              <small>{route.statusLabel}</small>
+              <strong>{route.title}</strong>
+              <em>{route.atlasDescription}</em>
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="learning-atlas-foot">
+        <p>{lang === "en" ? "New areas are only added when there is real, reviewable practice to share." : "Las áreas nuevas solo se incorporan cuando existe práctica real y revisable para compartir."}</p>
+        <a href={primaryHref}>{lang === "en" ? "Choose a path" : "Elegir una ruta"}<span aria-hidden="true">→</span></a>
+      </div>
+    </aside>
   </div>
 </section>
