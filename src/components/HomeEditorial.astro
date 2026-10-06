@@ -1,15 +1,11 @@
 ---
 import { academicProjects, academicProjectsEn, homeFeaturedProjectIds, homeProjectStageIds } from "../data/proyectos.js";
 import { policies, policiesEn } from "../data/recursos.js";
-import { getRouteStages, getRouteSummary, getTechnologyRoutes } from "../data/ruta.js";
+import { getLearningPaths } from "../data/ruta.js";
 
 const lang = Astro.props.lang === "en" ? "en" : "es";
 const routePrefix = lang === "en" ? "/en" : "";
-const routes = getTechnologyRoutes(lang);
-const softwareRoute = routes.find((route) => route.id === "software");
-const productivityRoute = routes.find((route) => route.id === "excel-productivity");
-const routeSummary = getRouteSummary(lang);
-const routeStages = getRouteStages(lang);
+const routes = getLearningPaths(lang);
 const projects = lang === "en" ? academicProjectsEn : academicProjects;
 const projectsById = new Map(projects.map((project) => [project.id, project]));
 const featuredProjects = homeFeaturedProjectIds.map((id) => projectsById.get(id)).filter(Boolean);
@@ -84,32 +80,15 @@ const copy = lang === "en"
     <p>{copy.routesDescription}</p>
   </div>
 
-  <div class="contenedor home-route-layout">
-    <article class="home-route-primary">
-      <div class="home-route-header"><span>01</span><b>{copy.published}</b></div>
-      <h3>{softwareRoute.title}</h3>
-      <p>{softwareRoute.description}</p>
-      <div class="home-route-track" aria-label={softwareRoute.title}>
-        {routeStages.map((stage) => <a href={stage.href}><i></i><strong>{stage.title}</strong><small>{stage.number}</small></a>)}
-      </div>
-      <div class="home-route-meta">
-        <span><strong>{routeSummary.moduleCount}</strong> {copy.modules}</span>
-        <span><strong>{routeSummary.availableCount}</strong> {copy.available}</span>
-        <span><strong>{routeSummary.counts.planned}</strong> {copy.planned}</span>
-      </div>
-      <a class="home-text-link" href={`${routePrefix}/ruta/`}>{copy.explore}<span aria-hidden="true">→</span></a>
-    </article>
-
-    <aside class="home-route-secondary">
-      <div class="home-route-header"><span>02</span><b>{productivityRoute.statusLabel}</b></div>
-      <h3>{productivityRoute.title}</h3>
-      <p>{productivityRoute.description}</p>
-      <div class="home-route-capabilities">
-        {(lang === "en" ? ["Spreadsheets", "Formulas", "Analysis", "Visualization"] : ["Hojas de cálculo", "Fórmulas", "Análisis", "Visualización"]).map((item) => <span>{item}</span>)}
-      </div>
-      <div class="home-route-current"><small>{copy.current}</small><strong>Excel</strong><span>{productivityRoute.moduleCount} {copy.modules}</span></div>
-      <a class="home-text-link" href={productivityRoute.href} target="_blank" rel="noopener noreferrer">{copy.explore}<span aria-hidden="true">↗</span></a>
-    </aside>
+  <div class="contenedor home-path-selection">
+    {routes.slice(0, 4).map((route, index) => (
+      <a class="home-path-item" href={`${routePrefix}/ruta/#${route.id}`}>
+        <span class="home-path-number">{String(index + 1).padStart(2, "0")}</span>
+        <div><h3>{route.title}</h3><p>{route.description}</p><small>{route.summary.moduleIndicator}</small></div>
+        <span aria-hidden="true">↗</span>
+      </a>
+    ))}
+    <a class="home-path-all" href={`${routePrefix}/ruta/`}>{lang === "en" ? "All learning paths" : "Todos los recorridos"} →</a>
   </div>
 </section>
 

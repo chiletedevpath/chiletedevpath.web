@@ -1,0 +1,38 @@
+---
+import TechIcon from "./TechIcon.astro";
+
+const { lang = "es", technologies = [] } = Astro.props;
+const copy = lang === "en"
+  ? {
+      eyebrow: "TOOLS WITH A PURPOSE",
+      title: "Tools for putting learning into practice",
+      description: "Languages and tools used in the published exercises and projects.",
+      open: "Open related practice",
+    }
+  : {
+      eyebrow: "HERRAMIENTAS CON PROPÓSITO",
+      title: "Herramientas para llevarlo a la práctica",
+      description: "Lenguajes y herramientas utilizados en los ejercicios y proyectos publicados.",
+      open: "Abrir práctica relacionada",
+    };
+---
+
+<section class="route-tools" aria-labelledby="route-tools-title">
+  <div class="contenedor route-tools-layout">
+    <header>
+      <p class="etiqueta">{copy.eyebrow}</p>
+      <h2 id="route-tools-title">{copy.title}</h2>
+      <p>{copy.description}</p>
+    </header>
+    <div class="route-tool-list">
+      {technologies.map((technology, index) => (
+        <a href={technology.href} target="_blank" rel="noopener noreferrer" aria-label={`${copy.open}: ${technology.name}`}>
+          <span class="route-tool-index">{String(index + 1).padStart(2, "0")}</span>
+          <TechIcon name={technology.name} />
+          <span class="route-tool-copy"><small>{technology.category}</small><strong>{technology.name}</strong></span>
+          <span class="route-tool-arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

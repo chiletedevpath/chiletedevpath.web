@@ -1,0 +1,129 @@
+---
+const { lang = "es", paths = [] } = Astro.props;
+const copy = lang === "en"
+  ? {
+      eyebrow: "ROUTE DIRECTORY",
+      title: "Available paths",
+      description: "Each route stays independent. Its progress only reflects modules and practice that are already published and reviewable.",
+      published: "Published",
+      available: "available",
+      modules: "modules",
+      open: "Open module",
+      planned: "Planned",
+    }
+  : {
+      eyebrow: "DIRECTORIO DE RUTAS",
+      title: "Recorridos disponibles",
+      description: "Cada ruta es independiente. Su avance refleja únicamente módulos y prácticas que ya están publicados y se pueden revisar.",
+      published: "Publicada",
+      available: "disponibles",
+      modules: "módulos",
+      open: "Abrir módulo",
+      planned: "Planificado",
+    };
+---
+
+<section class="route-directory" id="directorio-rutas" aria-labelledby="route-directory-title">
+  <div class="contenedor">
+    <header class="route-section-head">
+      <div><p class="etiqueta">{copy.eyebrow}</p><h2 id="route-directory-title">{copy.title}</h2></div>
+      <p>{copy.description}</p>
+    </header>
+
+    <div class="route-search"><label for="route-search">{lang === "en" ? "Find a path" : "Buscar una ruta"}</label><input id="route-search" type="search" placeholder={lang === "en" ? "Name or technology" : "Nombre o tecnología"} /><p class="route-search-empty" hidden role="status">{lang === "en" ? "No matching paths." : "No hay rutas que coincidan."}</p></div>
+    <div class="route-sheets">
+      {paths.map((path, pathIndex) => (
+        <article class="route-sheet" id={path.id} data-route-search={`${path.title} ${path.description} ${path.modules.flatMap(module => module.technologies).join(" ")}`}>
+          <header class="route-sheet-header">
+            <div class="route-sheet-number">{String(pathIndex + 1).padStart(2, "0")}</div>
+            <div>
+              <span>{copy.published}</span>
+              <h3>{path.title}</h3>
+              <p>{path.description}</p>
+            </div>
+            <dl>
+              <div><dt>{copy.modules}</dt><dd>{path.summary.moduleCount}</dd></div>
+              <div><dt>{copy.available}</dt><dd>{path.summary.availableCount}</dd></div>
+              <div><dt>{path.evidenceLabel}</dt><dd>{path.summary.contentCount}</dd></div>
+            </dl>
+          </header>
+          <div class="route-progress"><span>{path.summary.moduleIndicator}</span><strong>{path.summary.progressValue}</strong><progress max="100" value={path.summary.progress} aria-label={path.summary.progressLabel}></progress></div>
+
+          <details class="route-details"><summary aria-label={`${lang === "en" ? "Explore modules" : "Explorar módulos"}: ${path.title}`}>{lang === "en" ? "Explore modules" : "Explorar módulos"}<span aria-hidden="true">+</span></summary>
+          <div class="route-phase-list" style={`--phase-count: ${path.stages.length}`}>
+            {path.stages.map((stage) => (
+              <section class="route-phase">
+                <header>
+                  <span>{stage.number}</span>
+                  <div><h4>{stage.title}</h4><p>{stage.intent}</p></div>
+                  <small>{stage.contentCount} {path.evidenceLabel}</small>
+                </header>
+                <ol>
+                  {stage.modules.map((module) => (
+                    <li class:list={{ "is-planned": module.status === "planned" }}>
+                      <a href={module.href} target="_blank" rel="noopener noreferrer">
+                        <span>{module.number}</span>
+                        <strong>{module.title}</strong>
+                        <em>{module.status === "planned" ? copy.planned : module.technologies.slice(0, 2).join(" · ")}</em>
+                        <i aria-hidden="true">↗</i>
+                        <span class="sr-only">{copy.open}: {module.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ))}
+          </div>
+          </details>
+        </article>
+      ))}
+    </div>
+    <nav class="route-pagination" aria-label={lang === "en" ? "Path pages" : "Páginas de rutas"} hidden>
+      <button type="button" data-page-prev aria-label={lang === "en" ? "Previous page" : "Página anterior"}>←</button>
+      <span data-page-status role="status" aria-live="polite"></span>
+      <button type="button" data-page-next aria-label={lang === "en" ? "Next page" : "Página siguiente"}>→</button>
+    </nav>
+  </div>
+</section>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>("#route-search");
+  const routes = [...document.querySelectorAll<HTMLElement>("[data-route-search]")];
+  const empty = document.querySelector<HTMLElement>(".route-search-empty");
+  const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const pagination = document.querySelector<HTMLElement>(".route-pagination");
+  const prev = document.querySelector<HTMLButtonElement>("[data-page-prev]");
+  const next = document.querySelector<HTMLButtonElement>("[data-page-next]");
+  const status = document.querySelector<HTMLElement>("[data-page-status]");
+  const pageSize = 6;
+  let page = 0;
+  const render = () => {
+    const query = normalize(search?.value.trim() ?? "");
+    const matches = routes.filter(route => normalize(route.dataset.routeSearch ?? "").includes(query));
+    const pages = Math.max(1, Math.ceil(matches.length / pageSize));
+    page = Math.min(page, pages - 1);
+    const visible = new Set(matches.slice(page * pageSize, (page + 1) * pageSize));
+    for (const route of routes) route.hidden = !visible.has(route);
+    if (empty) empty.hidden = matches.length > 0;
+    if (pagination) pagination.hidden = pages <= 1;
+    if (prev) prev.disabled = page === 0;
+    if (next) next.disabled = page === pages - 1;
+    if (status) status.textContent = `${page + 1} / ${pages} · ${matches.length}`;
+  };
+  search?.addEventListener("input", () => { page = 0; render(); });
+  prev?.addEventListener("click", () => { page--; render(); });
+  next?.addEventListener("click", () => { page++; render(); });
+  const revealAnchor = () => {
+    let id: string;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const index = routes.findIndex(route => route.id === id);
+    if (index < 0) return;
+    if (search) search.value = "";
+    page = Math.floor(index / pageSize);
+    render();
+    routes[index].scrollIntoView({ block: "start" });
+  };
+  window.addEventListener("hashchange", revealAnchor);
+  render();
+  revealAnchor();
+</script>

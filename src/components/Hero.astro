@@ -30,36 +30,6 @@ const {
       </div>
     </div>
 
-    <aside class="learning-atlas" aria-label={lang === "en" ? "Technology learning map" : "Mapa de aprendizaje tecnológico"}>
-      <div class="learning-atlas-head">
-        <div>
-          <span>{lang === "en" ? "LEARNING MAP" : "MAPA DE APRENDIZAJE"}</span>
-          <small>{lang === "en" ? "Areas that grow with evidence" : "Áreas que crecen con evidencia"}</small>
-        </div>
-        <b>{String(technologyRoutes.length).padStart(2, "0")} {lang === "en" ? "PATHS" : "RUTAS"}</b>
-      </div>
-      <div class="learning-atlas-body">
-        <div class="learning-atlas-origin">
-          <span>{lang === "en" ? "STARTING POINT" : "PUNTO DE PARTIDA"}</span>
-          <strong>{lang === "en" ? "Learn with intention" : "Aprender con intención"}</strong>
-        </div>
-        <div class="atlas-line atlas-line-main" aria-hidden="true"></div>
-        <div class="atlas-junction" aria-hidden="true"></div>
-        {technologyRoutes.map((route, index) => (
-          <a class:list={["atlas-route", `atlas-route-${index + 1}`]} href={route.href} target={route.href.startsWith("http") ? "_blank" : undefined} rel={route.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <span>
-              <small>{route.statusLabel}</small>
-              <strong>{route.title}</strong>
-              <em>{route.atlasDescription}</em>
-            </span>
-          </a>
-        ))}
-      </div>
-      <div class="learning-atlas-foot">
-        <p>{lang === "en" ? "New areas are only added when there is real, reviewable practice to share." : "Las áreas nuevas solo se incorporan cuando existe práctica real y revisable para compartir."}</p>
-        <a href={primaryHref}>{lang === "en" ? "Choose a path" : "Elegir una ruta"}<span aria-hidden="true">→</span></a>
-      </div>
-    </aside>
+    <div class="home-hero-signature"><span>CHILETE / CAJAMARCA / PERÚ</span><p>{lang === "en" ? "A place to start. More than one way forward." : "Un lugar para empezar. Más de una forma de avanzar."}</p><a href={primaryHref}>{lang === "en" ? "Find your path" : "Encuentra tu camino"} <span aria-hidden="true">↓</span></a></div>
   </div>
 </section>

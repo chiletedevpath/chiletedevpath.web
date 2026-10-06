@@ -1,0 +1,14 @@
+---
+const { lang = "es", paths = [] } = Astro.props;
+const en = lang === "en";
+---
+<header class="route-heading">
+  <div class="contenedor">
+    <p class="etiqueta">{en ? "CDP / LEARNING DIRECTORY" : "CDP / DIRECTORIO DE APRENDIZAJE"}</p>
+    <div class="route-heading-line">
+      <h1>{en ? "Choose what you want to learn." : "Elige qué quieres aprender."}</h1>
+      <p>{en ? "Different skills, a shared approach: understand, practise and build." : "Distintas capacidades, una misma forma de avanzar: comprender, practicar y construir."}</p>
+    </div>
+    <div class="route-heading-meta"><span>{String(paths.length).padStart(2, "0")} {en ? "published paths" : "rutas publicadas"}</span><a href="#directorio-rutas">{en ? "Find your next step" : "Encuentra tu siguiente paso"} ↓</a></div>
+  </div>
+</header>

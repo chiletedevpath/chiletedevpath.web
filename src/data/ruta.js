@@ -1,6 +1,7 @@
 // @ts-check
 
 /** @typedef {import("./contracts.ts").LearningModule} LearningModule */
+/** @typedef {import("./contracts.ts").LearningPath} LearningPath */
 /** @typedef {import("./contracts.ts").TechnologyRoute} TechnologyRoute */
 /** @typedef {import("./contracts.ts").Language} Language */
 /** @typedef {import("./contracts.ts").RouteStatus} RouteStatus */
@@ -198,6 +199,125 @@ const routePhases = [
   },
 ];
 
+/** @type {LearningModule[]} */
+export const excelLearningModules = [
+  {
+    id: "excel-entorno-datos", order: 0, phaseId: "excel-base", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Datos"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/00-entorno-y-datos`,
+    i18n: {
+      es: { title: "Entorno y datos", description: "Captura y organización de datos en una estructura tabular clara." },
+      en: { title: "Workspace and data", description: "Capturing and organizing data in a clear tabular structure." },
+    },
+  },
+  {
+    id: "excel-formato-presentacion", order: 1, phaseId: "excel-base", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Formato"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/01-formato-y-presentacion`,
+    i18n: {
+      es: { title: "Formato y presentación", description: "Seguimiento de actividades con formato que ayuda a leer y decidir." },
+      en: { title: "Formatting and presentation", description: "Activity tracking with formatting that supports reading and decisions." },
+    },
+  },
+  {
+    id: "excel-formulas-referencias", order: 2, phaseId: "excel-base", status: ROUTE_STATUS.AVAILABLE, contentCount: 2,
+    technologies: ["Excel", "Fórmulas"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/02-formulas-operadores-y-referencias`,
+    i18n: {
+      es: { title: "Fórmulas, operadores y referencias", description: "Presupuestos y cotizadores con referencias relativas y absolutas." },
+      en: { title: "Formulas, operators and references", description: "Budgets and quotes using relative and absolute references." },
+    },
+  },
+  {
+    id: "excel-limpieza-organizacion", order: 3, phaseId: "excel-analisis", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Limpieza"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/03-limpieza-y-organizacion-datos`,
+    i18n: {
+      es: { title: "Limpieza y organización de datos", description: "Normalización, separación y validación de datos para un directorio usable." },
+      en: { title: "Data cleaning and organization", description: "Normalizing, separating and validating data for a usable directory." },
+    },
+  },
+  {
+    id: "excel-funciones-matematicas", order: 4, phaseId: "excel-analisis", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Funciones"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/04-funciones-matematicas-y-condicionales`,
+    i18n: {
+      es: { title: "Funciones matemáticas y condicionales", description: "Control de recursos a partir de cálculos y reglas verificables." },
+      en: { title: "Mathematical and conditional functions", description: "Resource control through calculations and verifiable rules." },
+    },
+  },
+  {
+    id: "excel-funciones-estadisticas", order: 5, phaseId: "excel-analisis", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Estadística"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/05-funciones-estadisticas`,
+    i18n: {
+      es: { title: "Funciones estadísticas", description: "Análisis de calificaciones para transformar registros en información." },
+      en: { title: "Statistical functions", description: "Grade analysis that turns records into information." },
+    },
+  },
+  {
+    id: "excel-visualizacion-reportes", order: 6, phaseId: "excel-reportes", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Reportes"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/06-visualizacion-y-reportes`,
+    i18n: {
+      es: { title: "Visualización y reportes", description: "Reporte de inscripciones para comunicar resultados con claridad." },
+      en: { title: "Visualization and reporting", description: "Enrollment reporting that communicates results clearly." },
+    },
+  },
+  {
+    id: "excel-integracion", order: 7, phaseId: "excel-reportes", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Integración"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/07-integracion`,
+    i18n: {
+      es: { title: "Integración", description: "Control de una ruta de aprendizaje que reúne fórmulas, datos y visualización." },
+      en: { title: "Integration", description: "Learning-path tracking that brings formulas, data and visualization together." },
+    },
+  },
+  {
+    id: "excel-tablas-analisis", order: 8, phaseId: "excel-aplicacion", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Tablas"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/08-tablas-y-analisis-operativo`,
+    i18n: {
+      es: { title: "Tablas y análisis operativo", description: "Control operativo de obra como práctica aplicada de análisis tabular." },
+      en: { title: "Tables and operational analysis", description: "Construction operations control as an applied tabular-analysis practice." },
+    },
+  },
+  {
+    id: "excel-modelos-financieros", order: 9, phaseId: "excel-aplicacion", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    technologies: ["Excel", "Finanzas"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/09-modelos-financieros-personales`,
+    i18n: {
+      es: { title: "Modelos financieros personales", description: "Control financiero personal que reúne presupuestos, metas, deudas y resultados." },
+      en: { title: "Personal financial models", description: "Personal financial control that brings together budgets, goals, debt and outcomes." },
+    },
+  },
+];
+
+const excelRoutePhases = [
+  {
+    id: "excel-base", moduleIds: ["excel-entorno-datos", "excel-formato-presentacion", "excel-formulas-referencias"],
+    technologies: { es: ["Excel", "Datos", "Fórmulas"], en: ["Excel", "Data", "Formulas"] },
+    i18n: {
+      es: { title: "Base de trabajo", intent: "Preparar datos antes de calcular", result: "Registros legibles y fórmulas construidas con referencias claras.", action: "Abrir entorno y datos" },
+      en: { title: "Working foundation", intent: "Prepare data before calculating", result: "Readable records and formulas built with clear references.", action: "Open workspace and data" },
+    },
+  },
+  {
+    id: "excel-analisis", moduleIds: ["excel-limpieza-organizacion", "excel-funciones-matematicas", "excel-funciones-estadisticas"],
+    technologies: { es: ["Limpieza", "Funciones", "Estadística"], en: ["Cleaning", "Functions", "Statistics"] },
+    i18n: {
+      es: { title: "Análisis", intent: "Convertir registros en información útil", result: "Datos ordenados y cálculos que respaldan una decisión.", action: "Abrir limpieza de datos" },
+      en: { title: "Analysis", intent: "Turn records into useful information", result: "Organized data and calculations that support a decision.", action: "Open data cleaning" },
+    },
+  },
+  {
+    id: "excel-reportes", moduleIds: ["excel-visualizacion-reportes", "excel-integracion"],
+    technologies: { es: ["Reportes", "Visualización"], en: ["Reporting", "Visualization"] },
+    i18n: {
+      es: { title: "Reportes e integración", intent: "Comunicar avances sin perder contexto", result: "Reportes y controles que conectan los ejercicios anteriores.", action: "Abrir visualización" },
+      en: { title: "Reporting and integration", intent: "Communicate progress without losing context", result: "Reports and controls that connect earlier exercises.", action: "Open visualization" },
+    },
+  },
+  {
+    id: "excel-aplicacion", moduleIds: ["excel-tablas-analisis", "excel-modelos-financieros"],
+    technologies: { es: ["Tablas", "Modelos"], en: ["Tables", "Models"] },
+    i18n: {
+      es: { title: "Aplicación", intent: "Llevar los fundamentos a casos completos", result: "Dos libros aplicados para una operación y unas finanzas personales.", action: "Abrir análisis operativo" },
+      en: { title: "Application", intent: "Bring fundamentals into complete cases", result: "Two applied workbooks for operations and personal finance.", action: "Open operational analysis" },
+    },
+  },
+];
+
 /** @param {string | undefined} lang @returns {Language} */
 const normalizeLang = (lang) => (lang === "en" ? "en" : "es");
 const translate = (item, lang) => item.i18n[normalizeLang(lang)];
@@ -277,6 +397,101 @@ export const getRouteSummary = (lang = "es") => {
   };
 };
 
+/** @type {LearningPath[]} */
+const learningPaths = [
+  {
+    id: "software",
+    order: 1,
+    href: "/ruta/#software",
+    modules: learningModules,
+    phases: routePhases,
+    i18n: {
+      es: { title: "Desarrollo de software", description: "Lógica, programación, datos, web, patrones y backend organizados como un recorrido progresivo.", atlasDescription: "De lógica a proyectos explicables.", evidenceLabel: "bloques temáticos" },
+      en: { title: "Software development", description: "Logic, programming, data, web, patterns and backend organized as a progressive path.", atlasDescription: "From logic to explainable projects.", evidenceLabel: "topic blocks" },
+    },
+  },
+  {
+    id: "excel-productivity",
+    order: 2,
+    href: "/ruta/#excel-productivity",
+    modules: excelLearningModules,
+    phases: excelRoutePhases,
+    i18n: {
+      es: { title: "Productividad y datos", description: "Datos, fórmulas, análisis y modelos aplicados para resolver trabajo concreto con hojas de cálculo.", atlasDescription: "Excel hoy; datos y automatización como alcance.", evidenceLabel: "libros de práctica" },
+      en: { title: "Productivity and data", description: "Data, formulas, analysis and applied models for solving concrete spreadsheet work.", atlasDescription: "Excel today; data and automation as the broader scope.", evidenceLabel: "practice workbooks" },
+    },
+  },
+];
+
+const getPathModules = (path, lang) => {
+  const language = normalizeLang(lang);
+  return path.modules.slice().sort((a, b) => a.order - b.order).map((module) => ({
+    ...module,
+    ...translate(module, language),
+    number: String(module.order).padStart(2, "0"),
+    statusLabel: statusLabels[language][module.status],
+    progress: STATUS_WEIGHT[module.status],
+  }));
+};
+
+const getPathStages = (path, lang) => {
+  const language = normalizeLang(lang);
+  const modulesById = new Map(getPathModules(path, language).map((module) => [module.id, module]));
+
+  return path.phases.map((phase, index) => {
+    const modules = phase.moduleIds.map((id) => modulesById.get(id)).filter(Boolean);
+    const status = derivePhaseStatus(modules);
+    const firstAvailable = modules.find((module) => module.status !== ROUTE_STATUS.PLANNED);
+    return {
+      id: phase.id,
+      number: String(index + 1).padStart(2, "0"),
+      ...translate(phase, language),
+      modules,
+      technologies: phase.technologies[language],
+      statusId: status,
+      status: statusLabels[language][status],
+      progress: average(modules.map((module) => STATUS_WEIGHT[module.status])),
+      contentCount: modules.reduce((total, module) => total + module.contentCount, 0),
+      moduleCount: modules.length,
+      href: firstAvailable?.href ?? ROUTE_STATUS_HREF,
+    };
+  });
+};
+
+const getPathSummary = (path, lang) => {
+  const language = normalizeLang(lang);
+  const modules = getPathModules(path, language);
+  const counts = Object.fromEntries(Object.values(ROUTE_STATUS).map((status) => [status, 0]));
+  modules.forEach((module) => { counts[module.status] += 1; });
+  const availableCount = counts[ROUTE_STATUS.AVAILABLE];
+  const contentCount = modules.reduce((total, module) => total + module.contentCount, 0);
+  const progress = average(modules.map((module) => STATUS_WEIGHT[module.status]));
+  return {
+    moduleCount: modules.length,
+    availableCount,
+    contentCount,
+    progress,
+    counts,
+    moduleIndicator: language === "en" ? `${availableCount} of ${modules.length} modules available` : `${availableCount} de ${modules.length} módulos disponibles`,
+    contentIndicator: `${contentCount} ${translate(path, language).evidenceLabel}`,
+    progressLabel: language === "en" ? "Path progress" : "Avance de la ruta",
+    progressValue: `${progress}%`,
+  };
+};
+
+export const getLearningPaths = (lang = "es") => {
+  const language = normalizeLang(lang);
+  return learningPaths.slice().sort((a, b) => a.order - b.order).map((path) => ({
+    ...path,
+    ...translate(path, language),
+    modules: getPathModules(path, language),
+    stages: getPathStages(path, language),
+    summary: getPathSummary(path, language),
+    status: derivePhaseStatus(path.modules),
+    statusLabel: statusLabels[language][derivePhaseStatus(path.modules)],
+  }));
+};
+
 export const techStack = [
   { name: "HTML", tone: "markup", href: `${LEARNING_REPOSITORY}/tree/main/07-desarrollo-web`, i18n: { es: { category: "Estructura web", description: "Estructura semántica del contenido y base de accesibilidad." }, en: { category: "Web structure", description: "Semantic content structure and accessibility foundation." } } },
   { name: "CSS", tone: "style", href: `${LEARNING_REPOSITORY}/tree/main/07-desarrollo-web`, i18n: { es: { category: "Diseño de interfaz", description: "Layout responsive, jerarquía visual y sistema de temas." }, en: { category: "Interface design", description: "Responsive layout, visual hierarchy and theme system." } } },
@@ -293,35 +508,10 @@ export const getTechStack = (lang = "es") => {
   return techStack.map((tech) => ({ ...tech, ...tech.i18n[language] }));
 };
 
-/** @type {TechnologyRoute[]} */
-const technologyRoutes = [
-  {
-    id: "software",
-    status: ROUTE_STATUS.AVAILABLE,
-    href: "/ruta/",
-    moduleCount: learningModules.length,
-    i18n: {
-      es: { title: "Desarrollo de software", description: "Lógica, programación, datos, web, patrones y backend organizados como una ruta progresiva.", atlasDescription: "De lógica a proyectos explicables." },
-      en: { title: "Software development", description: "Logic, programming, data, web, patterns and backend organized as a progressive path.", atlasDescription: "From logic to explainable projects." },
-    },
-  },
-  {
-    id: "excel-productivity",
-    status: ROUTE_STATUS.AVAILABLE,
-    href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad`,
-    moduleCount: 10,
-    i18n: {
-      es: { title: "Productividad y datos", description: "Datos, fórmulas, visualización, automatización y modelos aplicados para resolver trabajo real.", atlasDescription: "Excel hoy; datos y automatización como alcance." },
-      en: { title: "Productivity and data", description: "Data, formulas, visualization, automation and applied models for real work.", atlasDescription: "Excel today; data and automation as the broader scope." },
-    },
-  },
-];
-
 export const getTechnologyRoutes = (lang = "es") => {
-  const language = normalizeLang(lang);
-  return technologyRoutes.map((route) => ({
+  return getLearningPaths(lang).map(({ modules, stages, summary, phases, ...route }) => ({
     ...route,
-    ...translate(route, language),
-    statusLabel: statusLabels[language][route.status],
+    href: normalizeLang(lang) === "en" ? route.href.replace("/ruta/", "/en/ruta/") : route.href,
+    moduleCount: summary.moduleCount,
   }));
 };

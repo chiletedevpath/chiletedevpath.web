@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RouteHero from "../../components/RouteHero.astro";
+import RouteDirectory from "../../components/RouteDirectory.astro";
+import "../../styles/pages/rutas-atlas.css";
+import "../../styles/pages/composiciones.css";
+import { getLearningPaths } from "../../data/ruta.js";
+
+export function getStaticPaths() {
+  if (import.meta.env.CDP_ROUTE_QA !== "1") return [];
+  return [10, 30].map(size => ({ params: { size: String(size) }, props: { size } }));
+}
+const { size } = Astro.props;
+const originals = getLearningPaths("es");
+const paths = Array.from({ length: size }, (_, index) => ({
+  ...originals[index % originals.length],
+  id: `prueba-${index + 1}`,
+  title: `Ruta de prueba ${String(index + 1).padStart(2, "0")}`,
+  description: index % 3 === 0
+    ? "Recorrido de prueba con un nombre y una descripción extensos para comprobar la lectura y la adaptación en pantallas pequeñas."
+    : "Contenido ficticio exclusivo de la prueba de escalabilidad.",
+}));
+---
+<BaseLayout title="Prueba local de rutas">
+  <meta name="robots" content="noindex,nofollow" />
+  <p class="contenedor">PRUEBA LOCAL: {size} rutas ficticias. No representa contenido publicado.</p>
+  <RouteHero paths={paths} />
+  <RouteDirectory paths={paths} />
+</BaseLayout>

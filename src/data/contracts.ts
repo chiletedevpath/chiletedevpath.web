@@ -18,6 +18,20 @@ export type LearningModule = {
   i18n: Record<Language, LocalizedText>;
 };
 
+export type LearningPath = {
+  id: string;
+  order: number;
+  href: string;
+  modules: LearningModule[];
+  phases: Array<{
+    id: string;
+    moduleIds: string[];
+    technologies: Record<Language, string[]>;
+    i18n: Record<Language, { title: string; intent: string; result: string; action: string }>;
+  }>;
+  i18n: Record<Language, LocalizedText & { atlasDescription: string; evidenceLabel: string }>;
+};
+
 export type TechnologyRoute = {
   id: string;
   status: RouteStatus;

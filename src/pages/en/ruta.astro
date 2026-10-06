@@ -1,102 +1,22 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/pages/ruta.css";
-import "../../styles/components/editorial.css";
-import PageHero from "../../components/PageHero.astro";
-import SectionHeader from "../../components/SectionHeader.astro";
-import RouteStage from "../../components/RouteStage.astro";
-import TechIcon from "../../components/TechIcon.astro";
-import { getRouteStages, getTechStack } from "../../data/ruta.js";
+import "../../styles/pages/rutas-atlas.css";
+import "../../styles/pages/composiciones.css";
+import RouteHero from "../../components/RouteHero.astro";
+import RouteDirectory from "../../components/RouteDirectory.astro";
+import TechnologyDirectory from "../../components/TechnologyDirectory.astro";
+import { getLearningPaths, getTechStack } from "../../data/ruta.js";
 
-const routeStages = getRouteStages("en");
-const techStack = getTechStack("en");
+const paths = getLearningPaths("en");
+const technologies = getTechStack("en");
 ---
 
-<BaseLayout title="Learning Path | Chilete DevPath">
-  <PageHero
-    eyebrow="Learning path"
-    title="Start with fundamentals and move forward with real practice"
-    description="This path organizes what to understand first, what to practice next and how to connect progress with real projects."
-    variant="ruta"
-    heroImage="/assets/img/heros/ruta-chiletedevpath.webp"
-    showVisual={false}
-    visualTitle="Progress path"
-    visualText="A progressive route from foundations to projects with evidence."
-    visualLabel="Progress map"
-    visualHeadline="From fundamentals to projects"
-    visualItems={[
-      { title: "Fundamentals", text: "Understand before coding." },
-      { title: "Construction", text: "Organize solutions with judgment." },
-      { title: "Web and data", text: "Connect practice, queries and documentation." },
-      { title: "Projects", text: "Turn progress into reviewable evidence." },
-      { title: "Continuous improvement", text: "Review, adjust and keep moving forward." },
-    ]}
-  />
-
-  <section class="seccion seccion-editorial">
-    <div class="contenedor editorial-bloque">
-      <div class="editorial-frase">
-        <p class="etiqueta">Learning reflection</p>
-        <blockquote>Programming is not chasing code; it is learning to think before writing it.</blockquote>
-        <p>
-          That is why the path starts with foundations and moves forward through practice. The goal is not to fill folders,
-          but to build judgment for solving problems better.
-        </p>
-      </div>
-      <figure class="editorial-imagen">
-        <img src="/assets/img/editorial/editorial-ruta-aprendizaje.webp" alt="Adrian Pisco working on Chilete DevPath" loading="lazy" />
-      </figure>
-    </div>
-  </section>
-
-  <section class="seccion">
-    <div class="contenedor">
-      <SectionHeader
-        eyebrow="Guided stages"
-        title="A route from foundation to production habits"
-        description="Progress follows one rule: available is 100%, under review 75%, in development 50% and planned 0%. Each stage shows the average of its modules."
-      />
-      <div class="ruta-etapas">
-        {routeStages.map((stage) => <RouteStage stage={stage} lang="en" />)}
-      </div>
-      <div class="ruta-accion">
-        <p>The practical content lives in the learning repository. I will keep expanding it with useful exercises, focused glossaries and labs when they truly help people learn.</p>
-        <a class="boton boton-principal" href="https://github.com/chiletedevpath/aprendizaje" target="_blank" rel="noopener noreferrer">
-          Open learning repository
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion">
-    <div class="contenedor">
-      <SectionHeader
-        eyebrow="Technologies in practice"
-        title="Tools used across the path"
-        description="Each technology appears because it solves something in the route, not as decoration."
-      />
-      <div class="tech-showcase" aria-label="Technologies used across Chilete DevPath">
-        {techStack.map((tech, index) => (
-          <a
-            class="tech-item"
-            href={tech.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open learning content related to ${tech.name}`}
-          >
-            <div class="tech-item-cabecera">
-              <TechIcon name={tech.name} />
-              <span class="tech-orden" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-            </div>
-            <div class="tech-item-contenido">
-              <span class="tech-categoria">{tech.category}</span>
-              <strong>{tech.name}</strong>
-              <p>{tech.description}</p>
-            </div>
-            <span class="tech-acceso">Open content <span aria-hidden="true">↗</span></span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+<BaseLayout
+  title="Learning routes | Chilete DevPath"
+  description="Two published learning routes: software development and productivity with data, organized around verifiable evidence."
+  lang="en"
+>
+  <RouteHero lang="en" paths={paths} />
+  <RouteDirectory lang="en" paths={paths} />
+  <TechnologyDirectory lang="en" technologies={technologies} />
 </BaseLayout>
