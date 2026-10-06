@@ -9,7 +9,7 @@ export const site = {
   url: "https://chiletedevpath.com",
   version: `V${packageJson.version}`,
   description:
-    "Chilete DevPath es la marca personal de Adrián Pisco para documentar aprendizaje, proyectos, criterio técnico y comunidad.",
+    "Chilete DevPath es la marca personal de Adrián Pisco para documentar aprendizaje de tecnologías, proyectos y criterio técnico.",
   descriptionEn:
     "Chilete DevPath is Adrián Pisco's personal learning path for documenting technical practice, academic projects and responsible publishing.",
   socialImageAlt: {
@@ -25,7 +25,6 @@ const seoByPath = {
   "/": "Chilete DevPath organiza aprendizaje técnico, práctica y proyectos académicos en una ruta pública construida con criterio.",
   "/ruta/": "Ruta progresiva de Chilete DevPath: fundamentos, programación, datos, web, patrones, backend, frontend y publicación.",
   "/proyectos/": "Proyectos académicos explicados desde el problema, la solución construida y el aprendizaje demostrado.",
-  "/comunidad/": "Canales y espacios de Chilete DevPath para compartir avances, conversar sobre aprendizaje y mejorar la ruta.",
   "/sobre/": "Origen, propósito y criterios de Chilete DevPath, una marca personal de aprendizaje técnico creada desde Chilete, Cajamarca.",
   "/recursos/": "Ejercicios, retos, guías y material de consulta conectados con la ruta de aprendizaje de Chilete DevPath.",
   "/criterios/": "Criterios de Chilete DevPath para publicar con autoría clara, privacidad, seguridad y uso responsable de IA.",
@@ -33,7 +32,6 @@ const seoByPath = {
   "/en/": "Chilete DevPath organizes technical learning, practice and academic projects into a public path built with judgment.",
   "/en/ruta/": "Chilete DevPath's progressive path through foundations, programming, data, web, patterns, backend, frontend and publishing.",
   "/en/proyectos/": "Academic projects explained through the problem, the solution built and the learning demonstrated.",
-  "/en/comunidad/": "Chilete DevPath channels and spaces for sharing progress, discussing learning and improving the path.",
   "/en/sobre/": "The origin, purpose and criteria behind Chilete DevPath, a personal technical learning brand built from Chilete, Cajamarca.",
   "/en/recursos/": "Exercises, challenges, guides and reference material connected to the Chilete DevPath learning path.",
   "/en/criterios/": "Chilete DevPath criteria for publishing with clear authorship, privacy, security and responsible AI use.",
@@ -53,7 +51,6 @@ export const navItems = [
 export const navMoreItems = [
   { label: "Sobre", href: "/sobre/" },
   { label: "Criterios", href: "/criterios/" },
-  { label: "Comunidad", href: "/comunidad/" },
 ];
 
 export const navItemsEn = [
@@ -66,7 +63,6 @@ export const navItemsEn = [
 export const navMoreItemsEn = [
   { label: "About", href: "/en/sobre/" },
   { label: "Criteria", href: "/en/criterios/" },
-  { label: "Community", href: "/en/comunidad/" },
 ];
 
 export const getMetrics = (lang = "es") => {
@@ -137,85 +133,5 @@ export const valuePropsEn = [
   {
     title: "Origin with identity",
     text: "The brand starts from Chilete, Cajamarca, with a local view that aims for a global community.",
-  },
-];
-
-export const socialsEn = [
-  {
-    name: "GitHub",
-    label: "Main repository",
-    description: "Code, projects and technical evolution of the ecosystem.",
-    href: "https://github.com/chiletedevpath",
-    primary: true,
-  },
-  {
-    name: "LinkedIn",
-    label: "Professional profile",
-    description: "Trajectory, learning process and professional profile.",
-    href: "https://www.linkedin.com/in/adri%C3%A1n-piscos",
-  },
-  {
-    name: "Discord",
-    label: "Community space",
-    description: "Channel to share progress, practice and community.",
-    href: "https://discord.gg/4XsXRT4rG",
-  },
-  {
-    name: "Instagram",
-    label: "Visual content",
-    description: "Visual posts about brand and learning.",
-    href: "https://www.instagram.com/chiletedevpath/",
-  },
-  {
-    name: "TikTok",
-    label: "Short content",
-    description: "Short pieces to learn and follow the process.",
-    href: "https://www.tiktok.com/@chiletedevpath",
-  },
-  {
-    name: "Facebook",
-    label: "Community",
-    description: "Social presence of Chilete DevPath.",
-    href: "https://web.facebook.com/chiletedevpath",
-  },
-];
-
-export const socials = [
-  {
-    name: "GitHub",
-    label: "Repositorio principal",
-    description: "Código, proyectos y evolución técnica del ecosistema.",
-    href: "https://github.com/chiletedevpath",
-    primary: true,
-  },
-  {
-    name: "LinkedIn",
-    label: "Perfil profesional",
-    description: "Trayectoria, aprendizaje y perfil profesional.",
-    href: "https://www.linkedin.com/in/adri%C3%A1n-piscos",
-  },
-  {
-    name: "Discord",
-    label: "Espacio de comunidad",
-    description: "Canal para compartir avance, práctica y comunidad.",
-    href: "https://discord.gg/4XsXRT4rG",
-  },
-  {
-    name: "Instagram",
-    label: "Contenido visual",
-    description: "Publicaciones visuales sobre marca y aprendizaje.",
-    href: "https://www.instagram.com/chiletedevpath/",
-  },
-  {
-    name: "TikTok",
-    label: "Contenido corto",
-    description: "Piezas breves para aprender y seguir el proceso.",
-    href: "https://www.tiktok.com/@chiletedevpath",
-  },
-  {
-    name: "Facebook",
-    label: "Comunidad",
-    description: "Presencia social de Chilete DevPath.",
-    href: "https://web.facebook.com/chiletedevpath",
   },
 ];

@@ -1,7 +1,6 @@
 ---
-import { navItems, navItemsEn, navMoreItems, navMoreItemsEn, site, socials } from "../data/site.js";
+import { navItems, navItemsEn, navMoreItems, navMoreItemsEn, site } from "../data/site.js";
 import { policies, policiesEn } from "../data/recursos.js";
-import SocialIcon from "./SocialIcon.astro";
 
 const { lang = "es" } = Astro.props;
 const isEnglish = lang === "en";
@@ -39,16 +38,10 @@ const footerPolicies = isEnglish
     <div class="pie-social">
       <p>
         {isEnglish
-          ? "Follow the public progress on GitHub and connect through the official community channels."
-          : "Sigue el avance público en GitHub y conecta mediante los canales oficiales de comunidad."}
+          ? "Practice and source code are preserved in the public repositories."
+          : "Las prácticas y el código fuente se conservan en los repositorios públicos."}
       </p>
-      <nav class="pie-redes" aria-label={isEnglish ? "Official social links" : "Redes oficiales"}>
-        {socials.map((social) => (
-          <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>
-            <SocialIcon name={social.name} />
-          </a>
-        ))}
-      </nav>
+      <a href="https://github.com/chiletedevpath" target="_blank" rel="noopener noreferrer">{isEnglish ? "View repositories" : "Ver repositorios"} <span aria-hidden="true">↗</span></a>
       <span class="version-marca">{site.version}</span>
     </div>
   </div>

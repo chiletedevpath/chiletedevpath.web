@@ -104,7 +104,12 @@ assert(sitemapIndex.includes(`${site}/sitemap-0.xml`), "El índice del sitemap n
 
 const sitemap = await readFile(path.join(dist, "sitemap-0.xml"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]).sort();
-const pageUrls = (await collectHtmlFiles(dist)).map(pageUrlFromHtml).sort();
+const contentFiles = [];
+for (const file of await collectHtmlFiles(dist)) {
+  const html = await readFile(file, "utf8");
+  if (!/<meta\s+http-equiv=["']refresh["']/i.test(html)) contentFiles.push(file);
+}
+const pageUrls = contentFiles.map(pageUrlFromHtml).sort();
 const precachedPageUrls = precacheUrls
   .filter((url) => url.endsWith("/"))
   .map((url) => `${site}${url}`)
