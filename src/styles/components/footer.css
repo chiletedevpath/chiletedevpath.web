@@ -61,6 +61,10 @@
   gap: 14px;
 }
 
+.pie-social > strong {color:#eff7f1;font-size:1rem}
+.pie-correo {color:#bed0ca;font-size:.88rem;overflow-wrap:anywhere}
+.pie-correo:hover {color:#77dbd3}
+
 .pie-redes {
   display: flex;
   flex-wrap: wrap;

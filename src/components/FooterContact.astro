@@ -1,0 +1,15 @@
+---
+import { socialLinks } from "../data/contactos.js";
+import { site } from "../data/site.js";
+import SocialIcon from "./SocialIcon.astro";
+const { lang = "es" } = Astro.props;
+const en = lang === "en";
+---
+<div class="pie-social">
+  <strong>{en ? "Socials and contact" : "Redes y contacto"}</strong>
+  <nav class="pie-redes" aria-label={en ? "Social profiles" : "Perfiles en redes sociales"}>
+    {socialLinks.map(link => <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.name} title={link.name}><SocialIcon name={link.name} /></a>)}
+  </nav>
+  <a class="pie-correo" href={`mailto:${site.email}`}>{site.email}</a>
+  <span class="version-marca">{site.version}</span>
+</div>

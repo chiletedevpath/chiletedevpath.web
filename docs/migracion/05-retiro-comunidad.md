@@ -2,7 +2,8 @@
 
 Cambio aprobado: la seccion queda fuera hasta que exista una comunidad real.
 Se retiran paginas ES/EN, CSS propio, datos de redes, navegacion y precache.
-GitHub permanece como acceso tecnico a las fuentes, no como bloque social.
+La pagina Comunidad se retira; redes sociales y contacto permanecen en el footer,
+segun la aclaracion posterior del responsable. No hay enlace al modulo retirado.
 
 Las URLs antiguas redirigen al Inicio de su idioma. Astro genera redireccion HTML
 en este despliegue estatico, no una respuesta HTTP 301. La configuracion del

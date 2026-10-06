@@ -1,6 +1,7 @@
 ---
 import { navItems, navItemsEn, navMoreItems, navMoreItemsEn, site } from "../data/site.js";
 import { policies, policiesEn } from "../data/recursos.js";
+import FooterContact from "./FooterContact.astro";
 
 const { lang = "es" } = Astro.props;
 const isEnglish = lang === "en";
@@ -35,15 +36,7 @@ const footerPolicies = isEnglish
       {footerPolicies.map((policy) => <a href={policy.href}>{policy.title}</a>)}
     </nav>
 
-    <div class="pie-social">
-      <p>
-        {isEnglish
-          ? "Practice and source code are preserved in the public repositories."
-          : "Las prácticas y el código fuente se conservan en los repositorios públicos."}
-      </p>
-      <a href="https://github.com/chiletedevpath" target="_blank" rel="noopener noreferrer">{isEnglish ? "View repositories" : "Ver repositorios"} <span aria-hidden="true">↗</span></a>
-      <span class="version-marca">{site.version}</span>
-    </div>
+    <FooterContact lang={lang} />
   </div>
   <div class="pie-inferior">
     <span>{isEnglish ? "Chilete DevPath by Adrián Pisco." : "Chilete DevPath por Adrián Pisco."}</span>
