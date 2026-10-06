@@ -1,0 +1,25 @@
+---
+import "../styles/pages/politicas.css";
+const { policy, lang = "es" } = Astro.props;
+const en = lang === "en";
+const back = `${en ? "/en" : ""}/criterios/#lista-politicas`;
+const headings = en ? ["Objective", "Scope", "Responsibilities", "Guidelines", "Version control"] : ["Objetivo", "Alcance", "Responsabilidades", "Lineamientos", "Control de versión"];
+const responsibilities = en ? ["Apply this policy before publishing content on the website, GitHub or official channels.", "Review authorship, privacy, academic context and security before publication.", "Update this policy when the Chilete DevPath ecosystem changes scope."] : ["Aplicar esta política antes de publicar contenido en la web, GitHub o redes oficiales.", "Revisar que el contenido respete autoría, privacidad, contexto académico y seguridad.", "Actualizar la política cuando cambie el alcance del ecosistema Chilete DevPath."];
+const metadata = en ? [["Code",policy.code],["Version",policy.version],["Status",policy.status],["Owner",policy.owner]] : [["Código",policy.code],["Versión",policy.version],["Estado",policy.status],["Responsable",policy.owner]];
+---
+<header class="policy-heading"><div class="contenedor">
+  <a class="policy-back" href={back}><span aria-hidden="true">←</span> {en ? "Back to criteria" : "Volver a Criterios"}</a>
+  <p class="etiqueta">CDP / {policy.code}</p><h1>{policy.title}</h1><p class="policy-lead">{policy.highlight}</p>
+  <dl class="policy-metadata">{metadata.map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+</div></header>
+<div class="contenedor policy-reading">
+  <nav class="policy-index" aria-label={en ? "Document contents" : "Índice del documento"}><span class="etiqueta">{en ? "IN THIS DOCUMENT" : "EN ESTE DOCUMENTO"}</span>{headings.map((heading,index) => <a href={`#apartado-${index+1}`}><small>0{index+1}</small>{heading}</a>)}</nav>
+  <article class="policy-text" aria-label={policy.title}>
+    <section id="apartado-1"><h2>1. {headings[0]}</h2><p>{policy.objective}</p></section>
+    <section id="apartado-2"><h2>2. {headings[1]}</h2><p>{policy.scope}</p></section>
+    <section id="apartado-3"><h2>3. {headings[2]}</h2><ul>{responsibilities.map(text => <li>{text}</li>)}</ul></section>
+    <section id="apartado-4"><h2>4. {headings[3]}</h2><ul>{policy.principles.map(text => <li>{text}</li>)}</ul></section>
+    <section id="apartado-5"><h2>5. {headings[4]}</h2><strong>{en ? "Version" : "Versión"} {policy.version}</strong><p>{en ? "Active document for the public Chilete DevPath website." : "Documento vigente para la web pública de Chilete DevPath."}</p></section>
+    <a class="policy-back" href={back}><span aria-hidden="true">←</span> {en ? "Back to criteria" : "Volver a Criterios"}</a>
+  </article>
+</div>

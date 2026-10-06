@@ -1,0 +1,24 @@
+.policy-heading {padding:40px 0 0;background:var(--fondo-suave)}
+.policy-back {display:inline-flex;align-items:center;gap:10px;color:var(--color-acento);font-weight:700}
+.policy-heading .etiqueta {display:block;margin:32px 0 12px}
+.policy-heading h1 {max-width:900px;font-family:var(--fuente-base);font-size:3.25rem;line-height:1.12;overflow-wrap:anywhere}
+.policy-lead {max-width:760px;margin:20px 0 32px;color:var(--color-texto-suave);font-size:1.15rem}
+.policy-metadata {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--color-borde);margin:0}
+.policy-metadata div {padding:20px 16px 20px 0;min-width:0}
+.policy-metadata dt {color:var(--color-texto-suave);font-size:.8rem;margin-bottom:6px}
+.policy-metadata dd {margin:0;font-weight:700;overflow-wrap:anywhere}
+.policy-reading {display:grid;grid-template-columns:230px minmax(0,760px);gap:64px;padding-top:48px;padding-bottom:64px;align-items:start}
+.policy-index {position:sticky;top:var(--espacio-ancla);display:grid;gap:0}
+.policy-index .etiqueta {margin-bottom:16px;font-size:.75rem}
+.policy-index a {display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-borde);color:var(--color-texto-suave);font-size:.9rem}
+.policy-index a:hover {color:var(--color-acento)}
+.policy-index small {font-family:var(--fuente-mono);color:var(--color-acento)}
+.policy-text section {padding:0 0 28px;margin-bottom:28px;border-bottom:1px solid var(--color-borde);scroll-margin-top:var(--espacio-ancla)}
+.policy-text h2 {font-family:var(--fuente-base);font-size:1.4rem;margin-bottom:16px}
+.policy-text p,.policy-text li {line-height:1.8;color:var(--color-texto-suave)}
+.policy-text ul {padding-left:22px;display:grid;gap:12px;list-style:disc}
+.policy-index a,.policy-back {transition:color .2s ease}
+@media(max-width:800px){.policy-heading h1{font-size:2.5rem}.policy-reading{grid-template-columns:1fr;gap:32px}.policy-index{position:static}.policy-metadata{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.policy-heading{padding-top:24px}.policy-heading h1{font-size:2rem}.policy-lead{font-size:1rem}.policy-reading{padding-top:32px}}
+@media(prefers-reduced-motion:reduce){.policy-index a,.policy-back{transition:none}}
+@media print{.policy-index,.policy-back{display:none}.policy-reading{display:block}.policy-heading{background:none}}

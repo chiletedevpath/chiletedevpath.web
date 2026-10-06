@@ -1,39 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/pages/criterios.css";
-import PageHero from "../../components/PageHero.astro";
-import PolicyIcon from "../../components/PolicyIcon.astro";
+import PolicyOverview from "../../components/PolicyOverview.astro";
+import "../../styles/pages/criterios-editorial.css";
+import "../../styles/pages/politicas.css";
 import { policies } from "../../data/recursos.js";
 ---
-
 <BaseLayout title="Políticas | Chilete DevPath">
-  <PageHero
-    eyebrow="Políticas internas"
-    title="Criterios para publicar sin improvisar"
-    description="Estas políticas convierten la marca en una práctica responsable: autoría clara, privacidad, uso de IA, bienestar y seguridad."
-    variant="criterios"
-    visualTitle="Control editorial"
-    visualText="Revisión antes de publicar contenido público."
-  />
-
-  <section class="seccion">
-    <div class="contenedor politicas-grid">
-      {policies.map((policy) => (
-        <article class:list={["politica-documento", `politica-${policy.tone}`]}>
-          <header class="politica-encabezado">
-            <PolicyIcon name={policy.icon} />
-            <div>
-              <span class="politica-codigo">{policy.code}</span>
-              <h3>{policy.title}</h3>
-            </div>
-          </header>
-          <div class="politica-cuerpo">
-            <p class="politica-destacado">{policy.highlight}</p>
-            <p>{policy.objective}</p>
-          </div>
-          <a class="boton boton-principal" href={policy.href}>Abrir política</a>
-        </article>
-      ))}
-    </div>
-  </section>
+  <header class="policy-heading"><div class="contenedor"><a class="policy-back" href="/criterios/#lista-politicas">← Volver a Criterios</a><p class="etiqueta">CDP / POLÍTICAS</p><h1>Publicar con responsabilidad.</h1><p class="policy-lead">Autoría, privacidad, uso de IA, bienestar y seguridad.</p></div></header>
+  <PolicyOverview policies={policies} lang="es" />
 </BaseLayout>
