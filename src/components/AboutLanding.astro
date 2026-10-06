@@ -1,0 +1,17 @@
+---
+import { aboutCopy } from "../data/sobre.js";
+import { site } from "../data/site.js";
+import AboutSystem from "./AboutSystem.astro";
+import "../styles/pages/sobre.css";
+const { lang = "es" } = Astro.props;
+const en = lang === "en";
+const copy = aboutCopy[en ? "en" : "es"];
+---
+<header class="about-hero">
+  <img class="about-hero-background" src="/assets/img/heros/sobre-chiletedevpath.webp" alt="" width="1600" height="900" fetchpriority="high" />
+  <div class="contenedor about-hero-content"><span class="etiqueta">CDP / {copy.eyebrow}</span><h1>Chilete DevPath</h1><p class="about-tagline">{copy.tagline}</p><p>{copy.intro}</p><a href="#el-nombre">{en ? "Get to know the project" : "Conocer el proyecto"} <span aria-hidden="true">↓</span></a></div>
+</header>
+<section class="about-name" id="el-nombre" aria-labelledby="about-name-title"><div class="contenedor"><span class="etiqueta">{en ? "THE NAME" : "EL NOMBRE"}</span><h2 id="about-name-title">{copy.nameTitle}</h2><div class="about-name-parts">{copy.nameParts.map(([name, title, text]) => <div><span>{name}</span><h3>{title}</h3><p>{text}</p></div>)}</div></div></section>
+<AboutSystem copy={copy} lang={lang} />
+<section class="about-origin"><div class="contenedor about-origin-grid"><div><span class="etiqueta">{en ? "PERSONAL ORIGIN" : "ORIGEN PERSONAL"}</span><h2>{copy.originTitle}</h2><p>{copy.originText}</p></div><aside><strong>{site.author}</strong><p>{site.location}</p><a href={site.mapsHref} target="_blank" rel="noopener noreferrer">{en ? "View the place of origin" : "Ver lugar de origen"} <span aria-hidden="true">↗</span></a><small>{copy.originNote}</small></aside></div></section>
+<section class="about-direction"><div class="contenedor"><span class="etiqueta">{en ? "WHAT COMES NEXT" : "LO QUE SIGUE"}</span><h2>{copy.directionTitle}</h2><p>{copy.directionText}</p><a href={en ? "/en/ruta/" : "/ruta/"}>{en ? "Explore the current paths" : "Explorar las rutas actuales"} <span aria-hidden="true">→</span></a></div></section>

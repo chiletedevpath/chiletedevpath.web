@@ -1,0 +1,10 @@
+---
+const { copy, lang = "es" } = Astro.props;
+---
+<section class="about-system" aria-labelledby="about-system-title">
+  <div class="contenedor about-system-grid">
+    <header><span class="etiqueta">{lang === "en" ? "THE ECOSYSTEM" : "EL ECOSISTEMA"}</span><h2 id="about-system-title">{copy.systemTitle}</h2><p>{copy.systemIntro}</p></header>
+    <div class="about-spaces">{copy.spaces.map(([name, text, href]) => <a href={href} target="_blank" rel="noopener noreferrer"><strong>{name}</strong><p>{text}</p><span aria-hidden="true">↗</span></a>)}</div>
+  </div>
+  <nav class="contenedor about-links" aria-label={lang === "en" ? "Explore the website" : "Explorar la web"}>{copy.links.map(([name, text, href]) => <a href={href}><strong>{name}</strong><p>{text}</p><span aria-hidden="true">→</span></a>)}</nav>
+</section>
