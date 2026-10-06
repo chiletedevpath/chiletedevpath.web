@@ -5,11 +5,12 @@ const { projects, lang = "es" } = Astro.props;
 const isEn = lang === "en";
 
 const filterLabels = isEn
-  ? { todos: "All", software: "Software", datos: "Data", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patterns" }
-  : { todos: "Todos", software: "Software", datos: "Datos", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patrones" };
+  ? { todos: "All", software: "Software", datos: "Data", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patterns", productividad: "Productivity" }
+  : { todos: "Todos", software: "Software", datos: "Datos", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patrones", productividad: "Productividad" };
 const preferredFilterOrder = ["software", "datos", "backend", "frontend", "fullstack", "patrones"];
+const canonicalFilter = (filter) => ({ data: "datos", productivity: "productividad", patterns: "patrones" }[filter] ?? filter);
 const availableFilters = [...new Set(
-  projects.flatMap((project) => project.filterTags ?? [project.routeStage]).filter(Boolean)
+  projects.flatMap((project) => project.filterTags ?? [project.routeStage]).filter(Boolean).map(canonicalFilter)
 )];
 const orderedFilters = [
   ...preferredFilterOrder.filter((filter) => availableFilters.includes(filter)),
@@ -37,9 +38,6 @@ const repositoryLabel = (repository, index, total) => {
         <span class="etiqueta">{isEn ? "Project explorer" : "Explorador de proyectos"}</span>
         <h2>{isEn ? "Choose a project and see how I built it" : "Elige un proyecto y conoce cómo lo construí"}</h2>
       </div>
-      <p>{isEn
-        ? "Search by name, area or technology. When you choose one, I will show you what I solved and take you directly to its code."
-        : "Busca por nombre, área o tecnología. Cuando elijas uno, te mostraré qué resolví y podrás ir directamente a su código."}</p>
     </header>
 
     <div class="explorador-herramientas">
@@ -60,7 +58,7 @@ const repositoryLabel = (repository, index, total) => {
         <div class="explorador-lista" role="tablist" aria-orientation="vertical">
           {projects.map((project, index) => {
             const id = `project-${lang}-${project.id}`;
-            const filters = project.filterTags ?? [project.routeStage];
+            const filters = (project.filterTags ?? [project.routeStage]).map(canonicalFilter);
             const searchText = [project.title, project.description, project.type, ...project.technologies].join(" ").toLowerCase();
             return (
               <button
@@ -95,7 +93,7 @@ const repositoryLabel = (repository, index, total) => {
         {projects.map((project, index) => {
           const id = `project-${lang}-${project.id}`;
           return (
-            <article class="explorador-detalle" id={id} role="tabpanel" aria-labelledby={`${id}-tab`} data-project-panel={id} hidden={index !== 0}>
+            <article class="explorador-detalle" id={id} role="tabpanel" tabindex="0" aria-labelledby={`${id}-tab`} data-project-panel={id} hidden={index !== 0}>
               <div class="explorador-presentacion">
                 <figure class="explorador-media">
                   <img src={project.imageSrc} alt={project.imageAlt} loading={index === 0 ? "eager" : "lazy"} width="1200" height="628" />

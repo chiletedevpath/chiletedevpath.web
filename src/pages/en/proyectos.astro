@@ -1,42 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/pages/proyectos.css";
-import ProjectExplorer from "../../components/ProjectExplorer.astro";
+import ProjectsLanding from "../../components/ProjectsLanding.astro";
 import { projectCatalogEn } from "../../data/projectCatalog.js";
 ---
-
-<BaseLayout
-  title="Projects | Chilete DevPath"
-  description="Academic projects explained through the problem, the solution built and the learning demonstrated."
->
-  <header class="catalogo-hero">
-    <div class="contenedor catalogo-hero-contenido">
-      <span class="etiqueta">Projects</span>
-      <h1>I learned by building projects I can now explain</h1>
-      <p>
-        These projects grew out of studying and practicing. In each one, I share the problem
-        I solved, how I built it and what I learned along the way.
-      </p>
-      <div class="catalogo-hero-acciones">
-        <a class="boton boton-principal" href="#project-explorer">Explore projects</a>
-      </div>
-    </div>
-  </header>
-
-  <section class="puente-proyectos" aria-label="Connection to the projects" data-project-bridge>
-    <div class="contenedor puente-proyectos-grid">
-      <div class="puente-mensaje">
-        <span class="etiqueta">From learning to project</span>
-        <p>Every academic project began with something I needed to solve.</p>
-        <strong>I studied it, built it and can now explain the decisions I made.</strong>
-      </div>
-      <ol class="puente-etapas" aria-label="Building process">
-        <li><span>01</span><div><small>Understand</small><strong>The challenge</strong></div></li>
-        <li><span>02</span><div><small>Build</small><strong>The solution</strong></div></li>
-        <li><span>03</span><div><small>Explain</small><strong>The decisions</strong></div></li>
-      </ol>
-    </div>
-  </section>
-
-  <ProjectExplorer projects={projectCatalogEn} lang="en" />
+<BaseLayout title="Projects | Chilete DevPath" description="Academic projects explained through the problem, the solution built and the learning demonstrated.">
+  <ProjectsLanding projects={projectCatalogEn} lang="en" />
 </BaseLayout>

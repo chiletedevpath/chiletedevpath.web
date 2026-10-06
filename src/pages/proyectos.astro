@@ -1,42 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/pages/proyectos.css";
-import ProjectExplorer from "../components/ProjectExplorer.astro";
+import ProjectsLanding from "../components/ProjectsLanding.astro";
 import { projectCatalog } from "../data/projectCatalog.js";
 ---
-
-<BaseLayout
-  title="Proyectos | Chilete DevPath"
-  description="Proyectos académicos explicados desde el problema, la solución construida y el aprendizaje demostrado."
->
-  <header class="catalogo-hero">
-    <div class="contenedor catalogo-hero-contenido">
-      <span class="etiqueta">Proyectos</span>
-      <h1>Aprendí construyendo proyectos que hoy puedo explicar</h1>
-      <p>
-        Estos proyectos nacieron mientras estudiaba y practicaba. En cada uno te cuento
-        qué problema resolví, cómo lo construí y qué aprendí en el proceso.
-      </p>
-      <div class="catalogo-hero-acciones">
-        <a class="boton boton-principal" href="#explorador-proyectos">Explorar proyectos</a>
-      </div>
-    </div>
-  </header>
-
-  <section class="puente-proyectos" aria-label="Conexión con los proyectos" data-project-bridge>
-    <div class="contenedor puente-proyectos-grid">
-      <div class="puente-mensaje">
-        <span class="etiqueta">Del aprendizaje al proyecto</span>
-        <p>Cada proyecto académico comenzó con algo que necesitaba resolver.</p>
-        <strong>Lo estudié, lo construí y hoy puedo explicar las decisiones que tomé.</strong>
-      </div>
-      <ol class="puente-etapas" aria-label="Proceso de construcción">
-        <li><span>01</span><div><small>Entender</small><strong>El reto</strong></div></li>
-        <li><span>02</span><div><small>Construir</small><strong>La solución</strong></div></li>
-        <li><span>03</span><div><small>Explicar</small><strong>Las decisiones</strong></div></li>
-      </ol>
-    </div>
-  </section>
-
-  <ProjectExplorer projects={projectCatalog} />
+<BaseLayout title="Proyectos | Chilete DevPath" description="Proyectos académicos explicados desde el problema, la solución construida y el aprendizaje demostrado.">
+  <ProjectsLanding projects={projectCatalog} />
 </BaseLayout>

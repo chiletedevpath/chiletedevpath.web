@@ -335,6 +335,7 @@ if (typeof document !== "undefined") {
 
   let filtroProyectoActivo = "todos";
   let proyectoActivo = opcionesProyectos[0]?.dataset.projectOption ?? "";
+  const normalizarBusquedaProyecto = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
   const activarProyecto = (projectId) => {
     proyectoActivo = projectId;
@@ -352,14 +353,14 @@ if (typeof document !== "undefined") {
   };
 
   const filtrarProyectos = () => {
-    const consulta = busquedaProyectos?.value.trim().toLowerCase() ?? "";
+    const consulta = normalizarBusquedaProyecto(busquedaProyectos?.value.trim() ?? "");
     let visibles = 0;
     let primeraVisible = "";
 
     opcionesProyectos.forEach((opcion) => {
       const filtros = opcion.dataset.projectFilters?.split(" ") ?? [];
       const coincideFiltro = filtroProyectoActivo === "todos" || filtros.includes(filtroProyectoActivo);
-      const coincideTexto = !consulta || (opcion.dataset.projectSearchText ?? "").includes(consulta);
+      const coincideTexto = !consulta || normalizarBusquedaProyecto(opcion.dataset.projectSearchText ?? "").includes(consulta);
       const visible = coincideFiltro && coincideTexto;
 
       opcion.hidden = !visible;
