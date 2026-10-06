@@ -1,106 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/components/editorial.css";
-import PageHero from "../components/PageHero.astro";
-import SectionHeader from "../components/SectionHeader.astro";
+import ResourceLibrary from "../components/ResourceLibrary.astro";
 import ContactSecurityFields from "../components/ContactSecurityFields.astro";
 import { resources } from "../data/recursos.js";
-
-const resourceFilters = [
-  { label: "Todos", value: "todos" },
-  { label: "Ejercicios", value: "ejercicios" },
-  { label: "Retos", value: "retos" },
-  { label: "Glosario", value: "glosario" },
-  { label: "Guías", value: "guias" },
-  { label: "Java", value: "java" },
-  { label: "Web", value: "web" },
-  { label: "SQL", value: "sql" },
-];
 ---
 
 <BaseLayout title="Recursos | Chilete DevPath" hasContactForm>
-  <PageHero
-    eyebrow="Recursos"
-    title="Practica, revisa y avanza con material organizado"
-    description="Esta sección debe ayudarte a encontrar qué resolver, qué consultar y qué revisar sin tener que adivinar en qué carpeta está cada cosa."
-    variant="recursos"
-    heroImage="/assets/img/heros/recursos-chiletedevpath.webp"
-    showVisual={false}
-    visualTitle="Biblioteca práctica"
-    visualText="Ejercicios, retos, guías y glosarios conectados a la ruta."
-    visualItems={[
-      { title: "Resolver", text: "Practicar antes de mirar una solución." },
-      { title: "Estudiar", text: "Revisar ejercicios desarrollados con calma." },
-      { title: "Consultar", text: "Usar glosarios y guías cuando falte contexto." },
-    ]}
-  />
+  <ResourceLibrary resources={resources} lang="es" />
 
-  <section class="seccion seccion-editorial">
-    <div class="contenedor editorial-bloque">
-      <div class="editorial-frase">
-        <p class="etiqueta">Material con intención</p>
-        <blockquote>Un recurso sirve cuando te ayuda a intentar, equivocarte, revisar y volver a intentarlo con más claridad.</blockquote>
-        <p>
-          Los ejercicios, glosarios y guías deben acompañar el proceso de aprendizaje. No se trata de acumular enlaces,
-          sino de tener apoyo concreto para avanzar con orden.
-        </p>
-      </div>
-      <figure class="editorial-imagen">
-        <img src="/assets/img/editorial/editorial-recursos-ruta.webp" alt="Adrian Pisco explicando la ruta de aprendizaje" loading="lazy" />
-      </figure>
-    </div>
-  </section>
-
-  <section class="seccion">
-    <div class="contenedor">
-      <SectionHeader
-        eyebrow="Cómo usar esta sección"
-        title="Elige el recurso según tu momento de aprendizaje"
-        description="Si quieres practicar, entra a retos. Si ya intentaste resolver algo, revisa ejercicios desarrollados. Si un término no queda claro, usa el glosario como apoyo."
-      />
-      <div class="filtros-recursos" aria-label="Filtros de recursos">
-        {resourceFilters.map((filter, index) => (
-          <button
-            class={index === 0 ? "filtro-recurso filtro-activo" : "filtro-recurso"}
-            type="button"
-            data-resource-filter={filter.value}
-            aria-pressed={index === 0 ? "true" : "false"}
-          >
-            {filter.label}
-          </button>
-        ))}
-      </div>
-      <div class="tarjetas tarjetas-4">
-        {resources.map((resource) => (
-          <article class="tarjeta recurso-card" data-resource-category={resource.category} data-resource-tags={resource.tags?.join(" ")}>
-            <span class="estado">{resource.status}</span>
-            <small>{resource.type}</small>
-            <h3>{resource.title}</h3>
-            <p>{resource.description}</p>
-            <dl class="recurso-meta">
-              <div>
-                <dt>Nivel</dt>
-                <dd>{resource.level}</dd>
-              </div>
-              <div>
-                <dt>Tema</dt>
-                <dd>{resource.topic}</dd>
-              </div>
-              <div>
-                <dt>Tiempo</dt>
-                <dd>{resource.time}</dd>
-              </div>
-            </dl>
-            <a href={resource.href} target={resource.href.startsWith("http") ? "_blank" : undefined} rel={resource.href.startsWith("http") ? "noopener" : undefined}>
-              Ver recurso
-            </a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion seccion-clara">
+  <section class="seccion resources-suggestion">
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Sugerencias de recursos</p>

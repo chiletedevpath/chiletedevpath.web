@@ -1,106 +1,14 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import "../../styles/components/editorial.css";
-import PageHero from "../../components/PageHero.astro";
-import SectionHeader from "../../components/SectionHeader.astro";
+import ResourceLibrary from "../../components/ResourceLibrary.astro";
 import ContactSecurityFields from "../../components/ContactSecurityFields.astro";
 import { resourcesEn } from "../../data/recursos.js";
-
-const resourceFilters = [
-  { label: "All", value: "todos" },
-  { label: "Exercises", value: "exercises" },
-  { label: "Challenges", value: "challenges" },
-  { label: "Glossary", value: "glossary" },
-  { label: "Guides", value: "guides" },
-  { label: "Java", value: "java" },
-  { label: "Web", value: "web" },
-  { label: "SQL", value: "sql" },
-];
 ---
 
 <BaseLayout title="Resources | Chilete DevPath" hasContactForm>
-  <PageHero
-    eyebrow="Resources"
-    title="Practice, review and move forward with organized material"
-    description="This section helps students find what to solve, what to review and what to consult without guessing inside folders."
-    variant="recursos"
-    heroImage="/assets/img/heros/recursos-chiletedevpath.webp"
-    showVisual={false}
-    visualTitle="Practice library"
-    visualText="Exercises, challenges, guides and glossaries connected to the path."
-    visualItems={[
-      { title: "Solve", text: "Practice before looking at a solution." },
-      { title: "Study", text: "Review solved exercises with calm." },
-      { title: "Consult", text: "Use glossaries and guides when context is missing." },
-    ]}
-  />
+  <ResourceLibrary resources={resourcesEn} lang="en" />
 
-  <section class="seccion seccion-editorial">
-    <div class="contenedor editorial-bloque">
-      <div class="editorial-frase">
-        <p class="etiqueta">Intentional material</p>
-        <blockquote>A resource is useful when it helps you try, make mistakes, review and try again with more clarity.</blockquote>
-        <p>
-          Exercises, glossaries and guides should support the learning process. This is not about collecting links,
-          but about having concrete support to move forward with order.
-        </p>
-      </div>
-      <figure class="editorial-imagen">
-        <img src="/assets/img/editorial/editorial-recursos-ruta.webp" alt="Adrian Pisco explaining the learning path" loading="lazy" />
-      </figure>
-    </div>
-  </section>
-
-  <section class="seccion">
-    <div class="contenedor">
-      <SectionHeader
-        eyebrow="How to use this section"
-        title="Choose a resource according to your learning moment"
-        description="If you want to practice, open challenges. If you already tried, review solved exercises. If a concept is unclear, use the glossary as support."
-      />
-      <div class="filtros-recursos" aria-label="Resource filters">
-        {resourceFilters.map((filter, index) => (
-          <button
-            class={index === 0 ? "filtro-recurso filtro-activo" : "filtro-recurso"}
-            type="button"
-            data-resource-filter={filter.value}
-            aria-pressed={index === 0 ? "true" : "false"}
-          >
-            {filter.label}
-          </button>
-        ))}
-      </div>
-      <div class="tarjetas tarjetas-4">
-        {resourcesEn.map((resource) => (
-          <article class="tarjeta recurso-card" data-resource-category={resource.category} data-resource-tags={resource.tags?.join(" ")}>
-            <span class="estado">{resource.status}</span>
-            <small>{resource.type}</small>
-            <h3>{resource.title}</h3>
-            <p>{resource.description}</p>
-            <dl class="recurso-meta">
-              <div>
-                <dt>Level</dt>
-                <dd>{resource.level}</dd>
-              </div>
-              <div>
-                <dt>Topic</dt>
-                <dd>{resource.topic}</dd>
-              </div>
-              <div>
-                <dt>Time</dt>
-                <dd>{resource.time}</dd>
-              </div>
-            </dl>
-            <a href={resource.href} target={resource.href.startsWith("http") ? "_blank" : undefined} rel={resource.href.startsWith("http") ? "noopener" : undefined}>
-              Open resource
-            </a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="seccion seccion-clara">
+  <section class="seccion resources-suggestion">
     <div class="contenedor contacto-grid">
       <div>
         <p class="etiqueta">Resource suggestions</p>

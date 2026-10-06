@@ -17,6 +17,9 @@ if (typeof document !== "undefined") {
   const metricasAnimadas = document.querySelectorAll("[data-count]");
   const filtrosRecursos = document.querySelectorAll("[data-resource-filter]");
   const tarjetasRecursos = document.querySelectorAll("[data-resource-category]");
+  const busquedaRecursos = document.querySelector("[data-resource-search]");
+  const contadorRecursos = document.querySelector("[data-resource-count]");
+  const vacioRecursos = document.querySelector("[data-resource-empty]");
   const exploradorProyectos = document.querySelector("[data-project-explorer]");
   const filtrosProyectos = document.querySelectorAll("[data-project-filter]");
   const opcionesProyectos = document.querySelectorAll("[data-project-option]");
@@ -313,23 +316,37 @@ if (typeof document !== "undefined") {
     temporizadoresFiltro.set(tarjeta, temporizador);
   };
 
+  let filtroRecursoActivo = "todos";
+  const normalizarRecurso = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const filtrarRecursos = () => {
+    const consulta = normalizarRecurso(busquedaRecursos?.value.trim() ?? "");
+    let cantidad = 0;
+    tarjetasRecursos.forEach((tarjeta) => {
+      const tags = (tarjeta.dataset.resourceTags || "").split(" ");
+      const categoria = filtroRecursoActivo;
+      const coincideTipo = categoria === "todos" || tarjeta.dataset.resourceCategory === categoria || tags.includes(categoria);
+      const texto = normalizarRecurso(tarjeta.dataset.resourceSearchText ?? tarjeta.textContent ?? "");
+      const visible = coincideTipo && (!consulta || texto.includes(consulta));
+      if (visible) cantidad += 1;
+      actualizarTarjetaFiltrada(tarjeta, visible);
+    });
+    if (contadorRecursos) {
+      const en = document.documentElement.lang === "en";
+      contadorRecursos.textContent = `${cantidad} ${en ? (cantidad === 1 ? "collection" : "collections") : (cantidad === 1 ? "colección" : "colecciones")}`;
+    }
+    if (vacioRecursos) vacioRecursos.hidden = cantidad !== 0;
+  };
+  busquedaRecursos?.addEventListener("input", filtrarRecursos);
   filtrosRecursos.forEach((filtro) => {
     filtro.addEventListener("click", () => {
-      const categoria = filtro.dataset.resourceFilter;
+      filtroRecursoActivo = filtro.dataset.resourceFilter;
 
       filtrosRecursos.forEach((item) => {
         item.classList.toggle("filtro-activo", item === filtro);
         item.setAttribute("aria-pressed", String(item === filtro));
       });
 
-      tarjetasRecursos.forEach((tarjeta) => {
-        const tags = (tarjeta.dataset.resourceTags || "").split(" ");
-        const visible =
-          categoria === "todos" ||
-          tarjeta.dataset.resourceCategory === categoria ||
-          tags.includes(categoria);
-        actualizarTarjetaFiltrada(tarjeta, visible);
-      });
+      filtrarRecursos();
     });
   });
 

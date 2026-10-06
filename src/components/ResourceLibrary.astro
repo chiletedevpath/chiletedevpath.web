@@ -1,0 +1,48 @@
+---
+import "../styles/pages/recursos.css";
+const { resources, lang = "es" } = Astro.props;
+const en = lang === "en";
+const labels = en
+  ? { todos: "All", ejercicios: "Exercises", retos: "Challenges", glosario: "Glossary", guias: "Guides", java: "Java", web: "Web", sql: "SQL" }
+  : { todos: "Todos", ejercicios: "Ejercicios", retos: "Retos", glosario: "Glosario", guias: "Guías", java: "Java", web: "Web", sql: "SQL" };
+const categoryId = category => ({ exercises: "ejercicios", challenges: "retos", glossary: "glosario", guides: "guias" }[category] ?? category);
+const available = new Set(resources.flatMap(resource => [categoryId(resource.category), ...(resource.tags ?? [])]));
+const filters = ["todos", ...Object.keys(labels).filter(key => key !== "todos" && available.has(key))];
+const steps = en
+  ? [["Try", "Work on a practice task before looking for an answer."], ["Review", "Compare approaches and understand the decisions."], ["Consult", "Return to a guide when you need more context."]]
+  : [["Intentar", "Resuelve una práctica antes de buscar una respuesta."], ["Revisar", "Compara los enfoques y entiende las decisiones."], ["Consultar", "Vuelve a una guía cuando necesites recuperar contexto."]];
+---
+<header class="library-hero">
+  <img class="library-hero-image" src="/assets/img/editorial/recursos-hero.webp" alt="" width="1600" height="900" fetchpriority="high" />
+  <div class="contenedor library-hero-copy">
+    <span class="etiqueta">CDP / {en ? "PRACTICE LIBRARY" : "BIBLIOTECA PRÁCTICA"}</span>
+    <h1>{en ? "A place to practice." : "Un lugar para practicar."}<br /><em>{en ? "And try again." : "Y volver a intentarlo."}</em></h1>
+    <p>{en ? "Exercises, challenges and reference material to support what you are learning." : "Ejercicios, retos y material de consulta para acompañar lo que estás aprendiendo."}</p>
+    <a class="boton boton-principal" href="#catalogo-recursos">{en ? "Explore the library" : "Explorar la biblioteca"} <span aria-hidden="true">↓</span></a>
+  </div>
+</header>
+<section class="library-cycle" aria-label={en ? "Learning cycle" : "Ciclo de aprendizaje"}>
+  <div class="contenedor">
+    {steps.map(([title, text], index) => <div><span aria-hidden="true">0{index + 1}</span><h2>{title}</h2><p>{text}</p></div>)}
+  </div>
+</section>
+<section class="library-catalog" id="catalogo-recursos" aria-labelledby="library-title" data-resource-library>
+  <div class="contenedor">
+    <header class="library-heading"><div><span class="etiqueta">{en ? "COLLECTIONS" : "COLECCIONES"}</span><h2 id="library-title">{en ? "What do you need today?" : "¿Qué necesitas hoy?"}</h2></div><a href={en ? "/en/ruta/" : "/ruta/"}>{en ? "Explore learning paths" : "Ver rutas de aprendizaje"} <span aria-hidden="true">→</span></a></header>
+    <div class="library-tools">
+      <label>{en ? "Search a topic" : "Buscar un tema"}<input type="search" data-resource-search placeholder={en ? "Java, logic, documentation…" : "Java, lógica, documentación…"} /></label>
+      <div class="library-filters" role="group" aria-label={en ? "Filter collections" : "Filtrar colecciones"}>
+        {filters.map((key, index) => <button type="button" data-resource-filter={key} aria-pressed={index === 0 ? "true" : "false"} class:list={["filtro-recurso", { "filtro-activo": index === 0 }]}>{labels[key]}</button>)}
+      </div>
+    </div>
+    <p class="library-count" data-resource-count aria-live="polite">{resources.length} {en ? "collections" : "colecciones"}</p>
+    <div class="library-list">
+      {resources.map((resource, index) => <article class="library-entry" data-resource-category={categoryId(resource.category)} data-resource-tags={resource.tags?.join(" ")} data-resource-search-text={[resource.title, resource.description, resource.topic, ...resource.tags ?? []].join(" ")}>
+        <span class="library-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+        <div class="library-entry-copy"><span class="library-type">{resource.type}</span><h3>{resource.title}</h3><p>{resource.description}</p><dl><div><dt>{en ? "Level" : "Nivel"}</dt><dd>{resource.level}</dd></div><div><dt>{en ? "Topic" : "Tema"}</dt><dd>{resource.topic}</dd></div><div><dt>{en ? "Suggested time" : "Tiempo orientativo"}</dt><dd>{resource.time}</dd></div></dl></div>
+        <div class="library-entry-action"><span>{resource.status}</span><a href={resource.href} target={resource.href.startsWith("http") ? "_blank" : undefined} rel={resource.href.startsWith("http") ? "noopener noreferrer" : undefined}>{resource.href === "https://github.com/chiletedevpath/aprendizaje" ? (en ? "View Aprendizaje" : "Ver Aprendizaje") : (en ? "Open collection" : "Abrir colección")}<span aria-hidden="true">↗</span></a></div>
+      </article>)}
+    </div>
+    <p class="library-empty" data-resource-empty hidden>{en ? "No matching collections. Try another topic or select All." : "No hay colecciones que coincidan. Prueba otro tema o selecciona Todos."}</p>
+  </div>
+</section>
