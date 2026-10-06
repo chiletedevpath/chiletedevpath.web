@@ -1,0 +1,15 @@
+---
+const { policies, lang = "es" } = Astro.props;
+const en = lang === "en";
+---
+<section class="criteria-policies" id="lista-politicas" aria-labelledby="policies-title">
+  <div class="contenedor criteria-policy-layout">
+    <header><span class="etiqueta">{en ? "PUBLISHING FRAMEWORK" : "MARCO DE PUBLICACIÓN"}</span><h2 id="policies-title">{en ? "Clear rules. Responsible decisions." : "Reglas claras. Decisiones responsables."}</h2><p>{en ? "Authorship, privacy, AI and wellbeing each require their own criteria." : "Autoría, privacidad, IA y bienestar: cada tema necesita su propio criterio."}</p></header>
+    <div class="criteria-policy-list">
+      {policies.map(policy => <details class="criteria-policy" id={`criterio-${policy.slug}`}>
+        <summary><span class="criteria-code">{policy.code}</span><strong>{policy.title}</strong><span class="criteria-expand" aria-hidden="true">+</span></summary>
+        <div class="criteria-policy-body"><p class="criteria-highlight">{policy.highlight}</p><p>{policy.objective}</p><ul>{policy.principles.map(principle => <li>{principle}</li>)}</ul><dl><div><dt>{en ? "Scope" : "Alcance"}</dt><dd>{policy.scope}</dd></div><div><dt>{en ? "Owner" : "Responsable"}</dt><dd>{policy.owner}</dd></div><div><dt>{en ? "Version / status" : "Versión / estado"}</dt><dd>{policy.version} · {policy.status}</dd></div></dl><a href={policy.href}>{en ? "Read full policy" : "Leer política completa"} <span aria-hidden="true">→</span></a></div>
+      </details>)}
+    </div>
+  </div>
+</section>

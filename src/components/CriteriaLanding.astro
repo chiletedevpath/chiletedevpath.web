@@ -1,0 +1,31 @@
+---
+import PolicyOverview from "./PolicyOverview.astro";
+import "../styles/pages/criterios-editorial.css";
+const { policies, lang = "es" } = Astro.props;
+const en = lang === "en";
+const questions = en
+  ? [["Where does it come from?", "Recognize authorship, sources and collaboration."], ["Should it be public?", "Protect personal data and information belonging to others."], ["Can I stand behind it?", "Check what works and be honest about its limits."]]
+  : [["¿De dónde viene?", "Reconocer autoría, fuentes y colaboraciones."], ["¿Debe ser público?", "Proteger datos personales e información de terceros."], ["¿Puedo sostenerlo?", "Comprobar lo que funciona y explicar sus límites."]];
+const checks = en
+  ? [["Context", "Explain the problem or activity behind the work."], ["Authorship", "Distinguish original work from sources and external help."], ["Privacy", "Remove secrets, personal data and private files."], ["Verification", "Review behaviour, links and the claims being made."]]
+  : [["Contexto", "Explicar el problema o la actividad que originó el material."], ["Autoría", "Distinguir trabajo propio, fuentes y ayuda externa."], ["Privacidad", "Retirar secretos, datos personales y archivos privados."], ["Verificación", "Revisar funcionamiento, enlaces y afirmaciones."]];
+---
+<header class="criteria-hero">
+  <div class="contenedor criteria-hero-grid">
+    <div><span class="etiqueta">CDP / {en ? "CRITERIA" : "CRITERIOS"}</span><h1>{en ? "Publishing is also" : "Publicar también"}<em>{en ? "a technical decision." : "es una decisión técnica."}</em></h1><p>{en ? "What I share should have context, acknowledge its sources and protect information that should not be public." : "Lo que comparto debe tener contexto, reconocer sus fuentes y cuidar la información que no debería ser pública."}</p><a href="#lista-politicas">{en ? "Review the policies" : "Revisar las políticas"} <span aria-hidden="true">↓</span></a></div>
+    <aside aria-label={en ? "Policy index" : "Índice de políticas"}><span class="etiqueta">{policies.length} {en ? "POLICIES" : "POLÍTICAS"}</span>{policies.map(policy => <a href={`#criterio-${policy.slug}`}><small>{policy.code}</small><span>{policy.title}</span><span aria-hidden="true">↘</span></a>)}</aside>
+  </div>
+</header>
+<section class="criteria-questions" aria-label={en ? "Before sharing" : "Antes de compartir"}><div class="contenedor">{questions.map(([title, description]) => <div><h2>{title}</h2><p>{description}</p></div>)}</div></section>
+<PolicyOverview policies={policies} lang={lang} />
+<section class="criteria-review" id="revision"><div class="contenedor criteria-review-grid"><div><span class="etiqueta">{en ? "BEFORE PUBLISHING" : "ANTES DE PUBLICAR"}</span><h2>{en ? "A brief review makes a difference." : "Una revisión breve hace la diferencia."}</h2><p>{en ? "The goal is not to add paperwork. It is to share work that can be reviewed with confidence." : "No se trata de añadir trámites. Se trata de compartir trabajo que pueda revisarse con confianza."}</p></div><ol>{checks.map(([title, description]) => <li><strong>{title}</strong><p>{description}</p></li>)}</ol></div></section>
+<script>
+  const revealPolicy = () => {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (target instanceof HTMLDetailsElement && target.classList.contains("criteria-policy")) target.open = true;
+  };
+  revealPolicy();
+  window.addEventListener("hashchange", revealPolicy);
+</script>

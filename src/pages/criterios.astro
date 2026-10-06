@@ -1,66 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/pages/criterios.css";
-import PageHero from "../components/PageHero.astro";
-import PolicyIcon from "../components/PolicyIcon.astro";
+import CriteriaLanding from "../components/CriteriaLanding.astro";
 import { policies } from "../data/recursos.js";
 ---
-
 <BaseLayout title="Criterios | Chilete DevPath">
-  <PageHero
-    eyebrow="Criterios de publicación"
-    title="Publicamos con criterio, no con prisa"
-    description="Antes de subir un recurso, proyecto o guía, reviso que tenga contexto, respete autoría y no exponga datos sensibles. Esa es la diferencia entre publicar contenido y construir confianza."
-    variant="criterios"
-    heroImage="/assets/img/heros/criterios-chiletedevpath.webp"
-    showVisual={false}
-    visualTitle="Revisión antes de publicar"
-    visualText="Un filtro editorial para cuidar autoría, privacidad y uso responsable."
-    visualItems={[
-      { title: "Autoría", text: "Reconocer origen, fuentes y límites del material." },
-      { title: "Privacidad", text: "Evitar datos personales o información sensible." },
-      { title: "Responsabilidad", text: "Usar IA y recursos externos con criterio." },
-    ]}
-  />
-
-  <section id="lista-politicas" class="seccion">
-    <div class="contenedor">
-      <div class="politicas-grid">
-        {policies.map((policy) => (
-          <article class:list={["politica-documento", `politica-${policy.tone}`]}>
-            <header class="politica-encabezado">
-              <PolicyIcon name={policy.icon} />
-              <div>
-                <span class="politica-codigo">{policy.code}</span>
-                <h3>{policy.title}</h3>
-              </div>
-            </header>
-            <div class="politica-cuerpo">
-              <p class="politica-destacado">{policy.highlight}</p>
-              <p>{policy.objective}</p>
-
-              <details class="politica-metadatos">
-                <summary>Ver alcance y control</summary>
-                <dl>
-                  <div>
-                    <dt>Alcance</dt>
-                    <dd>{policy.scope}</dd>
-                  </div>
-                  <div>
-                    <dt>Responsable</dt>
-                    <dd>{policy.owner}</dd>
-                  </div>
-                  <div>
-                    <dt>Estado</dt>
-                    <dd><span class="estado-activo"></span>{policy.version} - {policy.status}</dd>
-                  </div>
-                </dl>
-              </details>
-            </div>
-            <a class="boton boton-principal" href={policy.href}>Abrir política</a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <CriteriaLanding policies={policies} lang="es" />
 </BaseLayout>

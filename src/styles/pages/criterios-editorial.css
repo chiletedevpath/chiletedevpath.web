@@ -1,0 +1,44 @@
+.criteria-hero {padding:72px 0;border-bottom:1px solid var(--color-borde)}
+.criteria-hero-grid {display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,.7fr);gap:64px;align-items:center}
+.criteria-hero h1 {font-size:3.8rem;line-height:1.1;max-width:800px;margin:24px 0;text-wrap:balance}
+.criteria-hero h1 em {display:block;color:var(--color-acento);font-style:normal}
+.criteria-hero p {line-height:1.7;color:var(--color-texto-suave);max-width:620px}
+.criteria-hero a {color:var(--color-acento);font-weight:600}
+.criteria-hero-grid>div>a {display:inline-flex;gap:24px;margin-top:20px}
+.criteria-hero aside {border-left:1px solid var(--color-borde);padding-left:28px}
+.criteria-hero aside>a {display:grid;grid-template-columns:1fr 24px;gap:8px;padding:16px 0;border-bottom:1px solid var(--color-borde);color:var(--color-texto)}
+.criteria-hero aside small {grid-column:1/-1;font:.7rem var(--fuente-mono);color:var(--color-texto-suave)}
+.criteria-questions {padding:32px 0;background:var(--fondo-suave)}
+.criteria-questions .contenedor {display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.criteria-questions h2 {font-size:1.3rem;margin:0 0 10px}
+.criteria-questions p {line-height:1.6;color:var(--color-texto-suave);margin:0}
+.criteria-policies {padding:64px 0;scroll-margin-top:var(--espacio-ancla)}
+.criteria-policy-layout {display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);gap:64px;align-items:start}
+.criteria-policy-layout h2,.criteria-review h2 {font-size:2.3rem;line-height:1.15;margin:16px 0 20px;text-wrap:balance}
+.criteria-policy-layout header p,.criteria-review p {color:var(--color-texto-suave);line-height:1.7}
+.criteria-policy {border-top:1px solid var(--color-borde);scroll-margin-top:var(--espacio-ancla)}
+.criteria-policy:last-child {border-bottom:1px solid var(--color-borde)}
+.criteria-policy summary {display:grid;grid-template-columns:1fr 24px;gap:10px;padding:24px 0;cursor:pointer;list-style:none}
+.criteria-policy summary::-webkit-details-marker {display:none}
+.criteria-code {grid-column:1/-1;font:.7rem var(--fuente-mono);color:var(--color-acento)}
+.criteria-policy summary strong {font-size:1.3rem}
+.criteria-expand {font-size:1.5rem;line-height:1;transition:transform .2s;color:var(--color-acento)}
+.criteria-policy[open] .criteria-expand {transform:rotate(45deg)}
+.criteria-policy-body {padding-bottom:28px;animation:criteria-enter .25s ease-out}
+.criteria-policy-body p,.criteria-policy-body li {line-height:1.7;color:var(--color-texto-suave)}
+.criteria-policy-body .criteria-highlight {font-size:1.2rem;color:var(--color-principal);font-weight:600;margin-top:0}
+.criteria-policy-body ul {padding-left:20px;display:grid;gap:10px}
+.criteria-policy-body dl {border-top:1px solid var(--color-borde);padding-top:20px;display:grid;gap:16px;margin:24px 0}
+.criteria-policy-body dt {font:.7rem var(--fuente-mono);color:var(--color-texto-suave)}
+.criteria-policy-body dd {margin:6px 0 0;line-height:1.6}
+.criteria-policy-body a {font-weight:700;color:var(--color-acento)}
+.criteria-review {padding:48px 0;background:var(--fondo-suave);border-top:1px solid var(--color-borde)}
+.criteria-review-grid {display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.criteria-review ol {margin:0;padding-left:24px;display:grid;gap:20px}
+.criteria-review li {padding-left:10px}
+.criteria-review li::marker {color:var(--color-acento);font-family:var(--fuente-mono)}
+.criteria-review li p {margin:8px 0 0}
+@keyframes criteria-enter {from {opacity:.4;transform:translateY(5px)}to {opacity:1;transform:none}}
+@media(max-width:800px) {.criteria-hero {padding:48px 0}.criteria-hero-grid,.criteria-policy-layout,.criteria-review-grid {grid-template-columns:1fr;gap:32px}.criteria-hero h1 {font-size:2.8rem}.criteria-hero aside {border-left:0;padding-left:0}.criteria-hero aside>a {grid-template-columns:110px 1fr 24px;align-items:center}.criteria-hero aside small {grid-column:auto}.criteria-policies {padding:40px 0}.criteria-policy-layout h2,.criteria-review h2 {font-size:2rem}}
+@media(max-width:540px) {.criteria-hero h1 {font-size:2.3rem}.criteria-questions .contenedor {grid-template-columns:1fr;gap:24px}.criteria-policy summary strong {font-size:1.15rem}.criteria-hero aside>a {grid-template-columns:1fr 24px}.criteria-hero aside small {grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce) {.criteria-policy-body {animation:none}.criteria-expand {transition:none}}
