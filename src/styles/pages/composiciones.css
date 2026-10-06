@@ -25,6 +25,7 @@
 .route-sheet-header { padding: 28px; }
 .route-sheet h3 { font-size: 2rem; }
 .route-directory { padding-top: 55px; }
+.route-detail-link { display: block; padding: 16px 28px; color: var(--color-agua); font-weight: 700; }
 .route-pagination { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 32px; }
 .route-pagination[hidden] { display: none; }
 .route-pagination button { width: 44px; height: 44px; border: 1px solid var(--borde); background: var(--fondo-tarjeta); color: var(--texto-principal); cursor: pointer; }

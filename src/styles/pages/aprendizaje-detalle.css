@@ -1,0 +1,36 @@
+.learning-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 30px; font-size: .85rem; }
+.learning-breadcrumb a,.learning-content a { color: var(--color-agua); }
+.learning-heading { padding-top: 50px; padding-bottom: 50px; border-bottom: 1px solid var(--borde); }
+.learning-heading h1 { font: 700 3.6rem/1.1 var(--fuente-titulos); letter-spacing: 0; margin: 20px 0; }
+.learning-lead { max-width: 800px; font-size: 1.3rem; line-height: 1.6; color: var(--texto-secundario); }
+.learning-facts { display: flex; flex-wrap: wrap; gap: 20px; margin: 24px 0 32px; font-family: var(--fuente-mono); font-size: .85rem; }
+.learning-layout { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 65px; padding-top: 50px; padding-bottom: 70px; }
+.learning-index nav { position: sticky; top: 140px; display: grid; gap: 18px; }
+.learning-index span { font: .7rem var(--fuente-mono); color: var(--texto-secundario); }
+.learning-index a { color: var(--texto-principal); font-size: .9rem; }
+.learning-content { max-width: 850px; }
+.learning-content > section { padding-bottom: 45px; margin-bottom: 45px; border-bottom: 1px solid var(--borde); scroll-margin-top: var(--espacio-ancla); }
+.learning-content h2 { font: 700 2rem/1.2 var(--fuente-titulos); margin: 16px 0 24px; }
+.learning-content h3 { font-size: 1.15rem; }
+.learning-content p,.learning-content li { line-height: 1.75; }
+.learning-content ul { padding-left: 22px; }
+.learning-blocks,.learning-phases ol { list-style: none; padding: 0; }
+.learning-blocks > li { padding: 24px 0; border-top: 1px solid var(--borde); }
+.learning-block-title { display: grid; grid-template-columns: 35px 1fr; gap: 16px; align-items: baseline; }
+.learning-block-title span { color: var(--color-agua); font-family: var(--fuente-mono); }
+.learning-block-title h3 { margin: 0 0 16px; }
+.learning-practice-links,.learning-resources { display: grid; gap: 12px; }
+.learning-practice-links { padding-left: 51px; }
+.learning-phases > section { margin-top: 30px; }
+.learning-phases li a { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-top: 1px solid var(--borde); }
+.learning-phases small { color: var(--texto-secundario); }
+.learning-note { font-size: .85rem; color: var(--texto-secundario); margin-top: 28px; }
+.learning-next { display: inline-block; margin-top: 24px; font-weight: 700; }
+.learning-source { font-size: .85rem; }
+@media(max-width: 800px) {
+  .learning-layout { grid-template-columns: 1fr; gap: 35px; }
+  .learning-index nav { position: static; display: flex; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 1px solid var(--borde); }
+  .learning-index span { flex-basis: 100%; }
+  .learning-heading h1 { font-size: 2.5rem; }
+  .learning-lead { font-size: 1.1rem; }
+}

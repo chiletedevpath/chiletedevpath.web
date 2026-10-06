@@ -1,0 +1,66 @@
+---
+import { getLearningPaths } from "../data/ruta.js";
+import { fundamentalBlocks, fundamentalExercises, fundamentalLabs, fundamentalCopy, fundamentalsSource } from "../data/fundamentos";
+import "../styles/pages/aprendizaje-detalle.css";
+const { lang = "es", view = "path" } = Astro.props;
+const language = lang === "en" ? "en" : "es";
+const en = language === "en";
+const prefix = en ? "/en" : "";
+const path = getLearningPaths(language).find(item => item.id === "software");
+const copy = fundamentalCopy[language];
+const moduleView = view === "module";
+const pathUrl = `${prefix}/ruta/software/`;
+const moduleUrl = `${pathUrl}fundamentos/`;
+const label = (es, english) => en ? english : es;
+---
+<nav class="contenedor learning-breadcrumb" aria-label={label("Ubicación", "Breadcrumb")}>
+  <a href={`${prefix}/ruta/`}>{label("Rutas", "Paths")}</a><span aria-hidden="true">/</span>
+  {moduleView ? <><a href={pathUrl}>{path.title}</a><span aria-hidden="true">/</span><span aria-current="page">{copy.title}</span></> : <span aria-current="page">{path.title}</span>}
+</nav>
+<header class="learning-heading contenedor">
+  <p class="etiqueta">{moduleView ? label("MÓDULO 00 / BASE TÉCNICA", "MODULE 00 / TECHNICAL FOUNDATION") : label("RUTA / DESARROLLO DE SOFTWARE", "PATH / SOFTWARE DEVELOPMENT")}</p>
+  <h1>{moduleView ? copy.title : path.title}</h1>
+  <p class="learning-lead">{moduleView ? copy.intro : label("De entender un problema a construir y revisar una solución.", "From understanding a problem to building and reviewing a solution.")}</p>
+  <div class="learning-facts">
+    {moduleView ? <><span>{fundamentalBlocks.length} {label("bloques", "blocks")}</span><span>{fundamentalExercises.length} {label("ejercicios", "exercises")}</span><span>{fundamentalLabs.length} {label("laboratorios", "labs")}</span></> : <><span>{path.summary.moduleIndicator}</span><span>{label("Secuencia progresiva", "Progressive sequence")}</span></>}
+  </div>
+  <a class="boton boton-principal" href={moduleView ? `${fundamentalsSource}base-conceptual.md` : moduleUrl} target={moduleView ? "_blank" : undefined} rel={moduleView ? "noopener noreferrer" : undefined}>{label("Comenzar por los fundamentos", "Start with fundamentals")} {moduleView ? "↗" : "→"}</a>
+</header>
+<div class="contenedor learning-layout">
+  <aside class="learning-index"><nav aria-label={label("En esta página", "On this page")}>
+    <span>{label("EN ESTA PÁGINA", "ON THIS PAGE")}</span>
+    <a href="#objetivo">{label("Propósito y requisitos", "Purpose and prerequisites")}</a>
+    <a href="#contenido-modulo">{label("Contenidos", "Contents")}</a>
+    <a href="#practica">{label("Práctica y evidencia", "Practice and evidence")}</a>
+  </nav></aside>
+  <div class="learning-content">
+    <section id="objetivo">
+      <p class="etiqueta">01 / {label("ORIENTACIÓN", "ORIENTATION")}</p>
+      <h2>{label("Qué vas a trabajar", "What you will work on")}</h2>
+      <p>{moduleView ? copy.prerequisite : label("Puedes empezar sin conocimientos de programación. Avanza desde la lógica hacia programas, datos e interfaces; después aborda patrones y backend. Frontend moderno y producción conservan su estado planificado.", "You can start without programming knowledge. Progress from logic to programs, data and interfaces, then tackle patterns and backend. Modern frontend and production remain planned.")}</p>
+      {moduleView ? <ul>{copy.objectives.map(item => <li>{item}</li>)}</ul> : <p>{path.description}</p>}
+    </section>
+    <section id="contenido-modulo">
+      <p class="etiqueta">02 / {label("RECORRIDO", "SEQUENCE")}</p>
+      <h2>{moduleView ? label("Comprender, aplicar y revisar", "Understand, apply and review") : label("Una base para cada siguiente paso", "A foundation for each next step")}</h2>
+      {moduleView ? <ol class="learning-blocks">{fundamentalBlocks.map((block, index) => <li><div class="learning-block-title"><span>{String(index + 1).padStart(2, "0")}</span><h3>{block[language]}</h3></div><div class="learning-practice-links">{block.exercises.map(number => { const exercise = fundamentalExercises[number - 1]; return <a href={fundamentalsSource + exercise.file} target="_blank" rel="noopener noreferrer">{label("Ejercicio", "Exercise")} {String(number).padStart(2, "0")} · {exercise[language]} ↗</a>; })}</div></li>)}</ol> :
+        <div class="learning-phases">{path.stages.map(stage => <section><h3>{stage.number} · {stage.title}</h3><p>{stage.intent}</p><ol>{stage.modules.map(module => <li><a href={module.id === "fundamentos" ? moduleUrl : module.href} target={module.id === "fundamentos" ? undefined : "_blank"} rel={module.id === "fundamentos" ? undefined : "noopener noreferrer"}><span>{module.number} · {module.title}</span><small>{module.statusLabel}</small></a></li>)}</ol></section>)}</div>}
+    </section>
+    <section id="practica">
+      <p class="etiqueta">03 / {label("EVIDENCIA", "EVIDENCE")}</p>
+      <h2>{moduleView ? label("Comprueba lo que aprendiste", "Check what you learned") : label("Del contenido al trabajo propio", "From content to your own work")}</h2>
+      {moduleView ? <>
+        <p>{label("En estos laboratorios la entrega es un análisis documentado, no código. Elige al menos uno.", "These labs require documented analysis, not code. Choose at least one.")}</p>
+        <ul class="learning-resources">{fundamentalLabs.map(lab => <li><a href={fundamentalsSource + lab.file} target="_blank" rel="noopener noreferrer">{lab[language]} ↗</a></li>)}</ul>
+        <h3>{label("Antes de continuar", "Before moving on")}</h3><ul>{copy.criteria.map(item => <li>{item}</li>)}</ul>
+        <div class="learning-resources">{[["plantilla-evidencia.md", "Plantilla de evidencia", "Evidence template"], ["checklist-avance.md", "Checklist de avance", "Progress checklist"], ["ejercicios-resueltos/README.md", "Contrastar las soluciones", "Compare solutions"], ["guia-de-estudio.md", "Guía de estudio", "Study guide"], ["glosario.md", "Glosario", "Glossary"]].map(([file, es, english]) => <a href={fundamentalsSource + file} target="_blank" rel="noopener noreferrer">{label(es, english)} ↗</a>)}</div>
+        <p class="learning-note">{label("Estos criterios describen lo que debes demostrar; no registran ni certifican tu progreso. Los materiales enlazados están en español.", "These criteria describe what to demonstrate; they do not track or certify your progress. Linked materials are in Spanish.")}</p>
+        <a class="learning-next" href="https://github.com/chiletedevpath/aprendizaje/tree/main/01-pseudocodigo" target="_blank" rel="noopener noreferrer">{label("Después: 01 · Pseudocódigo", "Next: 01 · Pseudocode")} →</a>
+      </> : <>
+        <p>{label("Las prácticas se encuentran en Aprendizaje. Los proyectos académicos muestran aplicaciones de esos conceptos en Academia. Son evidencias de referencia, no entregas obligatorias para completar esta ruta.", "Practice lives in Aprendizaje. Academic projects in Academia demonstrate how the concepts are applied. They are reference evidence, not required submissions for completing this path.")}</p>
+        <a href={`${prefix}/proyectos/`}>{label("Explorar proyectos relacionados", "Explore related projects")} →</a>
+      </>}
+    </section>
+    <footer class="learning-source"><a href={moduleView ? fundamentalsSource + "README.md" : "https://github.com/chiletedevpath/aprendizaje"} target="_blank" rel="noopener noreferrer">{label("Consultar la fuente en Aprendizaje", "Read the source in Aprendizaje")} ↗</a></footer>
+  </div>
+</div>

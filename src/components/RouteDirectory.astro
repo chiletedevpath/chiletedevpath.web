@@ -47,6 +47,7 @@ const copy = lang === "en"
               <div><dt>{path.evidenceLabel}</dt><dd>{path.summary.contentCount}</dd></div>
             </dl>
           </header>
+          {path.id === "software" && <a class="route-detail-link" href={`${lang === "en" ? "/en" : ""}/ruta/software/`}>{lang === "en" ? "View learning path" : "Ver el recorrido de aprendizaje"} →</a>}
           <div class="route-progress"><span>{path.summary.moduleIndicator}</span><strong>{path.summary.progressValue}</strong><progress max="100" value={path.summary.progress} aria-label={path.summary.progressLabel}></progress></div>
 
           <details class="route-details"><summary aria-label={`${lang === "en" ? "Explore modules" : "Explorar módulos"}: ${path.title}`}>{lang === "en" ? "Explore modules" : "Explorar módulos"}<span aria-hidden="true">+</span></summary>
