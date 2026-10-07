@@ -1,8 +1,10 @@
 ---
+import HeroBackdrop from "./HeroBackdrop.astro";
 const { lang = "es", paths = [] } = Astro.props;
 const en = lang === "en";
 ---
-<header class="route-heading">
+<header class="route-heading section-image-hero">
+  <HeroBackdrop section="ruta" />
   <div class="contenedor">
     <p class="etiqueta">{en ? "CDP / LEARNING DIRECTORY" : "CDP / DIRECTORIO DE APRENDIZAJE"}</p>
     <div class="route-heading-line">

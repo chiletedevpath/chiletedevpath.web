@@ -1,5 +1,6 @@
 ---
 import "../styles/pages/recursos.css";
+import HeroBackdrop from "./HeroBackdrop.astro";
 const { resources, lang = "es" } = Astro.props;
 const en = lang === "en";
 const labels = en
@@ -12,8 +13,8 @@ const steps = en
   ? [["Try", "Work on a practice task before looking for an answer."], ["Review", "Compare approaches and understand the decisions."], ["Consult", "Return to a guide when you need more context."]]
   : [["Intentar", "Resuelve una práctica antes de buscar una respuesta."], ["Revisar", "Compara los enfoques y entiende las decisiones."], ["Consultar", "Vuelve a una guía cuando necesites recuperar contexto."]];
 ---
-<header class="library-hero">
-  <img class="library-hero-image" src="/assets/img/editorial/recursos-hero.webp" alt="" width="1600" height="900" fetchpriority="high" />
+<header class="library-hero section-image-hero">
+  <HeroBackdrop section="recursos" />
   <div class="contenedor library-hero-copy">
     <span class="etiqueta">CDP / {en ? "PRACTICE LIBRARY" : "BIBLIOTECA PRÁCTICA"}</span>
     <h1>{en ? "A place to practice." : "Un lugar para practicar."}<br /><em>{en ? "And try again." : "Y volver a intentarlo."}</em></h1>
