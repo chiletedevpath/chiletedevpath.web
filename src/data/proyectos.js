@@ -79,8 +79,8 @@ export const academicProjects = [
     filterTags: ["datos", "productividad"],
     routeLabel: "Ruta 02 · Productividad y datos",
     technologies: ["Excel", "VBA", "Tablas dinámicas", "Dashboard"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Imagen editorial de evidencia académica para un control de obras desarrollado en Excel.",
+    imageSrc: "/assets/img/projects/control-obras-construccion-banner-v2.webp",
+    imageAlt: "Ilustración de control de obras con hojas de cálculo, costos y avances.",
     description: "Libro de Excel para centralizar jornadas, personal, costos, herramientas e indicadores de obras pequeñas mediante tablas, paneles y automatizaciones controladas.",
     details: [
       "Jornadas, pagos, personal y proyectos organizados en un solo libro",
@@ -108,8 +108,8 @@ export const academicProjects = [
     routeStage: "software",
     routeLabel: "Etapa 02 · Construcción de software",
     technologies: ["Java", "POO", "Arreglos", "Excepciones"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Imagen editorial de un proyecto académico de gestión de inventario en Java.",
+    imageSrc: "/assets/img/projects/gestion-inventario-java-banner-v2.webp",
+    imageAlt: "Ilustración de una consola Java para productos, ventas y existencias.",
     description:
       "Aplicación de consola que administra productos, ventas y existencias en memoria mediante un flujo CRUD construido con Java y programación orientada a objetos.",
     details: [
@@ -138,7 +138,7 @@ export const academicProjects = [
     routeStage: "software",
     routeLabel: "Etapa 02 · Construcción de software",
     technologies: ["Java", "POO", "Estructuras de datos", "CSV"],
-    imageSrc: "/assets/img/projects/gestion-clinica-cover.webp",
+    imageSrc: "/assets/img/projects/gestion-clinica-banner-v2.webp",
     imageAlt: "Imagen editorial de un sistema académico de gestión clínica.",
     description:
       "Sistema de consola en Java que organiza pacientes, doctores, citas, horarios y procesos de atención mediante algoritmos y estructuras de datos implementadas en el proyecto.",
@@ -168,7 +168,7 @@ export const academicProjects = [
     routeStage: "datos",
     routeLabel: "Etapa 03 · Web y datos",
     technologies: ["SQL Server", "T-SQL", "Modelo relacional", "PEPS/FIFO"],
-    imageSrc: "/assets/img/projects/gestion-comercial-db-cover.webp",
+    imageSrc: "/assets/img/projects/gestion-comercial-db-banner-v2.webp",
     imageAlt: "Imagen editorial de inventario y base de datos para ferretería académica.",
     description:
       "Base de datos comercial en SQL Server que integra usuarios, clientes, productos, inventario por lotes, ventas, auditoría y reglas de precios.",
@@ -198,8 +198,8 @@ export const academicProjects = [
     routeStage: "frontend",
     routeLabel: "Etapa 03 · Web y datos",
     technologies: ["HTML", "CSS", "JavaScript", "API REST", "PWA"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Imagen editorial de la demostración académica ComidaPerucha para Desarrollo Web.",
+    imageSrc: "/assets/img/projects/comidaperucha-frontend-banner-v2.webp",
+    imageAlt: "Ilustración de una experiencia gastronómica en escritorio y móvil.",
     description:
       "Experiencia web multipágina que presenta carta, promociones y locales desde una API académica, con formularios demostrativos, diseño adaptable y soporte PWA básico.",
     details: [
@@ -230,8 +230,8 @@ export const academicProjects = [
     filterTags: ["datos", "backend"],
     routeLabel: "Etapa 03 · Web y datos",
     technologies: ["Spring Boot", "PostgreSQL", "MongoDB", "Apache Spark"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Imagen editorial del backend académico y arquitectura de datos de ComidaPerucha.",
+    imageSrc: "/assets/img/projects/comidaperucha-bd-backend-banner-v2.webp",
+    imageAlt: "Ilustración de cliente, API y almacenamiento para ComidaPerucha.",
     description:
       "Proyecto de Base de Datos II que reúne una API Spring Boot, PostgreSQL distribuido, una capa documental MongoDB y procesamiento batch con Apache Spark.",
     details: [
@@ -260,7 +260,7 @@ export const academicProjects = [
     routeStage: "patrones",
     routeLabel: "Etapa 04 · Especialización",
     technologies: ["Java", "POO", "GRASP", "Patrones GOF", "Consola"],
-    imageSrc: "/assets/img/projects/gestion-ventas-patrones-cover.webp",
+    imageSrc: "/assets/img/projects/gestion-ventas-patrones-banner-v2.webp",
     imageAlt: "Imagen editorial de arquitectura Java para ventas e inventario de ferretería.",
     description:
       "Sistema de ventas e inventario en Java que distribuye reglas, estados y operaciones entre componentes especializados mediante GRASP y patrones GOF.",
@@ -290,7 +290,7 @@ export const academicProjects = [
     routeStage: "backend",
     routeLabel: "Etapa 04 · Backend",
     technologies: ["Java", "Spring Boot", "OpenFeign", "H2"],
-    imageSrc: "/assets/img/projects/sunat-consulta-cover.webp",
+    imageSrc: "/assets/img/projects/sunat-consulta-banner-v2.webp",
     imageAlt: "Imagen editorial para proyecto académico backend con integración de servicios.",
     description:
       "API Spring Boot que valida números de RUC, consulta un proveedor externo y conserva un historial local de resultados exitosos y fallidos.",
@@ -321,7 +321,7 @@ export const academicProjects = [
     filterTags: ["fullstack", "backend", "frontend"],
     routeLabel: "Etapa 04 · Integración fullstack",
     technologies: ["React", "Spring Boot", "REST", "PostgreSQL", "H2"],
-    imageSrc: "/assets/img/projects/plataforma-catalogo-inventario-cover.webp",
+    imageSrc: "/assets/img/projects/plataforma-catalogo-inventario-banner-v2.webp",
     imageAlt: "Imagen editorial de una plataforma fullstack para catálogo, inventario y pedidos.",
     description:
       "Aplicación fullstack que conecta una interfaz React con dos servicios Spring Boot para administrar productos, pedidos y existencias de extremo a extremo.",
@@ -395,8 +395,8 @@ export const academicProjectsEn = [
     filterTags: ["data", "productivity"],
     routeLabel: "Path 02 · Productivity and data",
     technologies: ["Excel", "VBA", "Pivot tables", "Dashboard"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Editorial image for academic evidence of a construction works control built with Excel.",
+    imageSrc: "/assets/img/projects/control-obras-construccion-banner-v2.webp",
+    imageAlt: "Illustration of construction tracking with spreadsheets, costs and progress.",
     description: "Excel workbook that centralizes workdays, personnel, costs, tools and work indicators through tables, dashboards and controlled automation.",
     details: [
       "Workdays, payments, personnel and projects organized in one workbook",
@@ -424,8 +424,8 @@ export const academicProjectsEn = [
     routeStage: "software",
     routeLabel: "Stage 02 · Software construction",
     technologies: ["Java", "OOP", "Arrays", "Exceptions"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Editorial image for an academic Java inventory management project.",
+    imageSrc: "/assets/img/projects/gestion-inventario-java-banner-v2.webp",
+    imageAlt: "Illustration of a Java console for products, sales and stock.",
     description:
       "Console application that manages products, sales and in-memory stock through a CRUD workflow built with Java and object-oriented programming.",
     details: [
@@ -454,7 +454,7 @@ export const academicProjectsEn = [
     routeStage: "software",
     routeLabel: "Stage 02 · Software construction",
     technologies: ["Java", "OOP", "Data structures", "CSV"],
-    imageSrc: "/assets/img/projects/gestion-clinica-cover.webp",
+    imageSrc: "/assets/img/projects/gestion-clinica-banner-v2.webp",
     imageAlt: "Editorial image of an academic clinical management system.",
     description:
       "Java console system that organizes patients, doctors, appointments, schedules and care processes through algorithms and data structures implemented in the project.",
@@ -484,7 +484,7 @@ export const academicProjectsEn = [
     routeStage: "datos",
     routeLabel: "Stage 03 · Web and data",
     technologies: ["SQL Server", "T-SQL", "Relational model", "FIFO"],
-    imageSrc: "/assets/img/projects/gestion-comercial-db-cover.webp",
+    imageSrc: "/assets/img/projects/gestion-comercial-db-banner-v2.webp",
     imageAlt: "Editorial inventory and database image for an academic hardware store system.",
     description:
       "SQL Server commercial database that integrates users, customers, products, batch inventory, sales, auditing and pricing rules.",
@@ -510,8 +510,8 @@ export const academicProjectsEn = [
     routeStage: "frontend",
     routeLabel: "Stage 03 · Web and data",
     technologies: ["HTML", "CSS", "JavaScript", "REST API", "PWA"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Editorial image for the ComidaPerucha academic web development demo.",
+    imageSrc: "/assets/img/projects/comidaperucha-frontend-banner-v2.webp",
+    imageAlt: "Illustration of a food website on desktop and mobile.",
     description:
       "Multi-page web experience that displays menus, promotions and locations from an academic API, with demo forms, responsive design and basic PWA support.",
     details: [
@@ -542,8 +542,8 @@ export const academicProjectsEn = [
     filterTags: ["datos", "backend"],
     routeLabel: "Stage 03 · Web and data",
     technologies: ["Spring Boot", "PostgreSQL", "MongoDB", "Apache Spark"],
-    imageSrc: "/assets/img/projects/academia-cover.webp",
-    imageAlt: "Editorial image for the ComidaPerucha academic backend and data architecture.",
+    imageSrc: "/assets/img/projects/comidaperucha-bd-backend-banner-v2.webp",
+    imageAlt: "Illustration of client, API and storage for ComidaPerucha.",
     description:
       "Database II project combining a Spring Boot API, distributed PostgreSQL, a MongoDB document layer and batch processing with Apache Spark.",
     details: [
@@ -572,7 +572,7 @@ export const academicProjectsEn = [
     routeStage: "patrones",
     routeLabel: "Stage 04 · Specialization",
     technologies: ["Java", "OOP", "GRASP", "GOF patterns", "Console"],
-    imageSrc: "/assets/img/projects/gestion-ventas-patrones-cover.webp",
+    imageSrc: "/assets/img/projects/gestion-ventas-patrones-banner-v2.webp",
     imageAlt: "Editorial Java architecture image for hardware-store sales and inventory.",
     description:
       "Java sales and inventory system that distributes rules, states and operations across specialized components through GRASP and GOF patterns.",
@@ -602,7 +602,7 @@ export const academicProjectsEn = [
     routeStage: "backend",
     routeLabel: "Stage 04 · Backend",
     technologies: ["Java", "Spring Boot", "OpenFeign", "H2"],
-    imageSrc: "/assets/img/projects/sunat-consulta-cover.webp",
+    imageSrc: "/assets/img/projects/sunat-consulta-banner-v2.webp",
     imageAlt: "Editorial image for an academic backend project with service integration.",
     description:
       "Spring Boot API that validates tax identification numbers, queries an external provider and stores a local history of successful and failed results.",
@@ -633,7 +633,7 @@ export const academicProjectsEn = [
     filterTags: ["fullstack", "backend", "frontend"],
     routeLabel: "Stage 04 · Full-stack integration",
     technologies: ["React", "Spring Boot", "REST", "PostgreSQL", "H2"],
-    imageSrc: "/assets/img/projects/plataforma-catalogo-inventario-cover.webp",
+    imageSrc: "/assets/img/projects/plataforma-catalogo-inventario-banner-v2.webp",
     imageAlt: "Editorial image for a full-stack catalog, inventory and order platform.",
     description:
       "Full-stack application that connects a React interface with two Spring Boot services to manage products, orders and stock from end to end.",

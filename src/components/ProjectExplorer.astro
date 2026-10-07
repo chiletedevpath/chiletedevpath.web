@@ -97,7 +97,7 @@ const repositoryLabel = (repository, index, total) => {
               <div class="explorador-presentacion">
                 <figure class="explorador-media">
                   <img src={project.imageSrc} alt={project.imageAlt} loading={index === 0 ? "eager" : "lazy"} width="1200" height="628" />
-                  <figcaption>{project.visual}</figcaption>
+                  <figcaption>{project.visual} · {isEn ? "Illustration" : "Ilustración"}</figcaption>
                 </figure>
 
                 <div class="explorador-intro">
