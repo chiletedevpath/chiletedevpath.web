@@ -134,3 +134,29 @@ test("valida Turnstile y entrega un mensaje normalizado a EmailJS", async (conte
   assert.equal(emailBody.template_params.email, "adrian@example.com");
   assert.doesNotMatch(emailBody.template_params.message, /test-token/);
 });
+
+test("una interrupcion de EmailJS no se presenta como rechazo confirmado", async (context) => {
+  const originalFetch = globalThis.fetch;
+  context.after(() => { globalThis.fetch = originalFetch; });
+  for (const error of [new DOMException("Timeout", "TimeoutError"), new TypeError("Network error")]) {
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("siteverify")) {
+        return Response.json({ success: true, action: "contact", hostname: "chiletedevpath.com" });
+      }
+      throw error;
+    };
+    const response = await worker.fetch(contactRequest(validPayload), workerEnv());
+    assert.equal(response.status, 502);
+    assert.equal((await response.json()).code, "DELIVERY_UNCONFIRMED");
+  }
+});
+
+test("un rechazo explicito de EmailJS conserva DELIVERY_FAILED", async (context) => {
+  const originalFetch = globalThis.fetch;
+  context.after(() => { globalThis.fetch = originalFetch; });
+  globalThis.fetch = async (url) => String(url).includes("siteverify")
+    ? Response.json({ success: true, action: "contact", hostname: "chiletedevpath.com" })
+    : new Response("Rejected", { status: 400 });
+  const response = await worker.fetch(contactRequest(validPayload), workerEnv());
+  assert.equal((await response.json()).code, "DELIVERY_FAILED");
+});

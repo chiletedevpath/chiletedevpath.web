@@ -195,6 +195,7 @@ export default {
       delivered = await sendWithEmailJs(validation.value, env);
     } catch (error) {
       console.error("Email delivery request failed", { name: error?.name || "Error" });
+      return json({ code: "DELIVERY_UNCONFIRMED" }, 502, origin);
     }
     if (!delivered) return json({ code: "DELIVERY_FAILED" }, 502, origin);
 

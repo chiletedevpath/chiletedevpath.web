@@ -1,3 +1,5 @@
+import { sendContact } from "./contact-request.js";
+
 if (typeof document !== "undefined") {
   document.documentElement.classList.add("js-activo");
 
@@ -185,33 +187,7 @@ if (typeof document !== "undefined") {
     turnstileToken: obtenerValor(formulario, "cf-turnstile-response"),
   });
 
-  const enviarMensaje = async (formulario, payload) => {
-    const controlador = new AbortController();
-    const limiteEspera = window.setTimeout(() => controlador.abort(), 15000);
-    let respuesta;
-
-    try {
-      respuesta = await fetch(formulario.action, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-        signal: controlador.signal,
-      });
-    } finally {
-      window.clearTimeout(limiteEspera);
-    }
-
-    const resultado = await respuesta.json().catch(() => ({}));
-    if (!respuesta.ok) {
-      const error = new Error("No se pudo procesar el formulario.");
-      error.code = resultado.code || "DELIVERY_FAILED";
-      error.status = respuesta.status;
-      throw error;
-    }
-  };
+  const enviarMensaje = (formulario, payload) => sendContact(formulario.action, payload);
 
   const obtenerEstadoFormulario = (formulario) => {
     let estado = formulario.querySelector("[data-form-status]");
@@ -452,7 +428,8 @@ if (typeof document !== "undefined") {
   const mensajesFormulario = {
     es: {
       sending: "Enviando tu mensaje...",
-      success: "Mensaje enviado. Recibirás una confirmación si el correo se procesó correctamente.",
+      success: "Mensaje enviado correctamente.",
+      uncertain: "No pudimos confirmar la entrega. El mensaje puede haber llegado; espera antes de volver a enviarlo.",
       verification: "Completa la verificación humana antes de enviar.",
       unavailable: "El formulario aún no está habilitado. Falta configurar la verificación de producción.",
       rateLimited: "Se alcanzó el límite temporal de envíos. Inténtalo nuevamente más tarde.",
@@ -461,7 +438,8 @@ if (typeof document !== "undefined") {
     },
     en: {
       sending: "Sending your message...",
-      success: "Message sent. You will receive a confirmation if the email was processed successfully.",
+      success: "Message sent successfully.",
+      uncertain: "We could not confirm delivery. The message may have arrived; wait before sending it again.",
       verification: "Complete the human verification before submitting.",
       unavailable: "The form is not enabled yet. Production verification still needs to be configured.",
       rateLimited: "The temporary submission limit was reached. Please try again later.",
@@ -523,7 +501,9 @@ if (typeof document !== "undefined") {
       } catch (error) {
         console.error("No se pudo enviar el formulario de contacto.", error);
         estado.className = "formulario-estado formulario-estado-error";
-        estado.textContent = error.code === "RATE_LIMITED"
+        estado.textContent = error.code === "DELIVERY_UNCONFIRMED"
+          ? textos.uncertain
+          : error.code === "RATE_LIMITED"
           ? textos.rateLimited
           : error.code === "INVALID_PAYLOAD"
             ? textos.invalid
