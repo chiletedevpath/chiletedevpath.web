@@ -103,10 +103,18 @@ en el codigo vigente.
 - Worker desplegado: dc355ece-ea19-4bae-8176-3c4e5bcf7674. Se mantienen los
   origenes, secretos y limite por IP existentes.
 - Offline ES/EN verificado en Chromium local, incluidos los fallbacks.
-- La publicacion y comprobacion remota de esta version se registran despues
-  del despliegue. No se dan por realizadas en este punto.
+- Publicacion verificada: commits f524d4d y ccdba90 en origin/main. GitHub
+  Actions 37998487511 termino correctamente: build 56 segundos, deploy 11.
+  El footer publico de Recursos muestra V4.13.1.
+- Prueba unica ficticia "Prueba de cierre 4.13.1": formulario con mensaje de
+  exito, EmailJS Contact Us y Auto-Reply OK, contenido exacto recibido y
+  comprobado en Gmail. No se interactuo manualmente con un desafio CAPTCHA.
+- GitHub emitio avisos de mantenimiento sobre el runtime de actions v4 y el
+  cambio futuro de ubuntu-latest. No bloquearon la entrega; actualizar las
+  acciones en un hito de mantenimiento, con nueva verificacion del workflow.
 
-Pendientes manuales: instalacion en el celular del propietario y teclado
+Pendientes manuales: actualizacion y offline en la app ya instalada del celular
+del propietario, y teclado
 dentro de un desafio interactivo exitoso de Turnstile. La cuota mensual de
 EmailJS se supervisa manualmente; no existe un contador global automatico.
 La ampliacion de paginas educativas pertenece al siguiente hito.
