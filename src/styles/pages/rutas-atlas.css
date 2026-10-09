@@ -1,3 +1,13 @@
+[data-theme="light"] .route-directory,
+[data-theme="light"] .route-tools {
+  --color-agua: #076b66;
+}
+
+[data-theme="light"] .route-directory .etiqueta,
+[data-theme="light"] .route-tools .etiqueta {
+  color: var(--color-acento);
+}
+
 .route-hero {
   --route-ink: #edf6ef;
   --route-muted: #c0d3cc;

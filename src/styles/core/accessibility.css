@@ -1,5 +1,5 @@
 :focus-visible {
-  outline: 3px solid var(--color-progreso);
+  outline: 3px solid var(--color-acento);
   outline-offset: 4px;
 }
 
@@ -11,7 +11,7 @@
   padding: 10px 14px;
   border-radius: 8px;
   background-color: var(--color-progreso);
-  color: var(--color-principal);
+  color: #17302f;
   font-weight: 700;
   transform: translateY(-140%);
 }
@@ -25,8 +25,10 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 }

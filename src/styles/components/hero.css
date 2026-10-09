@@ -386,6 +386,10 @@
   color: #ffffff;
 }
 
+[data-theme="dark"] .boton-principal {
+  color: #102827;
+}
+
 .boton-secundario {
   border: 1px solid var(--color-acento);
   color: var(--color-acento);
