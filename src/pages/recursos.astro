@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ResourceLibrary from "../components/ResourceLibrary.astro";
 import ContactSecurityFields from "../components/ContactSecurityFields.astro";
 import { resources } from "../data/recursos.js";
+import { contactConfig } from "../data/contact.js";
 ---
 
 <BaseLayout title="Recursos | Chilete DevPath" hasContactForm>
@@ -18,7 +19,7 @@ import { resources } from "../data/recursos.js";
           No todo se publicará de inmediato: primero revisaré si encaja con la ruta y si aporta valor real.
         </p>
       </div>
-      <form class="formulario-contacto panel-contacto formulario-recursos" action="/api/contacto" method="post" data-contact-form data-context="resources" data-lang="es">
+      <form class="formulario-contacto panel-contacto formulario-recursos" action={contactConfig.endpoint} method="post" data-contact-form data-context="resources" data-lang="es">
         <div class="formulario-cabecera">
           <span>Recurso propuesto</span>
           <strong>Dime qué falta y para qué serviría</strong>
@@ -60,7 +61,7 @@ import { resources } from "../data/recursos.js";
         </label>
         <label class="confirmacion-datos">
           <input type="checkbox" name="confirmacion" required />
-          <span>Confirmo que no estoy enviando datos personales, contraseñas ni información sensible.</span>
+          <span>Además de mi nombre y correo de contacto, no incluyo contraseñas, documentos privados ni información sensible propia o de terceros.</span>
         </label>
         <small class="contador-caracteres" data-counter>0/700</small>
         <p class="nota-privacidad">Tus datos se procesan mediante el servicio de correo para revisar y responder la propuesta. La idea no se publicará sin una evaluación previa.</p>

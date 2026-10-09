@@ -4,26 +4,22 @@
   "main": "src/index.js",
   "compatibility_date": "2026-08-31",
   "workers_dev": true,
+  "preview_urls": false,
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
   },
-  "routes": [
-    {
-      "pattern": "chiletedevpath.com/api/contacto",
-      "zone_name": "chiletedevpath.com"
-    }
-  ],
   "vars": {
     "ALLOWED_ORIGINS": "https://chiletedevpath.com",
-    "TURNSTILE_HOSTNAMES": "chiletedevpath.com"
+    "TURNSTILE_HOSTNAMES": "chiletedevpath.com",
+    "EMAILJS_SERVICE_ID": "service_qtj5rkm",
+    "EMAILJS_TEMPLATE_ID": "template_qfaomfd",
+    "EMAILJS_PUBLIC_KEY": "lVqMAbSHdWZlz4mUl"
   },
   "secrets": {
     "required": [
       "TURNSTILE_SECRET",
-      "EMAILJS_SERVICE_ID",
-      "EMAILJS_TEMPLATE_ID",
-      "EMAILJS_PUBLIC_KEY"
+      "EMAILJS_PRIVATE_KEY"
     ]
   },
   "ratelimits": [

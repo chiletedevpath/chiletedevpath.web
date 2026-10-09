@@ -100,9 +100,9 @@ const validateTurnstile = async (payload, request, env) => {
   return result.success === true && result.action === "contact" && expectedHostnames.has(result.hostname);
 };
 
-const rateLimitKey = async (request, email) => {
+const rateLimitKey = async (request) => {
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-  const data = new TextEncoder().encode(`${ip}:${email}`);
+  const data = new TextEncoder().encode(`contact-ip:${ip}`);
   const digest = await crypto.subtle.digest("SHA-256", data);
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 };
@@ -115,6 +115,7 @@ const sendWithEmailJs = async (payload, env) => {
       service_id: env.EMAILJS_SERVICE_ID,
       template_id: env.EMAILJS_TEMPLATE_ID,
       user_id: env.EMAILJS_PUBLIC_KEY,
+      accessToken: env.EMAILJS_PRIVATE_KEY,
       template_params: {
         name: payload.name,
         email: payload.email,
@@ -177,7 +178,7 @@ export default {
     const validation = validateContactPayload(input);
     if (!validation.ok) return json({ code: "INVALID_PAYLOAD" }, 400, origin);
 
-    const key = await rateLimitKey(request, validation.value.email);
+    const key = await rateLimitKey(request);
     const rateLimit = await env.CONTACT_RATE_LIMITER.limit({ key });
     if (!rateLimit.success) return json({ code: "RATE_LIMITED" }, 429, origin);
 

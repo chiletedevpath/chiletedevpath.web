@@ -44,16 +44,17 @@ const workerEnv = (rateLimitSuccess = true) => ({
   EMAILJS_SERVICE_ID: "test-service",
   EMAILJS_TEMPLATE_ID: "test-template",
   EMAILJS_PUBLIC_KEY: "test-public-key",
+  EMAILJS_PRIVATE_KEY: "test-private-key",
   CONTACT_RATE_LIMITER: {
     limit: async () => ({ success: rateLimitSuccess }),
   },
 });
 
-const contactRequest = (body, origin = "https://chiletedevpath.com") => new Request(
+const contactRequest = (body, origin = "https://chiletedevpath.com", ip = "192.0.2.1") => new Request(
   "https://chiletedevpath.com/api/contacto",
   {
     method: "POST",
-    headers: { "Content-Type": "application/json", Origin: origin },
+    headers: { "Content-Type": "application/json", Origin: origin, "CF-Connecting-IP": ip },
     body: JSON.stringify(body),
   },
 );
@@ -73,6 +74,38 @@ test("devuelve 429 antes de validar Turnstile cuando se supera el límite", asyn
   const response = await worker.fetch(contactRequest(validPayload), workerEnv(false));
   assert.equal(response.status, 429);
   assert.equal((await response.json()).code, "RATE_LIMITED");
+});
+
+test("cambiar correo no cambia la cuota por IP; otra IP tiene su propia cuota", async () => {
+  const keys = [];
+  const env = workerEnv(false);
+  env.CONTACT_RATE_LIMITER.limit = async ({ key }) => {
+    keys.push(key);
+    return { success: false };
+  };
+  for (const [email, ip] of [["one@example.com", "192.0.2.1"],
+    ["two@example.com", "192.0.2.1"], ["one@example.com", "192.0.2.2"]]) {
+    const response = await worker.fetch(contactRequest({ ...validPayload, email }, undefined, ip), env);
+    assert.equal(response.status, 429);
+  }
+  assert.equal(keys[0], keys[1]);
+  assert.notEqual(keys[0], keys[2]);
+  assert.match(keys[0], /^[a-f0-9]{64}$/);
+});
+
+test("sin IP disponible los contactos comparten una cuota conservadora", async () => {
+  const keys = [];
+  const env = workerEnv(false);
+  env.CONTACT_RATE_LIMITER.limit = async ({ key }) => {
+    keys.push(key);
+    return { success: false };
+  };
+  for (const email of ["one@example.com", "two@example.com"]) {
+    const request = contactRequest({ ...validPayload, email });
+    request.headers.delete("CF-Connecting-IP");
+    assert.equal((await worker.fetch(request, env)).status, 429);
+  }
+  assert.equal(keys[0], keys[1]);
 });
 
 test("valida Turnstile y entrega un mensaje normalizado a EmailJS", async (context) => {
@@ -97,6 +130,7 @@ test("valida Turnstile y entrega un mensaje normalizado a EmailJS", async (conte
 
   const emailBody = JSON.parse(calls[1].options.body);
   assert.equal(emailBody.service_id, "test-service");
+  assert.equal(emailBody.accessToken, "test-private-key");
   assert.equal(emailBody.template_params.email, "adrian@example.com");
   assert.doesNotMatch(emailBody.template_params.message, /test-token/);
 });

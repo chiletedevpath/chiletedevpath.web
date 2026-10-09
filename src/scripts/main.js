@@ -75,7 +75,7 @@ if (typeof document !== "undefined") {
       },
       {
         rootMargin: "0px 0px -8% 0px",
-        threshold: 0.08,
+        threshold: 0,
       }
     );
 
@@ -83,6 +83,17 @@ if (typeof document !== "undefined") {
   } else {
     elementosAnimados.forEach((elemento) => elemento.classList.add("visible"));
   }
+
+  document.addEventListener("focusin", (event) => {
+    event.target.closest?.(".revelar")?.classList.add("visible");
+  });
+
+  preferenciaMovimientoReducido.addEventListener("change", (event) => {
+    if (event.matches) {
+      elementosAnimados.forEach((elemento) => elemento.classList.add("visible"));
+      puentesProyectos.forEach((puente) => puente.classList.add("puente-visible"));
+    }
+  });
 
   zonasMovimiento.forEach((zona) => zona.classList.add("movimiento-observable"));
 
@@ -407,12 +418,15 @@ if (typeof document !== "undefined") {
     opcion.addEventListener("click", () => activarProyecto(opcion.dataset.projectOption));
 
     opcion.addEventListener("keydown", (event) => {
-      if (!["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft"].includes(event.key)) return;
+      if (!["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
 
       const opcionesVisibles = [...opcionesProyectos].filter((item) => !item.hidden);
       const indiceActual = opcionesVisibles.indexOf(opcion);
       const incremento = ["ArrowDown", "ArrowRight"].includes(event.key) ? 1 : -1;
-      const siguiente = opcionesVisibles[(indiceActual + incremento + opcionesVisibles.length) % opcionesVisibles.length];
+      const indiceSiguiente = event.key === "Home" ? 0
+        : event.key === "End" ? opcionesVisibles.length - 1
+        : (indiceActual + incremento + opcionesVisibles.length) % opcionesVisibles.length;
+      const siguiente = opcionesVisibles[indiceSiguiente];
 
       event.preventDefault();
       siguiente?.focus();

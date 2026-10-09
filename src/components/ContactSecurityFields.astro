@@ -1,8 +1,9 @@
 ---
 import "../styles/components/cards.css";
+import { contactConfig } from "../data/contact.js";
 
 const { lang = "es" } = Astro.props;
-const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
+const siteKey = contactConfig.siteKey;
 const verificationLabel = lang === "en" ? "Human verification" : "Verificación humana";
 const pendingLabel = lang === "en"
   ? "Verification will be enabled when the production key is configured."
