@@ -104,16 +104,18 @@ async function networkFirst(request, fallbackUrl) {
   try {
     return await cacheResponse(request, await fetch(request));
   } catch {
+    const cache = await caches.open(CACHE_NAME);
     return (
-      (await caches.match(request, { ignoreSearch: true })) ||
-      (fallbackUrl ? await caches.match(fallbackUrl) : undefined) ||
+      (await cache.match(request, { ignoreSearch: true })) ||
+      (fallbackUrl ? await cache.match(fallbackUrl) : undefined) ||
       Response.error()
     );
   }
 }
 
 async function cacheFirst(request) {
-  const cachedResponse = await caches.match(request);
+  const cache = await caches.open(CACHE_NAME);
+  const cachedResponse = await cache.match(request);
 
   if (cachedResponse) {
     return cachedResponse;

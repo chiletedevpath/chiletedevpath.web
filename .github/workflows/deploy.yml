@@ -37,8 +37,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Validate modules, data and contact Worker
+        run: |
+          npm run modules:check
+          npm run data:check
+          npm run data:typecheck
+          npm run worker:test
+
       - name: Validate PWA and sitemap
-        run: npm run pwa:check
+        run: |
+          npm run pwa:check
+          npm run pwa:test
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

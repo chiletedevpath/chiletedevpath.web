@@ -1,15 +1,15 @@
 {
   "name": "Chilete DevPath",
   "short_name": "DevPath",
-  "description": "Ruta pública de aprendizaje, proyectos y comunidad de Chilete DevPath.",
+  "description": "Rutas de aprendizaje de tecnologías, proyectos y recursos de Chilete DevPath.",
   "id": "/",
   "lang": "es-PE",
   "dir": "ltr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#07151f",
-  "theme_color": "#0a2636",
+  "background_color": "#101b1b",
+  "theme_color": "#17302f",
   "categories": ["education", "productivity", "developer"],
   "icons": [
     {

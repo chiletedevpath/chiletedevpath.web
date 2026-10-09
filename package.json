@@ -1,6 +1,6 @@
 {
   "name": "chiletedevpath-web",
-  "version": "4.12.0",
+  "version": "4.13.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,6 +10,7 @@
     "data:check": "node scripts/validate-learning-data.mjs",
     "data:typecheck": "tsc --noEmit --project tsconfig.data.json",
     "pwa:check": "node scripts/check-pwa.mjs",
+    "pwa:test": "node --test scripts/test-pwa.mjs",
     "preview": "astro preview",
     "worker:check": "wrangler deploy --dry-run --config worker/wrangler.jsonc",
     "worker:dev": "wrangler dev --config worker/wrangler.jsonc",

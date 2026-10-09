@@ -2,6 +2,19 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.13.0
+
+- Revision: 09/10/2026. Migracion y despliegue autorizados.
+- Cache PWA aislada por version; pruebas de actualizacion y fallback localizado.
+- Directorio escalable de rutas de software y productividad con datos.
+- Nuevo diseno de Inicio, Proyectos, Recursos, Sobre, Criterios y politicas.
+- Retiro del modulo Comunidad; redes y contacto permanecen en el footer.
+- Nueve proyectos con portadas panoramicas y heroes tecnologicos aprobados.
+- Ajustes de foco, contraste sobre fondos solidos y revelado en movil.
+- Refuerzo local del limite de contacto por IP, con nueve pruebas del Worker.
+- README y ejemplo de secretos actualizados. Accesibilidad manual y validacion
+  del despliegue siguen pendientes segun docs/migracion/12-auditoria-final.md.
+
 ## V4.12.0
 
 - Fecha de revisión: 01/09/2026
