@@ -17,7 +17,7 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 `V4.13.0`
 
 - Fecha de revisión: 09/10/2026
-- Estado: migracion aprobada para despliegue; verificar el resultado en GitHub Actions
+- Estado: publicada; GitHub Pages y contacto verificados el 09/10/2026
 - Sitio: https://chiletedevpath.com/
 
 La versión se obtiene de `package.json`, que actúa como fuente principal para el identificador mostrado por la web.

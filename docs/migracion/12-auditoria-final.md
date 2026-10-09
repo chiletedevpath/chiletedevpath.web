@@ -69,9 +69,19 @@ El ejemplo del Worker incorpora EMAILJS_PRIVATE_KEY, requerida por el codigo.
 7. Autorizar integracion y push al terminar. Validar el sitio publicado,
    contacto y actualizacion PWA despues del despliegue.
 
-La candidata local es 4.13.0; build de 26 paginas, cuatro pruebas de PWA
-y validacion de manifest/precache superados. La web publica sigue en 4.12.0
-sin Turnstile configurado. No se envio una prueba de correo desde esa web
-ni se ampliaron los origenes permitidos para sortear esa limitacion.
+## Cierre de publicacion: 09/10/2026
+
+Version 4.13.0 publicada desde 5551a0b. GitHub Actions 37961864068 termino
+correctamente: build, datos, tipos, modulos, Worker, PWA y GitHub Pages.
+La version se comprobo en el dominio oficial. El formulario de Recursos
+valido Turnstile automaticamente y confirmo el envio de la prueba ficticia
+"Prueba de publicacion 4.13.0". EmailJS registro Contact Us como OK y se
+comprobo el mensaje recibido en Gmail. No se ampliaron origenes permitidos.
+
+Los puntos anteriores describen pendientes previos a este cierre. La entrega
+y publicacion quedan verificadas; no se declara una prueba de teclado dentro
+de un desafio interactivo exitoso (la verificacion fue automatica), ni una
+prueba offline real del sitio publicado. La PWA tiene cuatro pruebas locales.
+La eliminacion local preexistente de la imagen antigua quedo fuera del commit.
 
 No se declara certificacion WCAG ni auditoria exhaustiva de seguridad.
