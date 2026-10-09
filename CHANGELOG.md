@@ -2,6 +2,19 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.13.1
+
+- Revision: 09/10/2026. Publicacion autorizada; comprobacion remota posterior registrada en el informe de cierre.
+
+- Dependencias actualizadas dentro de sus rangos, sin usar audit fix --force.
+- Contacto separado en un modulo comprobable, con margen de espera y mensaje
+  de entrega no confirmada cuando se interrumpe la conexion.
+- Worker distingue interrupciones de transporte de rechazos explicitos de EmailJS.
+- Pruebas de navegador para filtros, teclado, movil, tema y offline ES/EN.
+- Disponibilidad del contenido diferenciada del progreso del estudiante.
+- Procedimiento de revision de cuota gratuita documentado; no es un limite
+  global automatico.
+
 ## V4.13.0
 
 - Revision: 09/10/2026. Migracion y despliegue autorizados.

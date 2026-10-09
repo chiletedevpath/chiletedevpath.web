@@ -14,7 +14,7 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V4.13.0`
+`V4.13.1`
 
 - Fecha de revisión: 09/10/2026
 - Estado: publicada; GitHub Pages y contacto verificados el 09/10/2026
@@ -91,10 +91,11 @@ chiletedevpath-web/
 ## Validacion realizada
 
 - Build: 26 paginas estaticas. Datos, tipos, tamano de modulos y PWA comprobados.
-- Worker: nueve pruebas automatizadas correctas; no sustituyen la prueba del servicio externo.
+- Worker: once pruebas automatizadas; cliente de contacto: cinco. No sustituyen la prueba del servicio externo.
 - Heroes: ES/EN, ambos temas y 320/768/1440 px sin desbordamiento ni imagenes ausentes.
-- `npm audit --omit=dev`: sin vulnerabilidades reportadas; no es una auditoria completa de dependencias ni de seguridad.
-- Pendientes: movimiento reducido activado, recorrido dentro de Turnstile y contraste sobre imagenes/transparencias. No se declara conformidad WCAG completa.
+- `npm audit`: sin vulnerabilidades reportadas en la revision local de dependencias; no es una auditoria exhaustiva de seguridad.
+- Siete pruebas de navegador cubren filtros, teclado, tema, movil con movimiento reducido y offline ES/EN.
+- Movimiento reducido y contraste revisados segun el informe de cierre. Pendientes: instalacion en un dispositivo real y teclado dentro de un desafio interactivo exitoso de Turnstile. No se declara conformidad WCAG completa.
 
 ## Desarrollo y comprobaciones
 
@@ -107,8 +108,11 @@ npm run modules:check
 npm run data:check
 npm run data:typecheck
 npm run worker:test
+npm run contact:test
 npm run build
 npm run pwa:check
+npx playwright install chromium
+npm run ui:test
 ```
 
 `npm run preview` permite revisar el build. La rama de migracion no se publica
@@ -132,6 +136,26 @@ debe verificar el flujo con la compilacion que se publicara. El rate limiter
 local aplica tres intentos por minuto por IP, independientemente del correo.
 Usuarios de una red compartida comparten esa cuota. No es una cuota diaria
 global ni garantia de impedir todo abuso; Turnstile sigue siendo obligatorio.
+
+El cliente espera hasta 25 segundos para cubrir los tiempos del Worker y un
+margen de red. Si se pierde la conexion, muestra entrega no confirmada: no
+asegura que el mensaje haya fallado ni invita a reenviarlo inmediatamente.
+
+Las pruebas de navegador no envian correos y bloquean Turnstile. Comprueban
+filtros, teclado, tema persistente, movil con movimiento reducido y consulta
+offline en ES/EN. No sustituyen la prueba manual del widget ni la instalacion
+de la PWA en un dispositivo real.
+
+### Control de la cuota de correo
+
+Revisar el consumo en el panel de EmailJS durante el uso del formulario y
+despues de cambios de configuracion. Una respuesta automatica puede consumir
+otro envio ademas del mensaje principal. El limite por IP no controla el
+consumo mensual global. No se ha implementado un contador mensual distribuido.
+Si el consumo se aproxima a la cuota gratuita, desactivar temporalmente el
+servicio de contacto desde el proveedor y conservar el contacto por correo
+del footer; comprobar despues que el formulario informa el fallo sin exito
+falso. No contratar ampliaciones ni activar facturacion automaticamente.
 
 Los valores locales se toman de `.env` y `worker/.dev.vars`; ambos están excluidos de Git. Los archivos `.env.example` y `worker/.dev.vars.example` solo documentan nombres y no contienen credenciales reales.
 

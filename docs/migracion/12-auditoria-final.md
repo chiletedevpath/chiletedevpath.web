@@ -85,3 +85,28 @@ prueba offline real del sitio publicado. La PWA tiene cuatro pruebas locales.
 La eliminacion local preexistente de la imagen antigua quedo fuera del commit.
 
 No se declara certificacion WCAG ni auditoria exhaustiva de seguridad.
+
+## Entrega correctiva 4.13.1: 09/10/2026
+
+Este apartado prevalece sobre los pendientes historicos anteriores. El
+propietario aprobo commits, push, despliegue del Worker y prueba de correo.
+La eliminacion de editorial-sobre-marca.webp fue aprobada; no tiene referencias
+en el codigo vigente.
+
+- Once pruebas del Worker, cinco del cliente, cuatro de PWA y siete de
+  navegador: 27 pruebas correctas. Build de 26 paginas, tipos, datos y modulos
+  verificados; maximo 937 lineas en los 92 archivos de src comprobados.
+- Dependencias actualizadas dentro de sus rangos. npm informa cero avisos en
+  la revision local. No equivale a ausencia de toda vulnerabilidad posible.
+- Cliente con espera de 25 segundos. Worker devuelve DELIVERY_UNCONFIRMED
+  ante interrupcion de EmailJS; un rechazo explicito conserva DELIVERY_FAILED.
+- Worker desplegado: dc355ece-ea19-4bae-8176-3c4e5bcf7674. Se mantienen los
+  origenes, secretos y limite por IP existentes.
+- Offline ES/EN verificado en Chromium local, incluidos los fallbacks.
+- La publicacion y comprobacion remota de esta version se registran despues
+  del despliegue. No se dan por realizadas en este punto.
+
+Pendientes manuales: instalacion en el celular del propietario y teclado
+dentro de un desafio interactivo exitoso de Turnstile. La cuota mensual de
+EmailJS se supervisa manualmente; no existe un contador global automatico.
+La ampliacion de paginas educativas pertenece al siguiente hito.

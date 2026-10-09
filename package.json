@@ -1,6 +1,6 @@
 {
   "name": "chiletedevpath-web",
-  "version": "4.13.0",
+  "version": "4.13.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,6 +11,8 @@
     "data:typecheck": "tsc --noEmit --project tsconfig.data.json",
     "pwa:check": "node scripts/check-pwa.mjs",
     "pwa:test": "node --test scripts/test-pwa.mjs",
+    "contact:test": "node --test scripts/test-contact.mjs",
+    "ui:test": "playwright test",
     "preview": "astro preview",
     "worker:check": "wrangler deploy --dry-run --config worker/wrangler.jsonc",
     "worker:dev": "wrangler dev --config worker/wrangler.jsonc",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.3",
+    "@playwright/test": "^1.64.0",
     "astro": "^7.2.9",
     "typescript": "^7.0.2",
     "wrangler": "^4.127.1"

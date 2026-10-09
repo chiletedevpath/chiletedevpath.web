@@ -22,6 +22,8 @@ out/
 .env.local
 .dev.vars
 .wrangler/
+playwright-report/
+test-results/
 
 # Imagenes generadas en revision local
 public/assets/img/ChatGPT Image *.png

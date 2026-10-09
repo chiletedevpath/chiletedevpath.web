@@ -391,7 +391,7 @@ export const getRouteSummary = (lang = "es") => {
     phaseTitles: stages.map((stage) => stage.title),
     moduleIndicator: language === "en" ? `${availableCount} of ${moduleCount} modules available` : `${availableCount} de ${moduleCount} módulos disponibles`,
     contentIndicator: language === "en" ? `${publishedContentCount} published topic blocks` : `${publishedContentCount} bloques temáticos publicados`,
-    progressLabel: language === "en" ? "Overall progress" : "Avance general",
+    progressLabel: language === "en" ? "Content availability" : "Disponibilidad del contenido",
     progressValue: `${progress}%`,
     statusDetail,
   };
@@ -474,7 +474,7 @@ const getPathSummary = (path, lang) => {
     counts,
     moduleIndicator: language === "en" ? `${availableCount} of ${modules.length} modules available` : `${availableCount} de ${modules.length} módulos disponibles`,
     contentIndicator: `${contentCount} ${translate(path, language).evidenceLabel}`,
-    progressLabel: language === "en" ? "Path progress" : "Avance de la ruta",
+    progressLabel: language === "en" ? "Content availability" : "Disponibilidad del contenido",
     progressValue: `${progress}%`,
   };
 };

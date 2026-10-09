@@ -43,11 +43,17 @@ jobs:
           npm run data:check
           npm run data:typecheck
           npm run worker:test
+          npm run contact:test
 
       - name: Validate PWA and sitemap
         run: |
           npm run pwa:check
           npm run pwa:test
+
+      - name: Validate browser interactions and offline pages
+        run: |
+          npx playwright install --with-deps chromium
+          npm run ui:test
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
