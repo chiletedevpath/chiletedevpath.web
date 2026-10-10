@@ -30,9 +30,11 @@ http://127.0.0.1:4392/ruta/excel/; su disponibilidad debe comprobarse al retomar
 
 ## Siguiente paso
 
-La apertura offline de Excel en la app instalada del celular queda pendiente
-de confirmacion del propietario. La comprobacion previa de Rutas en 4.13.1
-no se extrapola a esta nueva pagina. Los libros externos requieren internet.
+El propietario confirmo el 10/10/2026 la apertura offline del recorrido de
+Excel en la app instalada del celular, con el titulo y los diez modulos
+visibles. Es una comprobacion manual informada por el propietario, no una
+prueba automatizada. Los libros externos requieren internet.
+El hito educativo de Excel queda cerrado; la ampliacion posterior es independiente.
 La inspeccion visual automatizada no se declara realizada; el propietario
 reviso y aprobo el avance. Mantener independiente la futura
 ampliacion de paginas por modulo y el progreso local opcional.
