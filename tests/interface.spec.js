@@ -16,7 +16,7 @@ for (const prefix of ["", "/en"]) {
       fill: getComputedStyle(icon).fill,
       color: getComputedStyle(icon.closest('a')).color,
     })));
-    expect(colors).toHaveLength(5);
+    expect(colors).toHaveLength(6);
     for (const { fill, color } of colors) {
       expect(fill).toBe(color);
       expect(fill).not.toBe('rgb(0, 0, 0)');

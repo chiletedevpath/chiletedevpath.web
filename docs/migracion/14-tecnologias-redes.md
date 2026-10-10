@@ -16,7 +16,9 @@
 - Once pruebas aprobadas; build de 28 paginas, tipos, modulos y PWA correctos.
 - Capturas locales revisadas: footer oscuro a 390 px y tecnologias a 1440 px.
 
-Para cierre: confirmar manualmente los perfiles bloqueados y, si se desea
-volver a mostrar Discord, proporcionar una invitacion vigente. La ampliacion
+Discord restaurado con https://discord.gg/sUPbk8hHs, proporcionado por el
+propietario y verificado mediante la API publica: servidor Chilete DevPath.
+
+Para cierre: confirmar manualmente los perfiles bloqueados. La ampliacion
 de paginas educativas y progreso personal sigue como hito independiente.
 No se declara una auditoria exhaustiva de seguridad ni certificacion WCAG.
