@@ -5,8 +5,8 @@ import "../styles/pages/criterios-editorial.css";
 const { policies, lang = "es" } = Astro.props;
 const en = lang === "en";
 const questions = en
-  ? [["Where does it come from?", "Recognize authorship, sources and collaboration."], ["Should it be public?", "Protect personal data and information belonging to others."], ["Can I stand behind it?", "Check what works and be honest about its limits."]]
-  : [["¿De dónde viene?", "Reconocer autoría, fuentes y colaboraciones."], ["¿Debe ser público?", "Proteger datos personales e información de terceros."], ["¿Puedo sostenerlo?", "Comprobar lo que funciona y explicar sus límites."]];
+  ? [["Where does it come from?", "I acknowledge authorship, sources and collaboration."], ["Should it be public?", "I protect personal data and information belonging to others."], ["Can I stand behind it?", "I check what works and explain its limits."]]
+  : [["¿De dónde viene?", "Reconozco la autoría, las fuentes y las colaboraciones."], ["¿Debe ser público?", "Protejo los datos personales y la información de terceros."], ["¿Puedo sostenerlo?", "Compruebo lo que funciona y explico sus límites."]];
 const checks = en
   ? [["Context", "Explain the problem or activity behind the work."], ["Authorship", "Distinguish original work from sources and external help."], ["Privacy", "Remove secrets, personal data and private files."], ["Verification", "Review behaviour, links and the claims being made."]]
   : [["Contexto", "Explicar el problema o la actividad que originó el material."], ["Autoría", "Distinguir trabajo propio, fuentes y ayuda externa."], ["Privacidad", "Retirar secretos, datos personales y archivos privados."], ["Verificación", "Revisar funcionamiento, enlaces y afirmaciones."]];

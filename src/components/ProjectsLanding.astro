@@ -21,7 +21,7 @@ const technologies = new Set(projects.flatMap(project => project.technologies));
     <aside class="projects-ledger" aria-label={en ? "Published evidence" : "Evidencia publicada"}>
       <span class="etiqueta">{en ? "FROM STUDY TO PRACTICE" : "DEL ESTUDIO A LA PRÁCTICA"}</span>
       <strong>{String(projects.length).padStart(2, "0")}</strong>
-      <p>{en ? "projects with source code" : "proyectos con código fuente"}</p>
+      <p>{en ? "projects with published material" : "proyectos con material publicado"}</p>
       <div><span>{technologies.size}</span> {en ? "technologies applied" : "tecnologías aplicadas"}</div>
       <small>{en ? "The evidence lives in Academia. Here I share its context." : "La evidencia está en Academia. Aquí comparto su contexto."}</small>
     </aside>
