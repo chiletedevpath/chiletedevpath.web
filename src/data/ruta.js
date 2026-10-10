@@ -266,7 +266,7 @@ export const excelLearningModules = [
     },
   },
   {
-    id: "excel-tablas-analisis", order: 8, phaseId: "excel-aplicacion", status: ROUTE_STATUS.AVAILABLE, contentCount: 1,
+    id: "excel-tablas-analisis", order: 8, phaseId: "excel-aplicacion", status: ROUTE_STATUS.AVAILABLE, contentCount: 2,
     technologies: ["Excel", "Tablas"], href: `${LEARNING_REPOSITORY}/tree/main/excel-y-productividad/08-tablas-y-analisis-operativo`,
     i18n: {
       es: { title: "Tablas y análisis operativo", description: "Control operativo de obra como práctica aplicada de análisis tabular." },
@@ -413,7 +413,7 @@ const learningPaths = [
   {
     id: "excel-productivity",
     order: 2,
-    href: "/ruta/#excel-productivity",
+    href: "/ruta/excel/",
     modules: excelLearningModules,
     phases: excelRoutePhases,
     i18n: {

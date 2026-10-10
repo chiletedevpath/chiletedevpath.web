@@ -2,6 +2,15 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.13.2
+
+- 10/10/2026: hito educativo aprobado; despliegue remoto pendiente de verificar.
+- Recorrido propio de Excel y productividad en ES/EN con objetivos, fases,
+  doce libros y criterios de avance, sin certificacion de progreso personal.
+- Conteo del modulo operativo corregido para incluir obra y vuelos.
+- Ambas paginas incorporadas a la precarga PWA; version de cache actualizada.
+- Validacion de conteos por ID y dos pruebas de navegador adicionales.
+
 ## V4.13.1
 
 - Revision: 09/10/2026. Publicacion autorizada; comprobacion remota posterior registrada en el informe de cierre.

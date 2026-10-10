@@ -5,6 +5,19 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const prefix of ["", "/en"]) {
+  test(`recorrido de Excel con evidencia y movil ${prefix || "es"}`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 740 });
+    await page.goto(`${prefix}/ruta/excel/`);
+    await expect(page.locator("h1")).toBeVisible();
+    await expect(page.locator('a[href$=".xlsx"]')).toHaveCount(12);
+    await expect(page.locator(".learning-block-title")).toHaveCount(10);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.locator('[data-theme-button]').click();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.goto(`${prefix}/ruta/`);
+    await expect(page.locator(`a[href="${prefix}/ruta/excel/"]`)).toBeVisible();
+  });
+
   test(`maestro-detalle, teclado y filtros ${prefix || "es"}`, async ({ page }) => {
     await page.goto(`${prefix}/proyectos/`);
     const tabs = page.locator('[data-project-option]');

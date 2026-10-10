@@ -4,7 +4,8 @@ import {
   homeFeaturedProjectIds,
   homeProjectStageIds,
 } from "../src/data/proyectos.js";
-import { getTechnologyRoutes } from "../src/data/ruta.js";
+import { getTechnologyRoutes, getLearningPaths } from "../src/data/ruta.js";
+import { excelPractices } from "../src/data/excel-practices.js";
 
 const errors = [];
 
@@ -17,6 +18,14 @@ const uniqueIds = (items, label) => {
   register(new Set(ids).size === ids.length, `${label} contiene IDs duplicados.`);
   return new Set(ids);
 };
+
+const excel = getLearningPaths("es").find(path => path.id === "excel-productivity");
+for (const module of excel.modules) {
+  const files = excelPractices[module.id] ?? [];
+  register(files.length === module.contentCount, `Conteo de libros incorrecto: ${module.id}.`);
+  register(new Set(files).size === files.length, `Libros repetidos: ${module.id}.`);
+}
+register(Object.keys(excelPractices).every(id => excel.modules.some(module => module.id === id)), "Prácticas Excel sin módulo asociado.");
 
 const spanishIds = uniqueIds(academicProjects, "academicProjects");
 const englishIds = uniqueIds(academicProjectsEn, "academicProjectsEn");

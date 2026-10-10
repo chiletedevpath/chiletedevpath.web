@@ -14,7 +14,7 @@ La web funciona como punto de entrada mas claro que un repositorio para personas
 
 ## Version actual
 
-`V4.13.1`
+`V4.13.2`
 
 - Fecha de revisión: 09/10/2026
 - Estado: publicada; GitHub Pages y contacto verificados el 09/10/2026
@@ -90,11 +90,11 @@ chiletedevpath-web/
 
 ## Validacion realizada
 
-- Build: 26 paginas estaticas. Datos, tipos, tamano de modulos y PWA comprobados.
+- Build educativo local: 28 paginas estaticas. Excel incorpora diez modulos y doce libros, con paginas ES/EN; publicacion remota por verificar.
 - Worker: once pruebas automatizadas; cliente de contacto: cinco. No sustituyen la prueba del servicio externo.
 - Heroes: ES/EN, ambos temas y 320/768/1440 px sin desbordamiento ni imagenes ausentes.
 - `npm audit`: sin vulnerabilidades reportadas en la revision local de dependencias; no es una auditoria exhaustiva de seguridad.
-- Siete pruebas de navegador cubren filtros, teclado, tema, movil con movimiento reducido y offline ES/EN.
+- Nueve pruebas de navegador cubren Excel, filtros, teclado, tema, movil con movimiento reducido y offline ES/EN.
 - Movimiento reducido y contraste revisados segun el informe de cierre. Pendientes: instalacion en un dispositivo real y teclado dentro de un desafio interactivo exitoso de Turnstile. No se declara conformidad WCAG completa.
 
 ## Desarrollo y comprobaciones

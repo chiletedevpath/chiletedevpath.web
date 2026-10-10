@@ -1,0 +1,68 @@
+---
+import { getLearningPaths } from "../data/ruta.js";
+import { excelPractices, getExcelPracticeUrl } from "../data/excel-practices.js";
+import "../styles/pages/aprendizaje-detalle.css";
+const { lang = "es" } = Astro.props;
+const en = lang === "en";
+const prefix = en ? "/en" : "";
+const path = getLearningPaths(lang).find(item => item.id === "excel-productivity");
+const label = (es, english) => en ? english : es;
+const source = "https://github.com/chiletedevpath/aprendizaje/tree/main/excel-y-productividad";
+---
+<nav class="contenedor learning-breadcrumb" aria-label={label("Ubicación", "Breadcrumb")}>
+  <a href={`${prefix}/ruta/`}>{label("Rutas", "Paths")}</a><span aria-hidden="true">/</span><span aria-current="page">{path.title}</span>
+</nav>
+<header class="learning-heading contenedor">
+  <p class="etiqueta">{label("RUTA / EXCEL Y PRODUCTIVIDAD", "PATH / EXCEL AND PRODUCTIVITY")}</p>
+  <h1>{path.title}</h1>
+  <p class="learning-lead">{label("Organizar datos, explicar un cálculo y construir un reporte que puedas comprobar.", "Organize data, explain a calculation and build a report you can verify.")}</p>
+  <div class="learning-facts"><span>{path.summary.moduleIndicator}</span><span>{path.summary.contentIndicator}</span></div>
+  <a class="boton boton-principal" href="#contenido-modulo">{label("Explorar las prácticas", "Explore the practice workbooks")} ↓</a>
+</header>
+<div class="contenedor learning-layout">
+  <aside class="learning-index"><nav aria-label={label("En esta página", "On this page")}>
+    <span>{label("EN ESTA PÁGINA", "ON THIS PAGE")}</span>
+    <a href="#objetivo">{label("Propósito y requisitos", "Purpose and prerequisites")}</a>
+    <a href="#contenido-modulo">{label("Recorrido y libros", "Sequence and workbooks")}</a>
+    <a href="#practica">{label("Práctica y evidencia", "Practice and evidence")}</a>
+  </nav></aside>
+  <div class="learning-content">
+    <section id="objetivo">
+      <p class="etiqueta">01 / {label("ORIENTACIÓN", "ORIENTATION")}</p>
+      <h2>{label("De registros a decisiones explicables", "From records to explainable decisions")}</h2>
+      <p>{label("Puedes comenzar sin programación y estudiar esta ruta en paralelo a Software. Necesitas Excel para abrir y revisar los libros; las prácticas operativas no dependen de macros.", "No programming knowledge is required; you can study this path alongside Software. You need Excel to open and review the workbooks; operational exercises do not depend on macros.")}</p>
+      <ul>
+        <li>{label("Distinguir entradas, fórmulas y resultados.", "Distinguish inputs, formulas and results.")}</li>
+        <li>{label("Comprobar referencias, criterios y cambios en los datos.", "Check references, criteria and changes in the data.")}</li>
+        <li>{label("Comunicar resultados sin perder su origen.", "Communicate results without losing their source.")}</li>
+      </ul>
+    </section>
+    <section id="contenido-modulo">
+      <p class="etiqueta">02 / {label("RECORRIDO", "SEQUENCE")}</p>
+      <h2>{label("Primero una habilidad; después, un sistema", "First a skill, then a system")}</h2>
+      <div class="learning-phases">{path.stages.map(stage => <section>
+        <h3>{stage.number} · {stage.title}</h3><p>{stage.intent}</p>
+        <ol class="learning-blocks">{stage.modules.map(module => <li>
+          <div class="learning-block-title"><span>{module.number}</span><h3>{module.title}</h3></div>
+          <p>{module.description}</p>
+          <div class="learning-practice-links">{excelPractices[module.id].map(file => <a href={getExcelPracticeUrl(module, file)} target="_blank" rel="noopener noreferrer">{file} ↗</a>)}</div>
+        </li>)}</ol>
+      </section>)}</div>
+      <p class="learning-note">{label("Los libros y las instrucciones están en español y usan datos ficticios. Son prácticas de aprendizaje, no archivos de clientes.", "Workbooks and instructions are in Spanish and use fictional data. They are learning exercises, not client files.")}</p>
+    </section>
+    <section id="practica">
+      <p class="etiqueta">03 / {label("EVIDENCIA", "EVIDENCE")}</p>
+      <h2>{label("Comprueba el resultado, no solo el formato", "Check the result, not just the formatting")}</h2>
+      <ol>
+        <li>{label("En 00–07, comienza en Practica resuelta; en 08–09, comienza en Resumen y rastrea los cálculos.", "In 00–07, begin with Practica resuelta; in 08–09, begin with Resumen and trace the calculations.")}</li>
+        <li>{label("Cambia valores ficticios y anticipa qué resultados deberían actualizarse.", "Change fictional values and predict which results should update.")}</li>
+        <li>{label("Resuelve la hoja Reto y revisa sus instrucciones antes de editar las celdas señaladas.", "Complete the Reto sheet and read its instructions before editing marked cells.")}</li>
+        <li>{label("Conserva tu copia y explica una fórmula, un error corregido y el efecto de cambiar una entrada.", "Keep your copy and explain a formula, a corrected error and the effect of changing an input.")}</li>
+      </ol>
+      <h3>{label("Antes de continuar", "Before moving on")}</h3>
+      <p>{label("Avanza cuando puedas justificar las referencias, distinguir un dato de un cálculo y comprobar los resultados sin depender de una plantilla. La disponibilidad de los libros no certifica tu dominio.", "Move on when you can justify references, distinguish data from calculations and verify results without relying on a template. Workbook availability does not certify mastery.")}</p>
+      <a href={`${prefix}/proyectos/${en ? "#project-explorer" : "#explorador-proyectos"}`}>{label("Consultar proyectos aplicados", "Explore applied projects")} →</a>
+    </section>
+    <footer class="learning-source"><a href={source} target="_blank" rel="noopener noreferrer">{label("Consultar la fuente en Aprendizaje", "Read the source in Aprendizaje")} ↗</a></footer>
+  </div>
+</div>

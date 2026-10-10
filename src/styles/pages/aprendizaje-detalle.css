@@ -21,6 +21,7 @@
 .learning-block-title h3 { margin: 0 0 16px; }
 .learning-practice-links,.learning-resources { display: grid; gap: 12px; }
 .learning-practice-links { padding-left: 51px; }
+.learning-practice-links a { overflow-wrap: anywhere; }
 .learning-phases > section { margin-top: 30px; }
 .learning-phases li a { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-top: 1px solid var(--borde); }
 .learning-phases small { color: var(--texto-secundario); }
