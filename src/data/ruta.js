@@ -312,8 +312,8 @@ const excelRoutePhases = [
     id: "excel-aplicacion", moduleIds: ["excel-tablas-analisis", "excel-modelos-financieros"],
     technologies: { es: ["Tablas", "Modelos"], en: ["Tables", "Models"] },
     i18n: {
-      es: { title: "Aplicación", intent: "Llevar los fundamentos a casos completos", result: "Dos libros aplicados para una operación y unas finanzas personales.", action: "Abrir análisis operativo" },
-      en: { title: "Application", intent: "Bring fundamentals into complete cases", result: "Two applied workbooks for operations and personal finance.", action: "Open operational analysis" },
+      es: { title: "Aplicación", intent: "Llevar los fundamentos a casos completos", result: "Controles de obra y vuelos, y un modelo de finanzas personales.", action: "Abrir análisis operativo" },
+      en: { title: "Application", intent: "Bring fundamentals into complete cases", result: "Construction and flight operations controls, and a personal finance model.", action: "Open operational analysis" },
     },
   },
 ];
