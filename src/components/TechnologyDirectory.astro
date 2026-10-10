@@ -2,6 +2,11 @@
 import TechIcon from "./TechIcon.astro";
 
 const { lang = "es", technologies = [] } = Astro.props;
+const groups = [
+  { es: "Lenguajes", en: "Languages", names: ["Java", "Scala", "JavaScript", "TypeScript", "PHP"] },
+  { es: "Web e interfaces", en: "Web and interfaces", names: ["HTML", "CSS", "Bootstrap", "Astro"] },
+  { es: "Backend y datos", en: "Backend and data", names: ["Spring Boot", "PostgreSQL", "MongoDB"] },
+];
 const copy = lang === "en"
   ? {
       eyebrow: "TOOLS WITH A PURPOSE",
@@ -24,8 +29,11 @@ const copy = lang === "en"
       <h2 id="route-tools-title">{copy.title}</h2>
       <p>{copy.description}</p>
     </header>
-    <div class="route-tool-list">
-      {technologies.map((technology, index) => (
+    <div class="route-tool-groups">
+      {groups.map((group, groupIndex) => <details open={groupIndex === 0}>
+      <summary>{lang === "en" ? group.en : group.es} <span>{technologies.filter(technology => group.names.includes(technology.name)).length}</span></summary>
+      <div class="route-tool-list">
+      {technologies.filter(technology => group.names.includes(technology.name)).map((technology, index) => (
         <a href={technology.href} target="_blank" rel="noopener noreferrer" aria-label={`${copy.open}: ${technology.name}`}>
           <span class="route-tool-index">{String(index + 1).padStart(2, "0")}</span>
           <TechIcon name={technology.name} />
@@ -33,6 +41,7 @@ const copy = lang === "en"
           <span class="route-tool-arrow" aria-hidden="true">↗</span>
         </a>
       ))}
+      </div></details>)}
     </div>
   </div>
 </section>

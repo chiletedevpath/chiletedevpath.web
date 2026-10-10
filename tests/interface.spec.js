@@ -5,6 +5,24 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const prefix of ["", "/en"]) {
+  test(`tecnologias agrupadas y redes legibles ${prefix || "es"}`, async ({ page }) => {
+    await page.goto(`${prefix}/ruta/`);
+    await expect(page.locator('.route-tool-groups details')).toHaveCount(3);
+    await expect(page.locator('.route-tool-list a')).toHaveCount(12);
+    await page.locator('.route-tool-groups summary').nth(1).click();
+    await expect(page.locator('.route-tool-groups details').nth(1)).toHaveAttribute('open', '');
+    await page.locator('[data-theme-button]').click();
+    const colors = await page.locator('.pie-redes svg').evaluateAll(icons => icons.map(icon => ({
+      fill: getComputedStyle(icon).fill,
+      color: getComputedStyle(icon.closest('a')).color,
+    })));
+    expect(colors).toHaveLength(5);
+    for (const { fill, color } of colors) {
+      expect(fill).toBe(color);
+      expect(fill).not.toBe('rgb(0, 0, 0)');
+    }
+  });
+
   test(`recorrido de Excel con evidencia y movil ${prefix || "es"}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 740 });
     await page.goto(`${prefix}/ruta/excel/`);

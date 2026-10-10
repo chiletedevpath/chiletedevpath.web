@@ -2,6 +2,17 @@
 
 Registro de versiones publicadas de la web oficial de Chilete DevPath.
 
+## V4.13.3
+
+- 10/10/2026: iconos sociales heredan el color claro del footer.
+- Tecnologias agrupadas en lenguajes, web e interfaces, backend y datos;
+  secciones desplegables y doce herramientas con material relacionado.
+- Scala, TypeScript, Bootstrap y MongoDB incorporados al directorio.
+- Invitacion Discord retirada tras respuesta Unknown Invite del proveedor.
+- Facebook usa el dominio www; destinos de otras redes conservados sin
+  afirmar verificacion de perfiles cuando el proveedor bloquea la consulta.
+- npm outdated sin pendientes y npm audit con cero avisos.
+
 ## V4.13.2
 
 - 10/10/2026: hito educativo aprobado; despliegue remoto pendiente de verificar.

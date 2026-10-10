@@ -1,4 +1,5 @@
 ---
+import { siGithub, siInstagram, siTiktok, siFacebook, siDiscord } from "simple-icons";
 const { name } = Astro.props;
 
 const icons = {
@@ -29,8 +30,9 @@ const icons = {
 };
 
 const icon = icons[name] ?? icons.GitHub;
+const brandIcon = { GitHub: siGithub, Instagram: siInstagram, TikTok: siTiktok, Facebook: siFacebook, Discord: siDiscord }[name];
 ---
 
-<svg class="icono-red" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-  <path d={icon.path}></path>
+<svg class="icono-red" viewBox={brandIcon ? "0 0 24 24" : "0 0 20 20"} aria-hidden="true" focusable="false">
+  <path d={brandIcon?.path ?? icon.path}></path>
 </svg>

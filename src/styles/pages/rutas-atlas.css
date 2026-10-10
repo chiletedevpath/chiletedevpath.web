@@ -104,6 +104,10 @@
 .route-hero-shell { padding-top: 88px; }
 .route-tool-list .tech-icono { display: grid; place-items: center; border: 1px solid var(--borde); border-radius: 6px; background: var(--fondo-tarjeta); }
 .route-tool-list .tech-icono svg, .route-tool-list .tech-icono img { width: 25px; height: 25px; fill: var(--tech-brand); object-fit: contain; }
+.route-tool-groups { display: grid; gap: 28px; min-width: 0; }
+.route-tool-groups summary { cursor: pointer; padding: 18px 0; font-size: 1.1rem; font-weight: 700; border-top: 1px solid var(--borde); }
+.route-tool-groups summary span { float: right; font-family: var(--fuente-mono); color: var(--texto-secundario); }
+.route-tool-copy { min-width: 0; overflow-wrap: anywhere; }
 .route-phase .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (max-width: 1080px) {
   .route-phase-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }

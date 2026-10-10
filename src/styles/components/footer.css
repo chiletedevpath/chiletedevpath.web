@@ -95,6 +95,7 @@
 .pie-redes .icono-red {
   width: 20px;
   height: 20px;
+  fill: currentColor;
 }
 
 .version-marca {
