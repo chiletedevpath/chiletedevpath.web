@@ -1,0 +1,59 @@
+---
+import "../styles/components/practice-pilot.css";
+const en = Astro.props.lang === "en";
+const t = (es, english) => en ? english : es;
+const source = "https://github.com/chiletedevpath/aprendizaje/tree/main/";
+---
+<section class="seccion practice-pilot" id="practicas" data-practice-pilot data-lang={en ? "en" : "es"}>
+  <div class="contenedor">
+    <span class="etiqueta">{t("LABORATORIO / PILOTO", "LAB / PILOT")}</span>
+    <h2>{t("Cambia una entrada. Comprueba el resultado.", "Change an input. Check the result.")}</h2>
+    <p>{t("Predice qué ocurrirá antes de ejecutar. Después, explica por qué cambió el resultado.", "Predict what will happen before running. Then explain why the result changed.")}</p>
+    <noscript>{t("Activa JavaScript para usar estas prácticas. También puedes consultar los archivos originales.", "Enable JavaScript to use these exercises. You can also read the original files.")}</noscript>
+    <article class="practice-block">
+      <h3>01 / CSS Grid</h3>
+      <p>{t("Reto: muestra seis elementos en tres columnas con una separación de 16 px.", "Challenge: show six items in three columns with a 16 px gap.")}</p>
+      <form data-grid-form>
+        <label>{t("Columnas", "Columns")}<select name="columns"><option>1</option><option selected>2</option><option>3</option></select></label>
+        <label>{t("Separación (px)", "Gap (px)")}<input name="gap" type="number" min="0" max="32" value="8" required /></label>
+        <button class="boton boton-principal" type="submit">{t("Ejecutar", "Run")}</button>
+        <button class="boton" type="reset">{t("Restablecer", "Reset")}</button>
+      </form>
+      <pre data-grid-code>grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;</pre>
+      <div class="practice-grid" data-grid-output>{["HTML", "CSS", "JavaScript", "DOM", "Grid", "Web"].map(item => <span>{item}</span>)}</div>
+      <p data-grid-status role="status"></p>
+      <a href={source + "07-desarrollo-web/06-flexbox-grid-y-responsive/ejemplos/grid-responsive.html"} target="_blank" rel="noopener noreferrer">{t("Consultar el ejemplo original", "Read the original example")} ↗</a>
+    </article>
+    <article class="practice-block">
+      <h3>02 / JavaScript · DOM</h3>
+      <p>{t("Reto: añade tres temas distintos. Una entrada vacía no debe crear un elemento.", "Challenge: add three different topics. An empty input must not create an item.")}</p>
+      <pre>const item = document.createElement('li');
+item.textContent = tema;
+lista.append(item);</pre>
+      <form data-dom-form>
+        <label>{t("Tema", "Topic")}<input name="topic" maxlength="60" autocomplete="off" /></label>
+        <button class="boton boton-principal" type="submit">{t("Añadir", "Add")}</button>
+        <button class="boton" type="reset">{t("Restablecer", "Reset")}</button>
+      </form>
+      <ul data-dom-output></ul><p data-dom-status role="status"></p>
+      <a href={source + "07-desarrollo-web/09-dom-eventos-y-formularios/ejemplos"} target="_blank" rel="noopener noreferrer">{t("Consultar HTML y JavaScript", "Read HTML and JavaScript")} ↗</a>
+    </article>
+    <article class="practice-block">
+      <h3>03 / {t("Fórmulas", "Formulas")}</h3>
+      <p>{t("Demostración de referencias y porcentajes, no un editor de Excel. Reto: 4 unidades a 25 con 10 % de descuento deben dar 90.", "A demonstration of references and percentages, not an Excel editor. Challenge: 4 units at 25 with a 10% discount must total 90.")}</p>
+      <form data-formula-form>
+        <label>A2 · {t("Cantidad", "Quantity")}<input name="quantity" type="number" min="1" max="1000" step="1" value="2" required /></label>
+        <label>B2 · {t("Precio", "Price")}<input name="price" type="number" min="0" max="100000" step="0.01" value="25" required /></label>
+        <label>C2 · {t("Descuento (%)", "Discount (%)")}<input name="discount" type="number" min="0" max="100" step="0.01" value="0" required /></label>
+        <button class="boton boton-principal" type="submit">{t("Calcular", "Calculate")}</button>
+        <button class="boton" type="reset">{t("Restablecer", "Reset")}</button>
+      </form>
+      <pre>D2 = A2 * B2 * (1 - C2 / 100)</pre>
+      <p>D2 · <output data-formula-output>50.00</output></p><p data-formula-status role="status"></p>
+      <a href={source + "excel-y-productividad/02-formulas-operadores-y-referencias"} target="_blank" rel="noopener noreferrer">{t("Abrir la práctica en Excel", "Open the Excel practice")} ↗</a>
+    </article>
+  </div>
+</section>
+<script>
+  import "../scripts/practice-pilot.js";
+</script>

@@ -1,6 +1,7 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ResourceLibrary from "../../components/ResourceLibrary.astro";
+import PracticePilot from "../../components/PracticePilot.astro";
 import ContactSecurityFields from "../../components/ContactSecurityFields.astro";
 import { resourcesEn } from "../../data/recursos.js";
 import { contactConfig } from "../../data/contact.js";
@@ -8,6 +9,7 @@ import { contactConfig } from "../../data/contact.js";
 
 <BaseLayout title="Resources | Chilete DevPath" hasContactForm>
   <ResourceLibrary resources={resourcesEn} lang="en" />
+  <PracticePilot lang="en" />
 
   <section class="seccion resources-suggestion">
     <div class="contenedor contacto-grid">

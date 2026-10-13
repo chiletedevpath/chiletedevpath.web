@@ -4,8 +4,8 @@ import HeroBackdrop from "./HeroBackdrop.astro";
 const { resources, lang = "es" } = Astro.props;
 const en = lang === "en";
 const labels = en
-  ? { todos: "All", ejercicios: "Exercises", retos: "Challenges", glosario: "Glossary", guias: "Guides", java: "Java", web: "Web", sql: "SQL" }
-  : { todos: "Todos", ejercicios: "Ejercicios", retos: "Retos", glosario: "Glosario", guias: "Guías", java: "Java", web: "Web", sql: "SQL" };
+  ? { todos: "All", ejercicios: "Exercises", retos: "Challenges", glosario: "Glossary", guias: "Guides", logica: "Logic", java: "Java", web: "Web", sql: "SQL" }
+  : { todos: "Todos", ejercicios: "Ejercicios", retos: "Retos", glosario: "Glosario", guias: "Guías", logica: "Lógica", java: "Java", web: "Web", sql: "SQL" };
 const categoryId = category => ({ exercises: "ejercicios", challenges: "retos", glossary: "glosario", guides: "guias" }[category] ?? category);
 const available = new Set(resources.flatMap(resource => [categoryId(resource.category), ...(resource.tags ?? [])]));
 const filters = ["todos", ...Object.keys(labels).filter(key => key !== "todos" && available.has(key))];
