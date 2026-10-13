@@ -28,20 +28,20 @@ export const projectAreas = [
     action: "Ver evidencias",
   },
   {
-    status: "Selección futura",
-    title: "Portafolio en construcción",
+    status: "Selección profesional",
+    title: "Portafolio de Adrián Pisco",
     visual: "Portafolio",
     imageSrc: "/assets/img/projects/portafolio-cover.webp",
-    imageAlt: "Selección profesional futura de proyectos de software.",
+    imageAlt: "Proyectos personales de desarrollo de software de Adrián Pisco.",
     description:
-      "Espacio en preparación para seleccionar proyectos que demuestren valor profesional real.",
+      "ChiSabes, REMINEXA y Chilete DevPath Web: proyectos personales, decisiones técnicas y trayectoria profesional.",
     details: [
-      "Proyectos seleccionados con criterio",
-      "Mejoras antes de publicar",
-      "Evidencia profesional futura",
+      "Casos con arquitectura y alcance",
+      "CV público descargable",
+      "Contacto profesional",
     ],
-    href: "https://github.com/chiletedevpath/portafolio",
-    action: "Ver avance",
+    href: "https://portafolio.chiletedevpath.com/",
+    action: "Explorar portafolio",
   },
 ];
 
@@ -364,16 +364,16 @@ export const projectAreasEn = [
     action: "View evidence",
   },
   {
-    status: "Future selection",
-    title: "Portfolio in progress",
+    status: "Professional selection",
+    title: "Adrián Pisco’s portfolio",
     visual: "Portfolio",
     imageSrc: "/assets/img/projects/portafolio-cover.webp",
-    imageAlt: "Future professional selection of software projects.",
+    imageAlt: "Personal software development projects by Adrián Pisco.",
     description:
-      "Space prepared to select projects that demonstrate real professional value.",
-    details: ["Curated projects", "Improvements before publishing", "Future professional evidence"],
-    href: "https://github.com/chiletedevpath/portafolio",
-    action: "View progress",
+      "ChiSabes, REMINEXA and Chilete DevPath Web: personal projects, technical decisions and professional background.",
+    details: ["Architecture and scope", "Downloadable public CV", "Professional contact"],
+    href: "https://portafolio.chiletedevpath.com/en/",
+    action: "Explore portfolio",
   },
 ];
 

@@ -49,6 +49,7 @@ export const navItems = [
 ];
 
 export const navMoreItems = [
+  { label: "Portafolio", href: "https://portafolio.chiletedevpath.com/" },
   { label: "Sobre", href: "/sobre/" },
   { label: "Criterios", href: "/criterios/" },
 ];
@@ -61,6 +62,7 @@ export const navItemsEn = [
 ];
 
 export const navMoreItemsEn = [
+  { label: "Portfolio", href: "https://portafolio.chiletedevpath.com/en/" },
   { label: "About", href: "/en/sobre/" },
   { label: "Criteria", href: "/en/criterios/" },
 ];

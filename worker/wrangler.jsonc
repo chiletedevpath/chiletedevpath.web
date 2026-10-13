@@ -10,8 +10,8 @@
     "head_sampling_rate": 1
   },
   "vars": {
-    "ALLOWED_ORIGINS": "https://chiletedevpath.com",
-    "TURNSTILE_HOSTNAMES": "chiletedevpath.com",
+    "ALLOWED_ORIGINS": "https://chiletedevpath.com,https://portafolio.chiletedevpath.com",
+    "TURNSTILE_HOSTNAMES": "chiletedevpath.com,portafolio.chiletedevpath.com",
     "EMAILJS_SERVICE_ID": "service_qtj5rkm",
     "EMAILJS_TEMPLATE_ID": "template_qfaomfd",
     "EMAILJS_PUBLIC_KEY": "lVqMAbSHdWZlz4mUl"
