@@ -3,10 +3,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PolicyDocument from "../../components/PolicyDocument.astro";
 import { policies } from "../../data/recursos.js";
 export function getStaticPaths() {
-  return policies.map(policy => ({ params: { slug: policy.slug }, props: { policy } }));
+  return policies.map((policy) => ({ params: { slug: policy.slug }, props: { policy } }));
 }
 const { policy } = Astro.props;
 ---
+
 <BaseLayout title={`${policy.title} | Chilete DevPath`} description={policy.objective}>
   <PolicyDocument policy={policy} lang="es" />
 </BaseLayout>

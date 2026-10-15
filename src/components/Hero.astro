@@ -4,10 +4,14 @@ import { getTechnologyRoutes } from "../data/ruta.js";
 const lang = Astro.props.lang === "en" ? "en" : "es";
 const defaultRoutes = getTechnologyRoutes(lang);
 const {
-  eyebrow = lang === "en" ? "From Chilete, Cajamarca · technology learning" : "Desde Chilete, Cajamarca · aprendizaje tecnológico",
+  eyebrow = lang === "en"
+    ? "From Chilete, Cajamarca · technology learning"
+    : "Desde Chilete, Cajamarca · aprendizaje tecnológico",
   titlePrimary = lang === "en" ? "Learning technology" : "Aprender tecnología",
   titleAccent = lang === "en" ? "also means learning to decide" : "también es aprender a decidir",
-  description = lang === "en" ? "A space to study with order, practice with intention and turn learning into work that can be explained." : "Un espacio para estudiar con orden, practicar con intención y convertir lo aprendido en trabajo que pueda explicarse.",
+  description = lang === "en"
+    ? "A space to study with order, practice with intention and turn learning into work that can be explained."
+    : "Un espacio para estudiar con orden, practicar con intención y convertir lo aprendido en trabajo que pueda explicarse.",
   primaryHref = "#rutas",
   primaryLabel = lang === "en" ? "Explore paths" : "Explorar las rutas",
   secondaryHref = "/proyectos/",
@@ -22,14 +26,33 @@ const {
   <div class="contenedor home-hero-shell">
     <div class="home-hero-copy">
       <p class="etiqueta">{eyebrow}</p>
-      <h1><span>{titlePrimary}</span><span>{titleAccent}</span></h1>
+      <h1>
+        <span>{titlePrimary}</span>
+        <span>{titleAccent}</span>
+      </h1>
       <p class="hero-descripcion">{description}</p>
       <div class="acciones">
-        <a class="boton boton-principal" href={primaryHref}>{primaryLabel}<span aria-hidden="true">→</span></a>
-        <a class="boton boton-secundario" href={secondaryHref}>{secondaryLabel}<span aria-hidden="true">↘</span></a>
+        <a class="boton boton-principal" href={primaryHref}>
+          {primaryLabel}
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="boton boton-secundario" href={secondaryHref}>
+          {secondaryLabel}
+          <span aria-hidden="true">↘</span>
+        </a>
       </div>
     </div>
 
-    <div class="home-hero-signature"><span>CHILETE / CAJAMARCA / PERÚ</span><p>{lang === "en" ? "A place to start. More than one way forward." : "Un lugar para empezar. Más de una forma de avanzar."}</p><a href={primaryHref}>{lang === "en" ? "Find your path" : "Encuentra tu camino"} <span aria-hidden="true">↓</span></a></div>
+    <div class="home-hero-signature">
+      <span>CHILETE / CAJAMARCA / PERÚ</span>
+      <p>
+        {lang === "en"
+          ? "A place to start. More than one way forward."
+          : "Un lugar para empezar. Más de una forma de avanzar."}
+      </p>
+      <a href={primaryHref}>
+        {lang === "en" ? "Find your path" : "Encuentra tu camino"} <span aria-hidden="true">↓</span>
+      </a>
+    </div>
   </div>
 </section>

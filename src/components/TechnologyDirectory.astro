@@ -4,22 +4,32 @@ import TechIcon from "./TechIcon.astro";
 const { lang = "es", technologies = [] } = Astro.props;
 const groups = [
   { es: "Lenguajes", en: "Languages", names: ["Java", "Scala", "JavaScript", "TypeScript", "PHP"] },
-  { es: "Web e interfaces", en: "Web and interfaces", names: ["HTML", "CSS", "Bootstrap", "Astro"] },
-  { es: "Backend y datos", en: "Backend and data", names: ["Spring Boot", "PostgreSQL", "MongoDB"] },
+  {
+    es: "Web e interfaces",
+    en: "Web and interfaces",
+    names: ["HTML", "CSS", "Bootstrap", "Astro"],
+  },
+  {
+    es: "Backend y datos",
+    en: "Backend and data",
+    names: ["Spring Boot", "PostgreSQL", "MongoDB"],
+  },
 ];
-const copy = lang === "en"
-  ? {
-      eyebrow: "TOOLS WITH A PURPOSE",
-      title: "Tools for putting learning into practice",
-      description: "Languages and tools used in the published exercises and projects.",
-      open: "Open related practice",
-    }
-  : {
-      eyebrow: "HERRAMIENTAS CON PROPÓSITO",
-      title: "Herramientas para llevarlo a la práctica",
-      description: "Lenguajes y herramientas utilizados en los ejercicios y proyectos publicados.",
-      open: "Abrir práctica relacionada",
-    };
+const copy =
+  lang === "en"
+    ? {
+        eyebrow: "TOOLS WITH A PURPOSE",
+        title: "Tools for putting learning into practice",
+        description: "Languages and tools used in the published exercises and projects.",
+        open: "Open related practice",
+      }
+    : {
+        eyebrow: "HERRAMIENTAS CON PROPÓSITO",
+        title: "Herramientas para llevarlo a la práctica",
+        description:
+          "Lenguajes y herramientas utilizados en los ejercicios y proyectos publicados.",
+        open: "Abrir práctica relacionada",
+      };
 ---
 
 <section class="route-tools" aria-labelledby="route-tools-title">
@@ -30,18 +40,38 @@ const copy = lang === "en"
       <p>{copy.description}</p>
     </header>
     <div class="route-tool-groups">
-      {groups.map((group, groupIndex) => <details open={groupIndex === 0}>
-      <summary>{lang === "en" ? group.en : group.es} <span>{technologies.filter(technology => group.names.includes(technology.name)).length}</span></summary>
-      <div class="route-tool-list">
-      {technologies.filter(technology => group.names.includes(technology.name)).map((technology, index) => (
-        <a href={technology.href} target="_blank" rel="noopener noreferrer" aria-label={`${copy.open}: ${technology.name}`}>
-          <span class="route-tool-index">{String(index + 1).padStart(2, "0")}</span>
-          <TechIcon name={technology.name} />
-          <span class="route-tool-copy"><small>{technology.category}</small><strong>{technology.name}</strong></span>
-          <span class="route-tool-arrow" aria-hidden="true">↗</span>
-        </a>
+      {groups.map((group, groupIndex) => (
+        <details open={groupIndex === 0}>
+          <summary>
+            {lang === "en" ? group.en : group.es}{" "}
+            <span>
+              {technologies.filter((technology) => group.names.includes(technology.name)).length}
+            </span>
+          </summary>
+          <div class="route-tool-list">
+            {technologies
+              .filter((technology) => group.names.includes(technology.name))
+              .map((technology, index) => (
+                <a
+                  href={technology.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${copy.open}: ${technology.name}`}
+                >
+                  <span class="route-tool-index">{String(index + 1).padStart(2, "0")}</span>
+                  <TechIcon name={technology.name} />
+                  <span class="route-tool-copy">
+                    <small>{technology.category}</small>
+                    <strong>{technology.name}</strong>
+                  </span>
+                  <span class="route-tool-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ))}
+          </div>
+        </details>
       ))}
-      </div></details>)}
     </div>
   </div>
 </section>

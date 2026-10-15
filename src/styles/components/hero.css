@@ -6,7 +6,11 @@
     radial-gradient(circle at 20% 28%, rgba(91, 183, 210, 0.16), transparent 26rem),
     radial-gradient(circle at 72% 28%, rgba(245, 197, 66, 0.08), transparent 24rem),
     linear-gradient(115deg, var(--tema-hero-uno), var(--tema-hero-dos)),
-    linear-gradient(135deg, color-mix(in srgb, var(--color-agua) 24%, transparent), color-mix(in srgb, var(--color-progreso) 22%, transparent)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-agua) 24%, transparent),
+      color-mix(in srgb, var(--color-progreso) 22%, transparent)
+    ),
     var(--color-principal);
   padding: 112px 0 96px;
 }
@@ -20,9 +24,13 @@
   background-image:
     linear-gradient(90deg, rgba(8, 17, 31, 0.88), rgba(8, 17, 31, 0.18), rgba(8, 17, 31, 0.74)),
     url("data:image/svg+xml,%3Csvg width='1440' height='820' viewBox='0 0 1440 820' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M100 760 C190 690 236 610 316 548 C410 475 496 492 586 424 C676 356 700 262 790 188' stroke='%2365c8e8' stroke-opacity='.16' stroke-width='2'/%3E%3Cpath d='M146 790 C230 720 292 668 378 654 C476 638 526 570 590 514' stroke='%23f5c542' stroke-opacity='.18' stroke-width='2.5'/%3E%3Cpath d='M236 804 C304 744 364 728 440 742 C522 758 604 714 682 640' stroke='%237dd3fc' stroke-opacity='.1' stroke-width='1.6'/%3E%3Cpath d='M330 720 C388 682 442 662 502 684 C572 710 630 692 708 622' stroke='%2328c76f' stroke-opacity='.1' stroke-width='1.6'/%3E%3Cpath d='M214 692 L266 692 L266 644 L322 644' stroke='%2365c8e8' stroke-opacity='.13' stroke-width='1.7'/%3E%3Cpath d='M402 648 L402 604 L462 604 L462 548' stroke='%23f5c542' stroke-opacity='.12' stroke-width='1.7'/%3E%3Cpath d='M586 424 L650 424 L650 372 L716 372' stroke='%2365c8e8' stroke-opacity='.1' stroke-width='1.7'/%3E%3Cpath d='M700 262 L760 262 L760 212 L820 212' stroke='%23f5c542' stroke-opacity='.1' stroke-width='1.7'/%3E%3Ccircle cx='266' cy='692' r='4' fill='%2365c8e8' fill-opacity='.18' stroke='none'/%3E%3Ccircle cx='402' cy='648' r='4' fill='%23f5c542' fill-opacity='.18' stroke='none'/%3E%3Ccircle cx='586' cy='424' r='4' fill='%2365c8e8' fill-opacity='.16' stroke='none'/%3E%3Ccircle cx='700' cy='262' r='5' fill='%23f5c542' fill-opacity='.14' stroke='none'/%3E%3Ccircle cx='790' cy='188' r='5' fill='%2365c8e8' fill-opacity='.14' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
-  background-position: center, left 62% bottom -18px;
+  background-position:
+    center,
+    left 62% bottom -18px;
   background-repeat: no-repeat;
-  background-size: cover, min(1040px, 76vw) auto;
+  background-size:
+    cover,
+    min(1040px, 76vw) auto;
   opacity: 0.82;
 }
 
@@ -413,7 +421,11 @@
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--color-fondo) 96%, transparent), color-mix(in srgb, var(--color-superficie) 96%, transparent)),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-fondo) 96%, transparent),
+      color-mix(in srgb, var(--color-superficie) 96%, transparent)
+    ),
     var(--color-fondo);
 }
 
@@ -507,4 +519,3 @@
   font-weight: 700;
   box-shadow: 0 10px 20px rgba(16, 43, 60, 0.06);
 }
-

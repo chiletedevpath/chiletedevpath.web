@@ -13,5 +13,7 @@ for (const file of files) {
 }
 const oversized = results.filter(({ lines }) => lines > 1000);
 for (const item of oversized) console.error(`${item.lines} lines: ${item.file}`);
-console.log(`Checked ${results.length} source files; maximum ${Math.max(0, ...results.map(item => item.lines))} lines.`);
+console.log(
+  `Checked ${results.length} source files; maximum ${Math.max(0, ...results.map((item) => item.lines))} lines.`,
+);
 if (oversized.length) process.exitCode = 1;

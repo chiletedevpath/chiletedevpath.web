@@ -18,7 +18,9 @@ const alternateLocale = lang === "en" ? "es_PE" : "en_US";
 const socialImageAlt = site.socialImageAlt[lang];
 const skipLink = lang === "en" ? "Skip to main content" : "Saltar al contenido principal";
 const spanishPath = pathname.startsWith("/en") ? pathname.replace(/^\/en/, "") || "/" : pathname;
-const englishPath = pathname.startsWith("/en") ? pathname : `/en${pathname === "/" ? "/" : pathname}`;
+const englishPath = pathname.startsWith("/en")
+  ? pathname
+  : `/en${pathname === "/" ? "/" : pathname}`;
 const spanishUrl = new URL(spanishPath, site.url).href;
 const englishUrl = new URL(englishPath, site.url).href;
 const structuredData = JSON.stringify({
@@ -91,7 +93,9 @@ const structuredData = JSON.stringify({
       (() => {
         try {
           const temaGuardado = localStorage.getItem("cdp-theme");
-          const temaSistema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          const temaSistema = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
           document.documentElement.dataset.theme = temaGuardado || temaSistema;
         } catch {
           document.documentElement.dataset.theme = "dark";
@@ -107,7 +111,9 @@ const structuredData = JSON.stringify({
     <link rel="icon" href="/assets/img/marca-simbolo-nav.png" />
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
     <script type="application/ld+json" set:html={structuredData}></script>
-    {hasContactForm && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+    {hasContactForm && (
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -117,7 +123,9 @@ const structuredData = JSON.stringify({
   </head>
 
   <body>
-    <a class="salto-contenido" href="#contenido">{skipLink}</a>
+    <a class="salto-contenido" href="#contenido">
+      {skipLink}
+    </a>
     <Header currentPath={Astro.url.pathname} />
     <main id="contenido">
       <slot />

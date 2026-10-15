@@ -16,7 +16,9 @@ const footerPolicies = isEnglish
     <div class="pie-marca">
       <img src="/assets/img/marca-simbolo-nav.png" width="512" height="512" alt="" />
       <div>
-        <span class="pie-sistema">{isEnglish ? "CDP / LEARNING SYSTEM" : "CDP / SISTEMA DE APRENDIZAJE"}</span>
+        <span class="pie-sistema">
+          {isEnglish ? "CDP / LEARNING SYSTEM" : "CDP / SISTEMA DE APRENDIZAJE"}
+        </span>
         <strong>{site.name}</strong>
         <p>
           {isEnglish
@@ -28,18 +30,27 @@ const footerPolicies = isEnglish
 
     <nav class="pie-columna" aria-label={isEnglish ? "Quick links" : "Enlaces rápidos"}>
       <strong>{isEnglish ? "Navigation" : "Navegación"}</strong>
-      {footerNav.map((item) => <a href={item.href}>{item.label}</a>)}
+      {footerNav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
     </nav>
 
-    <nav class="pie-columna" aria-label={isEnglish ? "Chilete DevPath policies" : "Políticas de Chilete DevPath"}>
+    <nav
+      class="pie-columna"
+      aria-label={isEnglish ? "Chilete DevPath policies" : "Políticas de Chilete DevPath"}
+    >
       <strong>{isEnglish ? "Policies" : "Políticas"}</strong>
-      {footerPolicies.map((policy) => <a href={policy.href}>{policy.title}</a>)}
+      {footerPolicies.map((policy) => (
+        <a href={policy.href}>{policy.title}</a>
+      ))}
     </nav>
 
     <FooterContact lang={lang} />
   </div>
   <div class="pie-inferior">
-    <span>{isEnglish ? "Chilete DevPath by Adrián Pisco." : "Chilete DevPath por Adrián Pisco."}</span>
+    <span>
+      {isEnglish ? "Chilete DevPath by Adrián Pisco." : "Chilete DevPath por Adrián Pisco."}
+    </span>
     <span>&copy; 2026</span>
   </div>
 </footer>

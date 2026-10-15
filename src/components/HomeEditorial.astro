@@ -1,5 +1,10 @@
 ---
-import { academicProjects, academicProjectsEn, homeFeaturedProjectIds, homeProjectStageIds } from "../data/proyectos.js";
+import {
+  academicProjects,
+  academicProjectsEn,
+  homeFeaturedProjectIds,
+  homeProjectStageIds,
+} from "../data/proyectos.js";
 import { policies, policiesEn } from "../data/recursos.js";
 import { getLearningPaths } from "../data/ruta.js";
 
@@ -12,63 +17,74 @@ const featuredProjects = homeFeaturedProjectIds.map((id) => projectsById.get(id)
 const stageProjects = homeProjectStageIds.map((id) => projectsById.get(id)).filter(Boolean);
 const currentPolicies = lang === "en" ? policiesEn : policies;
 
-const copy = lang === "en"
-  ? {
-      routesEyebrow: "CHOOSE YOUR PATH",
-      routesTitle: "A starting point for every way of moving forward",
-      routesDescription: "Choose a path with published practice today. New areas join the map only when they have material that can be reviewed.",
-      published: "Published",
-      explore: "Explore full path",
-      modules: "modules",
-      available: "available",
-      planned: "planned",
-      current: "Current focus",
-      projectsEyebrow: "PROJECTS WITH CONTEXT",
-      projectsTitle: "When practice becomes an explainable solution",
-      projectsDescription: "In each project I explain the problem I worked on, what I built and what I learned along the way.",
-      evidenceIndex: "EVIDENCE BY STAGE",
-      evidenceDescription: "A concrete sample from every published stage, without reducing the path to a single technology.",
-      viewEvidence: "View evidence in Academia",
-      allProjects: "Explore all projects",
-      criteriaEyebrow: "CDP / CRITERIA",
-      criteriaTitle: "A public path needs rules that can be verified",
-      criteriaDescription: "The policies are not decorative: they set the limits for documenting, reviewing and sharing public work.",
-      criteriaAction: "Explore the criteria",
-      policyAction: "Read policy",
-      originEyebrow: "CHILETE · CAJAMARCA · PERU",
-      originTitle: "A concrete origin, more paths to build",
-      originDescription: "Chilete DevPath grows when learning can be organized, practiced and shared with judgment, without losing its origin.",
-      originAction: "Explore the paths",
-      productivityLabel: "Learning path in progress",
-    }
-  : {
-      routesEyebrow: "ELIGE TU RECORRIDO",
-      routesTitle: "Un punto de partida para cada forma de avanzar",
-      routesDescription: "Elige una ruta con práctica publicada hoy. Las áreas nuevas se suman al mapa solo cuando existe material que pueda revisarse.",
-      published: "Publicada",
-      explore: "Explorar ruta completa",
-      modules: "módulos",
-      available: "disponibles",
-      planned: "planificados",
-      current: "Contenido actual",
-      projectsEyebrow: "PROYECTOS CON CONTEXTO",
-      projectsTitle: "Cuando la práctica se convierte en una solución explicable",
-      projectsDescription: "En cada proyecto explico el problema que abordé, lo que construí y lo que aprendí en el proceso.",
-      evidenceIndex: "EVIDENCIA POR ETAPA",
-      evidenceDescription: "Una muestra concreta de cada etapa publicada, sin reducir el recorrido a una sola tecnología.",
-      viewEvidence: "Ver evidencia en Academia",
-      allProjects: "Explorar todos los proyectos",
-      criteriaEyebrow: "CDP / CRITERIO",
-      criteriaTitle: "Una ruta pública necesita reglas que se puedan verificar",
-      criteriaDescription: "Las políticas no son decorativas: ponen límites claros para documentar, revisar y compartir trabajo público.",
-      criteriaAction: "Explorar los criterios",
-      policyAction: "Leer política",
-      originEyebrow: "CHILETE · CAJAMARCA · PERÚ",
-      originTitle: "Un origen concreto, más caminos por construir",
-      originDescription: "Chilete DevPath crece cuando el aprendizaje puede ordenarse, practicarse y compartirse con criterio, sin perder su origen.",
-      originAction: "Explorar las rutas",
-      productivityLabel: "Ruta de aprendizaje en crecimiento",
-    };
+const copy =
+  lang === "en"
+    ? {
+        routesEyebrow: "CHOOSE YOUR PATH",
+        routesTitle: "A starting point for every way of moving forward",
+        routesDescription:
+          "Choose a path with published practice today. New areas join the map only when they have material that can be reviewed.",
+        published: "Published",
+        explore: "Explore full path",
+        modules: "modules",
+        available: "available",
+        planned: "planned",
+        current: "Current focus",
+        projectsEyebrow: "PROJECTS WITH CONTEXT",
+        projectsTitle: "When practice becomes an explainable solution",
+        projectsDescription:
+          "In each project I explain the problem I worked on, what I built and what I learned along the way.",
+        evidenceIndex: "EVIDENCE BY STAGE",
+        evidenceDescription:
+          "A concrete sample from every published stage, without reducing the path to a single technology.",
+        viewEvidence: "View evidence in Academia",
+        allProjects: "Explore all projects",
+        criteriaEyebrow: "CDP / CRITERIA",
+        criteriaTitle: "A public path needs rules that can be verified",
+        criteriaDescription:
+          "The policies are not decorative: they set the limits for documenting, reviewing and sharing public work.",
+        criteriaAction: "Explore the criteria",
+        policyAction: "Read policy",
+        originEyebrow: "CHILETE · CAJAMARCA · PERU",
+        originTitle: "A concrete origin, more paths to build",
+        originDescription:
+          "Chilete DevPath grows when learning can be organized, practiced and shared with judgment, without losing its origin.",
+        originAction: "Explore the paths",
+        productivityLabel: "Learning path in progress",
+      }
+    : {
+        routesEyebrow: "ELIGE TU RECORRIDO",
+        routesTitle: "Un punto de partida para cada forma de avanzar",
+        routesDescription:
+          "Elige una ruta con práctica publicada hoy. Las áreas nuevas se suman al mapa solo cuando existe material que pueda revisarse.",
+        published: "Publicada",
+        explore: "Explorar ruta completa",
+        modules: "módulos",
+        available: "disponibles",
+        planned: "planificados",
+        current: "Contenido actual",
+        projectsEyebrow: "PROYECTOS CON CONTEXTO",
+        projectsTitle: "Cuando la práctica se convierte en una solución explicable",
+        projectsDescription:
+          "En cada proyecto explico el problema que abordé, lo que construí y lo que aprendí en el proceso.",
+        evidenceIndex: "EVIDENCIA POR ETAPA",
+        evidenceDescription:
+          "Una muestra concreta de cada etapa publicada, sin reducir el recorrido a una sola tecnología.",
+        viewEvidence: "Ver evidencia en Academia",
+        allProjects: "Explorar todos los proyectos",
+        criteriaEyebrow: "CDP / CRITERIO",
+        criteriaTitle: "Una ruta pública necesita reglas que se puedan verificar",
+        criteriaDescription:
+          "Las políticas no son decorativas: ponen límites claros para documentar, revisar y compartir trabajo público.",
+        criteriaAction: "Explorar los criterios",
+        policyAction: "Leer política",
+        originEyebrow: "CHILETE · CAJAMARCA · PERÚ",
+        originTitle: "Un origen concreto, más caminos por construir",
+        originDescription:
+          "Chilete DevPath crece cuando el aprendizaje puede ordenarse, practicarse y compartirse con criterio, sin perder su origen.",
+        originAction: "Explorar las rutas",
+        productivityLabel: "Ruta de aprendizaje en crecimiento",
+      };
 ---
 
 <section class="home-routes home-reveal" id="rutas" aria-labelledby="rutas-titulo">
@@ -84,11 +100,17 @@ const copy = lang === "en"
     {routes.slice(0, 4).map((route, index) => (
       <a class="home-path-item" href={`${routePrefix}/ruta/#${route.id}`}>
         <span class="home-path-number">{String(index + 1).padStart(2, "0")}</span>
-        <div><h3>{route.title}</h3><p>{route.description}</p><small>{route.summary.moduleIndicator}</small></div>
+        <div>
+          <h3>{route.title}</h3>
+          <p>{route.description}</p>
+          <small>{route.summary.moduleIndicator}</small>
+        </div>
         <span aria-hidden="true">↗</span>
       </a>
     ))}
-    <a class="home-path-all" href={`${routePrefix}/ruta/`}>{lang === "en" ? "All learning paths" : "Todos los recorridos"} →</a>
+    <a class="home-path-all" href={`${routePrefix}/ruta/`}>
+      {lang === "en" ? "All learning paths" : "Todos los recorridos"} →
+    </a>
   </div>
 </section>
 
@@ -102,14 +124,24 @@ const copy = lang === "en"
   </div>
   <div class="contenedor home-project-grid">
     {featuredProjects.map((project, index) => (
-      <a class:list={["home-project-card", { "home-project-main": index === 0 }]} href={project.href} target="_blank" rel="noopener noreferrer">
-        <figure><img src={project.imageSrc} alt={project.imageAlt} loading="lazy" decoding="async" /></figure>
+      <a
+        class:list={["home-project-card", { "home-project-main": index === 0 }]}
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <figure>
+          <img src={project.imageSrc} alt={project.imageAlt} loading="lazy" decoding="async" />
+        </figure>
         <div>
           <span>{project.routeLabel}</span>
           <h3>{project.title}</h3>
           <p>{project.description}</p>
           <small>{project.technologies.slice(0, 4).join(" · ")}</small>
-          <b>{copy.viewEvidence}<i aria-hidden="true">↗</i></b>
+          <b>
+            {copy.viewEvidence}
+            <i aria-hidden="true">↗</i>
+          </b>
         </div>
       </a>
     ))}
@@ -131,7 +163,12 @@ const copy = lang === "en"
       ))}
     </ol>
   </div>
-  <div class="contenedor home-projects-footer"><a href={`${routePrefix}/proyectos/`}>{copy.allProjects}<span aria-hidden="true">→</span></a></div>
+  <div class="contenedor home-projects-footer">
+    <a href={`${routePrefix}/proyectos/`}>
+      {copy.allProjects}
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
 </section>
 
 <section class="home-criteria home-reveal" id="criterio" aria-labelledby="criterio-titulo">
@@ -140,7 +177,10 @@ const copy = lang === "en"
       <p class="etiqueta">{copy.criteriaEyebrow}</p>
       <h2 id="criterio-titulo">{copy.criteriaTitle}</h2>
       <p>{copy.criteriaDescription}</p>
-      <a class="home-text-link" href={`${routePrefix}/criterios/`}>{copy.criteriaAction}<span aria-hidden="true">→</span></a>
+      <a class="home-text-link" href={`${routePrefix}/criterios/`}>
+        {copy.criteriaAction}
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
     <div class="home-policy-grid">
       {currentPolicies.map((policy) => (
@@ -148,7 +188,10 @@ const copy = lang === "en"
           <span>{policy.code}</span>
           <h3>{policy.title}</h3>
           <p>{policy.highlight}</p>
-          <b>{copy.policyAction}<i aria-hidden="true">→</i></b>
+          <b>
+            {copy.policyAction}
+            <i aria-hidden="true">→</i>
+          </b>
         </a>
       ))}
     </div>
@@ -162,7 +205,10 @@ const copy = lang === "en"
     <p class="etiqueta">{copy.originEyebrow}</p>
     <h2 id="origen-titulo">{copy.originTitle}</h2>
     <p>{copy.originDescription}</p>
-    <a class="boton boton-principal" href="#rutas">{copy.originAction}<span aria-hidden="true">→</span></a>
+    <a class="boton boton-principal" href="#rutas">
+      {copy.originAction}
+      <span aria-hidden="true">→</span>
+    </a>
   </div>
 </section>
 
@@ -173,12 +219,13 @@ const copy = lang === "en"
   if (!reduceMotion && sections.length && "IntersectionObserver" in window) {
     const reveal = (section) => section.classList.add("is-revealed");
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          reveal(entry.target);
-          observer.unobserve(entry.target);
-        }
-      }),
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            reveal(entry.target);
+            observer.unobserve(entry.target);
+          }
+        }),
       { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
 

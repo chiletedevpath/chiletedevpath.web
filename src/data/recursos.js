@@ -156,8 +156,7 @@ export const policiesEn = [
     icon: "bienestar",
     tone: "bienestar",
     highlight: "Learning also requires rest, pauses and health.",
-    objective:
-      "Promote sustainable learning, active pauses, rest and physical and mental care.",
+    objective: "Promote sustainable learning, active pauses, rest and physical and mental care.",
     scope: "Applies to the community, students and people using the learning path.",
     owner: "Chilete DevPath",
     version: "1.0",

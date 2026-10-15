@@ -18,12 +18,21 @@
   text-wrap: balance;
 }
 
-:root :is(.route-heading, .projects-editorial, .criteria-hero, .library-hero, .about-hero) .etiqueta {
-  font-size: .75rem;
+:root
+  :is(.route-heading, .projects-editorial, .criteria-hero, .library-hero, .about-hero)
+  .etiqueta {
+  font-size: 0.75rem;
   letter-spacing: 0;
 }
 
-:root :is(.projects-editorial-grid > div, .criteria-hero-grid > div, .library-hero-copy, .about-hero-content) > p:not(.etiqueta):not(.about-tagline),
+:root
+  :is(
+    .projects-editorial-grid > div,
+    .criteria-hero-grid > div,
+    .library-hero-copy,
+    .about-hero-content
+  )
+  > p:not(.etiqueta):not(.about-tagline),
 :root .route-heading-line > p {
   max-width: var(--hero-copy-width);
   font-size: 1.1rem;
@@ -31,7 +40,13 @@
   margin-block: 0 28px;
 }
 
-:root :is(.projects-jump, .criteria-hero-grid > div > a, .about-hero-content > a, .route-heading-meta > a) {
+:root
+  :is(
+    .projects-jump,
+    .criteria-hero-grid > div > a,
+    .about-hero-content > a,
+    .route-heading-meta > a
+  ) {
   display: inline-flex;
   align-items: center;
   gap: 24px;
@@ -46,24 +61,49 @@
   gap: 64px;
 }
 
-:root .route-heading-line { align-items: center; }
-:root .route-heading-line > p { margin-bottom: 0; max-width: 36ch; }
-:root .route-heading-meta { border-top: 1px solid var(--color-borde); margin-top: 24px; }
-:root .projects-ledger { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
-:root .library-hero-copy > h1 { max-width: 770px; }
-:root .about-hero-content > h1 { margin-bottom: 12px; }
+:root .route-heading-line {
+  align-items: center;
+}
+:root .route-heading-line > p {
+  margin-bottom: 0;
+  max-width: 36ch;
+}
+:root .route-heading-meta {
+  border-top: 1px solid var(--color-borde);
+  margin-top: 24px;
+}
+:root .projects-ledger {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+:root .library-hero-copy > h1 {
+  max-width: 770px;
+}
+:root .about-hero-content > h1 {
+  margin-bottom: 12px;
+}
 
 :root :is(.projects-editorial, .criteria-hero, .library-hero, .about-hero) > .contenedor {
-  animation: section-hero-enter .55s ease-out both;
+  animation: section-hero-enter 0.55s ease-out both;
 }
 
 @keyframes section-hero-enter {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root :is(.projects-editorial, .criteria-hero, .library-hero, .about-hero) > .contenedor { animation: none; }
+  :root :is(.projects-editorial, .criteria-hero, .library-hero, .about-hero) > .contenedor {
+    animation: none;
+  }
 }
 
 :root .policy-heading {
@@ -71,14 +111,34 @@
 }
 
 @media (max-width: 1000px) {
-  :root { --hero-section-title: 3.25rem; }
-  :root :is(.projects-editorial-grid, .criteria-hero-grid) { gap: 32px; }
+  :root {
+    --hero-section-title: 3.25rem;
+  }
+  :root :is(.projects-editorial-grid, .criteria-hero-grid) {
+    gap: 32px;
+  }
 }
 
 @media (max-width: 680px) {
-  :root { --hero-section-space: 48px; --hero-section-title: 2.4rem; }
-  :root .policy-heading { padding-top: 32px; }
-  :root :is(.projects-editorial-grid > div, .criteria-hero-grid > div, .library-hero-copy, .about-hero-content) > p:not(.etiqueta):not(.about-tagline),
-  :root .route-heading-line > p { font-size: 1rem; }
-  :root .projects-ledger { display: grid; }
+  :root {
+    --hero-section-space: 48px;
+    --hero-section-title: 2.4rem;
+  }
+  :root .policy-heading {
+    padding-top: 32px;
+  }
+  :root
+    :is(
+      .projects-editorial-grid > div,
+      .criteria-hero-grid > div,
+      .library-hero-copy,
+      .about-hero-content
+    )
+    > p:not(.etiqueta):not(.about-tagline),
+  :root .route-heading-line > p {
+    font-size: 1rem;
+  }
+  :root .projects-ledger {
+    display: grid;
+  }
 }

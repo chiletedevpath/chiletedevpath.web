@@ -3,7 +3,9 @@ Thumbs.db
 Desktop.ini
 
 # Editores
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
 
 # Dependencias y compilados futuros

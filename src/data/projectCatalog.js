@@ -30,7 +30,8 @@ const spanishProjectsById = indexProjectsById(academicProjects, "es");
 
 const spanishProjectIds = new Set(spanishProjectsById.keys());
 academicProjectsEn.forEach(({ id }) => {
-  if (!spanishProjectIds.has(id)) throw new Error(`English project ${id} has no Spanish source record.`);
+  if (!spanishProjectIds.has(id))
+    throw new Error(`English project ${id} has no Spanish source record.`);
 });
 
 function buildCatalog(projects, lang) {
@@ -52,5 +53,5 @@ export const projectCatalogEn = buildCatalog(
     }
     return translation;
   }),
-  "en"
+  "en",
 );

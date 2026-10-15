@@ -50,17 +50,18 @@ const workerEnv = (rateLimitSuccess = true) => ({
   },
 });
 
-const contactRequest = (body, origin = "https://chiletedevpath.com", ip = "192.0.2.1") => new Request(
-  "https://chiletedevpath.com/api/contacto",
-  {
+const contactRequest = (body, origin = "https://chiletedevpath.com", ip = "192.0.2.1") =>
+  new Request("https://chiletedevpath.com/api/contacto", {
     method: "POST",
     headers: { "Content-Type": "application/json", Origin: origin, "CF-Connecting-IP": ip },
     body: JSON.stringify(body),
-  },
-);
+  });
 
 test("rechaza orígenes ajenos antes de procesar el mensaje", async () => {
-  const response = await worker.fetch(contactRequest(validPayload, "https://example.com"), workerEnv());
+  const response = await worker.fetch(
+    contactRequest(validPayload, "https://example.com"),
+    workerEnv(),
+  );
   assert.equal(response.status, 403);
 });
 
@@ -83,9 +84,15 @@ test("cambiar correo no cambia la cuota por IP; otra IP tiene su propia cuota", 
     keys.push(key);
     return { success: false };
   };
-  for (const [email, ip] of [["one@example.com", "192.0.2.1"],
-    ["two@example.com", "192.0.2.1"], ["one@example.com", "192.0.2.2"]]) {
-    const response = await worker.fetch(contactRequest({ ...validPayload, email }, undefined, ip), env);
+  for (const [email, ip] of [
+    ["one@example.com", "192.0.2.1"],
+    ["two@example.com", "192.0.2.1"],
+    ["one@example.com", "192.0.2.2"],
+  ]) {
+    const response = await worker.fetch(
+      contactRequest({ ...validPayload, email }, undefined, ip),
+      env,
+    );
     assert.equal(response.status, 429);
   }
   assert.equal(keys[0], keys[1]);
@@ -137,8 +144,13 @@ test("valida Turnstile y entrega un mensaje normalizado a EmailJS", async (conte
 
 test("una interrupcion de EmailJS no se presenta como rechazo confirmado", async (context) => {
   const originalFetch = globalThis.fetch;
-  context.after(() => { globalThis.fetch = originalFetch; });
-  for (const error of [new DOMException("Timeout", "TimeoutError"), new TypeError("Network error")]) {
+  context.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+  for (const error of [
+    new DOMException("Timeout", "TimeoutError"),
+    new TypeError("Network error"),
+  ]) {
     globalThis.fetch = async (url) => {
       if (String(url).includes("siteverify")) {
         return Response.json({ success: true, action: "contact", hostname: "chiletedevpath.com" });
@@ -153,10 +165,13 @@ test("una interrupcion de EmailJS no se presenta como rechazo confirmado", async
 
 test("un rechazo explicito de EmailJS conserva DELIVERY_FAILED", async (context) => {
   const originalFetch = globalThis.fetch;
-  context.after(() => { globalThis.fetch = originalFetch; });
-  globalThis.fetch = async (url) => String(url).includes("siteverify")
-    ? Response.json({ success: true, action: "contact", hostname: "chiletedevpath.com" })
-    : new Response("Rejected", { status: 400 });
+  context.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+  globalThis.fetch = async (url) =>
+    String(url).includes("siteverify")
+      ? Response.json({ success: true, action: "contact", hostname: "chiletedevpath.com" })
+      : new Response("Rejected", { status: 400 });
   const response = await worker.fetch(contactRequest(validPayload), workerEnv());
   assert.equal((await response.json()).code, "DELIVERY_FAILED");
 });

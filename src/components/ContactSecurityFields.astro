@@ -5,9 +5,10 @@ import { contactConfig } from "../data/contact.js";
 const { lang = "es" } = Astro.props;
 const siteKey = contactConfig.siteKey;
 const verificationLabel = lang === "en" ? "Human verification" : "Verificación humana";
-const pendingLabel = lang === "en"
-  ? "Verification will be enabled when the production key is configured."
-  : "La verificación se habilitará cuando se configure la clave de producción.";
+const pendingLabel =
+  lang === "en"
+    ? "Verification will be enabled when the production key is configured."
+    : "La verificación se habilitará cuando se configure la clave de producción.";
 ---
 
 <div class="campo-trampa" aria-hidden="true">
@@ -19,17 +20,17 @@ const pendingLabel = lang === "en"
 
 <div class="verificacion-formulario" data-turnstile-container>
   <span class="verificacion-etiqueta">{verificationLabel}</span>
-  {
-    siteKey ? (
-      <div
-        class="cf-turnstile"
-        data-sitekey={siteKey}
-        data-action="contact"
-        data-theme="auto"
-        data-size="flexible"
-      ></div>
-    ) : (
-      <p class="verificacion-pendiente" data-turnstile-pending>{pendingLabel}</p>
-    )
-  }
+  {siteKey ? (
+    <div
+      class="cf-turnstile"
+      data-sitekey={siteKey}
+      data-action="contact"
+      data-theme="auto"
+      data-size="flexible"
+    ></div>
+  ) : (
+    <p class="verificacion-pendiente" data-turnstile-pending>
+      {pendingLabel}
+    </p>
+  )}
 </div>

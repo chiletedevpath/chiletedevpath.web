@@ -1,32 +1,98 @@
 export const aboutCopy = {
   es: {
-    eyebrow: "SOBRE EL PROYECTO", tagline: "Origen, aprendizaje y criterio.",
-    intro: "Soy Adrián Pisco. En Chilete DevPath documento lo que aprendo, las prácticas que desarrollo y los proyectos que construyo mientras estudio tecnologías.",
+    eyebrow: "SOBRE EL PROYECTO",
+    tagline: "Origen, aprendizaje y criterio.",
+    intro:
+      "Soy Adrián Pisco. En Chilete DevPath documento lo que aprendo, las prácticas que desarrollo y los proyectos que construyo mientras estudio tecnologías.",
     nameTitle: "Un origen. Un camino propio.",
-    nameParts: [["Chilete", "Mi punto de partida", "Chilete, Cajamarca, es parte de mi identidad. Por eso está en el nombre del proyecto."], ["DevPath", "Lo que voy construyendo", "El nombre comenzó ligado a la programación. Hoy el recorrido también reúne otras tecnologías, sin perder la práctica ni el criterio técnico."]],
+    nameParts: [
+      [
+        "Chilete",
+        "Mi punto de partida",
+        "Chilete, Cajamarca, es parte de mi identidad. Por eso está en el nombre del proyecto.",
+      ],
+      [
+        "DevPath",
+        "Lo que voy construyendo",
+        "El nombre comenzó ligado a la programación. Hoy el recorrido también reúne otras tecnologías, sin perder la práctica ni el criterio técnico.",
+      ],
+    ],
     systemTitle: "Aprender y demostrar no son lo mismo.",
-    systemIntro: "Cada espacio conserva una función. La web permite orientarse; los repositorios guardan el trabajo que se puede revisar.",
-    spaces: [["Aprendizaje", "Prácticas progresivas, conceptos y materiales de estudio.", "https://github.com/chiletedevpath/aprendizaje"], ["Academia", "Trabajos y proyectos realizados dentro de mi formación académica.", "https://github.com/chiletedevpath/academia"]],
+    systemIntro:
+      "Cada espacio conserva una función. La web permite orientarse; los repositorios guardan el trabajo que se puede revisar.",
+    spaces: [
+      [
+        "Aprendizaje",
+        "Prácticas progresivas, conceptos y materiales de estudio.",
+        "https://github.com/chiletedevpath/aprendizaje",
+      ],
+      [
+        "Academia",
+        "Trabajos y proyectos realizados dentro de mi formación académica.",
+        "https://github.com/chiletedevpath/academia",
+      ],
+    ],
     originTitle: "Desde Chilete, para quien quiera aprender.",
-    originText: "Compartir lo que estudio es también una forma de revisarlo mejor. El objetivo es que otra persona encuentre un punto de partida y pueda comprobar el trabajo, no que tenga que aceptar mis afirmaciones sin evidencia.",
-    originNote: "Chilete forma parte de mi identidad personal. Este proyecto no representa oficialmente a una institución ni a una entidad pública.",
+    originText:
+      "Compartir lo que estudio es también una forma de revisarlo mejor. El objetivo es que otra persona encuentre un punto de partida y pueda comprobar el trabajo, no que tenga que aceptar mis afirmaciones sin evidencia.",
+    originNote:
+      "Chilete forma parte de mi identidad personal. Este proyecto no representa oficialmente a una institución ni a una entidad pública.",
     directionTitle: "Crecer con una base que se pueda revisar.",
-    directionText: "Quiero profundizar en los recorridos existentes antes de incorporar nuevas áreas. Las añadiré cuando tenga prácticas y material que las sostengan: abrir una categoría no reemplaza el trabajo de aprenderla.",
-    links: [["Rutas", "Qué aprender y por dónde empezar.", "/ruta/"], ["Recursos", "Material para practicar y consultar.", "/recursos/"], ["Proyectos", "Aplicaciones concretas de lo aprendido.", "/proyectos/"], ["Criterios", "Cómo reviso y publico el trabajo.", "/criterios/"]],
+    directionText:
+      "Quiero profundizar en los recorridos existentes antes de incorporar nuevas áreas. Las añadiré cuando tenga prácticas y material que las sostengan: abrir una categoría no reemplaza el trabajo de aprenderla.",
+    links: [
+      ["Rutas", "Qué aprender y por dónde empezar.", "/ruta/"],
+      ["Recursos", "Material para practicar y consultar.", "/recursos/"],
+      ["Proyectos", "Aplicaciones concretas de lo aprendido.", "/proyectos/"],
+      ["Criterios", "Cómo reviso y publico el trabajo.", "/criterios/"],
+    ],
   },
   en: {
-    eyebrow: "ABOUT THE PROJECT", tagline: "Origin, learning and judgment.",
-    intro: "I am Adrián Pisco. At Chilete DevPath I document what I learn, the exercises I work on and the projects I build as I study technology.",
+    eyebrow: "ABOUT THE PROJECT",
+    tagline: "Origin, learning and judgment.",
+    intro:
+      "I am Adrián Pisco. At Chilete DevPath I document what I learn, the exercises I work on and the projects I build as I study technology.",
     nameTitle: "An origin. A path of my own.",
-    nameParts: [["Chilete", "My starting point", "Chilete, Cajamarca, is part of my identity. That is why it is part of the project name."], ["DevPath", "What I am building", "The name began with programming. Today the path also includes other technologies, while keeping practice and technical judgment at its core."]],
+    nameParts: [
+      [
+        "Chilete",
+        "My starting point",
+        "Chilete, Cajamarca, is part of my identity. That is why it is part of the project name.",
+      ],
+      [
+        "DevPath",
+        "What I am building",
+        "The name began with programming. Today the path also includes other technologies, while keeping practice and technical judgment at its core.",
+      ],
+    ],
     systemTitle: "Learning and demonstrating are not the same.",
-    systemIntro: "Each space has its own purpose. The website provides orientation; the repositories preserve work that can be reviewed.",
-    spaces: [["Aprendizaje", "Progressive practice, concepts and study material.", "https://github.com/chiletedevpath/aprendizaje"], ["Academia", "Coursework and projects completed during my academic studies.", "https://github.com/chiletedevpath/academia"]],
+    systemIntro:
+      "Each space has its own purpose. The website provides orientation; the repositories preserve work that can be reviewed.",
+    spaces: [
+      [
+        "Aprendizaje",
+        "Progressive practice, concepts and study material.",
+        "https://github.com/chiletedevpath/aprendizaje",
+      ],
+      [
+        "Academia",
+        "Coursework and projects completed during my academic studies.",
+        "https://github.com/chiletedevpath/academia",
+      ],
+    ],
     originTitle: "From Chilete, for anyone who wants to learn.",
-    originText: "Sharing what I study helps me review it more carefully. The aim is to give others a starting point and work they can inspect, rather than asking them to accept claims without evidence.",
-    originNote: "Chilete is part of my personal identity. This project does not officially represent any institution or public authority.",
+    originText:
+      "Sharing what I study helps me review it more carefully. The aim is to give others a starting point and work they can inspect, rather than asking them to accept claims without evidence.",
+    originNote:
+      "Chilete is part of my personal identity. This project does not officially represent any institution or public authority.",
     directionTitle: "Grow from a foundation that can be reviewed.",
-    directionText: "I want to deepen the existing paths before adding new areas. I will add them when I have exercises and material to support them: creating a category cannot replace learning it.",
-    links: [["Paths", "What to learn and where to begin.", "/en/ruta/"], ["Resources", "Material for practice and reference.", "/en/recursos/"], ["Projects", "Concrete applications of learning.", "/en/proyectos/"], ["Criteria", "How I review and publish work.", "/en/criterios/"]],
+    directionText:
+      "I want to deepen the existing paths before adding new areas. I will add them when I have exercises and material to support them: creating a category cannot replace learning it.",
+    links: [
+      ["Paths", "What to learn and where to begin.", "/en/ruta/"],
+      ["Resources", "Material for practice and reference.", "/en/recursos/"],
+      ["Projects", "Concrete applications of learning.", "/en/proyectos/"],
+      ["Criteria", "How I review and publish work.", "/en/criterios/"],
+    ],
   },
 };

@@ -27,22 +27,6 @@ export const projectAreas = [
     href: "https://github.com/chiletedevpath/academia",
     action: "Ver evidencias",
   },
-  {
-    status: "Selección profesional",
-    title: "Portafolio de Adrián Pisco",
-    visual: "Portafolio",
-    imageSrc: "/assets/img/projects/portafolio-cover.webp",
-    imageAlt: "Proyectos personales de desarrollo de software de Adrián Pisco.",
-    description:
-      "ChiSabes, REMINEXA y Chilete DevPath Web: proyectos personales, decisiones técnicas y trayectoria profesional.",
-    details: [
-      "Casos con arquitectura y alcance",
-      "CV público descargable",
-      "Contacto profesional",
-    ],
-    href: "https://portafolio.chiletedevpath.com/",
-    action: "Explorar portafolio",
-  },
 ];
 
 export const homeFeaturedProjectIds = [
@@ -81,15 +65,19 @@ export const academicProjects = [
     technologies: ["Excel", "VBA", "Tablas dinámicas", "Dashboard"],
     imageSrc: "/assets/img/projects/control-obras-construccion-banner-v2.webp",
     imageAlt: "Ilustración de control de obras con hojas de cálculo, costos y avances.",
-    description: "Libro de Excel para centralizar jornadas, personal, costos, herramientas e indicadores de obras pequeñas mediante tablas, paneles y automatizaciones controladas.",
+    description:
+      "Libro de Excel para centralizar jornadas, personal, costos, herramientas e indicadores de obras pequeñas mediante tablas, paneles y automatizaciones controladas.",
     details: [
       "Jornadas, pagos, personal y proyectos organizados en un solo libro",
       "Panel de control con tablas dinámicas e indicadores operativos",
       "Automatizaciones VBA conservadas en una copia pública anonimizada",
     ],
-    problem: "Evitar que los registros de asistencia, costos, equipos y avances de una obra pequeña quedaran dispersos y sin una vista operativa común.",
-    learned: "Apliqué tablas estructuradas, fórmulas, validaciones, tablas dinámicas, gráficos y VBA para convertir información operativa en un seguimiento consultable.",
-    improve: "Incorporar formularios guiados, trazabilidad por periodo y una variante sin VBA para hojas de cálculo en línea.",
+    problem:
+      "Evitar que los registros de asistencia, costos, equipos y avances de una obra pequeña quedaran dispersos y sin una vista operativa común.",
+    learned:
+      "Apliqué tablas estructuradas, fórmulas, validaciones, tablas dinámicas, gráficos y VBA para convertir información operativa en un seguimiento consultable.",
+    improve:
+      "Incorporar formularios guiados, trazabilidad por periodo y una variante sin VBA para hojas de cálculo en línea.",
     href: "https://github.com/chiletedevpath/academia/tree/main/excel-y-productividad/control-obras-construccion",
     action: "Ver proyecto",
   },
@@ -117,9 +105,12 @@ export const academicProjects = [
       "Venta con validación y descuento de stock",
       "Resumen por categorías y lectura segura de datos",
     ],
-    problem: "Gestionar un inventario pequeño sin base de datos y mantener coherencia entre el registro de productos, las ventas y las existencias disponibles.",
-    learned: "Convertí fundamentos de Java en un flujo completo: arreglos, métodos, clases, encapsulamiento, validación de entradas y excepciones personalizadas.",
-    improve: "Reemplazar la capacidad fija por colecciones, incorporar persistencia y añadir pruebas automatizadas sin perder la separación actual de responsabilidades.",
+    problem:
+      "Gestionar un inventario pequeño sin base de datos y mantener coherencia entre el registro de productos, las ventas y las existencias disponibles.",
+    learned:
+      "Convertí fundamentos de Java en un flujo completo: arreglos, métodos, clases, encapsulamiento, validación de entradas y excepciones personalizadas.",
+    improve:
+      "Reemplazar la capacidad fija por colecciones, incorporar persistencia y añadir pruebas automatizadas sin perder la separación actual de responsabilidades.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-03/taller-de-programacion/gestion-inventario-java",
     action: "Ver proyecto",
   },
@@ -147,9 +138,12 @@ export const academicProjects = [
       "Listas, colas, pilas, matrices y árbol de búsqueda",
       "Ordenamientos, reportes y exportación CSV",
     ],
-    problem: "Representar procesos clínicos y administrativos en memoria eligiendo una estructura de datos adecuada para cada necesidad del flujo.",
-    learned: "Apliqué listas, colas FIFO, pilas LIFO, matrices, árboles, búsqueda, recursividad y algoritmos de ordenamiento sobre datos del dominio.",
-    improve: "Incorporar carga desde CSV, pruebas automatizadas y validaciones más robustas, separando con mayor claridad la demostración académica de la operación interactiva.",
+    problem:
+      "Representar procesos clínicos y administrativos en memoria eligiendo una estructura de datos adecuada para cada necesidad del flujo.",
+    learned:
+      "Apliqué listas, colas FIFO, pilas LIFO, matrices, árboles, búsqueda, recursividad y algoritmos de ordenamiento sobre datos del dominio.",
+    improve:
+      "Incorporar carga desde CSV, pruebas automatizadas y validaciones más robustas, separando con mayor claridad la demostración académica de la operación interactiva.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/algoritmos-y-estructuras-de-datos/gestion-clinica-estructuras-datos",
     action: "Ver proyecto",
   },
@@ -177,9 +171,12 @@ export const academicProjects = [
       "Procedimientos, triggers y auditoría",
       "Inventario PEPS/FIFO y ventas",
     ],
-    problem: "Mantener consistencia entre compras, existencias, ventas y precios dentro de un modelo relacional con operaciones que afectan varias tablas.",
-    learned: "Diseñé relaciones, restricciones, procedimientos almacenados y triggers para proteger la integridad, auditar cambios y controlar salidas PEPS/FIFO.",
-    improve: "Optimizar consultas con índices basados en planes de ejecución, ampliar los reportes analíticos y automatizar pruebas sobre procedimientos y reglas críticas.",
+    problem:
+      "Mantener consistencia entre compras, existencias, ventas y precios dentro de un modelo relacional con operaciones que afectan varias tablas.",
+    learned:
+      "Diseñé relaciones, restricciones, procedimientos almacenados y triggers para proteger la integridad, auditar cambios y controlar salidas PEPS/FIFO.",
+    improve:
+      "Optimizar consultas con índices basados en planes de ejecución, ampliar los reportes analíticos y automatizar pruebas sobre procedimientos y reglas críticas.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-04/base-de-datos-i/gestion-comercial-db",
     action: "Ver proyecto",
   },
@@ -207,9 +204,12 @@ export const academicProjects = [
       "Pedido y contacto simulados sin pagos ni registros reales",
       "Build para Netlify, caché temporal y estados de respaldo",
     ],
-    problem: "Construir una experiencia web académica clara y adaptable que consumiera información externa sin presentar formularios simulados como operaciones comerciales reales.",
-    learned: "Apliqué HTML semántico, CSS modular, JavaScript, consumo de API, validación de formularios, caché y configuración de publicación para una experiencia multipágina.",
-    improve: "Añadir pruebas automatizadas y mantener verificaciones periódicas del despliegue público y de su conexión con la API.",
+    problem:
+      "Construir una experiencia web académica clara y adaptable que consumiera información externa sin presentar formularios simulados como operaciones comerciales reales.",
+    learned:
+      "Apliqué HTML semántico, CSS modular, JavaScript, consumo de API, validación de formularios, caché y configuración de publicación para una experiencia multipágina.",
+    improve:
+      "Añadir pruebas automatizadas y mantener verificaciones periódicas del despliegue público y de su conexión con la API.",
     demoHref: "https://comidaperucha.chiletedevpath.com/",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/desarrollo-web/comidaperucha-frontend",
     action: "Ver proyecto",
@@ -239,9 +239,12 @@ export const academicProjects = [
       "Consolidación distribuida mediante postgres_fdw",
       "Read model documental y generación de indicadores batch",
     ],
-    problem: "Integrar fuentes relacionales distribuidas, una representación documental y procesamiento analítico sin confundir la demo central con el escenario académico completo.",
-    learned: "Trabajé modelado relacional, seguridad de acceso, vistas distribuidas, MongoDB, exportaciones controladas y procesamiento PySpark orientado a reportes.",
-    improve: "Ejecutar el checklist completo en un entorno limpio, documentar respuestas de la API y conservar evidencias reproducibles de MongoDB y Spark.",
+    problem:
+      "Integrar fuentes relacionales distribuidas, una representación documental y procesamiento analítico sin confundir la demo central con el escenario académico completo.",
+    learned:
+      "Trabajé modelado relacional, seguridad de acceso, vistas distribuidas, MongoDB, exportaciones controladas y procesamiento PySpark orientado a reportes.",
+    improve:
+      "Ejecutar el checklist completo en un entorno limpio, documentar respuestas de la API y conservar evidencias reproducibles de MongoDB y Spark.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/base-de-datos-ii/comidaperucha-bd-backend",
     action: "Ver proyecto",
   },
@@ -269,9 +272,12 @@ export const academicProjects = [
       "Subtotal, IGV, total y alerta por stock mínimo",
       "Factory Method, Builder, Command, Adapter, Facade, Observer y State",
     ],
-    problem: "Evitar que la creación de productos, el cálculo de ventas, los cambios de estado, las alertas y la exportación quedaran concentrados en una sola clase.",
-    learned: "Apliqué Controller, Factory Method, Builder, Command, Adapter, Facade, Observer y State para reducir acoplamiento y asignar responsabilidades claras.",
-    improve: "Agregar pruebas unitarias por patrón y una capa de persistencia desacoplada antes de incorporar una interfaz, conservando intactas las reglas del dominio.",
+    problem:
+      "Evitar que la creación de productos, el cálculo de ventas, los cambios de estado, las alertas y la exportación quedaran concentrados en una sola clase.",
+    learned:
+      "Apliqué Controller, Factory Method, Builder, Command, Adapter, Facade, Observer y State para reducir acoplamiento y asignar responsabilidades claras.",
+    improve:
+      "Agregar pruebas unitarias por patrón y una capa de persistencia desacoplada antes de incorporar una interfaz, conservando intactas las reglas del dominio.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/patrones-de-diseno/gestion-ventas-patrones-diseno",
     action: "Ver proyecto",
   },
@@ -299,9 +305,12 @@ export const academicProjects = [
       "Integración HTTP mediante OpenFeign",
       "Historial de consultas y manejo de errores",
     ],
-    problem: "Exponer una consulta de RUC desde una API propia sin acoplar el controlador al proveedor externo y conservando trazabilidad de cada solicitud.",
-    learned: "Integré controladores, servicios, OpenFeign, validación de parámetros, persistencia JPA y manejo consistente de respuestas y errores.",
-    improve: "Incorporar caché, reintentos controlados, métricas del proveedor y pruebas con mocks para responder mejor ante latencia o indisponibilidad externa.",
+    problem:
+      "Exponer una consulta de RUC desde una API propia sin acoplar el controlador al proveedor externo y conservando trazabilidad de cada solicitud.",
+    learned:
+      "Integré controladores, servicios, OpenFeign, validación de parámetros, persistencia JPA y manejo consistente de respuestas y errores.",
+    improve:
+      "Incorporar caché, reintentos controlados, métricas del proveedor y pruebas con mocks para responder mejor ante latencia o indisponibilidad externa.",
     href: "https://github.com/chiletedevpath/academia/tree/main/tecsup/cursos/fullstack-con-java/proyectos/sunat-consulta",
     action: "Ver proyecto",
   },
@@ -330,9 +339,12 @@ export const academicProjects = [
       "Pedidos con ciclo de vida y control de stock",
       "Persistencia H2 o PostgreSQL e inicio conjunto",
     ],
-    problem: "Unificar catálogo, pedidos y control de existencias para que una operación iniciada en la interfaz mantuviera coherencia entre ambos servicios.",
-    learned: "Conecté componentes React, consumo REST, controladores, servicios, repositorios y persistencia, incluyendo reserva y reposición de stock según el estado del pedido.",
-    improve: "Añadir pruebas automatizadas de componentes y recorridos completos en navegador, e incorporar autenticación y autorización si el sistema supera el alcance académico.",
+    problem:
+      "Unificar catálogo, pedidos y control de existencias para que una operación iniciada en la interfaz mantuviera coherencia entre ambos servicios.",
+    learned:
+      "Conecté componentes React, consumo REST, controladores, servicios, repositorios y persistencia, incluyendo reserva y reposición de stock según el estado del pedido.",
+    improve:
+      "Añadir pruebas automatizadas de componentes y recorridos completos en navegador, e incorporar autenticación y autorización si el sistema supera el alcance académico.",
     href: "https://github.com/chiletedevpath/academia/tree/main/tecsup/cursos/fullstack-con-java/proyectos/plataforma-catalogo-inventario",
     action: "Ver proyecto",
   },
@@ -363,18 +375,6 @@ export const projectAreasEn = [
     href: "https://github.com/chiletedevpath/academia",
     action: "View evidence",
   },
-  {
-    status: "Professional selection",
-    title: "Adrián Pisco’s portfolio",
-    visual: "Portfolio",
-    imageSrc: "/assets/img/projects/portafolio-cover.webp",
-    imageAlt: "Personal software development projects by Adrián Pisco.",
-    description:
-      "ChiSabes, REMINEXA and Chilete DevPath Web: personal projects, technical decisions and professional background.",
-    details: ["Architecture and scope", "Downloadable public CV", "Professional contact"],
-    href: "https://portafolio.chiletedevpath.com/en/",
-    action: "Explore portfolio",
-  },
 ];
 
 /** @type {AcademicProject[]} */
@@ -397,15 +397,19 @@ export const academicProjectsEn = [
     technologies: ["Excel", "VBA", "Pivot tables", "Dashboard"],
     imageSrc: "/assets/img/projects/control-obras-construccion-banner-v2.webp",
     imageAlt: "Illustration of construction tracking with spreadsheets, costs and progress.",
-    description: "Excel workbook that centralizes workdays, personnel, costs, tools and work indicators through tables, dashboards and controlled automation.",
+    description:
+      "Excel workbook that centralizes workdays, personnel, costs, tools and work indicators through tables, dashboards and controlled automation.",
     details: [
       "Workdays, payments, personnel and projects organized in one workbook",
       "Control dashboard with pivot tables and operational indicators",
       "VBA automation preserved in an anonymized public copy",
     ],
-    problem: "Avoid leaving attendance, costs, equipment and small construction progress dispersed without a shared operational view.",
-    learned: "I applied structured tables, formulas, validation, pivot tables, charts and VBA to turn operational data into reviewable tracking.",
-    improve: "Add guided forms, period-level change tracking and a non-VBA version for online spreadsheets.",
+    problem:
+      "Avoid leaving attendance, costs, equipment and small construction progress dispersed without a shared operational view.",
+    learned:
+      "I applied structured tables, formulas, validation, pivot tables, charts and VBA to turn operational data into reviewable tracking.",
+    improve:
+      "Add guided forms, period-level change tracking and a non-VBA version for online spreadsheets.",
     href: "https://github.com/chiletedevpath/academia/tree/main/excel-y-productividad/control-obras-construccion",
     action: "View project",
   },
@@ -433,9 +437,12 @@ export const academicProjectsEn = [
       "Sales with validation and stock reduction",
       "Category summaries and safe input handling",
     ],
-    problem: "Manage a small inventory without a database while keeping product registration, sales and available stock consistent.",
-    learned: "I turned Java fundamentals into a complete workflow using arrays, methods, classes, encapsulation, input validation and custom exceptions.",
-    improve: "Replace fixed capacity with collections, add persistence and introduce automated tests without losing the current separation of responsibilities.",
+    problem:
+      "Manage a small inventory without a database while keeping product registration, sales and available stock consistent.",
+    learned:
+      "I turned Java fundamentals into a complete workflow using arrays, methods, classes, encapsulation, input validation and custom exceptions.",
+    improve:
+      "Replace fixed capacity with collections, add persistence and introduce automated tests without losing the current separation of responsibilities.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-03/taller-de-programacion/gestion-inventario-java",
     action: "View project",
   },
@@ -463,9 +470,12 @@ export const academicProjectsEn = [
       "Lists, queues, stacks, matrices and a search tree",
       "Sorting algorithms, reports and CSV export",
     ],
-    problem: "Represent clinical and administrative processes in memory by choosing an appropriate data structure for each workflow need.",
-    learned: "I applied lists, FIFO queues, LIFO stacks, matrices, trees, search, recursion and sorting algorithms to domain data.",
-    improve: "Add CSV import, automated tests and stronger validation while separating the academic demonstration from interactive operation more clearly.",
+    problem:
+      "Represent clinical and administrative processes in memory by choosing an appropriate data structure for each workflow need.",
+    learned:
+      "I applied lists, FIFO queues, LIFO stacks, matrices, trees, search, recursion and sorting algorithms to domain data.",
+    improve:
+      "Add CSV import, automated tests and stronger validation while separating the academic demonstration from interactive operation more clearly.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/algoritmos-y-estructuras-de-datos/gestion-clinica-estructuras-datos",
     action: "View project",
   },
@@ -488,10 +498,17 @@ export const academicProjectsEn = [
     imageAlt: "Editorial inventory and database image for an academic hardware store system.",
     description:
       "SQL Server commercial database that integrates users, customers, products, batch inventory, sales, auditing and pricing rules.",
-    details: ["Relational model", "Stored procedures, triggers and auditing", "FIFO inventory and sales"],
-    problem: "Keep purchases, stock, sales and prices consistent inside a relational model whose operations affect several tables.",
-    learned: "I designed relationships, constraints, stored procedures and triggers to protect integrity, audit changes and control FIFO inventory issues.",
-    improve: "Optimize queries with indexes informed by execution plans, expand analytical reports and automate tests for critical procedures and rules.",
+    details: [
+      "Relational model",
+      "Stored procedures, triggers and auditing",
+      "FIFO inventory and sales",
+    ],
+    problem:
+      "Keep purchases, stock, sales and prices consistent inside a relational model whose operations affect several tables.",
+    learned:
+      "I designed relationships, constraints, stored procedures and triggers to protect integrity, audit changes and control FIFO inventory issues.",
+    improve:
+      "Optimize queries with indexes informed by execution plans, expand analytical reports and automate tests for critical procedures and rules.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-04/base-de-datos-i/gestion-comercial-db",
     action: "View project",
   },
@@ -519,9 +536,12 @@ export const academicProjectsEn = [
       "Simulated ordering and contact without real payments or records",
       "Netlify build, temporary caching and fallback states",
     ],
-    problem: "Build a clear and responsive academic web experience that consumed external data without presenting simulated forms as real commercial operations.",
-    learned: "I applied semantic HTML, modular CSS, JavaScript, API consumption, form validation, caching and publishing configuration to a multi-page experience.",
-    improve: "Add automated tests and keep the public deployment and its API connection under periodic verification.",
+    problem:
+      "Build a clear and responsive academic web experience that consumed external data without presenting simulated forms as real commercial operations.",
+    learned:
+      "I applied semantic HTML, modular CSS, JavaScript, API consumption, form validation, caching and publishing configuration to a multi-page experience.",
+    improve:
+      "Add automated tests and keep the public deployment and its API connection under periodic verification.",
     demoHref: "https://comidaperucha.chiletedevpath.com/",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/desarrollo-web/comidaperucha-frontend",
     action: "View project",
@@ -551,9 +571,12 @@ export const academicProjectsEn = [
       "Distributed consolidation through postgres_fdw",
       "Document read model and batch KPI generation",
     ],
-    problem: "Integrate distributed relational sources, a document representation and analytical processing without confusing the central demo with the complete academic scenario.",
-    learned: "I worked with relational modeling, access security, distributed views, MongoDB, controlled exports and report-oriented PySpark processing.",
-    improve: "Run the complete checklist in a clean environment, document API responses and preserve reproducible MongoDB and Spark evidence.",
+    problem:
+      "Integrate distributed relational sources, a document representation and analytical processing without confusing the central demo with the complete academic scenario.",
+    learned:
+      "I worked with relational modeling, access security, distributed views, MongoDB, controlled exports and report-oriented PySpark processing.",
+    improve:
+      "Run the complete checklist in a clean environment, document API responses and preserve reproducible MongoDB and Spark evidence.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/base-de-datos-ii/comidaperucha-bd-backend",
     action: "View project",
   },
@@ -581,9 +604,12 @@ export const academicProjectsEn = [
       "Subtotal, VAT, total and minimum-stock alert",
       "Factory Method, Builder, Command, Adapter, Facade, Observer and State",
     ],
-    problem: "Prevent product creation, sales calculations, state changes, alerts and export logic from being concentrated in a single class.",
-    learned: "I applied Controller, Factory Method, Builder, Command, Adapter, Facade, Observer and State to reduce coupling and assign clear responsibilities.",
-    improve: "Add unit tests for each pattern and a decoupled persistence layer before introducing a UI, while preserving the domain rules.",
+    problem:
+      "Prevent product creation, sales calculations, state changes, alerts and export logic from being concentrated in a single class.",
+    learned:
+      "I applied Controller, Factory Method, Builder, Command, Adapter, Facade, Observer and State to reduce coupling and assign clear responsibilities.",
+    improve:
+      "Add unit tests for each pattern and a decoupled persistence layer before introducing a UI, while preserving the domain rules.",
     href: "https://github.com/chiletedevpath/academia/tree/main/utp/ciclo-05/patrones-de-diseno/gestion-ventas-patrones-diseno",
     action: "View project",
   },
@@ -611,9 +637,12 @@ export const academicProjectsEn = [
       "HTTP integration through OpenFeign",
       "Query history and provider error handling",
     ],
-    problem: "Expose tax ID lookups through an API without coupling the controller to the external provider while preserving request traceability.",
-    learned: "I integrated controllers, services, OpenFeign, parameter validation, JPA persistence and consistent response and error handling.",
-    improve: "Add caching, controlled retries, provider metrics and mock-based tests to respond better to external latency or outages.",
+    problem:
+      "Expose tax ID lookups through an API without coupling the controller to the external provider while preserving request traceability.",
+    learned:
+      "I integrated controllers, services, OpenFeign, parameter validation, JPA persistence and consistent response and error handling.",
+    improve:
+      "Add caching, controlled retries, provider metrics and mock-based tests to respond better to external latency or outages.",
     href: "https://github.com/chiletedevpath/academia/tree/main/tecsup/cursos/fullstack-con-java/proyectos/sunat-consulta",
     action: "View project",
   },
@@ -642,9 +671,12 @@ export const academicProjectsEn = [
       "Order lifecycle and stock control",
       "H2 or PostgreSQL persistence and combined startup",
     ],
-    problem: "Unify catalog, orders and inventory control so that an operation started in the interface remains consistent across both services.",
-    learned: "I connected React components, REST consumption, controllers, services, repositories and persistence, including stock reservation and restoration based on order state.",
-    improve: "Add automated component and browser-flow tests, plus authentication and authorization if the system grows beyond its academic scope.",
+    problem:
+      "Unify catalog, orders and inventory control so that an operation started in the interface remains consistent across both services.",
+    learned:
+      "I connected React components, REST consumption, controllers, services, repositories and persistence, including stock reservation and restoration based on order state.",
+    improve:
+      "Add automated component and browser-flow tests, plus authentication and authorization if the system grows beyond its academic scope.",
     href: "https://github.com/chiletedevpath/academia/tree/main/tecsup/cursos/fullstack-con-java/proyectos/plataforma-catalogo-inventario",
     action: "View project",
   },

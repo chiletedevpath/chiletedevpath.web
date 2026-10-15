@@ -4,7 +4,11 @@
   overflow: hidden;
   border-bottom: 1px solid rgba(216, 207, 189, 0.8);
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--color-superficie) 92%, transparent), color-mix(in srgb, var(--color-fondo) 92%, transparent)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-superficie) 92%, transparent),
+      color-mix(in srgb, var(--color-fondo) 92%, transparent)
+    ),
     var(--color-superficie);
 }
 
@@ -26,7 +30,13 @@
   align-items: center;
   border-bottom-color: rgba(79, 156, 175, 0.32);
   background:
-    linear-gradient(90deg, rgba(5, 12, 24, 0.92) 0%, rgba(5, 12, 24, 0.72) 38%, rgba(5, 12, 24, 0.28) 64%, rgba(5, 12, 24, 0.5) 100%),
+    linear-gradient(
+      90deg,
+      rgba(5, 12, 24, 0.92) 0%,
+      rgba(5, 12, 24, 0.72) 38%,
+      rgba(5, 12, 24, 0.28) 64%,
+      rgba(5, 12, 24, 0.5) 100%
+    ),
     linear-gradient(180deg, rgba(5, 12, 24, 0.58), rgba(5, 12, 24, 0.82)),
     var(--page-hero-bg) center / cover no-repeat;
   color: #eef7f8;
@@ -443,8 +453,7 @@
 }
 
 .visual-proyectos-panel {
-  fill:
-    color-mix(in srgb, var(--color-principal) 76%, transparent);
+  fill: color-mix(in srgb, var(--color-principal) 76%, transparent);
   stroke: color-mix(in srgb, var(--color-borde) 68%, var(--color-agua));
   filter: drop-shadow(0 22px 42px rgba(0, 0, 0, 0.24));
 }
@@ -737,8 +746,7 @@
 .page-hero-proyectos .page-hero-visual {
   background:
     radial-gradient(circle at 72% 26%, rgba(79, 156, 175, 0.16), transparent 30%),
-    linear-gradient(135deg, rgba(8, 18, 32, 0.98), rgba(12, 32, 48, 0.94)),
-    var(--color-principal);
+    linear-gradient(135deg, rgba(8, 18, 32, 0.98), rgba(12, 32, 48, 0.94)), var(--color-principal);
 }
 
 @keyframes visual-proyectos-ruta {
@@ -791,20 +799,17 @@
 
 .page-hero-criterios .page-hero-visual {
   background:
-    linear-gradient(135deg, rgba(10, 38, 54, 0.98), rgba(185, 56, 50, 0.58)),
-    var(--color-principal);
+    linear-gradient(135deg, rgba(10, 38, 54, 0.98), rgba(185, 56, 50, 0.58)), var(--color-principal);
 }
 
 .page-hero-comunidad .page-hero-visual {
   background:
-    linear-gradient(135deg, rgba(10, 38, 54, 0.98), rgba(43, 122, 91, 0.66)),
-    var(--color-principal);
+    linear-gradient(135deg, rgba(10, 38, 54, 0.98), rgba(43, 122, 91, 0.66)), var(--color-principal);
 }
 
 .page-hero-sobre .page-hero-visual {
   background:
-    linear-gradient(135deg, rgba(10, 38, 54, 0.98), rgba(112, 83, 52, 0.68)),
-    var(--color-principal);
+    linear-gradient(135deg, rgba(10, 38, 54, 0.98), rgba(112, 83, 52, 0.68)), var(--color-principal);
 }
 
 @media (max-width: 860px) {
@@ -825,7 +830,12 @@
   .page-hero-con-fondo {
     min-height: auto;
     background:
-      linear-gradient(180deg, rgba(5, 12, 24, 0.94) 0%, rgba(5, 12, 24, 0.76) 48%, rgba(5, 12, 24, 0.88) 100%),
+      linear-gradient(
+        180deg,
+        rgba(5, 12, 24, 0.94) 0%,
+        rgba(5, 12, 24, 0.76) 48%,
+        rgba(5, 12, 24, 0.88) 100%
+      ),
       var(--page-hero-bg) 68% center / cover no-repeat;
   }
 
@@ -935,4 +945,3 @@
     padding: 20px;
   }
 }
-

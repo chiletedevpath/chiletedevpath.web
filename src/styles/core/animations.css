@@ -193,4 +193,3 @@
 .movimiento-observable:not(.movimiento-activo) *::after {
   animation-play-state: paused !important;
 }
-

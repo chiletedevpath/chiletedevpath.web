@@ -1,0 +1,42 @@
+/* Motion reinforces actions; focus remains visible without movement. */
+.library-entry-action a,
+.home-path-item > span:last-child,
+.boton > span[aria-hidden="true"] {
+  transition: transform 180ms ease-out;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .library-entry-action a:hover {
+    transform: translateX(3px);
+  }
+  .home-path-item:hover > span:last-child {
+    transform: translate(3px, -3px);
+  }
+  .boton:hover > span[aria-hidden="true"] {
+    transform: translateX(3px);
+  }
+}
+
+.boton > span[aria-hidden="true"] {
+  display: inline-block;
+}
+.library-entry-action a:focus-visible,
+.home-path-item:focus-visible,
+.boton:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .boton:active {
+    transform: translateY(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .library-entry-action a,
+  .home-path-item > span:last-child,
+  .boton > span[aria-hidden="true"] {
+    transition: none;
+  }
+}

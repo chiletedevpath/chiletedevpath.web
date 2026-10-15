@@ -5,7 +5,17 @@ import "../../../styles/pages/criterios-editorial.css";
 import "../../../styles/pages/politicas.css";
 import { policiesEn } from "../../../data/recursos.js";
 ---
+
 <BaseLayout title="Policies | Chilete DevPath">
-  <header class="policy-heading"><div class="contenedor"><a class="policy-back" href="/en/criterios/#lista-politicas">← Back to criteria</a><p class="etiqueta">CDP / POLICIES</p><h1>Publishing with responsibility.</h1><p class="policy-lead">Authorship, privacy, AI use, wellbeing and security.</p></div></header>
+  <header class="policy-heading">
+    <div class="contenedor">
+      <a class="policy-back" href="/en/criterios/#lista-politicas">
+        ← Back to criteria
+      </a>
+      <p class="etiqueta">CDP / POLICIES</p>
+      <h1>Publishing with responsibility.</h1>
+      <p class="policy-lead">Authorship, privacy, AI use, wellbeing and security.</p>
+    </div>
+  </header>
   <PolicyOverview policies={policiesEn} lang="en" />
 </BaseLayout>

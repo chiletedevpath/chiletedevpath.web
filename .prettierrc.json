@@ -1,0 +1,11 @@
+{
+  "plugins": ["prettier-plugin-astro"],
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "endOfLine": "lf",
+  "overrides": [
+    { "files": "*.astro", "options": { "parser": "astro" } },
+    { "files": "*.jsonc", "options": { "trailingComma": "none" } }
+  ]
+}

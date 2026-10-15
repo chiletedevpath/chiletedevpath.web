@@ -4,15 +4,16 @@ const MAX_REQUEST_BYTES = 12_000;
 const VALID_CONTEXTS = new Set(["home", "community", "resources"]);
 const VALID_LANGUAGES = new Set(["es", "en"]);
 
-const json = (body, status, origin = "") => new Response(JSON.stringify(body), {
-  status,
-  headers: {
-    "Content-Type": "application/json; charset=utf-8",
-    "Cache-Control": "no-store",
-    "X-Content-Type-Options": "nosniff",
-    ...(origin ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" } : {}),
-  },
-});
+const json = (body, status, origin = "") =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Content-Type-Options": "nosniff",
+      ...(origin ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" } : {}),
+    },
+  });
 
 const cleanText = (value, maxLength) => {
   if (typeof value !== "string") return "";
@@ -59,27 +60,39 @@ export const validateContactPayload = (input) => {
 };
 
 const contextLabels = {
-  es: { home: "Contacto desde Inicio", community: "Feedback de comunidad", resources: "Sugerencia de recurso" },
-  en: { home: "Contact from Home", community: "Community feedback", resources: "Resource suggestion" },
+  es: {
+    home: "Contacto desde Inicio",
+    community: "Feedback de comunidad",
+    resources: "Sugerencia de recurso",
+  },
+  en: {
+    home: "Contact from Home",
+    community: "Community feedback",
+    resources: "Resource suggestion",
+  },
 };
 
-export const buildEmailMessage = (payload) => [
-  `Contexto: ${contextLabels[payload.lang][payload.context]}`,
-  `Idioma: ${payload.lang.toUpperCase()}`,
-  `Nombre: ${payload.name}`,
-  `Correo: ${payload.email}`,
-  `Asunto: ${payload.subject}`,
-  `Tipo: ${payload.type}`,
-  payload.topic ? `Tema: ${payload.topic}` : "",
-  `Mensaje: ${payload.message}`,
-].filter(Boolean).join("\n");
+export const buildEmailMessage = (payload) =>
+  [
+    `Contexto: ${contextLabels[payload.lang][payload.context]}`,
+    `Idioma: ${payload.lang.toUpperCase()}`,
+    `Nombre: ${payload.name}`,
+    `Correo: ${payload.email}`,
+    `Asunto: ${payload.subject}`,
+    `Tipo: ${payload.type}`,
+    payload.topic ? `Tema: ${payload.topic}` : "",
+    `Mensaje: ${payload.message}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
 
-const splitList = (value) => new Set(
-  String(value || "")
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean),
-);
+const splitList = (value) =>
+  new Set(
+    String(value || "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean),
+  );
 
 const validateTurnstile = async (payload, request, env) => {
   const response = await fetch(TURNSTILE_VERIFY_URL, {
@@ -97,7 +110,9 @@ const validateTurnstile = async (payload, request, env) => {
   if (!response.ok) return false;
   const result = await response.json();
   const expectedHostnames = splitList(env.TURNSTILE_HOSTNAMES);
-  return result.success === true && result.action === "contact" && expectedHostnames.has(result.hostname);
+  return (
+    result.success === true && result.action === "contact" && expectedHostnames.has(result.hostname)
+  );
 };
 
 const rateLimitKey = async (request) => {
@@ -134,16 +149,17 @@ const sendWithEmailJs = async (payload, env) => {
   return true;
 };
 
-const corsResponse = (origin) => new Response(null, {
-  status: 204,
-  headers: {
-    "Access-Control-Allow-Origin": origin,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Max-Age": "86400",
-    Vary: "Origin",
-  },
-});
+const corsResponse = (origin) =>
+  new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": origin,
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Max-Age": "86400",
+      Vary: "Origin",
+    },
+  });
 
 export default {
   async fetch(request, env) {

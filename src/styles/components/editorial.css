@@ -11,8 +11,16 @@
 
 .seccion-editorial {
   background:
-    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-acento) 10%, transparent), transparent 30rem),
-    linear-gradient(135deg, color-mix(in srgb, var(--color-superficie) 92%, transparent), color-mix(in srgb, var(--tema-superficie-alterna) 86%, transparent));
+    radial-gradient(
+      circle at 12% 18%,
+      color-mix(in srgb, var(--color-acento) 10%, transparent),
+      transparent 30rem
+    ),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-superficie) 92%, transparent),
+      color-mix(in srgb, var(--tema-superficie-alterna) 86%, transparent)
+    );
 }
 
 .editorial-bloque {
@@ -24,7 +32,11 @@
   border: 1px solid color-mix(in srgb, var(--color-borde) 78%, var(--color-acento));
   border-radius: 10px;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--color-superficie) 88%, transparent), color-mix(in srgb, var(--tema-superficie-alterna) 76%, transparent)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-superficie) 88%, transparent),
+      color-mix(in srgb, var(--tema-superficie-alterna) 76%, transparent)
+    ),
     var(--color-superficie);
   box-shadow: var(--sombra-suave);
 }
@@ -70,7 +82,11 @@
   pointer-events: none;
   background:
     linear-gradient(180deg, transparent 58%, rgba(5, 15, 25, 0.26)),
-    radial-gradient(circle at 18% 16%, color-mix(in srgb, var(--color-progreso) 16%, transparent), transparent 30%);
+    radial-gradient(
+      circle at 18% 16%,
+      color-mix(in srgb, var(--color-progreso) 16%, transparent),
+      transparent 30%
+    );
 }
 
 .editorial-imagen img {
@@ -95,8 +111,16 @@
   border: 1px solid color-mix(in srgb, var(--color-borde) 58%, transparent);
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--color-acento) 14%, transparent), transparent 34%),
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--color-progreso) 12%, transparent), transparent 52%);
+    radial-gradient(
+      circle at 50% 48%,
+      color-mix(in srgb, var(--color-acento) 14%, transparent),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      color-mix(in srgb, var(--color-progreso) 12%, transparent),
+      transparent 52%
+    );
   opacity: 0.92;
 }
 
@@ -118,7 +142,11 @@
   inset: 0;
   background:
     linear-gradient(180deg, transparent 58%, rgba(4, 17, 26, 0.18)),
-    radial-gradient(circle at 50% 12%, color-mix(in srgb, var(--color-progreso) 14%, transparent), transparent 38%);
+    radial-gradient(
+      circle at 50% 12%,
+      color-mix(in srgb, var(--color-progreso) 14%, transparent),
+      transparent 38%
+    );
   pointer-events: none;
 }
 

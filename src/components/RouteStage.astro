@@ -2,19 +2,20 @@
 import "../styles/pages/ruta.css";
 
 const { stage, lang = "es" } = Astro.props;
-const labels = lang === "en"
-  ? {
-      technologies: "Technologies and concepts in this stage",
-      contents: "Published topic blocks",
-      progress: "Stage progress",
-      result: "Result",
-    }
-  : {
-      technologies: "Tecnologías y conceptos de la etapa",
-      contents: "Bloques temáticos publicados",
-      progress: "Avance de etapa",
-      result: "Resultado",
-    };
+const labels =
+  lang === "en"
+    ? {
+        technologies: "Technologies and concepts in this stage",
+        contents: "Published topic blocks",
+        progress: "Stage progress",
+        result: "Result",
+      }
+    : {
+        technologies: "Tecnologías y conceptos de la etapa",
+        contents: "Bloques temáticos publicados",
+        progress: "Avance de etapa",
+        result: "Resultado",
+      };
 ---
 
 <article class="ruta-etapa">
@@ -23,13 +24,17 @@ const labels = lang === "en"
   <h3>{stage.title}</h3>
   {Array.isArray(stage.technologies) && (
     <div class="ruta-tecnologias" aria-label={labels.technologies}>
-      {stage.technologies.map((tech) => <span>{tech}</span>)}
+      {stage.technologies.map((tech) => (
+        <span>{tech}</span>
+      ))}
     </div>
   )}
   <ol class="ruta-lista">
     {stage.topics.map((topic) => (
       <li>
-        <a href={topic.href} target="_blank" rel="noopener noreferrer">{topic.label}</a>
+        <a href={topic.href} target="_blank" rel="noopener noreferrer">
+          {topic.label}
+        </a>
       </li>
     ))}
   </ol>
@@ -48,9 +53,13 @@ const labels = lang === "en"
       </div>
     </div>
   )}
-  <p class="ruta-resultado">{labels.result}: {stage.result}</p>
+  <p class="ruta-resultado">
+    {labels.result}: {stage.result}
+  </p>
   <div class="ruta-pie">
     <span class="estado estado-etapa">{stage.status}</span>
-    <a href={stage.href} target="_blank" rel="noopener noreferrer">{stage.action}</a>
+    <a href={stage.href} target="_blank" rel="noopener noreferrer">
+      {stage.action}
+    </a>
   </div>
 </article>

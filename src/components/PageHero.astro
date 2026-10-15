@@ -23,7 +23,13 @@ const heroStyle = heroImage ? `--page-hero-bg: url("${heroImage}");` : undefined
 ---
 
 <section
-  class:list={["seccion", "page-hero", `page-hero-${variant}`, heroImage && "page-hero-con-fondo", !showVisual && "page-hero-sin-visual"]}
+  class:list={[
+    "seccion",
+    "page-hero",
+    `page-hero-${variant}`,
+    heroImage && "page-hero-con-fondo",
+    !showVisual && "page-hero-sin-visual",
+  ]}
   style={heroStyle}
 >
   <div class="contenedor page-hero-grid">
@@ -34,7 +40,12 @@ const heroStyle = heroImage ? `--page-hero-bg: url("${heroImage}");` : undefined
       {actions.length > 0 && (
         <div class="page-hero-acciones">
           {actions.map((action) => (
-            <a class={action.primary ? "boton boton-principal" : "boton boton-secundario"} href={action.href} target={action.external ? "_blank" : undefined} rel={action.external ? "noopener" : undefined}>
+            <a
+              class={action.primary ? "boton boton-principal" : "boton boton-secundario"}
+              href={action.href}
+              target={action.external ? "_blank" : undefined}
+              rel={action.external ? "noopener" : undefined}
+            >
               {action.label}
             </a>
           ))}

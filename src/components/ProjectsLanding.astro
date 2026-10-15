@@ -4,29 +4,54 @@ import HeroBackdrop from "./HeroBackdrop.astro";
 import "../styles/pages/proyectos.css";
 const { projects, lang = "es" } = Astro.props;
 const en = lang === "en";
-const technologies = new Set(projects.flatMap(project => project.technologies));
+const technologies = new Set(projects.flatMap((project) => project.technologies));
 ---
+
 <header class="projects-editorial section-image-hero">
   <HeroBackdrop section="proyectos" />
   <div class="contenedor projects-editorial-grid">
     <div>
       <span class="etiqueta">CDP / {en ? "PROJECTS" : "PROYECTOS"}</span>
-      <h1>{en ? "Learning takes shape" : "Lo aprendido toma forma"}<em>{en ? "when I build." : "cuando construyo."}</em></h1>
-      <p>{en ? "Projects built while studying: the problem I faced, the solution I built and what I learned along the way." : "Proyectos que desarrollé mientras estudiaba: el problema que encontré, la solución que construí y lo que aprendí en el proceso."}</p>
-      <a class="projects-jump" href={en ? "#project-explorer" : "#explorador-proyectos"}>{en ? "Explore the work" : "Explorar los proyectos"} <span aria-hidden="true">↓</span></a>
+      <h1>
+        {en ? "Learning takes shape" : "Lo aprendido toma forma"}
+        <em>{en ? "when I build." : "cuando construyo."}</em>
+      </h1>
+      <p>
+        {en
+          ? "Projects built while studying: the problem I faced, the solution I built and what I learned along the way."
+          : "Proyectos que desarrollé mientras estudiaba: el problema que encontré, la solución que construí y lo que aprendí en el proceso."}
+      </p>
+      <a class="projects-jump" href={en ? "#project-explorer" : "#explorador-proyectos"}>
+        {en ? "Explore the work" : "Explorar los proyectos"} <span aria-hidden="true">↓</span>
+      </a>
     </div>
   </div>
 </header>
 <div class="contenedor hero-evidence-band">
-    <aside class="projects-ledger" aria-label={en ? "Published evidence" : "Evidencia publicada"}>
-      <span class="etiqueta">{en ? "FROM STUDY TO PRACTICE" : "DEL ESTUDIO A LA PRÁCTICA"}</span>
-      <strong>{String(projects.length).padStart(2, "0")}</strong>
-      <p>{en ? "projects with published material" : "proyectos con material publicado"}</p>
-      <div><span>{technologies.size}</span> {en ? "technologies applied" : "tecnologías aplicadas"}</div>
-      <small>{en ? "The evidence lives in Academia. Here I share its context." : "La evidencia está en Academia. Aquí comparto su contexto."}</small>
-    </aside>
+  <aside class="projects-ledger" aria-label={en ? "Published evidence" : "Evidencia publicada"}>
+    <span class="etiqueta">{en ? "FROM STUDY TO PRACTICE" : "DEL ESTUDIO A LA PRÁCTICA"}</span>
+    <strong>{String(projects.length).padStart(2, "0")}</strong>
+    <p>{en ? "projects with published material" : "proyectos con material publicado"}</p>
+    <div>
+      <span>{technologies.size}</span> {en ? "technologies applied" : "tecnologías aplicadas"}
+    </div>
+    <small>
+      {en
+        ? "The evidence lives in Academia. Here I share its context."
+        : "La evidencia está en Academia. Aquí comparto su contexto."}
+    </small>
+  </aside>
 </div>
 <ProjectExplorer projects={projects} lang={lang} />
 <section class="projects-closing">
-  <div class="contenedor"><p>{en ? "Behind every project, there is a learning journey." : "Detrás de cada proyecto hay un recorrido de aprendizaje."}</p><a href={en ? "/en/ruta/" : "/ruta/"}>{en ? "Explore the paths" : "Conocer las rutas"} <span aria-hidden="true">→</span></a></div>
+  <div class="contenedor">
+    <p>
+      {en
+        ? "Behind every project, there is a learning journey."
+        : "Detrás de cada proyecto hay un recorrido de aprendizaje."}
+    </p>
+    <a href={en ? "/en/ruta/" : "/ruta/"}>
+      {en ? "Explore the paths" : "Conocer las rutas"} <span aria-hidden="true">→</span>
+    </a>
+  </div>
 </section>

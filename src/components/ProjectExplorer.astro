@@ -5,13 +5,37 @@ const { projects, lang = "es" } = Astro.props;
 const isEn = lang === "en";
 
 const filterLabels = isEn
-  ? { todos: "All", software: "Software", datos: "Data", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patterns", productividad: "Productivity" }
-  : { todos: "Todos", software: "Software", datos: "Datos", backend: "Backend", frontend: "Frontend", fullstack: "Full stack", patrones: "Patrones", productividad: "Productividad" };
+  ? {
+      todos: "All",
+      software: "Software",
+      datos: "Data",
+      backend: "Backend",
+      frontend: "Frontend",
+      fullstack: "Full stack",
+      patrones: "Patterns",
+      productividad: "Productivity",
+    }
+  : {
+      todos: "Todos",
+      software: "Software",
+      datos: "Datos",
+      backend: "Backend",
+      frontend: "Frontend",
+      fullstack: "Full stack",
+      patrones: "Patrones",
+      productividad: "Productividad",
+    };
 const preferredFilterOrder = ["software", "datos", "backend", "frontend", "fullstack", "patrones"];
-const canonicalFilter = (filter) => ({ data: "datos", productivity: "productividad", patterns: "patrones" }[filter] ?? filter);
-const availableFilters = [...new Set(
-  projects.flatMap((project) => project.filterTags ?? [project.routeStage]).filter(Boolean).map(canonicalFilter)
-)];
+const canonicalFilter = (filter) =>
+  ({ data: "datos", productivity: "productividad", patterns: "patrones" })[filter] ?? filter;
+const availableFilters = [
+  ...new Set(
+    projects
+      .flatMap((project) => project.filterTags ?? [project.routeStage])
+      .filter(Boolean)
+      .map(canonicalFilter),
+  ),
+];
 const orderedFilters = [
   ...preferredFilterOrder.filter((filter) => availableFilters.includes(filter)),
   ...availableFilters.filter((filter) => !preferredFilterOrder.includes(filter)),
@@ -20,9 +44,14 @@ const filters = [
   ["todos", filterLabels.todos],
   ...orderedFilters.map((filter) => [filter, filterLabels[filter] ?? filter]),
 ];
-const projectCountLabel = projects.length === 1
-  ? (isEn ? "project available" : "proyecto disponible")
-  : (isEn ? "projects available" : "proyectos disponibles");
+const projectCountLabel =
+  projects.length === 1
+    ? isEn
+      ? "project available"
+      : "proyecto disponible"
+    : isEn
+      ? "projects available"
+      : "proyectos disponibles";
 
 const repositoryLabel = (repository, index, total) => {
   if (total === 1) return isEn ? "View project in Academia" : "Ver proyecto en Academia";
@@ -31,35 +60,71 @@ const repositoryLabel = (repository, index, total) => {
 };
 ---
 
-<section class="seccion seccion-clara explorador-proyectos" id={isEn ? "project-explorer" : "explorador-proyectos"} data-project-explorer>
+<section
+  class="seccion seccion-clara explorador-proyectos"
+  id={isEn ? "project-explorer" : "explorador-proyectos"}
+  data-project-explorer
+>
   <div class="contenedor">
     <header class="explorador-cabecera">
       <div>
         <span class="etiqueta">{isEn ? "Project explorer" : "Explorador de proyectos"}</span>
-        <h2>{isEn ? "Choose a project and see how I built it" : "Elige un proyecto y conoce cómo lo construí"}</h2>
+        <h2>
+          {isEn
+            ? "Choose a project and see how I built it"
+            : "Elige un proyecto y conoce cómo lo construí"}
+        </h2>
       </div>
     </header>
 
     <div class="explorador-herramientas">
       <label class="explorador-busqueda">
         <span>{isEn ? "Search projects" : "Buscar proyecto"}</span>
-        <input type="search" placeholder={isEn ? "Example: Java, data or Spring Boot" : "Ejemplo: Java, datos o Spring Boot"} data-project-search />
+        <input
+          type="search"
+          placeholder={
+            isEn ? "Example: Java, data or Spring Boot" : "Ejemplo: Java, datos o Spring Boot"
+          }
+          data-project-search
+        />
       </label>
-      <div class="filtros-recursos filtros-proyectos" aria-label={isEn ? "Filter projects" : "Filtrar proyectos"}>
+      <div
+        class="filtros-recursos filtros-proyectos"
+        aria-label={isEn ? "Filter projects" : "Filtrar proyectos"}
+      >
         {filters.map(([value, label], index) => (
-          <button class:list={["filtro-recurso", { "filtro-activo": index === 0 }]} type="button" data-project-filter={value} aria-pressed={index === 0 ? "true" : "false"}>{label}</button>
+          <button
+            class:list={["filtro-recurso", { "filtro-activo": index === 0 }]}
+            type="button"
+            data-project-filter={value}
+            aria-pressed={index === 0 ? "true" : "false"}
+          >
+            {label}
+          </button>
         ))}
       </div>
     </div>
 
     <div class="explorador-layout">
-      <aside class="explorador-indice" aria-label={isEn ? "Available projects" : "Proyectos disponibles"}>
-        <p class="explorador-contador" aria-live="polite" data-project-count>{projects.length} {projectCountLabel}</p>
+      <aside
+        class="explorador-indice"
+        aria-label={isEn ? "Available projects" : "Proyectos disponibles"}
+      >
+        <p class="explorador-contador" aria-live="polite" data-project-count>
+          {projects.length} {projectCountLabel}
+        </p>
         <div class="explorador-lista" role="tablist" aria-orientation="vertical">
           {projects.map((project, index) => {
             const id = `project-${lang}-${project.id}`;
             const filters = (project.filterTags ?? [project.routeStage]).map(canonicalFilter);
-            const searchText = [project.title, project.description, project.type, ...project.technologies].join(" ").toLowerCase();
+            const searchText = [
+              project.title,
+              project.description,
+              project.type,
+              ...project.technologies,
+            ]
+              .join(" ")
+              .toLowerCase();
             return (
               <button
                 class:list={["explorador-opcion", { "explorador-opcion-activa": index === 0 }]}
@@ -85,7 +150,9 @@ const repositoryLabel = (repository, index, total) => {
         </div>
         <div class="explorador-vacio" data-project-empty hidden>
           <strong>{isEn ? "No matches found" : "No encontramos coincidencias"}</strong>
-          <span>{isEn ? "Try another term or select All." : "Prueba otro término o selecciona Todos."}</span>
+          <span>
+            {isEn ? "Try another term or select All." : "Prueba otro término o selecciona Todos."}
+          </span>
         </div>
       </aside>
 
@@ -93,23 +160,44 @@ const repositoryLabel = (repository, index, total) => {
         {projects.map((project, index) => {
           const id = `project-${lang}-${project.id}`;
           return (
-            <article class="explorador-detalle" id={id} role="tabpanel" tabindex="0" aria-labelledby={`${id}-tab`} data-project-panel={id} hidden={index !== 0}>
+            <article
+              class="explorador-detalle"
+              id={id}
+              role="tabpanel"
+              tabindex="0"
+              aria-labelledby={`${id}-tab`}
+              data-project-panel={id}
+              hidden={index !== 0}
+            >
               <div class="explorador-presentacion">
                 <figure class="explorador-media">
-                  <img src={project.imageSrc} alt={project.imageAlt} loading={index === 0 ? "eager" : "lazy"} width="1200" height="628" />
-                  <figcaption>{project.visual} · {isEn ? "Illustration" : "Ilustración"}</figcaption>
+                  <img
+                    src={project.imageSrc}
+                    alt={project.imageAlt}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    width="1200"
+                    height="628"
+                  />
+                  <figcaption>
+                    {project.visual} · {isEn ? "Illustration" : "Ilustración"}
+                  </figcaption>
                 </figure>
 
                 <div class="explorador-intro">
                   <div class="explorador-meta">
                     <span>{project.type}</span>
-                    <span class="explorador-estado"><i aria-hidden="true"></i>{project.status}</span>
+                    <span class="explorador-estado">
+                      <i aria-hidden="true"></i>
+                      {project.status}
+                    </span>
                   </div>
                   <h3>{project.title}</h3>
                   <p class="explorador-descripcion">{project.description}</p>
 
                   <div class="proyecto-tech" aria-label={isEn ? "Technologies" : "Tecnologías"}>
-                    {project.technologies.map((tech) => <span>{tech}</span>)}
+                    {project.technologies.map((tech) => (
+                      <span>{tech}</span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -124,7 +212,11 @@ const repositoryLabel = (repository, index, total) => {
                   <section>
                     <span>02</span>
                     <h4>{isEn ? "Built solution" : "Solución construida"}</h4>
-                    <ul>{project.details.map((detail) => <li>{detail}</li>)}</ul>
+                    <ul>
+                      {project.details.map((detail) => (
+                        <li>{detail}</li>
+                      ))}
+                    </ul>
                   </section>
                   <section>
                     <span>03</span>
@@ -135,12 +227,22 @@ const repositoryLabel = (repository, index, total) => {
 
                 <div class="explorador-acciones">
                   {project.demoHref && (
-                    <a class="boton boton-secundario boton-externo" href={project.demoHref} target="_blank" rel="noopener noreferrer">
+                    <a
+                      class="boton boton-secundario boton-externo"
+                      href={project.demoHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {isEn ? "View live demo" : "Ver demo en vivo"}
                     </a>
                   )}
                   {project.repositories.map((repository, repositoryIndex) => (
-                    <a class="boton boton-principal" href={repository.href} target="_blank" rel="noopener noreferrer">
+                    <a
+                      class="boton boton-principal"
+                      href={repository.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {repositoryLabel(repository, repositoryIndex, project.repositories.length)}
                     </a>
                   ))}

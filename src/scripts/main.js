@@ -49,7 +49,7 @@ if (typeof document !== "undefined") {
   window.addEventListener("scroll", actualizarEncabezado, { passive: true });
 
   const elementosAnimados = document.querySelectorAll(
-    ".identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-grupo, .red-social, .politica-documento, .criterios-resumen, .pie-cta"
+    ".identidad-media, .identidad-contenido, .identidad-puntos, .seccion .etiqueta, .seccion h2, .seccion-descripcion, .tarjeta, .ruta-etapa, .ruta-accion, .red-grupo, .red-social, .politica-documento, .criterios-resumen, .pie-cta",
   );
 
   const secuenciaPorContenedor = new Map();
@@ -78,7 +78,7 @@ if (typeof document !== "undefined") {
       {
         rootMargin: "0px 0px -8% 0px",
         threshold: 0,
-      }
+      },
     );
 
     elementosAnimados.forEach((elemento) => observadorAnimacion.observe(elemento));
@@ -108,7 +108,7 @@ if (typeof document !== "undefined") {
           entrada.target.classList.toggle("movimiento-activo", entrada.isIntersecting);
         });
       },
-      { rootMargin: "120px 0px", threshold: 0.02 }
+      { rootMargin: "120px 0px", threshold: 0.02 },
     );
 
     zonasMovimiento.forEach((zona) => observadorMovimiento.observe(zona));
@@ -125,7 +125,7 @@ if (typeof document !== "undefined") {
           observadorPuente.unobserve(entrada.target);
         });
       },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.2 }
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.2 },
     );
 
     puentesProyectos.forEach((puente) => observadorPuente.observe(puente));
@@ -146,9 +146,7 @@ if (typeof document !== "undefined") {
             enlace.removeAttribute("aria-current");
           });
 
-          const enlaceActivo = document.querySelector(
-            `.menu a[href="#${entrada.target.id}"]`
-          );
+          const enlaceActivo = document.querySelector(`.menu a[href="#${entrada.target.id}"]`);
 
           if (enlaceActivo) {
             enlaceActivo.classList.add("enlace-activo");
@@ -159,7 +157,7 @@ if (typeof document !== "undefined") {
       {
         rootMargin: "-45% 0px -45% 0px",
         threshold: 0,
-      }
+      },
     );
 
     secciones.forEach((seccion) => observadorSecciones.observe(seccion));
@@ -251,7 +249,11 @@ if (typeof document !== "undefined") {
     requestAnimationFrame(pintar);
   };
 
-  if (!preferenciaMovimientoReducido.matches && "IntersectionObserver" in window && metricasAnimadas.length > 0) {
+  if (
+    !preferenciaMovimientoReducido.matches &&
+    "IntersectionObserver" in window &&
+    metricasAnimadas.length > 0
+  ) {
     const observadorMetricas = new IntersectionObserver(
       (entradas) => {
         entradas.forEach((entrada) => {
@@ -261,7 +263,7 @@ if (typeof document !== "undefined") {
           }
         });
       },
-      { threshold: 0.45 }
+      { threshold: 0.45 },
     );
 
     metricasAnimadas.forEach((metrica) => observadorMetricas.observe(metrica));
@@ -304,22 +306,31 @@ if (typeof document !== "undefined") {
   };
 
   let filtroRecursoActivo = "todos";
-  const normalizarRecurso = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const normalizarRecurso = (text) =>
+    text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
   const filtrarRecursos = () => {
     const consulta = normalizarRecurso(busquedaRecursos?.value.trim() ?? "");
     let cantidad = 0;
     tarjetasRecursos.forEach((tarjeta) => {
       const tags = (tarjeta.dataset.resourceTags || "").split(" ");
       const categoria = filtroRecursoActivo;
-      const coincideTipo = categoria === "todos" || tarjeta.dataset.resourceCategory === categoria || tags.includes(categoria);
-      const texto = normalizarRecurso(tarjeta.dataset.resourceSearchText ?? tarjeta.textContent ?? "");
+      const coincideTipo =
+        categoria === "todos" ||
+        tarjeta.dataset.resourceCategory === categoria ||
+        tags.includes(categoria);
+      const texto = normalizarRecurso(
+        tarjeta.dataset.resourceSearchText ?? tarjeta.textContent ?? "",
+      );
       const visible = coincideTipo && (!consulta || texto.includes(consulta));
       if (visible) cantidad += 1;
       actualizarTarjetaFiltrada(tarjeta, visible);
     });
     if (contadorRecursos) {
       const en = document.documentElement.lang === "en";
-      contadorRecursos.textContent = `${cantidad} ${en ? (cantidad === 1 ? "collection" : "collections") : (cantidad === 1 ? "colección" : "colecciones")}`;
+      contadorRecursos.textContent = `${cantidad} ${en ? (cantidad === 1 ? "collection" : "collections") : cantidad === 1 ? "colección" : "colecciones"}`;
     }
     if (vacioRecursos) vacioRecursos.hidden = cantidad !== 0;
   };
@@ -339,7 +350,11 @@ if (typeof document !== "undefined") {
 
   let filtroProyectoActivo = "todos";
   let proyectoActivo = opcionesProyectos[0]?.dataset.projectOption ?? "";
-  const normalizarBusquedaProyecto = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const normalizarBusquedaProyecto = (text) =>
+    text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
 
   const activarProyecto = (projectId) => {
     proyectoActivo = projectId;
@@ -363,8 +378,11 @@ if (typeof document !== "undefined") {
 
     opcionesProyectos.forEach((opcion) => {
       const filtros = opcion.dataset.projectFilters?.split(" ") ?? [];
-      const coincideFiltro = filtroProyectoActivo === "todos" || filtros.includes(filtroProyectoActivo);
-      const coincideTexto = !consulta || normalizarBusquedaProyecto(opcion.dataset.projectSearchText ?? "").includes(consulta);
+      const coincideFiltro =
+        filtroProyectoActivo === "todos" || filtros.includes(filtroProyectoActivo);
+      const coincideTexto =
+        !consulta ||
+        normalizarBusquedaProyecto(opcion.dataset.projectSearchText ?? "").includes(consulta);
       const visible = coincideFiltro && coincideTexto;
 
       opcion.hidden = !visible;
@@ -375,7 +393,7 @@ if (typeof document !== "undefined") {
     });
 
     const opcionActivaVisible = [...opcionesProyectos].some(
-      (opcion) => opcion.dataset.projectOption === proyectoActivo && !opcion.hidden
+      (opcion) => opcion.dataset.projectOption === proyectoActivo && !opcion.hidden,
     );
 
     if (!opcionActivaVisible && primeraVisible) activarProyecto(primeraVisible);
@@ -394,14 +412,18 @@ if (typeof document !== "undefined") {
     opcion.addEventListener("click", () => activarProyecto(opcion.dataset.projectOption));
 
     opcion.addEventListener("keydown", (event) => {
-      if (!["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+      if (!["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key))
+        return;
 
       const opcionesVisibles = [...opcionesProyectos].filter((item) => !item.hidden);
       const indiceActual = opcionesVisibles.indexOf(opcion);
       const incremento = ["ArrowDown", "ArrowRight"].includes(event.key) ? 1 : -1;
-      const indiceSiguiente = event.key === "Home" ? 0
-        : event.key === "End" ? opcionesVisibles.length - 1
-        : (indiceActual + incremento + opcionesVisibles.length) % opcionesVisibles.length;
+      const indiceSiguiente =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? opcionesVisibles.length - 1
+            : (indiceActual + incremento + opcionesVisibles.length) % opcionesVisibles.length;
       const siguiente = opcionesVisibles[indiceSiguiente];
 
       event.preventDefault();
@@ -429,9 +451,11 @@ if (typeof document !== "undefined") {
     es: {
       sending: "Enviando tu mensaje...",
       success: "Mensaje enviado correctamente.",
-      uncertain: "No pudimos confirmar la entrega. El mensaje puede haber llegado; espera antes de volver a enviarlo.",
+      uncertain:
+        "No pudimos confirmar la entrega. El mensaje puede haber llegado; espera antes de volver a enviarlo.",
       verification: "Completa la verificación humana antes de enviar.",
-      unavailable: "El formulario aún no está habilitado. Falta configurar la verificación de producción.",
+      unavailable:
+        "El formulario aún no está habilitado. Falta configurar la verificación de producción.",
       rateLimited: "Se alcanzó el límite temporal de envíos. Inténtalo nuevamente más tarde.",
       invalid: "Revisa los datos ingresados e inténtalo nuevamente.",
       error: "No pudimos enviar tu mensaje. Inténtalo nuevamente en unos minutos.",
@@ -439,9 +463,11 @@ if (typeof document !== "undefined") {
     en: {
       sending: "Sending your message...",
       success: "Message sent successfully.",
-      uncertain: "We could not confirm delivery. The message may have arrived; wait before sending it again.",
+      uncertain:
+        "We could not confirm delivery. The message may have arrived; wait before sending it again.",
       verification: "Complete the human verification before submitting.",
-      unavailable: "The form is not enabled yet. Production verification still needs to be configured.",
+      unavailable:
+        "The form is not enabled yet. Production verification still needs to be configured.",
       rateLimited: "The temporary submission limit was reached. Please try again later.",
       invalid: "Review the information entered and try again.",
       error: "We could not send your message. Please try again in a few minutes.",
@@ -501,15 +527,16 @@ if (typeof document !== "undefined") {
       } catch (error) {
         console.error("No se pudo enviar el formulario de contacto.", error);
         estado.className = "formulario-estado formulario-estado-error";
-        estado.textContent = error.code === "DELIVERY_UNCONFIRMED"
-          ? textos.uncertain
-          : error.code === "RATE_LIMITED"
-          ? textos.rateLimited
-          : error.code === "INVALID_PAYLOAD"
-            ? textos.invalid
-            : error.code === "TURNSTILE_REJECTED"
-              ? textos.verification
-              : textos.error;
+        estado.textContent =
+          error.code === "DELIVERY_UNCONFIRMED"
+            ? textos.uncertain
+            : error.code === "RATE_LIMITED"
+              ? textos.rateLimited
+              : error.code === "INVALID_PAYLOAD"
+                ? textos.invalid
+                : error.code === "TURNSTILE_REJECTED"
+                  ? textos.verification
+                  : textos.error;
       } finally {
         campos.forEach((campo) => (campo.disabled = false));
         if (botonCorreo) {

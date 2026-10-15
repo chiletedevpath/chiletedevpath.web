@@ -5,7 +5,17 @@ import "../../styles/pages/criterios-editorial.css";
 import "../../styles/pages/politicas.css";
 import { policies } from "../../data/recursos.js";
 ---
+
 <BaseLayout title="Políticas | Chilete DevPath">
-  <header class="policy-heading"><div class="contenedor"><a class="policy-back" href="/criterios/#lista-politicas">← Volver a Criterios</a><p class="etiqueta">CDP / POLÍTICAS</p><h1>Publicar con responsabilidad.</h1><p class="policy-lead">Autoría, privacidad, uso de IA, bienestar y seguridad.</p></div></header>
+  <header class="policy-heading">
+    <div class="contenedor">
+      <a class="policy-back" href="/criterios/#lista-politicas">
+        ← Volver a Criterios
+      </a>
+      <p class="etiqueta">CDP / POLÍTICAS</p>
+      <h1>Publicar con responsabilidad.</h1>
+      <p class="policy-lead">Autoría, privacidad, uso de IA, bienestar y seguridad.</p>
+    </div>
+  </header>
   <PolicyOverview policies={policies} lang="es" />
 </BaseLayout>

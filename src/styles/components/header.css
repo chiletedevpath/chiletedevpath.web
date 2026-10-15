@@ -5,7 +5,11 @@
   z-index: 10;
   border-bottom: 1px solid color-mix(in srgb, var(--color-borde) 76%, transparent);
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--tema-header) 78%, var(--color-acento) 8%), var(--tema-header)),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--tema-header) 78%, var(--color-acento) 8%),
+      var(--tema-header)
+    ),
     var(--tema-header);
   color: var(--color-principal);
   backdrop-filter: blur(16px);
@@ -17,7 +21,11 @@
 
 .encabezado-desplazado {
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--tema-header-solido) 80%, var(--color-acento) 7%), var(--tema-header-solido)),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--tema-header-solido) 80%, var(--color-acento) 7%),
+      var(--tema-header-solido)
+    ),
     var(--tema-header-solido);
   box-shadow: var(--sombra-suave);
 }

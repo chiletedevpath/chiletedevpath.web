@@ -32,7 +32,7 @@ Conviene trasladar el lenguaje de composición y los componentes útiles, manten
 
 - `src/components/Hero.astro` y `HomeEditorial.astro`: portada y secuencia de contenido.
 - `src/components/RouteDirectory.astro`, `LearningDetail.astro` y `src/data/ruta.js`: navegación y contenido de las rutas.
-- `src/components/ResourceLibrary.astro` y `src/scripts/resource-workspace.js`: filtros y vistas existentes.
+- `src/components/ResourceLibrary.astro` y `src/scripts/main.js`: biblioteca y filtros existentes. La propuesta de vistas separadas fue retirada.
 - `src/components/ProjectExplorer.astro`: presentación de evidencia.
 - `src/styles/core/tokens.css` y estilos de cada sección: identidad y consistencia.
 

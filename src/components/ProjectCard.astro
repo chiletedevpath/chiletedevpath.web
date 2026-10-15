@@ -37,10 +37,12 @@ const projectFilters = project.filterTags ?? [project.routeStage];
       <img src={project.imageSrc} alt={project.imageAlt ?? ""} loading="lazy" />
       {project.visual && <figcaption>{project.visual}</figcaption>}
     </figure>
-  ) : project.visual && (
-    <div class="proyecto-visual">
-      <span>{project.visual}</span>
-    </div>
+  ) : (
+    project.visual && (
+      <div class="proyecto-visual">
+        <span>{project.visual}</span>
+      </div>
+    )
   )}
   <span class="estado">{project.status}</span>
   {project.routeLabel && <span class="proyecto-nivel">{project.routeLabel}</span>}
@@ -56,12 +58,16 @@ const projectFilters = project.filterTags ?? [project.routeStage];
   <p>{project.description}</p>
   {Array.isArray(project.technologies) && (
     <div class="proyecto-tech" aria-label={labels.technologies}>
-      {project.technologies.map((tech) => <span>{tech}</span>)}
+      {project.technologies.map((tech) => (
+        <span>{tech}</span>
+      ))}
     </div>
   )}
   <span class="proyecto-bloque-titulo">{labels.capabilities}</span>
   <ul class="tarjeta-detalles">
-    {project.details.map((detail) => <li>{detail}</li>)}
+    {project.details.map((detail) => (
+      <li>{detail}</li>
+    ))}
   </ul>
   {(project.problem || project.learned || project.improve) && (
     <details class="proyecto-ficha">

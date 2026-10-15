@@ -3,6 +3,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectsLanding from "../../components/ProjectsLanding.astro";
 import { projectCatalogEn } from "../../data/projectCatalog.js";
 ---
-<BaseLayout title="Projects | Chilete DevPath" description="Academic projects explained through the problem, the solution built and the learning demonstrated.">
+
+<BaseLayout
+  title="Projects | Chilete DevPath"
+  description="Academic projects explained through the problem, the solution built and the learning demonstrated."
+>
   <ProjectsLanding projects={projectCatalogEn} lang="en" />
 </BaseLayout>

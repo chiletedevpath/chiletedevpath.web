@@ -1,7 +1,6 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ResourceLibrary from "../../components/ResourceLibrary.astro";
-import PracticePilot from "../../components/PracticePilot.astro";
 import ContactSecurityFields from "../../components/ContactSecurityFields.astro";
 import { resourcesEn } from "../../data/recursos.js";
 import { contactConfig } from "../../data/contact.js";
@@ -9,7 +8,6 @@ import { contactConfig } from "../../data/contact.js";
 
 <BaseLayout title="Resources | Chilete DevPath" hasContactForm>
   <ResourceLibrary resources={resourcesEn} lang="en" />
-  <PracticePilot lang="en" />
 
   <section class="seccion resources-suggestion">
     <div class="contenedor contacto-grid">
@@ -17,34 +15,70 @@ import { contactConfig } from "../../data/contact.js";
         <p class="etiqueta">Resource suggestions</p>
         <h2>Suggest a resource that would really help</h2>
         <p>
-          If a topic needs an exercise, glossary entry, guide or lab, send the idea with context.
-          I review whether it fits the path before turning it into public material.
+          If a topic needs an exercise, glossary entry, guide or lab, send the idea with context. I
+          review whether it fits the path before turning it into public material.
         </p>
       </div>
-      <form class="formulario-contacto panel-contacto formulario-recursos" action={contactConfig.endpoint} method="post" data-contact-form data-context="resources" data-lang="en">
+      <form
+        class="formulario-contacto panel-contacto formulario-recursos"
+        action={contactConfig.endpoint}
+        method="post"
+        data-contact-form
+        data-context="resources"
+        data-lang="en"
+      >
         <div class="formulario-cabecera">
           <span>Proposed resource</span>
           <strong>Tell me what is missing and why it matters</strong>
-          <p>The clearer the problem is, the easier it is to turn it into useful practice for the community.</p>
+          <p>
+            The clearer the problem is, the easier it is to turn it into useful practice for the
+            community.
+          </p>
         </div>
         <div class="formulario-opciones">
           <label>
             Name
-            <input type="text" name="nombre" autocomplete="name" maxlength="80" placeholder="Your name" required />
+            <input
+              type="text"
+              name="nombre"
+              autocomplete="name"
+              maxlength="80"
+              placeholder="Your name"
+              required
+            />
           </label>
           <label>
             Email
-            <input type="email" name="correo" autocomplete="email" maxlength="120" placeholder="your.email@example.com" required />
+            <input
+              type="email"
+              name="correo"
+              autocomplete="email"
+              maxlength="120"
+              placeholder="your.email@example.com"
+              required
+            />
           </label>
         </div>
         <label>
           Subject
-          <input type="text" name="asunto" maxlength="120" placeholder="Example: missing conditionals practice" required />
+          <input
+            type="text"
+            name="asunto"
+            maxlength="120"
+            placeholder="Example: missing conditionals practice"
+            required
+          />
         </label>
         <div class="formulario-opciones">
           <label>
             Suggested topic
-            <input type="text" name="tema" maxlength="120" placeholder="Example: Java arrays" required />
+            <input
+              type="text"
+              name="tema"
+              maxlength="120"
+              placeholder="Example: Java arrays"
+              required
+            />
           </label>
           <label>
             Resource type
@@ -59,17 +93,34 @@ import { contactConfig } from "../../data/contact.js";
         </div>
         <label>
           Why should it be part of the path?
-          <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explain what problem it helps solve or what topic needs reinforcement." required></textarea>
+          <textarea
+            name="motivo"
+            rows="5"
+            maxlength="700"
+            data-countable
+            placeholder="Explain what problem it helps solve or what topic needs reinforcement."
+            required
+          ></textarea>
         </label>
         <label class="confirmacion-datos">
           <input type="checkbox" name="confirmacion" required />
-          <span>Apart from my name and contact email, I am not including passwords, private documents or sensitive information about myself or others.</span>
+          <span>
+            Apart from my name and contact email, I am not including passwords, private documents or
+            sensitive information about myself or others.
+          </span>
         </label>
-        <small class="contador-caracteres" data-counter>0/700</small>
-        <p class="nota-privacidad">Your data is processed through the email service to review and answer the proposal. The idea will not be published without prior evaluation.</p>
+        <small class="contador-caracteres" data-counter>
+          0/700
+        </small>
+        <p class="nota-privacidad">
+          Your data is processed through the email service to review and answer the proposal. The
+          idea will not be published without prior evaluation.
+        </p>
         <ContactSecurityFields lang="en" />
         <div class="acciones-formulario">
-          <button class="boton boton-principal" type="submit">Send proposal</button>
+          <button class="boton boton-principal" type="submit">
+            Send proposal
+          </button>
           <p class="formulario-estado" data-form-status role="status" aria-live="polite"></p>
         </div>
       </form>

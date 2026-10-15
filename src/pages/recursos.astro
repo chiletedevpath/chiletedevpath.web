@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ResourceLibrary from "../components/ResourceLibrary.astro";
-import PracticePilot from "../components/PracticePilot.astro";
 import ContactSecurityFields from "../components/ContactSecurityFields.astro";
 import { resources } from "../data/recursos.js";
 import { contactConfig } from "../data/contact.js";
@@ -9,7 +8,6 @@ import { contactConfig } from "../data/contact.js";
 
 <BaseLayout title="Recursos | Chilete DevPath" hasContactForm>
   <ResourceLibrary resources={resources} lang="es" />
-  <PracticePilot lang="es" />
 
   <section class="seccion resources-suggestion">
     <div class="contenedor contacto-grid">
@@ -17,34 +15,71 @@ import { contactConfig } from "../data/contact.js";
         <p class="etiqueta">Sugerencias de recursos</p>
         <h2>Propón un recurso que realmente ayude</h2>
         <p>
-          Si notas que falta un ejercicio, glosario, guía o laboratorio, envíame la idea con contexto.
-          No todo se publicará de inmediato: primero revisaré si encaja con la ruta y si aporta valor real.
+          Si notas que falta un ejercicio, glosario, guía o laboratorio, envíame la idea con
+          contexto. No todo se publicará de inmediato: primero revisaré si encaja con la ruta y si
+          aporta valor real.
         </p>
       </div>
-      <form class="formulario-contacto panel-contacto formulario-recursos" action={contactConfig.endpoint} method="post" data-contact-form data-context="resources" data-lang="es">
+      <form
+        class="formulario-contacto panel-contacto formulario-recursos"
+        action={contactConfig.endpoint}
+        method="post"
+        data-contact-form
+        data-context="resources"
+        data-lang="es"
+      >
         <div class="formulario-cabecera">
           <span>Recurso propuesto</span>
           <strong>Dime qué falta y para qué serviría</strong>
-          <p>Mientras más concreto sea el problema, más fácil será convertirlo en una práctica útil para la comunidad.</p>
+          <p>
+            Mientras más concreto sea el problema, más fácil será convertirlo en una práctica útil
+            para la comunidad.
+          </p>
         </div>
         <div class="formulario-opciones">
           <label>
             Nombre
-            <input type="text" name="nombre" autocomplete="name" maxlength="80" placeholder="Tu nombre" required />
+            <input
+              type="text"
+              name="nombre"
+              autocomplete="name"
+              maxlength="80"
+              placeholder="Tu nombre"
+              required
+            />
           </label>
           <label>
             Correo
-            <input type="email" name="correo" autocomplete="email" maxlength="120" placeholder="tu.correo@ejemplo.com" required />
+            <input
+              type="email"
+              name="correo"
+              autocomplete="email"
+              maxlength="120"
+              placeholder="tu.correo@ejemplo.com"
+              required
+            />
           </label>
         </div>
         <label>
           Asunto
-          <input type="text" name="asunto" maxlength="120" placeholder="Ejemplo: falta práctica de condicionales" required />
+          <input
+            type="text"
+            name="asunto"
+            maxlength="120"
+            placeholder="Ejemplo: falta práctica de condicionales"
+            required
+          />
         </label>
         <div class="formulario-opciones">
           <label>
             Tema sugerido
-            <input type="text" name="tema" maxlength="120" placeholder="Ejemplo: arreglos en Java" required />
+            <input
+              type="text"
+              name="tema"
+              maxlength="120"
+              placeholder="Ejemplo: arreglos en Java"
+              required
+            />
           </label>
           <label>
             Tipo de recurso
@@ -59,17 +94,34 @@ import { contactConfig } from "../data/contact.js";
         </div>
         <label>
           ¿Por qué debería estar en la ruta?
-          <textarea name="motivo" rows="5" maxlength="700" data-countable placeholder="Explica qué problema ayudaría a resolver o qué tema falta reforzar." required></textarea>
+          <textarea
+            name="motivo"
+            rows="5"
+            maxlength="700"
+            data-countable
+            placeholder="Explica qué problema ayudaría a resolver o qué tema falta reforzar."
+            required
+          ></textarea>
         </label>
         <label class="confirmacion-datos">
           <input type="checkbox" name="confirmacion" required />
-          <span>Además de mi nombre y correo de contacto, no incluyo contraseñas, documentos privados ni información sensible propia o de terceros.</span>
+          <span>
+            Además de mi nombre y correo de contacto, no incluyo contraseñas, documentos privados ni
+            información sensible propia o de terceros.
+          </span>
         </label>
-        <small class="contador-caracteres" data-counter>0/700</small>
-        <p class="nota-privacidad">Tus datos se procesan mediante el servicio de correo para revisar y responder la propuesta. La idea no se publicará sin una evaluación previa.</p>
+        <small class="contador-caracteres" data-counter>
+          0/700
+        </small>
+        <p class="nota-privacidad">
+          Tus datos se procesan mediante el servicio de correo para revisar y responder la
+          propuesta. La idea no se publicará sin una evaluación previa.
+        </p>
         <ContactSecurityFields lang="es" />
         <div class="acciones-formulario">
-          <button class="boton boton-principal" type="submit">Enviar propuesta</button>
+          <button class="boton boton-principal" type="submit">
+            Enviar propuesta
+          </button>
           <p class="formulario-estado" data-form-status role="status" aria-live="polite"></p>
         </div>
       </form>

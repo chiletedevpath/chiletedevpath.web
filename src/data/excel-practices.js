@@ -11,4 +11,5 @@ export const excelPractices = {
   "excel-modelos-financieros": ["09-control-financiero-personal.xlsx"],
 };
 
-export const getExcelPracticeUrl = (module, file) => `${module.href.replace("/tree/", "/blob/")}/practicas/${file}`;
+export const getExcelPracticeUrl = (module, file) =>
+  `${module.href.replace("/tree/", "/blob/")}/practicas/${file}`;

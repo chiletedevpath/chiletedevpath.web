@@ -3,6 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectsLanding from "../components/ProjectsLanding.astro";
 import { projectCatalog } from "../data/projectCatalog.js";
 ---
-<BaseLayout title="Proyectos | Chilete DevPath" description="Proyectos académicos explicados desde el problema, la solución construida y el aprendizaje demostrado.">
+
+<BaseLayout
+  title="Proyectos | Chilete DevPath"
+  description="Proyectos académicos explicados desde el problema, la solución construida y el aprendizaje demostrado."
+>
   <ProjectsLanding projects={projectCatalog} />
 </BaseLayout>

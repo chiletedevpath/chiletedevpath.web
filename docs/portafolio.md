@@ -2,6 +2,6 @@
 
 El portafolio profesional se mantiene en el repositorio independiente `portafolio`, con dominio previsto `https://portafolio.chiletedevpath.com`.
 
-Esta web conserva los enlaces y las redirecciones de las antiguas rutas `/portafolio/`. No incorpora los componentes, estilos, CV ni páginas profesionales.
+La conexión desde esta web queda pendiente: no se publican enlaces ni redirecciones hacia el portafolio. Sus componentes, estilos, CV y páginas permanecen en el repositorio independiente.
 
-El Worker de contacto sigue siendo compartido. Su configuración local admite el origen y hostname del subdominio. Esa configuración debe desplegarse y el hostname debe estar autorizado en Turnstile antes de usar el formulario en producción.
+La configuración local del Worker admite únicamente el dominio principal. La integración del subdominio requiere una aprobación posterior.
