@@ -49,7 +49,10 @@ const footerPolicies = isEnglish
   </div>
   <div class="pie-inferior">
     <span>
-      {isEnglish ? "Chilete DevPath by Adrián Pisco." : "Chilete DevPath por Adrián Pisco."}
+      {isEnglish ? "Chilete DevPath by Adrián Pisco." : "Chilete DevPath por Adrián Pisco."}{" "}
+      <a href={`https://portafolio.chiletedevpath.com${isEnglish ? "/en/" : "/"}`}>
+        {isEnglish ? "Creator’s portfolio ↗" : "Portafolio del creador ↗"}
+      </a>
     </span>
     <span>&copy; 2026</span>
   </div>

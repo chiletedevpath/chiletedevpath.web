@@ -141,3 +141,16 @@
   font: 800 0.62rem var(--fuente-mono);
   letter-spacing: 0.08em;
 }
+
+.pie-inferior a {
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: rgba(141, 164, 157, 0.45);
+  text-underline-offset: 3px;
+}
+
+.pie-inferior a:hover,
+.pie-inferior a:focus-visible {
+  color: #77dbd3;
+  text-decoration-color: currentColor;
+}
