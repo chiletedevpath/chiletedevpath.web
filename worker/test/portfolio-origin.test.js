@@ -3,8 +3,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import worker from "../src/index.js";
 const { vars } = JSON.parse(readFileSync(new URL("../wrangler.jsonc", import.meta.url), "utf8"));
-test("el Worker conserva el origen principal sin conectar el portafolio", async () => {
-  for (const origin of ["https://chiletedevpath.com"]) {
+test("el Worker admite la web y el portafolio, y rechaza otros orígenes", async () => {
+  for (const origin of ["https://chiletedevpath.com", "https://portafolio.chiletedevpath.com"]) {
     const response = await worker.fetch(
       new Request("https://example.test/api/contacto", {
         method: "OPTIONS",
@@ -18,7 +18,7 @@ test("el Worker conserva el origen principal sin conectar el portafolio", async 
   const denied = await worker.fetch(
     new Request("https://example.test/api/contacto", {
       method: "OPTIONS",
-      headers: { Origin: "https://portafolio.chiletedevpath.com" },
+      headers: { Origin: "https://portafolio.chiletedevpath.com.example.test" },
     }),
     vars,
   );
